@@ -31,57 +31,74 @@ public class EquationAnalyst
 	private char newChar;
 	private int findMethod;
 	private double slope;
-	private double yintercept;
+	private double yIntercept1;
+	private double yIntercept2;
+	private double yIntercept;
 	private String form;
 	private int length;
 	private int slopeIndexOf1;
 	private int slopeIndexOf2;
-	private String slopeSubstring;
+	private double slopeDouble1;
+	private double slopeDouble2;
 	private int yInterceptIndexOf1;
+	private int yInterceptIndexOf2;
+	private int yInterceptIndexOf3;
+	private int yInterceptIndexOf4;
+	private String yInterceptSubstring1;
+	private String yInterceptSubstring2;
+	private String slopeSubstring;
+	private String slopeStandardA;
+	private String slopeStandardB;
+	private double yInterceptC;
+	private String yInterceptSubstring;
 
-	public static void main (String args[])
-	{
-		EquationAnalyst analysis = new EquationAnalyst();
-		analysis.run();
-		analysis.decideEquationType();
-		analysis.printSlopeNIntercept();
-	}
+		public EquationAnalyst( ) //this is the constructor
+		{
+			equation = "";
+			trimmedEquation = "";
+			form = "";
+			slopeSubstring = "";
+			yInterceptSubstring1 = "";
+			yInterceptSubstring2 = "";
+			slopeStandardB = "";
+			slopeStandardA = "";
+			yInterceptSubstring = "";
+		}
 
-	public EquationAnalyst( ) //this is the constructor
-	{
-		equation = "";
-		trimmedEquation = "";
-		form = "";
-		slopeSubstring = "";
+		public static void main (String args[])
+		{
+			EquationAnalyst analysis = new EquationAnalyst();
+			analysis.run();
+			analysis.decideEquationType();
+		}
 
-	}
 
 	public void run()
 	{
 	Scanner input = new Scanner(System.in);
 	System.out.println("Welcome to EquationAnalyst. Please enter a linear equation in either standard, point-slope, \n or slope- intercept form. All signs need to be directly next to numbers.");
 	equation = input.nextLine();
+	System.out.print(equation);
 	}
 
 	public void decideEquationType()
 	{
 		equation = equation.trim();
 		equation = equation.toLowerCase();
+		System.out.printf("\n\n %s", equation);
 
-		int loopNumber = 1;
-    int proofread = 0;
-        while (loopNumber <= length + 1)
-           {
-	            int charNum = (int)(equation.charAt(proofread));
-	            if (charNum != 32)
-		            {
-		                char newChar = equation.charAt(proofread);
-		                trimmedEquation = trimmedEquation + newChar;
-		            }
-	            loopNumber++;
-	            proofread++;
-        		}
+
+    for (int i = 0; i < equation.length(); i++)
+		 {
+        if (equation.charAt(i) == " ")
+				{ 
+					equation.charAt(i) = "";
+        }
+    	}
+
+
 		length = trimmedEquation.length();
+		System.out.printf("\n\n %s", trimmedEquation);
 		if (trimmedEquation.indexOf('=')==2)
 			{
 				findMethod = 1;
@@ -121,29 +138,51 @@ public class EquationAnalyst
 			slopeIndexOf1 = trimmedEquation.indexOf('=');
 			slopeIndexOf2 = trimmedEquation.indexOf('x');
 			slopeSubstring = trimmedEquation.substring(slopeIndexOf1,slopeIndexOf2);
-			slopeSubstring.parseDouble()
+			slope = Double.parseDouble(slopeSubstring);
 
 			yInterceptIndexOf1 = trimmedEquation.indexOf('x');
 			yInterceptSubstring = trimmedEquation.substring(yInterceptIndexOf1,length);
+			yIntercept = Double.parseDouble(yInterceptSubstring);
 			form = "slope intercept";
+			printSlopeNIntercept();
 		}
 
 	public void breakPointSlopeEquation()
 		{
-			slope = Double.parseDouble(substring(indexOf('='),indexOf('(')));
-			yIntMultiply = slope*Double.parseDouble(substring(indexOf('x'),indexOf(')')));
-			yIntercept = yIntMultiply+Double.parseDouble(substring(indexOf('y'),indexOf('=')));
+			slopeIndexOf1 = trimmedEquation.indexOf('=');
+			slopeIndexOf2 = trimmedEquation.indexOf('(');
+			slopeSubstring = trimmedEquation.substring(slopeIndexOf1,slopeIndexOf2);
+			slope = Double.parseDouble(slopeSubstring);
+
+			yInterceptIndexOf1 = trimmedEquation.indexOf('x');
+			yInterceptIndexOf2 = trimmedEquation.indexOf(')');
+			yInterceptIndexOf3 = trimmedEquation.indexOf('y');
+			yInterceptIndexOf4 = trimmedEquation.indexOf('=');
+			yInterceptSubstring1 = trimmedEquation.substring(yInterceptIndexOf1,yInterceptIndexOf2);
+			yInterceptSubstring2 = trimmedEquation.substring(yInterceptIndexOf3,yInterceptIndexOf4);
+			yIntercept1 = Double.parseDouble(yInterceptSubstring1);
+			yIntercept2 = Double.parseDouble(yInterceptSubstring2);
+			yIntercept = (-1*slope*yIntercept1)+yIntercept2;
 			form = "point slope";
+			printSlopeNIntercept();
 		}
 
 	public void breakStandardForm()
 		{
-			slopeStandardA = Double.parseDouble(substring(0,indexOf('x')));
-			slopeStandardB = Double.parseDouble(substring(indexOf('x'),indexOf('y')));
-			slope = -1*slopeStandardA/slopeStandardB;
-			yInterceptC = Double.parseDouble(substring(indexOf('='),length));
-			yIntercept = yInterceptC/slopeStandardB;
+			slopeIndexOf1 = trimmedEquation.indexOf('x');
+			slopeIndexOf2 = trimmedEquation.indexOf('y');
+			slopeStandardA = trimmedEquation.substring(0,slopeIndexOf1);
+			slopeStandardB = trimmedEquation.substring(slopeIndexOf1,slopeIndexOf2);
+			slopeDouble1 = Double.parseDouble(slopeStandardA);
+			slopeDouble2 = Double.parseDouble(slopeStandardB);
+			slope = -1*slopeDouble1/slopeDouble2;
+
+			yInterceptIndexOf1 = trimmedEquation.indexOf('=');
+			yInterceptSubstring = trimmedEquation.substring(yInterceptIndexOf1,length);
+			yInterceptC = Double.parseDouble(yInterceptSubstring);
+			yIntercept = yInterceptC/slopeDouble2;
 			form = "standard";
+			printSlopeNIntercept();
 		}
 
 	public void printSlopeNIntercept()
