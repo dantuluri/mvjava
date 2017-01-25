@@ -2,16 +2,6 @@
 * Surya Dantuluri
 * January 5, 2017
 * EquationAnalyst.java
-* Simple program that finds out slope and y-intercept depending on inputted equation
-* Uses printf() and format, if and else, do while loops
-* Uses double, integer, character, and float.
-* Uses Scanner class
-*
-* initializes all needed variables
-* input equation
-* output trimmed equation, and form of line
-* output slope and y-intercept
-*
 *
 * Testing plan:
 * input: equation or characters and numbers
@@ -30,44 +20,47 @@ import java.util.Scanner;
 
 public class ClassSize
 {
-	private String equation;																											//instantiates all variables
-	private String trimmedEquation;																											//instantiates all variables
-	private int loopNumnber;																											//instantiates all variables
-	private int proofread;																											//instantiates all variables
-	private int charNum;																											//instantiates all variables
-	private char newChar;																											//instantiates all variables
-	private int findMethod; 																											//instantiates all variables
-	private double slope;																											//instantiates all variables
-	private double yIntercept1;																											//instantiates all variables
-	private double yIntercept2;																											//instantiates all variables
-
-		public CLassSize( )																											 //this is the constructor
+	int sum;
+	int i;
+	String students;
+	int numberOfStudents;
+		public ClassSize()																											 //this is the constructor
 		{
-			height = new int[]{0, -3, 1, 2, 3, 4, 3, 4, 4, 6, 8, 6, 6, 7, 10};
-			trimmedEquation = "";																															//instantiates Strings
-			form = "";																															//instantiates Strings
-			slopeSubstring = "";																															//instantiates Strings
-			yInterceptSubstring1 = "";																															//instantiates Strings
-			yInterceptSubstring2 = "";																															//instantiates Strings
-			slopeStandardB = "";																															//instantiates Strings
-			slopeStandardA = "";																															//instantiates Strings
-			yInterceptSubstring = "";																															//instantiates Strings
+			String[] size = new String[30];
 		}
 
 		public static void main (String args[])
 		{
-			EquationAnalyst analysis = new EquationAnalyst();													//instantiates class
-			analysis.run();																														//calls method
+			ClassSize classroom = new ClassSize();													//instantiates class
+			classroom.run();
+			classroom.printData();																												//calls method
 		}
 
 
 	public void run()
 	{
-	Scanner input = new Scanner(System.in);																				//initializes scanner input
-	System.out.println("\n\n\nWelcome to EquationAnalyst. Please enter a linear equation in either standard, point-slope, \n or slope- intercept form. All signs need to be directly next to numbers.\n\n"); //asks user for intpu
-	equation = input.nextLine();																											//user inputs
-	System.out.print("\n");																													//sets space for formatting
-	decideEquationType();																															//calls next method
+
+		Scanner input = new Scanner(System.in);																				//initializes scanner input
+		System.out.println("\n\n\nWelcome to ClassSize. Please enter your class size. (Enter a positive integer, such as 39)");
+		sum = 0;
+		for(int i = 0; i < size.length(); i++)
+		{
+				System.out.print("\n");
+				students = input.nextLine();
+				students = students.trim();
+				numberOfStudents = Double.parseDouble(students);
+				sum = sum + numberOfStudents;
+				size[i] = studnets;
+
+		}
+	}
+
+	public void printData()
+	{
+		System.out.prtinf("There are %f total number of classrooms", size.length);
+		System.out.prtinf("The average class size is %f students", sum/size.length);
+		System.out.prtinf("The average class size is %f students", sum/size.length);
+
 	}
 
 }
