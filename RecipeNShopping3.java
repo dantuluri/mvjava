@@ -1,7 +1,11 @@
-import java.util.Scanner;
-import java.io.*;
 
-public class RecipeNShopping3{//class header
+
+import java.util.Scanner;//import Scanner
+import java.io.File;//import File
+import java.io.FileNotFoundException;//import FileNotFOundException
+import java.io.PrintWriter;//import printwriter
+
+public class RecipeNShopping{//class header
 	private static Scanner r = null;//declare Scanners to read files
 	private static Scanner s = null;
 	private static PrintWriter printList = null;//declare PrintWriter

@@ -9,7 +9,7 @@ public class RecipeNShopping{//class Header
 	private static String cipe = " ";
 
 	public static void main(String[] allen){///main()
-		RecipeNShopping run = new RecipeNShopping();
+		RecipeNShopping2 run = new RecipeNShopping2();
 		run.Input();//call method
 	}
 	public static void Input(){///input method to sort food items

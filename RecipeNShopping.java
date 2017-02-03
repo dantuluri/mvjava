@@ -1,145 +1,89 @@
-/*
-* Surya Dantuluri
-* January 5, 2017
-* RecipeNShopping.java
-*  Simple program that finds out slope and y-intercept depending on inputted equation
-* Uses printf() and format, if and else, do while loops
-* Uses double, integer, character, and float.
-* Uses Scanner class
-*
-* initializes all needed variables
-* input equation
-* output trimmed equation, and form of line
-* output slope and y-intercept
-*
-*
-* Testing plan:
-* input: equation or characters and numbers
-*
-*y = -3x+2
-*output: this is in slope intercept form, slope: -3, y-intercept: 2
-*
-*Y = -3     x + 2
-output: this is in slope intercept form, slope:-3, y-intercept:2
-*
-*y-5 = 7(x  +1)
-*output: this is in point-slope form, slope:
- */
-import java.util.Scanner;
 
 
-public class RecipeNShopping1
-{
-	private String[] foods;																										//instantiates all variables
-	private String inFileName;
-	private File inFile;
-	private String outFileName;
-	private String staples;
-	private File staples;
-	private int counter;
+import java.util.Scanner;																												//import Scanner
+																																		//import printwriter
+
+import java.io.*;
 
 
+public class RecipeNShopping{//class header
+	private static Scanner r = null;//declare Scanners to read files
+	private static Scanner s = null;
+	private static PrintWriter printList = null;//declare PrintWriter
 
-	public RecipeNShopping() //this is the constructor
-	{
-		foods = new String(10000);
-		inFile = "Recipes.txt";
-		outFileName = "ShoppingList.txt";
-		staples = "Staples.txt";
+	public static void main(String[]args){//main method header
+		getInput();
+		getStaples();
 	}
-	public void getInput()
-	{
-		Scanner input = new Scanner(System.in);
-		String input;
-		System.out.print("\n\n\n");
-		System.out.print("Please enter the recipes you would like to cook.");
-		input = input.nextLine();
-
-		while(input.equalsIgnoreCase("quit") !=false)
-		{
-			foods[counter] = input.toLowerCase().trim();
-			counter++;
-			input = input.nextLine();
+	public static void getInput(){//input method header
+		String [] array = new String[1000];//make array
+		int counter = 0;//create counter to keep track of slots in array
+		String dish = " ";//create variable for input
+		Scanner s = new Scanner(System.in);//declare and instantiate scanner
+		try{//instantiate PrintWriter in a try catch block
+			printList = new PrintWriter(new File("ShoppingList.txt"));
+		}catch(IOException e){//to catch FileNotFoundException
+			System.out.println("Cannot append to file");
+			System.exit(1);
 		}
-
-		System.out.print("\n\n\n");
+		for(int i = 0; i!= -1; i++){//for loop to save user input into array
+			dish = s.nextLine();
+			if(dish.equalsIgnoreCase("quit"))
+				 i = -2;
+			else{
+				array[i] = dish;
+				counter++;
+			}
+		}
+		for(int x = 0; x < counter; x++){//loop to call method to get ingredients
+			findRecipe(array[x]);
+		}
+		printList.close();//saves PrintWriter
 	}
 
-	public void readWrite()
-	{
-		File outFile = new File(outFileName);
-		inFile  = new File(inFileName);
-		try
-		{
-			Scanner input = new Scanner(inFile);
-		}
-		catch(FileNotFoundException e)
-		{
-			System.err.println("Cannot find" + inFile + " file.");
+	public static void findRecipe(String name){//findRecipe method finds ingredients
+		String line = " ";
+		int num = 0;
+		try{//instantiate Scanner in a try catch block
+			r = new Scanner(new File("Recipes.txt"));
+		}catch(FileNotFoundException e){//to catch FileNotFoundException
+			System.out.println("Cannot find file");
 			System.exit(1);
 		}
-
-		try
-		{
-			Scanner input2 = new Scanner(staples);
-		}
-
-		catch(FileNotFoundException e)
-		{
-			System.err.println("Cannot find" + inFile + " file.");\
-			System.exit(1);
-		}
-
-		try
-		{
-			PrintWriter pw = new PrintWriter(outFile);
-		}
-		catch(FileNotFoundException e)
-		{
-			System.err.println("Cannot find" + inFile + " file.");\
-			System.exit(1);
-		}
-
-		String currentRecipe = "";
-		String currentLine = "";
-		String used = "";
-
-		for(int i = 0; i < counter; i++)
-		{
-			currentRecipe = foods[i];
-
-			while(input.hasNext() == true)
-			{
-
-				currentLine = input.nextLine().toLowerCase().trim();
-				if(currentLine.indexOf(currentRecipe) > 0);
-				{
-					input.nextLine();
-					input.nextLine();
-					input.nextLine();
-
-					used = input.nextLine();
-
-					while(used.equals("Directions:") !=false)
-						pw.println(used);
-				}
-				else
-				{
-					pw.println(currentRecipe+"(1)");
+		while(r.hasNext()){//while loop to get ingredients
+			line = r.nextLine();//reads each line
+			if(line.indexOf("Recipe: ")==0){//find keword 'recipe'
+				if((line.substring(8,8+name.length())).equalsIgnoreCase(name)){//find recipe of inputted dish
+					while(!line.equals("Directions:")){//while loop to print out inngredients to ShoppingList
+						line = r.nextLine();
+						if(line.equals("Ingredients:")){
+							line = r.nextLine();
+							while(line.length()!=0){
+								printList.println(line);
+								line = r.nextLine();
+							}
+							num = 1;
+						}
+					}
 				}
 			}
 		}
-
-
-		String staple1
-	public static void main (String args[])
-	{
-		RecipeNShopping1 recipe1 = new RecipeNShopping1();													//instantiates class
-		analysis.run();																														//calls method
+		if(num == 0)//if inputted dish is not found in Recipes.txt, print directly to ShoppingList.txt
+			printList.println(name + "(1)");
 	}
 
+	public static void getStaples(){//getStaples method prints contents of staples.txt to ShoppingList.txt
+		String line = " ";
+		try{
+			s = new Scanner(new File("Staples.txt"));
+		}catch(FileNotFoundException e){//to catch FileNotFoundException
+			System.out.println("Cannot find file");
+			System.exit(1);
+		}
+		while(s.hasNext()){
+			line = s.nextLine();
+			printList.println(line);
 
-
-
-
-}\
+		}
+	}
+}
