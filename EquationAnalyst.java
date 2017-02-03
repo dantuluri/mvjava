@@ -97,16 +97,16 @@ public class EquationAnalyst
 		int num = 1;																																//loop to take out any white spaces
         int charac = 0;																													//initializes charac as 0
         while (charac <length)																									//loop to take out any white spaces
-           {
-            int charNum = (int)(equation.charAt(charac));												//starts reading equation
-            if (charNum != 32)																									// if there is a space
-            {
-                char newChar = equation.charAt(charac);													//takes out character or space
-                trimmedEquation = trimmedEquation + newChar;										//starts "building" trimmedEquation
-            }
+       {
+          int charNum = (int)(equation.charAt(charac));												//starts reading equation
+          if (charNum != 32)																									// if there is a space
+	          {
+	              char newChar = equation.charAt(charac);													//takes out character or space
+	              trimmedEquation = trimmedEquation + newChar;										//starts "building" trimmedEquation
+	          }
             num++;
             charac++;
-        }
+      	}
 
 
 		length = trimmedEquation.length();																		//finds out length of trimmedEquation

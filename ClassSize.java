@@ -1,115 +1,148 @@
-/*
-* Surya Dantuluri
-* January 5, 2017
-* EquationAnalyst.java
-*
-* Testing plan:
-* input: equation or characters and numbers
-*
-*y = -3x+2
-*output: this is in slope intercept form, slope: -3, y-intercept: 2
-*
-*Y = -3     x + 2
-output: this is in slope intercept form, slope:-3, y-intercept:2
-*
-*y-5 = 7(x  +1)
-*output: this is in point-slope form, slope:
- */
+
+
 import java.util.Scanner;
 
+public class ClassSize{
 
-public class ClassSize
-{
-	int sum;
-	int i;
-	String students;
-	int numberOfStudents;
-	int firstNumber;
-	int secondNumber;
+private int[] classes;
+private int total;
+private int numOfClasses;
+private int average;
 
-		public ClassSize()																											 //this is the constructor
-		{
-			String[] size = new String[30];
-		}
+        public ClassSize(){
 
-		public static void main (String args[])
-		{
-			ClassSize classroom = new ClassSize();													//instantiates class
-			classroom.run();
-			classroom.printData();																												//calls method
-		}
+                classes = new int[30];
+                total = 0;
+                numOfClasses = 0;
+                average = 0;
+
+        }// end of constructor
 
 
-	public void run()
-	{
+        public static void main(String[] args){
 
-		Scanner input = new Scanner(System.in);																				//initializes scanner input
-		System.out.println("\n\n\nWelcome to ClassSize. Please enter your class size. (Enter a positive integer, such as 39)");
-		sum = 0;
+                System.out.println("\n\n");
 
-		for(int i = 0; i < 30; i++)
-			{
-			System.out.print("\n");
-			students = input.nextLine();
-			students = students.trim();
-			students = Double.parseDouble(students);
-			numberOfStudents = Double.parseDouble(students);
-			sum = sum + numberOfStudents;
-			size[i] = students;
-			}
-	}
+                ClassSize cs = new ClassSize();
+                cs.run();
 
-	public void printData()
-	{
-		for(int i = 0; i < 30; i++)
-			{
-			System.out.println("Class size of inputted room %f: %s\n\n", i, size[i]);
-			}
+                System.out.println("\n\n");
 
-		for(int i = 0; i < 30; i++)
-			{
-				firstNumber = size[i];
-				secondNumber = 1 + size[i];
-				maxValue = Math.max(firstNumber, secondNumber);
-
-				if (size[i] > maxValue)
-				{
-        maxValue = convertedValues[i];
-    		}
-			}
-
-			for(int i = 0; i < 30; i++)
-				{
-					firstNumber = size[i];
-					secondNumber = 1 + size[i];
-					minValue = Math.min(firstNumber, secondNumber);
-
-					if (size[i] < minValue)
-					{
-	        minValue = convertedValues[i];
-	    		}
-				}
+        } // end of main
 
 
-		System.out.prtinf("There are %f total number of classrooms\n", size.length);
-		System.out.prtinf("The average number of students in a class is %f students\n", sum/(size.length));
-		System.out.prtinf("The biggest class has %f students", maxValue);
-		System.out.prtinf("The smallest class has %f students", minValue);
-		System.out.prtinf("These are the classes that exceeed the ideal maximum of students in a classroom (exceed 36 students)";
+        public void run(){
 
-		for(int i = 0; i < 30; i++)
-			{
-				if(size[i]>36)
-				{
-				
-				System.out.println
-				}
+                getInput();
+                printArray();
+                printStatistics();
+
+        }// end of run
 
 
-			}
+        public void getInput(){
+
+                String temp;
+                Scanner scanner = new Scanner(System.in);
+
+                for(int i = 0; i<classes.length; i++){
+
+                        System.out.println("Enter the number of students in class " +
+numOfClasses);
+                        temp = scanner.nextLine();
+
+                        if(temp.equalsIgnoreCase("quit")){
+
+                                i = 29;
+
+                        }
+                else{
+
+                        classes[i] = Integer.parseInt(temp);
+                        total += classes[i];
+                        numOfClasses++;
+
+                }
+
+        }
+
+                average = total/numOfClasses;
+
+        }// end of getInput
 
 
+        public void printArray(){
 
-	}
+                int[] index = new int[numOfClasses];
+                int count = 0;
 
-}
+                        for(int i = 0; i<index.length; i++){
+
+                                System.out.println("Classroom " + count++ + " has " + classes[i] +
+"people.");
+
+                        }
+
+        } // end of printArray
+
+
+        public void printStatistics(){
+
+                int[] index = new int[numOfClasses];
+                int count = 0;
+
+                System.out.println("\nThere are a total of " + numOfClasses + "
+Classes.\n");
+                System.out.println("The average people in each class is " + average +
+"\n");
+
+                        for(int i = 0; i<index.length; i++){
+
+                                if(classes[i]<36){
+
+                                        System.out.println("Classroom " + count++ + " does not exceed 36
+people by " + -1*(classes[i]-36) + " people.");
+
+                                }
+
+                                else if(classes[i]>36){
+
+                                        System.out.println("Classroom " + count++ + " exceeds 36 people by "
++ (classes[i]-36) + " people.");
+
+                                }
+
+                                else{
+
+                                        System.out.println("Classroom " + count++ + " has exactly 36 people.");
+
+                                }
+
+                        }
+
+        int max = classes[0];
+        int keepTrack = 0;
+
+                for(int j = 0; j<index.length; j++){
+
+                        max = Math.max(classes[j], max);
+                        keepTrack++;
+
+                } System.out.println("\nClassroom " + keepTrack + " has the most people
+with " + max + " people."); //
+
+        int min = classes[0];
+        int keepTrack2 = 0;
+
+                for(int k = 0; k<index.length; k++){
+
+                        min = Math.min(classes[k], min);
+                        keepTrack2++;
+
+                } System.out.println("\nClassroom " + keepTrack2 + " has the least
+people with " + min + " people.");
+
+        }// end of printStatistics
+
+
+} // end of class
