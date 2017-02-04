@@ -1,37 +1,54 @@
 
 
-import java.util.Scanner;																												//import Scanner
-																																		//import printwriter
+import java.util.Scanner;//import Scanner
+import java.io.File;//import File
+import java.io.FileNotFoundException;//import FileNotFOundException
+import java.io.IOException;
+import java.io.PrintWriter;//import printwriter
 
-import java.io.*;
 
+public class RecipeNShopping
+{//class header
 
-public class RecipeNShopping{//class header
-	private static Scanner r = null;//declare Scanners to read files
-	private static Scanner s = null;
-	private static PrintWriter printList = null;//declare PrintWriter
+	private String[] array;
+	private int counter;
+	private String food;
+	private String line;
 
-	public static void main(String[]args){//main method header
-		getInput();
-		getStaples();
+	private Scanner readRecipe;
+	private Scanner readStaples;
+	PrintWriter printList;
+
+		 private int number;
+
+	public static void main(String[]args)
+	{//main method header
+		RecipeNShopping recipe = new RecipeNShopping();													//instantiates class
+		recipe.getInput();
+		recipe.getStaples();
+
 	}
-	public static void getInput(){//input method header
+
+
+	public void getInput(){//input method header
 		String [] array = new String[1000];//make array
 		int counter = 0;//create counter to keep track of slots in array
-		String dish = " ";//create variable for input
-		Scanner s = new Scanner(System.in);//declare and instantiate scanner
+		String food = " ";//create variable for input
+		Scanner readRecipe = new Scanner(System.in);//declare and instantiate scanner
 		try{//instantiate PrintWriter in a try catch block
-			printList = new PrintWriter(new File("ShoppingList.txt"));
+			printList = new PrintWriter(new File("ShoppingList.txt")); // YO MA BOI
 		}catch(IOException e){//to catch FileNotFoundException
 			System.out.println("Cannot append to file");
 			System.exit(1);
 		}
-		for(int i = 0; i!= -1; i++){//for loop to save user input into array
-			dish = s.nextLine();
-			if(dish.equalsIgnoreCase("quit"))
+		for(int i = 0; i!= -1; i++)
+		{//for loop to save user input into array
+			food = readRecipe.nextLine();
+			if(food.equalsIgnoreCase("quit"))
 				 i = -2;
-			else{
-				array[i] = dish;
+			else
+			{
+				array[i] = food;
 				counter++;
 			}
 		}
@@ -41,26 +58,27 @@ public class RecipeNShopping{//class header
 		printList.close();//saves PrintWriter
 	}
 
-	public static void findRecipe(String name){//findRecipe method finds ingredients
+	public void findRecipe(String name){//findRecipe method finds ingredients
+		Scanner readRecipe = new Scanner(System.in);
 		String line = " ";
 		int num = 0;
 		try{//instantiate Scanner in a try catch block
-			r = new Scanner(new File("Recipes.txt"));
+			readRecipe = new Scanner(new File("Recipes.txt"));
 		}catch(FileNotFoundException e){//to catch FileNotFoundException
 			System.out.println("Cannot find file");
 			System.exit(1);
 		}
-		while(r.hasNext()){//while loop to get ingredients
-			line = r.nextLine();//reads each line
+		while(readRecipe.hasNext()){//while loop to get ingredients
+			line = readRecipe.nextLine();//reads each line
 			if(line.indexOf("Recipe: ")==0){//find keword 'recipe'
 				if((line.substring(8,8+name.length())).equalsIgnoreCase(name)){//find recipe of inputted dish
 					while(!line.equals("Directions:")){//while loop to print out inngredients to ShoppingList
-						line = r.nextLine();
+						line = readRecipe.nextLine();
 						if(line.equals("Ingredients:")){
-							line = r.nextLine();
+							line = readRecipe.nextLine();
 							while(line.length()!=0){
 								printList.println(line);
-								line = r.nextLine();
+								line = readRecipe.nextLine();
 							}
 							num = 1;
 						}
@@ -72,16 +90,17 @@ public class RecipeNShopping{//class header
 			printList.println(name + "(1)");
 	}
 
-	public static void getStaples(){//getStaples method prints contents of staples.txt to ShoppingList.txt
+	public void getStaples(){//getStaples method prints contents of staples.txt to ShoppingList.txt
+		Scanner readStaples = new Scanner(System.in);
 		String line = " ";
 		try{
-			s = new Scanner(new File("Staples.txt"));
+			readStaples = new Scanner(new File("Staples.txt"));
 		}catch(FileNotFoundException e){//to catch FileNotFoundException
 			System.out.println("Cannot find file");
 			System.exit(1);
 		}
-		while(s.hasNext()){
-			line = s.nextLine();
+		while(readStaples.hasNext()){
+			line = readStaples.nextLine();
 			printList.println(line);
 
 		}
