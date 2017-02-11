@@ -27,7 +27,7 @@ import javax.swing.*;
         public Masterpiece()
         {
         super("Masterpiece");
-        setSize(900,900);
+        setSize(1000,1000);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocation(0,0);
         setResizable(true);
@@ -52,10 +52,11 @@ import javax.swing.*;
             super.paintComponent(g);
 
             g.setColor(Color.RED);
-            g.fillRect(0,0, 200,300);
-            //Font serifBold20 = new Font("Serif",Font.BOLD,20);
-            //g.getFont(serifBold100);
-            //g.drawString("Hi",0,0);
+            g.fillRect(120,120,160,160);
+            g.setColor(Color.ORANGE);
+            Font serifBold100 = new Font("Serif",Font.BOLD,100);
+            g.setFont(serifBold100);
+            g.drawString("Yipee!",100,100);
     //COLOR purplo = new Color(255,0,255);
 
 

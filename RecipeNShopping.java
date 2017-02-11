@@ -68,7 +68,9 @@ public class RecipeNShopping
 			System.out.println("Cannot find file");
 			System.exit(1);
 		}
+		String prev = "";
 		while(readRecipe.hasNext()){//while loop to get ingredients
+			prev = line.nextLine()
 			line = readRecipe.nextLine();//reads each line
 			if(line.indexOf("Recipe: ")==0){//find keword 'recipe'
 				if((line.substring(8,8+name.length())).equalsIgnoreCase(name)){//find recipe of inputted dish
