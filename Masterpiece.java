@@ -27,7 +27,7 @@ import javax.swing.*;
         public Masterpiece()
         {
         super("Masterpiece");
-        setSize(1000,1000);
+        setSize(900,900);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocation(0,0);
         setResizable(true);
@@ -57,6 +57,8 @@ import javax.swing.*;
             Font serifBold100 = new Font("Serif",Font.BOLD,100);
             g.setFont(serifBold100);
             g.drawString("Yipee!",100,100);
+            g.fillOval(500,700,400,200);
+
     //COLOR purplo = new Color(255,0,255);
 
 
@@ -67,5 +69,4 @@ import javax.swing.*;
 
 
     }
-
-    }
+}
