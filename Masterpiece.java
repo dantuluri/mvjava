@@ -40,8 +40,7 @@ import javax.swing.*;
 
     class Panel extends JPanel
     {
-        int[] array1 = {500,200,100,200};
-        int[] array2 = {500,200,100};
+
         public Panel()
         {
             setBackground(Color.BLUE);

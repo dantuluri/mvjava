@@ -2,7 +2,7 @@ import javax.swing.*;
 import javax.swing.event.*;//import libraries
 import java.awt.*;
 
-public class Stickman extends JPanel implements ChangeListener{//class header - implement button listener(ActionL)
+public class Stickman extends JFrame implements ChangeListener{//class header - implement button listener(ActionL)
 	private int slide=0;
 	private JSlider s;
 

@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;///import java libraries: swing , event , awt , applet
 
-        class GardenGrow extends JPanel implements MouseListener ,KeyListener {
+        class GardenGrow extends JFrame implements MouseListener ,KeyListener {
 			///classheader which extends Jpanel and implements keylistener,mouselistener
         int click=0;//clicked ( times)
         boolean modulus = false;
