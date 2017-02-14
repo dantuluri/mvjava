@@ -57,6 +57,14 @@ import javax.swing.*;
             g.setFont(serifBold100);
             g.drawString("Yipee!",100,100);
             g.fillOval(500,700,400,200);
+            g.drawRect (30, 30, 80, 40);
+            g.drawOval (120, 30, 50, 50);
+            g.setColor (Color.GREEN);
+            g.fillRect (30, 100, 80, 40);
+            g.fillOval (120, 100, 50, 50);
+            g.drawLine (30, 160, 130, 170);
+            g.drawArc (30, 180, 50, 50, 60, 40);
+            g.fillArc (120, 180, 50, 50, 60, 40);
 
     //COLOR purplo = new Color(255,0,255);
 
