@@ -59,7 +59,7 @@ import javax.swing.*;
             g.fillOval(500,700,400,200);
             g.drawRect (30, 30, 80, 40);
             g.drawOval (120, 30, 50, 50);
-            g.setColor (Color.GREEN);
+            g.setColor (Color.ORANGE);
             g.fillRect (30, 100, 80, 40);
             g.fillOval (120, 100, 50, 50);
             g.drawLine (30, 160, 130, 170);
