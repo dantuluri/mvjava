@@ -27,7 +27,7 @@ import javax.swing.*;
         public MasterHome()
         {
         super("MasterHome");
-        setSize(900,900);
+        setSize(270,270);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocation(0,0);
         setResizable(true);
@@ -86,6 +86,7 @@ import javax.swing.*;
   g.drawLine(x, y, x+20, y);
   }}
 
+
     //COLOR purplo = new Color(255,0,255);
 
 
@@ -96,4 +97,4 @@ import javax.swing.*;
 
 
     }
-}
+  }
