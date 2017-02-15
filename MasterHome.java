@@ -50,14 +50,41 @@ import javax.swing.*;
         {
             super.paintComponent(g);
 
-            g.setColor(Color.RED);
-            g.fillRect(120,120,160,160);
-            g.setColor(Color.ORANGE);
-            //SHUITASDAOSDJAOSDJAOSDIJSADSJDOASJDOASJDOSAIJDOIASJDOSAIDJOSAIDJOSAIDJSAO
-            g.fillOval (120, 100, 50, 50);
-            g.drawLine (30, 160, 130, 170);
-            g.drawArc (30, 180, 50, 50, 60, 40);
-            g.fillArc (120, 180, 50, 50, 60, 40);
+            g.fillArc(20,20,80,120,60,60);
+  g.drawLine(60,80,60,120);
+  g.drawRect(40,120,40,60);
+  for (int y=160; y<=170; y+=10){
+  for (int x = 40; x <=70; x+=10){
+  g.drawOval( x, y, 10, 10);
+  }}
+  g.drawRect(5, 10, 155, 50);
+  g.drawLine(0, 0, 160, 0);
+  g.fillArc(11,11,48,48,45,270);
+  for (int y = 30; y<50; y+=25){
+  for (int x = 70; x<=130; x+=30){
+  g.fillOval(x, y, 20, 20);
+  }}
+  g.fillArc(100, 110, 80, 40, 330, 240);
+  g.drawLine(140, 130, 140, 150);
+  g.fillRect(138, 150, 4, 10);
+  for(int y = 170; y<= 180; y+=10){
+  for(int x = 80; x<=200; x+=100){
+  g.drawOval(x, y, 20, 4);
+  }}
+  g.drawLine(150, 150, 340, 150);
+  g.fillOval(200, 200, 100, 50);
+  g.fillArc(220, 150, 150, 150, 330, 60);
+  for(int y= 150; y<=190; y+=20){
+  for(int x=200; x<210; x+=20){
+  g.fillOval(x, y, 10, 10);
+  }}
+  g.drawOval(175, 175, 50, 50);
+  g.fillArc(172, 85, 56, 100, 240, 60);
+  g.fillRect(162, 175, 76, 10);
+  for(int y= 245; y<=265; y+=10){
+  for(int x = 190; x<200 ; x+=20 ){
+  g.drawLine(x, y, x+20, y);
+  }}
 
     //COLOR purplo = new Color(255,0,255);
 
