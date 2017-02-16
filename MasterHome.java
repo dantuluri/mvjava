@@ -27,7 +27,7 @@ import javax.swing.*;
         public MasterHome()
         {
         super("MasterHome");
-        setSize(270,270);
+        setSize(375,300);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocation(0,0);
         setResizable(true);
@@ -43,7 +43,7 @@ import javax.swing.*;
 
         public Panel()
         {
-            setBackground(Color.BLUE);
+            
         }
 
         public void paintComponent(Graphics g)
@@ -85,6 +85,7 @@ import javax.swing.*;
   for(int x = 190; x<200 ; x+=20 ){
   g.drawLine(x, y, x+20, y);
   }}
+
 
 
     //COLOR purplo = new Color(255,0,255);

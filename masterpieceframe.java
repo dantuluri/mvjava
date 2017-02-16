@@ -50,14 +50,13 @@ import javax.swing.*;
         {
             super.paintComponent(g);
 
-            g.setColor(Color.RED);
-            g.fillRect(120,120,160,160);
-            g.setColor(Color.ORANGE);
-            //SHUITASDAOSDJAOSDJAOSDIJSADSJDOASJDOASJDOSAIJDOIASJDOSAIDJOSAIDJOSAIDJSAO
-            g.fillOval (120, 100, 50, 50);
-            g.drawLine (30, 160, 130, 170);
-            g.drawArc (30, 180, 50, 50, 60, 40);
-            g.fillArc (120, 180, 50, 50, 60, 40);
+            g.fillArc(20,20,80,120,60,60);
+  g.drawLine(60,80,60,120);
+  g.drawRect(40,120,40,60);
+  for (int y=160; y<=170; y+=10){
+  for (int x = 40; x <=70; x+=10){
+  g.drawOval( x, y, 10, 10);
+  }}
 
     //COLOR purplo = new Color(255,0,255);
 
