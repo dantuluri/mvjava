@@ -27,10 +27,10 @@ import javax.swing.*;
         public Masterpiece()
         {
         super("Masterpiece");
-        setSize(900,900);
+        setSize(480,480);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocation(0,0);
-        setResizable(true);
+        setResizable(false);
 
         Panel pan = new Panel();
         setContentPane(pan);
@@ -49,13 +49,17 @@ import javax.swing.*;
         public void paintComponent(Graphics g)
         {
             super.paintComponent(g);
-
+            g.setColor(Color.BLACK);
+            g.drawOval(160, 125, 50, 100);
+            g.fillArc(240, 120, 40, 120, 60, 90);
+            g.drawArc(172, 85, 56, 100, 240, 60);
             g.setColor(Color.RED);
-            g.fillRect(120,120,160,160);
+            g.fillRect(240,240,80,60);
             g.setColor(Color.ORANGE);
-            Font serifBold100 = new Font("Serif",Font.BOLD,100);
-            g.setFont(serifBold100);
-            g.drawString("Yipee!",100,100);
+            Font serifBold20 = new Font("Serif",Font.BOLD,20);
+            g.setFont(serifBold20);
+            g.drawString("Yipee!",60,60);
+            /*
             g.fillOval(500,700,400,200);
             g.drawRect (30, 30, 80, 40);
             g.drawOval (120, 30, 50, 50);
@@ -65,7 +69,7 @@ import javax.swing.*;
             g.drawLine (30, 160, 130, 170);
             g.drawArc (30, 180, 50, 50, 60, 40);
             g.fillArc (120, 180, 50, 50, 60, 40);
-
+            */
     //COLOR purplo = new Color(255,0,255);
 
 

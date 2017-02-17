@@ -28,10 +28,10 @@ import javax.swing.*;
         public Masterpiecio()
         {
         super("Masterpiecio");
-        setSize(200,200);
+        setSize(480,480);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocation(0,0);
-        setResizable(true);
+        setResizable(false);
 
         Panel pan = new Panel();
         setContentPane(pan);
