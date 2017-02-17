@@ -16,17 +16,17 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-    public class Masterpiece extends JFrame
+    public class masterpieceframe extends JFrame
     {
 
         public static void main (String[]args)
         {
-            Masterpiece mp = new Masterpiece();
+            masterpieceframe mpf = new masterpieceframe();
         }
 
-        public Masterpiece()
+        public masterpieceframe()
         {
-        super("Masterpiece");
+        super("masterpieceframe");
         setSize(900,900);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocation(0,0);
@@ -49,14 +49,13 @@ import javax.swing.*;
         public void paintComponent(Graphics g)
         {
             super.paintComponent(g);
-
-            g.fillArc(20,20,80,120,60,60);
-  g.drawLine(60,80,60,120);
-  g.drawRect(40,120,40,60);
-  for (int y=160; y<=170; y+=10){
-  for (int x = 40; x <=70; x+=10){
-  g.drawOval( x, y, 10, 10);
-  }}
+g.drawLine(150, 150, 340, 150);
+g.fillOval(200, 200, 100, 50);
+g.fillArc(220, 150, 150, 150, 360, 60);
+for(int y= 150; y<=190; y+=20){
+for(int x=200; x<210; x+=20){
+g.fillOval(x, y, 10, 10);
+}}
 
     //COLOR purplo = new Color(255,0,255);
 
