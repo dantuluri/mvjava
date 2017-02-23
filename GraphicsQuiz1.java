@@ -16,24 +16,24 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-    public class masterpieceframe extends JFrame
+    public class GraphicsQuiz1 extends JFrame
     {
 
         public static void main (String[]args)
         {
-            masterpieceframe mpf = new masterpieceframe();
+            GraphicsQuiz1 gq1 = new GraphicsQuiz1();
         }
 
-        public masterpieceframe()
+        public GraphicsQuiz1()
         {
-        super("masterpieceframe");
+        super("GraphicsQuiz1");
         setSize(900,900);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocation(0,0);
         setResizable(true);
 
-        Panel pan = new Panel();
-        setContentPane(pan);
+        Panel pan1 = new Panel();
+        setContentPane(pan1);
         setVisible(true);
         }
 
@@ -48,13 +48,11 @@ import javax.swing.*;
 
         public void paintComponent(Graphics g)
         {
+          pan1.repaint();
             super.paintComponent(g);
-            
-            g.fillArc(20,20,80,120,60,60);
-            g.drawLine(60,80,60,120);
-            g.drawRect(40,120,40,60);
-            for (int y=160; y<=170; y+=10){
-            for (int x = 40; x <=70; x+=10){
+
+            for (int y=0; y<=890; y+=10){
+            for (int x = 0; x <=850; x+=10){
             g.drawOval( x, y, 10, 10);
             }}
 
