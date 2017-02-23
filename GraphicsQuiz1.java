@@ -27,9 +27,9 @@ import javax.swing.*;
         public GraphicsQuiz1()
         {
         super("GraphicsQuiz1");
-        setSize(700,700);
+        setSize(680,700);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocation(0,20);
+        setLocation(0,0);
         setResizable(true);
 
         Panel pan = new Panel();
