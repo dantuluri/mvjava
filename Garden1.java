@@ -3,13 +3,13 @@ import javax.swing.*;
 import java.awt.*; //vs import java.awt.event*;
 import java.awt.event.*;//import libraries
 
-public class GardenGrows extends JApplet{
+public class GardenGrow extends JApplet{
 	public void init(){
 		Garden fsp = new Garden();
 		setContentPane(fsp);
 	}
 }
-class Garden extends JPanel implements MouseListener, KeyListener{ //implement listeners
+class Garden1 extends JPanel implements MouseListener, KeyListener{ //implement listeners
 	boolean mod;
 	boolean up;
 	boolean water;
@@ -17,7 +17,7 @@ class Garden extends JPanel implements MouseListener, KeyListener{ //implement l
 	int x;
 	int y;
 
-	public Garden(){
+	public Garden1(){
 		mod = false;
 		up = false;
 		water = false;
