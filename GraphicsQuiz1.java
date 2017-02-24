@@ -59,9 +59,14 @@ import javax.swing.*;
 
         	g.setColor(Color.BLACK);
 
-      int [] llx = {0, 200, 200, 0};
-			int [] lly = {300, 200, 700, 700};
-			g.fillPolygon(llx, lly, 4);
+      int [] xleftsleevebottom = {0, 200, 200, 0};
+			int [] yleftsleevebottom = {300, 200, 700, 700};
+			g.fillPolygon(xleftsleevebottom, yleftsleevebottom, 4);
+
+      int [] xrightsleevebottom = {710, 510, 510, 710};
+			int [] yrightsleevebottom = {300, 200, 700, 700};
+			g.fillPolygon(xrightsleevebottom, yrightsleevebottom, 4);
+
 
 
 
