@@ -1,7 +1,7 @@
 /*
 * Surya Dantuluri
-* February 8,2017
-*  Masterpiece.java
+* February 17, 2017
+*  Pajamas.java
 * Simple program that finds out slope and y-intercept depending on inputted equation
 * Uses printf() and format, if and else, do while loops
 * Uses double, integer, character, and float.
@@ -11,22 +11,26 @@
 * input equation
 * output trimmed equation, and form of line
 * output slope and y-intercept
+*
+*Testing Plan:
+*input: no input
+*output:
 */
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-    public class GraphicsQuiz1 extends JFrame
+    public class Pajamas extends JFrame
     {
 
         public static void main (String[]args)
         {
-            GraphicsQuiz1 gq1 = new GraphicsQuiz1();
+            Pajamas pjs = new Pajamas();
         }
 
-        public GraphicsQuiz1()
+        public Pajamas()
         {
-        super("GraphicsQuiz1");
+        super("Pajamas");
         setSize(710,702);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocation(0,0);
