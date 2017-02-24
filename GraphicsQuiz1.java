@@ -67,6 +67,16 @@ import javax.swing.*;
 			int [] yrightsleevebottom = {300, 200, 700, 700};
 			g.fillPolygon(xrightsleevebottom, yrightsleevebottom, 4);
 
+      int [] xleftsleevetop = {0, 200, 0};
+			int [] yleftsleevetop = {0, 0, 200};
+			g.fillPolygon(xleftsleevetop, yleftsleevetop, 3);
+
+      int [] xrightsleevetop = {710, 510, 710};
+			int [] yrightsleevetop = {0, 0, 200};
+			g.fillPolygon(xrightsleevetop, yrightsleevetop, 3);
+
+
+      g.fillArc(200,-100,310,200,180,180);
 
 
 
