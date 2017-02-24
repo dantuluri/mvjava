@@ -27,7 +27,7 @@ import javax.swing.*;
         public GraphicsQuiz1()
         {
         super("GraphicsQuiz1");
-        setSize(700,700);
+        setSize(710,702);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocation(0,0);
         setResizable(true);
@@ -52,7 +52,8 @@ import javax.swing.*;
 
             for (int y=0; y<=660; y+=30){
             for (int x = 0; x <=690; x+=30){
-            g.drawOval( x, y, 30, 30);
+            g.drawOval( x, y, 20, 20);
+            g.drawRect(x,y,26,26);
 
             }}
 
