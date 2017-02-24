@@ -50,16 +50,14 @@ import javax.swing.*;
         {
             super.paintComponent(g);
 
-            for (int y=0; y<=660; y+=32){
+            for (int y=0; y<=660; y+=30){
             for (int x = 0; x <=690; x+=30){
             g.drawOval( x, y, 20, 20);
             g.drawRect(x,y,26,26);
             g.fillArc(x+5,y+5,10,20,0,180);
           }} //end of for loops on x and y axis
 
-          g.fillRect(0,150,100,300);
-          Color c = new Color(80,35,10);
-        	g.setColor(c);
+        	g.setColor(Color.BLACK);
 
       int [] llx = {0, 200, 200, 0};
 			int [] lly = {300, 200, 700, 700};
