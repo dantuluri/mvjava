@@ -27,7 +27,7 @@ import javax.swing.*;
         public GraphicsQuiz1()
         {
         super("GraphicsQuiz1");
-        setSize(680,700);
+        setSize(700,700);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocation(0,0);
         setResizable(true);
@@ -43,16 +43,17 @@ import javax.swing.*;
 
         public Panel()
         {
-            setBackground(Color.BLUE);
+            setBackground(Color.RED);
         }
 
         public void paintComponent(Graphics g)
         {
             super.paintComponent(g);
 
-            for (int y=0; y<=650; y+=10){
-            for (int x = 0; x <=650; x+=10){
-            g.drawOval( x, y, 10, 10);
+            for (int y=0; y<=660; y+=30){
+            for (int x = 0; x <=690; x+=30){
+            g.drawOval( x, y, 30, 30);
+
             }}
 
 
