@@ -50,13 +50,13 @@ import javax.swing.*;
         {
             super.paintComponent(g);
 
-            g.drawOval( x, y, 20, 20); //draws oval with x and y changing to draw repetitively
-            g.drawRect(x,y,26,26); //draws rectangle with x and y changing to draw repetitively
-            g.fillArc(x+5,y+5,10,20,0,180);
+            g.drawOval(600,150,100, 200); //draws oval with x and y changing to draw repetitively
+            g.drawRect(100,100,450,300); //draws rectangle with x and y changing to draw repetitively
+            g.fillArc(375,600,150,110,0,180);
 
             Font serifBold20 = new Font("Serif",Font.BOLD,20);
             g.setFont(serifBold20);
-            g.drawString("Yipee!",60,60);
+            g.drawString("Yipee!",100,250);
 
     //COLOR purplo = new Color(255,0,255);
 
