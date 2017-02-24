@@ -55,6 +55,16 @@ import javax.swing.*;
             g.drawOval( x, y, 20, 20);
             g.drawRect(x,y,26,26);
 
+            Color c = new Color(80,35,10);
+            			g.setColor(c);
+                  
+            int [] llx = {225, 275, 275, 200, 200};
+			int [] lly = {200, 275, 325, 325, 200};
+			g.setColor(c);
+			g.fillPolygon(llx, lly, 5);
+			g.setColor(Color.black);
+			g.drawPolygon(llx, lly, 5);
+
             }}
 
 
