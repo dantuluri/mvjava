@@ -54,14 +54,10 @@ import javax.swing.*;
             for (int x = 0; x <=690; x+=30){
             g.drawOval( x, y, 20, 20);
             g.drawRect(x,y,26,26);
-
-            int xpoints[] = {25, 145, 25, 145, 25};
-      int ypoints[] = {25, 25, 145, 145, 25};
-      int npoints = 5;
-
-      g.drawPolygon(xpoints, ypoints, npoints);
+            g.fillArc(x+5,y+5,10,20,0,180);
           }} //end of for loops on x and y axis
 
+          fillRect(0,150,100,300)
 
 
 
