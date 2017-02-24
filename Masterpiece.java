@@ -27,7 +27,7 @@ import javax.swing.*;
         public Masterpiece()
         {
         super("Masterpiece");
-        setSize(480,480);
+        setSize(700,700); // each unit is
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocation(0,0);
         setResizable(false);
@@ -49,27 +49,15 @@ import javax.swing.*;
         public void paintComponent(Graphics g)
         {
             super.paintComponent(g);
-            g.setColor(Color.BLACK);
-            g.drawOval(160, 125, 50, 100);
-            g.fillArc(240, 120, 40, 120, 60, 90);
-            g.drawArc(172, 85, 56, 100, 240, 60);
-            g.setColor(Color.RED);
-            g.fillRect(240,240,80,60);
-            g.setColor(Color.ORANGE);
+
+            g.drawOval( x, y, 20, 20); //draws oval with x and y changing to draw repetitively
+            g.drawRect(x,y,26,26); //draws rectangle with x and y changing to draw repetitively
+            g.fillArc(x+5,y+5,10,20,0,180);
+
             Font serifBold20 = new Font("Serif",Font.BOLD,20);
             g.setFont(serifBold20);
             g.drawString("Yipee!",60,60);
-            /*
-            g.fillOval(500,700,400,200);
-            g.drawRect (30, 30, 80, 40);
-            g.drawOval (120, 30, 50, 50);
-            g.setColor (Color.ORANGE);
-            g.fillRect (30, 100, 80, 40);
-            g.fillOval (120, 100, 50, 50);
-            g.drawLine (30, 160, 130, 170);
-            g.drawArc (30, 180, 50, 50, 60, 40);
-            g.fillArc (120, 180, 50, 50, 60, 40);
-            */
+
     //COLOR purplo = new Color(255,0,255);
 
 
