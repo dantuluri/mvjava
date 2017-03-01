@@ -54,7 +54,7 @@ import javax.swing.*;
             g.setColor(Color.BLUE);
             g.fillRect(100,100,450,300); //draws rectangle with x and y changing to draw repetitively
             g.setColor(Color.RED);
-            g.fillArc(255,520,150,120,0,180);
+            g.fillArc(265,520,150,120,0,180);
             g.drawLine(100,100,550,400);
             Font serifBold50 = new Font("Serif",Font.BOLD,50);
             g.setFont(serifBold50);
