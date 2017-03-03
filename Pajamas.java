@@ -66,8 +66,8 @@ public class Pajamas extends JFrame //class extends JFrame class
           }
         	g.setColor(Color.BLACK); //now draws components in black
 
-        int [] xleftsleevebottom = {0, 200, 200, 0}; //array for x values for the left bottom polygon
-			  int [] yleftsleevebottom = {300, 200, 700, 700}; //array for y values for the left bottom polygon
+        int [] xleftsleevebottom = {0, 200.9, 200, 0}; //array for x values for the left bottom polygon
+			  double [] yleftsleevebottom = {300, 200, 700, 700}; //array for y values for the left bottom polygon
 			  g.fillPolygon(xleftsleevebottom, yleftsleevebottom, 4); //polygon with x,y array values to draw polygon
 
         int [] xrightsleevebottom = {710, 510, 510, 710}; //array for x values for the right bottom polygon

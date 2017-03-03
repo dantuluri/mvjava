@@ -49,13 +49,21 @@ import javax.swing.*;
         public void paintComponent(Graphics g)
         {
             super.paintComponent(g);
-g.drawLine(150, 150, 340, 150);
-g.fillOval(200, 200, 100, 50);
-g.fillArc(220, 150, 150, 150, 360, 60);
-for(int y= 150; y<=190; y+=20){
-for(int x=200; x<210; x+=20){
-g.fillOval(x, y, 10, 10);
-}}
+            int [] a = {0, 10, 70, 80, 100, 60, 40, 60};
+            int [] b = {90, 80, 140, 120, 140, 180, 160, 150};
+            setBackground(Color.CYAN); //cyan is blue-green
+            super.paintComponent(g);
+            g.setColor(Color.GREEN);
+            g.fillRect(0, 50, 240, 170);
+            g.setColor(Color.YELLOW);
+            g.fillPolygon(a, b, 8);
+            g.drawString("Sport", 90, 210);
+            g.setColor(Color.MAGENTA); //magenta is hot pink
+            for(int y = 90; y <= 150; y += 60)
+            g.fillOval(160, y, 30, 30);
+            g.setColor(Color.BLACK);
+            for (int x = 180; x <= 200; x += 10)
+            g.drawArc(x, 140, 40, 80, 0, 180); 
 
     //COLOR purplo = new Color(255,0,255);
 
