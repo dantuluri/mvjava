@@ -111,11 +111,27 @@ public class GardenGrows
 			if(shiftkey && number5code==KeyEvent.VK_5)
 			{
 			setBackground(Color.GREEN);
-			watered = true;																				//end of water
+			watered = true;
+			mousePressed();
+			}
+			int upkeycode = e.getKeyCode();
+			if(clicked && upkeycode==KeyEvent.VK_UP)
+			{
+				super.paintComponent(g);
+				for (int y=0; y<=660; y+=30) //for loop for shapes to draw vertically
+					{
+					for (int x = 0; x <=690; x+=30) //for loop for shapes to draw horizontally
+						{
+						g.drawOval( x, y, 20, 20); //draws oval with x and y changing to draw repetitively
+						g.drawRect(x,y,26,26); //draws rectangle with x and y changing to draw repetitively
+						g.fillArc(x+5,y+5,10,20,0,180); //draws arc with x and y changing to draw repetitively
+						}
+					}
+			}
 			}
 
 
-		}
+
 
 		public void keyTyped(KeyEvent e){}
 		public void keyReleased(KeyEvent e){}
@@ -135,5 +151,4 @@ public class GardenGrows
 		}
 
 	}
-
 }
