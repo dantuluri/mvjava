@@ -46,6 +46,7 @@ public class GardenGrows
 	private boolean shiftkey;
 	private boolean clicked;
 	private boolean watered;
+	private boolean clickedandwatered;
 
 	public GardenGrows()
 	{
@@ -75,7 +76,7 @@ public class GardenGrows
 		frame.setVisible(true);
 	}
 
-	class Garden extends JPanel implements MouseListener,KeyListener
+	class Garden extends JPanel implements MouseListener, KeyListener
 	{
 		public Garden()
 		{
@@ -112,25 +113,19 @@ public class GardenGrows
 			{
 			setBackground(Color.GREEN);
 			watered = true;
-			mousePressed();
+			clicked=false;
+			repaint();
 			}
 			int upkeycode = e.getKeyCode();
 			if(clicked && upkeycode==KeyEvent.VK_UP)
 			{
-				super.paintComponent(g);
-				for (int y=0; y<=660; y+=30) //for loop for shapes to draw vertically
-					{
-					for (int x = 0; x <=690; x+=30) //for loop for shapes to draw horizontally
-						{
-						g.drawOval( x, y, 20, 20); //draws oval with x and y changing to draw repetitively
-						g.drawRect(x,y,26,26); //draws rectangle with x and y changing to draw repetitively
-						g.fillArc(x+5,y+5,10,20,0,180); //draws arc with x and y changing to draw repetitively
-						}
-					}
+				if(watered)
+				{
+					clickedandwatered=true;
+					repaint();
+				}
 			}
-			}
-
-
+		}
 
 
 		public void keyTyped(KeyEvent e){}
@@ -138,9 +133,17 @@ public class GardenGrows
 
 		public void paintComponent(Graphics g)
 		{
-			if(keyClear)
+			if(clickedandwatered)
 			{
 				super.paintComponent(g);
+				g.setColor(Color.BLACK);
+				for (int y=0; y<=500; y+=200) //for loop for shapes to draw vertically
+          {
+          for (int x = 0; x <=1000; x+=200) //for loop for shapes to draw horizontally
+            {
+            g.drawOval( x, y, 20, 20); //draws oval with x and y changing to draw repetitively
+            }
+          }
 			}
 			else
 			{
