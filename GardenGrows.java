@@ -111,11 +111,7 @@ public class GardenGrows
 			{
 			setBackground(Color.GREEN);
 			}
-			if(code==KeyEvent.VK_SPACE)
-			{
-				keyClear=true;
-				repaint();
-			}
+			
 		}
 
 		public void keyTyped(KeyEvent e){}
