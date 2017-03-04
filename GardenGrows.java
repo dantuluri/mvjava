@@ -45,6 +45,7 @@ public class GardenGrows
 	private String imageName;
 	private boolean shiftkey;
 	private boolean clicked;
+	private boolean watered;
 
 	public GardenGrows()
 	{
@@ -101,8 +102,8 @@ public class GardenGrows
 
 		public void keyPressed(KeyEvent e)
 		{
-			int shiftkeycode = e.getKeyCode();
-			if(shiftkeycode==KeyEvent.VK_SHIFT)
+			int shiftkeycode = e.getKeyCode();									// start of water
+			if(clicked && shiftkeycode==KeyEvent.VK_SHIFT)
 			{
 				shiftkey=true;
 			}
@@ -110,8 +111,10 @@ public class GardenGrows
 			if(shiftkey && number5code==KeyEvent.VK_5)
 			{
 			setBackground(Color.GREEN);
+			watered = true;																				//end of water
 			}
-			
+
+
 		}
 
 		public void keyTyped(KeyEvent e){}
