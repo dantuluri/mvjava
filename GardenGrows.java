@@ -44,32 +44,19 @@ public class GardenGrows
 	private int sizeX, sizeY;
 	private String imageName;
 	private boolean shiftkey;
+	private boolean clicked;
 
 	public GardenGrows()
 	{
-		sizeX=217;
-		sizeY=301;
-		imageName="calvin.jpg";
-		xpos=ypos=200;
+		sizeX=0;  											//no size X or Y
+		sizeY=0;
+		xpos=ypos=200;											//x/ypos??
 		keyClear=true;
 	}
 	public static void main(String[]args)
 	{
 		GardenGrows garden = new GardenGrows();
 		garden.run();
-	}
-
-	public void getMyImage()
-	{
-		try
-		{
-			image=ImageIO.read(new File(imageName));
-		}
-		catch(IOException e)
-		{
-		System.err.println("\n\n"+imageName+"can't be found. \n\n");
-		e.printStackTrace();
-		}
 	}
 
 	public void run()
@@ -80,7 +67,6 @@ public class GardenGrows
 		frame.getContentPane();
 		canvas=new Garden();
 		frame.getContentPane().add(canvas);
-		getMyImage();
 		frame.setBackground(Color.PINK);
 		frame.setSize(1000,1000);
 		frame.setLocation(0,0);
@@ -98,10 +84,13 @@ public class GardenGrows
 			addMouseListener(this);
 			addKeyListener(this);
 		}
-
+		//user clicks and input % back become GREEN
+		//user clicks and keyboard up then 50*50 circles popup and have 200 space from all sides  IF GARDEN IS WATERED
+		//reset3
 		public void mousePressed(MouseEvent e)
 		{
 			requestFocus();
+			clicked=true;
 			repaint();
 		}
 
@@ -112,12 +101,13 @@ public class GardenGrows
 
 		public void keyPressed(KeyEvent e)
 		{
-			int code = e.getKeyCode();
-			if(code==KeyEvent.VK_SHIFT)
+			int shiftkeycode = e.getKeyCode();
+			if(shiftkeycode==KeyEvent.VK_SHIFT)
 			{
 				shiftkey=true;
 			}
-			if(shiftkey&&code==KeyEvent.VK_5)
+			int number5code = e.getKeyCode();
+			if(shiftkey && number5code==KeyEvent.VK_5)
 			{
 			setBackground(Color.GREEN);
 			}
@@ -139,7 +129,7 @@ public class GardenGrows
 			}
 			else
 			{
-				g.drawImage(image,xpos,ypos,sizeX,sizeY,this);
+				//.drawImage(image,xpos,ypos,sizeX,sizeY,this);
 			}
 			keyClear=false;
 
