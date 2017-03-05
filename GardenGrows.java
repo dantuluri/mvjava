@@ -47,6 +47,7 @@ public class GardenGrows
 	private boolean clicked;
 	private boolean watered;
 	private boolean clickedandwatered;
+	private int clearcode;
 
 	public GardenGrows()
 	{
@@ -91,6 +92,7 @@ public class GardenGrows
 		//reset3
 		public void mousePressed(MouseEvent e)
 		{
+			clicked=false;
 			requestFocus();
 			clicked=true;
 			repaint();
@@ -115,6 +117,7 @@ public class GardenGrows
 			watered = true;
 			clicked=false;
 			repaint();
+
 			}
 			int upkeycode = e.getKeyCode();
 			if(clicked && upkeycode==KeyEvent.VK_UP)
@@ -125,6 +128,7 @@ public class GardenGrows
 					repaint();
 				}
 			}
+			clearcode = e.getKeyCode();
 		}
 
 
@@ -145,11 +149,15 @@ public class GardenGrows
             }
           }
 			}
+
+			if(clearcode==KeyEvent.VK_SPACE)
+			{
+				super.paintComponent(g);
+			}
 			else
 			{
 				//.drawImage(image,xpos,ypos,sizeX,sizeY,this);
 			}
-			keyClear=false;
 
 		}
 
