@@ -21,20 +21,20 @@
 import java.awt.Color;     //imports abstract window toolkit
 import java.awt.Graphics; //imports possible events of abstract window toolkit
 import java.awt.Image; //imports graphics components with swing
-import java.awt.Font;
-import java.awt.event.MouseListener;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.KeyEvent;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
+import java.awt.Font; //imports fonts
+import java.awt.event.MouseListener; //imports package for mouse listener
+import java.awt.event.KeyListener; //imports packaga for any key listener
+import java.awt.event.MouseEvent; //imports package for any mouse events
+import java.awt.event.KeyEvent; //imports packsage for any key events;
+import javax.swing.JFrame; //iexpansion pack used for importing GUI JFrame
+import javax.swing.JPanel; //imports JPanel
+import javax.swing.JLabel; //imports JLabel
+import java.io.File; //imports file io
+import java.io.IOException; //imports for input out io exception
+import javax.imageio.ImageIO; //imports image io
 
 
-public class GardenGrows
+public class GardenGrows//instantiates gardengrows class
 {
 	private Garden canvas;
 	private Image image;
@@ -54,43 +54,43 @@ public class GardenGrows
 	private boolean cleargarden;
 	public GardenGrows()
 	{
-		sizeX=0;  											//no size X or Y
-		sizeY=0;
-		xpos=ypos=200;											//x/ypos??
-		keyClear=true;
-		mouseWater=false;
-		waterBackground=false;
-		mouseFlower=false;
-		flowerclick=false;
-		cleargarden=false;
+		sizeX=0;//sets x variable to 0
+		sizeY=0;//sets y variable to 0
+		xpos=ypos=200;//sets xposypos to 200
+		keyClear=true;//sets boolean to true
+		mouseWater=false;//sets boolean to false
+		waterBackground=false;//sets boolean to false
+		mouseFlower=false;//sets boolean to false
+		flowerclick=false;//sets boolean to false
+		cleargarden=false;//sets boolean to false
 	}
 	public static void main(String[]args)
 	{
-		GardenGrows garden = new GardenGrows();
-		garden.run();
+		GardenGrows garden = new GardenGrows();//instantiates class
+		garden.run();//calls run
 	}
 
 	public void run()
 	{
-		JFrame frame = new JFrame("Garden Grows");
+		JFrame frame = new JFrame("Garden Grows");//sets up new jframe
 		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 		frame.setLayout(null); //get ContentRaw().setLayout(null);
-		frame.getContentPane();
-		canvas=new Garden();
-		frame.getContentPane().add(canvas);
-		frame.setBackground(Color.PINK);
-		frame.setSize(1000,1000);
-		frame.setLocation(0,0);
-		frame.setResizable(false);
-		frame.setVisible(true);
+		frame.getContentPane();//sets content pane
+		canvas=new Garden();//sets canvas as garden
+		frame.getContentPane().add(canvas);//gets content pane and adds canvas
+		frame.setBackground(Color.PINK);//sets background color to pink
+		frame.setSize(1000,1000);//sets size for frame
+		frame.setLocation(0,0);//sets origin
+		frame.setResizable(false);//sets if resizable or not
+		frame.setVisible(true);//sets if frame is visible or not
 	}
 
-	class Garden extends JPanel implements MouseListener, KeyListener
+	class Garden extends JPanel implements MouseListener, KeyListener//garden.java extends jpanel and implemetnts classes
 	{
 		public Garden()
 		{
-			setLocation(50,50);
-			setSize(1000,500);
+			setLocation(50,50);//sets panel origin
+			setSize(1000,500);//sets size of panel
 			addMouseListener(this);
 			addKeyListener(this);
 		}
@@ -102,11 +102,11 @@ public class GardenGrows
 			requestFocus();
 			if(mouseWater==false)
 			{
-			mouseWater=true;
+				mouseWater=true;
 			}
 			if(watered && mouseFlower==false)
 			{
-			flowerclick=true;
+				flowerclick=true;
 			}
 			repaint();
 
@@ -127,25 +127,22 @@ public class GardenGrows
 			int number5code = e.getKeyCode();
 			if(shiftkey && number5code==KeyEvent.VK_5)
 			{
-			watered=true;
-			repaint();
+				watered=true;
+				repaint();
 			}
-
 			int upkeycode = e.getKeyCode();
 			if(flowerclick && upkeycode==KeyEvent.VK_UP)
 			{
 				mouseFlower=true;
-			repaint();
+				repaint();
 			}
 			int clearcode = e.getKeyCode();
 			if(mouseFlower && watered && clearcode==KeyEvent.VK_SPACE)
 			{
-			cleargarden=true;
+				cleargarden=true;
 			}
 		}
 			//clearcode = e.getKeyCode();
-
-
 
 		public void keyTyped(KeyEvent e){}
 		public void keyReleased(KeyEvent e){}
@@ -162,22 +159,18 @@ public class GardenGrows
 				super.paintComponent(g);
 				g.setColor(Color.BLACK);
 				for (int y=50; y<=500; y+=200) //for loop for shapes to draw vertically
-          {
-          for (int x =50; x <=1000; x+=200) //for loop for shapes to draw horizontally
-            {
-            g.fillOval( x, y, 50, 50); //draws oval with x and y changing to draw repetitively
-            }
-          }
+        {
+	          for (int x =50; x <=1000; x+=200) //for loop for shapes to draw horizontally
+	            {
+	            	g.fillOval( x, y, 50, 50); //draws oval with x and y changing to draw repetitively
+	            }
+        }
 			}
-
 			if(cleargarden)
 			{
-				super.paintComponent(g);
 				setBackground(Color.PINK);
+				super.paintComponent(g);
 			}
-
-
 		}
-
 	}
 }
