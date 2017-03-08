@@ -2,7 +2,7 @@
 * Surya Dantuluri
 * March 2, 2017
 * Accessibility.java
-* Simple program that displays a repeated pattern of shapes *on a fabric, which is then covered by polygons to display a *picture of pajamas on a panel.
+* 
 * Uses JFrame class and JPanel container.
 * Uses integers and arrays.
 *
@@ -78,72 +78,76 @@ public class AccessibilityRunner
 		frame.setVisible(true);//sets if frame is visible or not
 	}
 
-JPanel class: Accessibility
-// import each class needed
-//be sure to complete the class header
-public class Accessibility extends JPanel implements MouseListener, KeyListener
-{
-private Color backgroundColor;
-private int fontSize;
-public Accessibility() //add listeners as appropriate
-{
-backgroundColor = new Color(100,100,100);
-fontSize = 12;
-addMouseListener(this);
-addKeyListener(this);
-}
-public void drawRectanglesWithLabels(Graphics g) //This method is complete
-{
-g.setColor(Color.RED);
-g.fillRect(10,10,100,20);
-g.fillRect(115,10,100,20);
-g.setColor(Color.BLACK);
-g.drawString(“brighter”, 15, 80)
-g.drawString(“darker”, 115, 80);
-}
-public void medicalPageContent(Graphics g){ } /*Assume this method is complete. */
-public void paintComponent(Graphics g)
-{
-setBackground(Color.RED);
-//draw background color
-drawRectanglesWithLabels(g)
-g.setColor(Color.BLACK);
-g.setFont(“Serif”, Font.PLAIN, fontSize);
-medicalPageContent(g);
-}
-public void keyPressed(KeyEvent e) //fill in blank
-{ /*determine if the user used the keyboard appropriately to elicit a graphical response, record or
-change information as appropriate, and call the method to make the appropriate graphical response */
-int upcode = e.getKeyCode();
-if(upcode==KeyEvent.VK_UP)
-{
-  uparrow=true;
-  if(fontSize=+5>80)
-  {
-  fontSize=+5;
-  }
-}
-int downcode = e.getKeyCode();
-else if(downcode==KeyEvent.VK_DOWN)
-{
-  downarrow=false;
-  if(fontSize=-5<8)
-  {
-  fontSize=-5;
-  }
-}
-}
-public void keyTyped (KeyEvent e){} //Fill in blank.
-public void keyReleased (KeyEvent e){} //Fill in blank.
-public void mousePressed(MouseEvent e)
-{ //make it so the keyboard will work!
-}
-public void mouseClicked(MouseEvent e)
-{ /*determine if the user is clicking on one of the appropriate rectangles to elicit a graphical response,
-record or change information as appropriate, and call the method to make the appropriate graphical
-response*/
-}
-public void mouseReleased(MouseEvent e){} //This method is complete.
-public void mouseEntered(MouseEvent e){} //This method is complete.
-public void mouseExited(MouseEvent e){} //This method is complete.
-}
+	JPanel class: Accessibility
+	// import each class needed
+	//be sure to complete the class header
+	public class Accessibility extends JPanel implements MouseListener, KeyListener
+	{
+	private Color backgroundColor;
+	private int fontSize;
+	public Accessibility() //add listeners as appropriate
+	{
+	backgroundColor = new Color(100,100,100);
+	fontSize = 12;
+	addMouseListener(this);
+	addKeyListener(this);
+	}
+	public void drawRectanglesWithLabels(Graphics g) //This method is complete
+	{
+	g.setColor(Color.RED);
+	g.fillRect(10,10,100,20);
+	g.fillRect(115,10,100,20);
+	g.setColor(Color.BLACK);
+	g.drawString(“brighter”, 15, 80)
+	g.drawString(“darker”, 115, 80);
+	}
+	public void medicalPageContent(Graphics g){ } /*Assume this method is complete. */
+	public void paintComponent(Graphics g)
+	{
+	setBackground(Color.RED);
+	//draw background color
+	drawRectanglesWithLabels(g)
+	g.setColor(Color.BLACK);
+	g.setFont(“Serif”, Font.PLAIN, fontSize);
+	medicalPageContent(g);
+	}
+	public void keyPressed(KeyEvent e) //fill in blank
+	{ /*determine if the user used the keyboard appropriately to elicit a graphical response, record or
+	change information as appropriate, and call the method to make the appropriate graphical response */
+	int upcode = e.getKeyCode();
+	if(upcode==KeyEvent.VK_UP)
+	{
+	  uparrow=true;
+	  if(fontSize=+5>80)
+	  {
+	  fontSize=+5;
+	  }
+	}
+	int downcode = e.getKeyCode();
+	if(downcode==KeyEvent.VK_DOWN)
+	{
+	  downarrow=false;
+	  if(fontSize=-5<8)
+	  {
+	  fontSize=-5;
+	  }
+	}
+	}
+	public void keyTyped (KeyEvent e){} //Fill in blank.
+	public void keyReleased (KeyEvent e){} //Fill in blank.
+	public void mousePressed(MouseEvent e)
+	{ //make it so the keyboard will work!
+	}
+	public void mouseClicked(MouseEvent e)
+	{ /*determine if the user is clicking on one of the appropriate rectangles to elicit a graphical response,
+	record or change information as appropriate, and call the method to make the appropriate graphical
+	response*/
+	int xpos = e.getX();
+	int ypos = e.getY();
+
+
+	}
+	public void mouseReleased(MouseEvent e){} //This method is complete.
+	public void mouseEntered(MouseEvent e){} //This method is complete.
+	public void mouseExited(MouseEvent e){} //This method is complete.
+	}

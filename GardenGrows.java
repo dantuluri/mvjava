@@ -166,6 +166,9 @@ public class GardenGrows//instantiates gardengrows class
 			{
 				setBackground(Color.PINK);//sets background to pink
 				super.paintComponent(g);//clears all paint component
+				watered=false;
+				mouseFlower=false;
+				mouseWater=false;
 			}
 		}
 	}
