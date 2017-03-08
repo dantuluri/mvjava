@@ -2,21 +2,17 @@
 * Surya Dantuluri
 * March 2, 2017
 * GardenGrows.java
-* Simple program that displays a repeated pattern of shapes *on a fabric, which is then covered by polygons to display a *picture of pajamas on a panel.
+* Simple program that simulates a garden. Garden is watered and flowers are grown depending on if user clicks and *presses certain keys.
 * Uses JFrame class and JPanel container.
 * Uses integers and arrays.
 *
-* Class first declares extending JFrame class.
-* Then sets size, sets size of origin of content panel, sets * if window is resizable or not.
-*
-* Sets new panel then sets background
-* Sets pattern, covering all of the panel
-* Overlays pattern with other shapes in panel to make the
-* output look like pajamas.
+*Only change on garden that can be done without doing anything to the frame is clicking on garden and pressing % to water garden.
+Users then can grow flowers with clicking on the garden and pressing the up arrow key to grow flowers.
+ Users then can clear the garden(reset to original garden) by pressing space at that point
 *
 *Testing Plan:
-*input: no input
-*output:
+*input: Only input originally is clicking(in the pink garden) then pressing % to water garden. User then can click again on the garden and press the up arrow to grow flowers.
+*output: After clicking and pressing, garden turns green. After another set of actions, flowers can grow as filled black circles with a radius of 50 pixels with a distance of 200 pixels between the circles
 */
 import java.awt.Color;     //imports abstract window toolkit
 import java.awt.Graphics; //imports possible events of abstract window toolkit
@@ -91,73 +87,73 @@ public class GardenGrows//instantiates gardengrows class
 		{
 			setLocation(50,50);//sets panel origin
 			setSize(1000,500);//sets size of panel
-			addMouseListener(this);
-			addKeyListener(this);
+			addMouseListener(this);//adds MouseListener
+			addKeyListener(this);//adds KeyListener
 		}
 		//user clicks and input % back become GREEN
 		//user clicks and keyboard up then 50*50 circles popup and have 200 space from all sides  IF GARDEN IS WATERED
 		//reset3
 		public void mousePressed(MouseEvent e)		//every time user clicks method is run
 		{
-			requestFocus();
-			if(mouseWater==false)
+			requestFocus();//requests focus for mouse
+			if(mouseWater==false)//if else statement for click
 			{
-				mouseWater=true;
+				mouseWater=true;//if mouse is clicked then the click part for watered is done
 			}
-			if(watered && mouseFlower==false)
+			if(watered && mouseFlower==false)//if else only if the garden is watered but doesn't have flowers
 			{
-				flowerclick=true;
+				flowerclick=true;//decleares click part of flower done
 			}
-			repaint();
+			repaint();//calls paintcomponent
 
 		}
 
-		public void mouseClicked(MouseEvent e){}
-		public void mouseReleased(MouseEvent e){}
-		public void mouseEntered(MouseEvent e){}
-		public void mouseExited(MouseEvent e){}
+		public void mouseClicked(MouseEvent e){} //mouse is clicked
+		public void mouseReleased(MouseEvent e){} //mouse is released
+		public void mouseEntered(MouseEvent e){} //mouse is entered
+		public void mouseExited(MouseEvent e){} //mouse exits
 
-		public void keyPressed(KeyEvent e)
+		public void keyPressed(KeyEvent e)//runs when a key is pressed
 		{
-			int shiftkeycode = e.getKeyCode();
-			if(shiftkeycode==KeyEvent.VK_SHIFT)
+			int shiftkeycode = e.getKeyCode();//looks for shiftkey
+			if(shiftkeycode==KeyEvent.VK_SHIFT)//runs if shiftkey is pressed
 			{
-				shiftkey=true;
+				shiftkey=true;//sets up boolean as true if shiftkey is pressed or not
 			}
 			int number5code = e.getKeyCode();
-			if(shiftkey && number5code==KeyEvent.VK_5)
+			if(shiftkey && number5code==KeyEvent.VK_5)//if keycode is set up then paints in paintcomponent
 			{
-				watered=true;
-				repaint();
+				watered=true;//sets up boolean as true if watered is true or not
+				repaint();//calls paintComponent
 			}
-			int upkeycode = e.getKeyCode();
-			if(flowerclick && upkeycode==KeyEvent.VK_UP)
+			int upkeycode = e.getKeyCode();//looks for key
+			if(flowerclick && upkeycode==KeyEvent.VK_UP)//if key code is met then if/else runs
 			{
-				mouseFlower=true;
-				repaint();
+				mouseFlower=true;//if all parts that make a flower are present then boolean is set true to be drawn in paintcomponent
+				repaint();//calls paintComponent
 			}
-			int clearcode = e.getKeyCode();
-			if(mouseFlower && watered && clearcode==KeyEvent.VK_SPACE)
+			int clearcode = e.getKeyCode();//finds key code
+			if(mouseFlower && watered && clearcode==KeyEvent.VK_SPACE)//if following is correct then allows to clear the panel
 			{
-				cleargarden=true;
+				cleargarden=true;//triggered to clear garden
 			}
 		}
 			//clearcode = e.getKeyCode();
 
-		public void keyTyped(KeyEvent e){}
-		public void keyReleased(KeyEvent e){}
+		public void keyTyped(KeyEvent e){}//keytyped method
+		public void keyReleased(KeyEvent e){}//key released event
 
-		public void paintComponent(Graphics g)
+		public void paintComponent(Graphics g)//paint component to draw things
 		{
-			setBackground(Color.PINK);
-			if(watered)
+			setBackground(Color.PINK);//sets background as pink before being watered
+			if(watered)//if watered then turns background to green
 			{
-				setBackground(Color.GREEN);
+				setBackground(Color.GREEN);//sets background as green
 			}
-			if(mouseFlower)
+			if(mouseFlower)//if the garden is watered and correct keys and mice is pressed then the following
 			{
-				super.paintComponent(g);
-				g.setColor(Color.BLACK);
+				super.paintComponent(g);//clears paintComponent
+				g.setColor(Color.BLACK);//sets color of circles as black
 				for (int y=50; y<=500; y+=200) //for loop for shapes to draw vertically
         {
 	          for (int x =50; x <=1000; x+=200) //for loop for shapes to draw horizontally
@@ -168,8 +164,8 @@ public class GardenGrows//instantiates gardengrows class
 			}
 			if(cleargarden)
 			{
-				setBackground(Color.PINK);
-				super.paintComponent(g);
+				setBackground(Color.PINK);//sets background to pink
+				super.paintComponent(g);//clears all paint component
 			}
 		}
 	}

@@ -72,7 +72,7 @@ public class AccessibilityRunner
 		canvas=new Accessibility();//sets canvas as garden
 		frame.getContentPane().add(canvas);//gets content pane and adds canvas
 		frame.setBackground(Color.PINK);//sets background color to pink
-		frame.setSize(1000,1000);//sets size for frame
+		frame.setSize(1000,800);//sets size for frame
 		frame.setLocation(0,0);//sets origin
 		frame.setResizable(false);//sets if resizable or not
 		frame.setVisible(true);//sets if frame is visible or not
@@ -81,8 +81,7 @@ public class AccessibilityRunner
 JPanel class: Accessibility
 // import each class needed
 //be sure to complete the class header
-public class
-Accessibility___________________________________________________________________________
+public class Accessibility extends JPanel implements MouseListener, KeyListener
 {
 private Color backgroundColor;
 private int fontSize;
@@ -90,6 +89,8 @@ public Accessibility() //add listeners as appropriate
 {
 backgroundColor = new Color(100,100,100);
 fontSize = 12;
+addMouseListener(this);
+addKeyListener(this);
 }
 public void drawRectanglesWithLabels(Graphics g) //This method is complete
 {
@@ -103,19 +104,37 @@ g.drawString(“darker”, 115, 80);
 public void medicalPageContent(Graphics g){ } /*Assume this method is complete. */
 public void paintComponent(Graphics g)
 {
-setBackground(backgroundColor);
+setBackground(Color.RED);
 //draw background color
 drawRectanglesWithLabels(g)
 g.setColor(Color.BLACK);
 g.setFont(“Serif”, Font.PLAIN, fontSize);
 medicalPageContent(g);
 }
-public void key_______________(KeyEvent e) //fill in blank
+public void keyPressed(KeyEvent e) //fill in blank
 { /*determine if the user used the keyboard appropriately to elicit a graphical response, record or
 change information as appropriate, and call the method to make the appropriate graphical response */
+int upcode = e.getKeyCode();
+if(upcode==KeyEvent.VK_UP)
+{
+  uparrow=true;
+  if(fontSize=+5>80)
+  {
+  fontSize=+5;
+  }
 }
-public void key_______________ (KeyEvent e){} //Fill in blank.
-public void key_______________ (KeyEvent e){} //Fill in blank.
+int downcode = e.getKeyCode();
+else if(downcode==KeyEvent.VK_DOWN)
+{
+  downarrow=false;
+  if(fontSize=-5<8)
+  {
+  fontSize=-5;
+  }
+}
+}
+public void keyTyped (KeyEvent e){} //Fill in blank.
+public void keyReleased (KeyEvent e){} //Fill in blank.
 public void mousePressed(MouseEvent e)
 { //make it so the keyboard will work!
 }
