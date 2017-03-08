@@ -173,8 +173,9 @@ public class GardenGrows
 			if(cleargarden)
 			{
 				super.paintComponent(g);
+				setBackground(Color.PINK);
 			}
-		
+
 
 		}
 
