@@ -46,8 +46,11 @@ public class GardenGrows
 	private boolean shiftkey;
 	private boolean clicked;
 	private boolean watered;
-	private boolean clickedandwatered;
 	private int clearcode;
+	private boolean mouseWater;
+	private boolean mouseFlower;
+	private boolean waterBackground;
+	private boolean flowerclick;
 
 	public GardenGrows()
 	{
@@ -55,6 +58,10 @@ public class GardenGrows
 		sizeY=0;
 		xpos=ypos=200;											//x/ypos??
 		keyClear=true;
+		mouseWater=false;
+		waterBackground=false;
+		mouseFlower=false;
+		flowerclick=false;
 	}
 	public static void main(String[]args)
 	{
@@ -81,7 +88,6 @@ public class GardenGrows
 	{
 		public Garden()
 		{
-			setBackground(Color.PINK);
 			setLocation(50,50);
 			setSize(1000,500);
 			addMouseListener(this);
@@ -90,12 +96,19 @@ public class GardenGrows
 		//user clicks and input % back become GREEN
 		//user clicks and keyboard up then 50*50 circles popup and have 200 space from all sides  IF GARDEN IS WATERED
 		//reset3
-		public void mousePressed(MouseEvent e)
+		public void mousePressed(MouseEvent e)		//every time user clicks method is run
 		{
-			clicked=false;
 			requestFocus();
-			clicked=true;
+			if(mouseWater==false)
+			{
+			mouseWater=true;
+			}
+			if(watered && mouseFlower==false)
+			{
+			flowerclick=true;
+			}
 			repaint();
+
 		}
 
 		public void mouseClicked(MouseEvent e){}
@@ -105,31 +118,27 @@ public class GardenGrows
 
 		public void keyPressed(KeyEvent e)
 		{
-			int shiftkeycode = e.getKeyCode();									// start of water
-			if(clicked && shiftkeycode==KeyEvent.VK_SHIFT)
+			int shiftkeycode = e.getKeyCode();
+			if(shiftkeycode==KeyEvent.VK_SHIFT)
 			{
 				shiftkey=true;
 			}
 			int number5code = e.getKeyCode();
 			if(shiftkey && number5code==KeyEvent.VK_5)
 			{
-			setBackground(Color.GREEN);
-			watered = true;
-			clicked=false;
+			watered=true;
 			repaint();
+			}
 
-			}
 			int upkeycode = e.getKeyCode();
-			if(clicked && upkeycode==KeyEvent.VK_UP)
+			if(flowerclick && upkeycode==KeyEvent.VK_UP)
 			{
-				if(watered)
-				{
-					clickedandwatered=true;
-					repaint();
-				}
+				mouseFlower=true;
+			repaint();
 			}
-			clearcode = e.getKeyCode();
 		}
+			//clearcode = e.getKeyCode();
+
 
 
 		public void keyTyped(KeyEvent e){}
@@ -137,7 +146,12 @@ public class GardenGrows
 
 		public void paintComponent(Graphics g)
 		{
-			if(clickedandwatered)
+			setBackground(Color.PINK);
+			if(watered)
+			{
+				setBackground(Color.GREEN);
+			}
+			if(mouseFlower)
 			{
 				super.paintComponent(g);
 				g.setColor(Color.BLACK);
@@ -145,7 +159,7 @@ public class GardenGrows
           {
           for (int x = 0; x <=1000; x+=200) //for loop for shapes to draw horizontally
             {
-            g.drawOval( x, y, 20, 20); //draws oval with x and y changing to draw repetitively
+            g.fillOval( x, y, 20, 20); //draws oval with x and y changing to draw repetitively
             }
           }
 			}
