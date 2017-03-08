@@ -51,7 +51,7 @@ public class GardenGrows
 	private boolean mouseFlower;
 	private boolean waterBackground;
 	private boolean flowerclick;
-
+	private boolean cleargarden;
 	public GardenGrows()
 	{
 		sizeX=0;  											//no size X or Y
@@ -62,6 +62,7 @@ public class GardenGrows
 		waterBackground=false;
 		mouseFlower=false;
 		flowerclick=false;
+		cleargarden=false;
 	}
 	public static void main(String[]args)
 	{
@@ -136,6 +137,11 @@ public class GardenGrows
 				mouseFlower=true;
 			repaint();
 			}
+			int clearcode = e.getKeyCode();
+			if(mouseFlower && watered && clearcode==KeyEvent.VK_SPACE)
+			{
+			cleargarden=true;
+			}
 		}
 			//clearcode = e.getKeyCode();
 
@@ -155,23 +161,20 @@ public class GardenGrows
 			{
 				super.paintComponent(g);
 				g.setColor(Color.BLACK);
-				for (int y=0; y<=500; y+=200) //for loop for shapes to draw vertically
+				for (int y=50; y<=500; y+=200) //for loop for shapes to draw vertically
           {
-          for (int x = 0; x <=1000; x+=200) //for loop for shapes to draw horizontally
+          for (int x =50; x <=1000; x+=200) //for loop for shapes to draw horizontally
             {
-            g.fillOval( x, y, 20, 20); //draws oval with x and y changing to draw repetitively
+            g.fillOval( x, y, 50, 50); //draws oval with x and y changing to draw repetitively
             }
           }
 			}
 
-			if(clearcode==KeyEvent.VK_SPACE)
+			if(cleargarden)
 			{
 				super.paintComponent(g);
 			}
-			else
-			{
-				//.drawImage(image,xpos,ypos,sizeX,sizeY,this);
-			}
+		
 
 		}
 
