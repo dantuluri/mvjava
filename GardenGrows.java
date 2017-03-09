@@ -145,9 +145,11 @@ public class GardenGrows//instantiates gardengrows class
 
 		public void paintComponent(Graphics g)//paint component to draw things
 		{
-			setBackground(Color.PINK);//sets background as pink before being watered
+			g.setColor(Color.PINK);
+			g.fillRect(0, 0, 1000, 800);//sets background as pink before being watered
 			if(watered)//if watered then turns background to green
 			{
+				super.paintComponent(g);
 				setBackground(Color.GREEN);//sets background as green
 			}
 			if(mouseFlower)//if the garden is watered and correct keys and mice is pressed then the following
