@@ -2,7 +2,7 @@
 * Surya Dantuluri
 * March 2, 2017
 * Accessibility.java
-* 
+*
 * Uses JFrame class and JPanel container.
 * Uses integers and arrays.
 *
@@ -71,7 +71,7 @@ public class AccessibilityRunner
 		frame.getContentPane();//sets content pane
 		canvas=new Accessibility();//sets canvas as garden
 		frame.getContentPane().add(canvas);//gets content pane and adds canvas
-		frame.setBackground(Color.PINK);//sets background color to pink
+		frame.setBackground(Color.RED);//sets background color to pink
 		frame.setSize(1000,800);//sets size for frame
 		frame.setLocation(0,0);//sets origin
 		frame.setResizable(false);//sets if resizable or not
