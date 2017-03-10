@@ -19,8 +19,8 @@ public class CompassTest extends JApplet implements KeyListener, FocusListener, 
 	}
 	public static void main(String[]args)
 	{
-		CompassTest ct = new CompassTest();//instantiates class
-		ct.init();//calls run
+		CompassTest compasstesto = new CompassTest();//instantiates class
+		compasstesto.init();//calls run
 	}
 
 	public void init ( )
