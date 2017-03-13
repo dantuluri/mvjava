@@ -10,7 +10,7 @@ public class SimpleCalculator extends JApplet implements ActionListener
    JLabel answer;  // JLabel for displaying the answer, or an
                    //    error message if appropriate.
 
-
+                  
    public void init()
    {
 

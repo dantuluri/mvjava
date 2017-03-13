@@ -1,3 +1,4 @@
+// Conlin
 // 3/7/2017
 // TimerExample.java
 // This program demonstrates a simple timer animation with a bouncing ball.
@@ -11,120 +12,155 @@
 //	4.  Add in a KeyListener, so when you press the up/down/right/left arrow, the ball is
 //		move 20 pixels in that direction.
 
-import java.awt.Color;
+import java.awt.Color;		
 import java.awt.Graphics;
 import java.awt.Font;
 
-import java.awt.event.ActionListener;
+import java.awt.event.ActionListener;	
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.MouseListener;	
 import java.awt.event.MouseEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.KeyListener;	
 import java.awt.event.KeyEvent;
-
-import javax.swing.JFrame;
+		
+import javax.swing.JFrame;	
 import javax.swing.JPanel;
-//////////////////2.   import for Timer	///////////////
+import javax.swing.Timer;
 
-
-public class TimerExample
+public class TimerExample 
 {
 	public TimerExample()
 	{
-	}
-
-	public static void main (String[] args)
+	}	
+	
+	public static void main (String[] args) 
 	{
 		TimerExample te = new TimerExample();
 		te.run();
 	}
-
-	public void run()
+	
+	public void run() 
 	{
 		JFrame frame = new JFrame("Timer Example");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		
 		// Create JPanel and add to frame
-
+		
 		DrawPanel panel = new DrawPanel();
 		frame.getContentPane().add(panel);	// add panel to frame
-
+				
 		frame.setSize(500, 600);		// explicitly set size in pixels
 		frame.setVisible(true);		// set to false to make invisible
 	}
-
+	
 }	// end class TimerExample
 
 // JPanel with a private ActionListener class called "Mover"
-class DrawPanel extends JPanel
+class DrawPanel extends JPanel 
 {
 	private int x, y;
 	private boolean left, up;
-
+	private Timer timer;
+	
+	class Mover implements ActionListener	//mouselistenrer, keylistener
+	{
+		public Mover()
+		{
+			//addMouseListener(this);
+			//addKeyListener(this);
+		}
+		public void actionPerformed(ActionEvent e)
+		{
+			repaint();
+			requestFocusInWindow();
+		}
+		
+		public void mousePressed(MouseEvent e)
+		{
+		requestFocusInWindow();
+		count++;
+		if(count%2==1)
+		timer.setDelay(50);
+		else
+		{
+			timer.setDelay(5);	
+		}
+		System.out.println("count="+count);
+	}
+	
+	public void mouseClicked(MouseEvent e){}
+	public void mouseReleased(MouseEvent e){}
+	public void mouseEntered(MouseEvent e){}
+	public void mouseExited(MouseEvent e){}
 	///////////////////////////////////////////////////
-	//	Create a class called Mover that implements ActionListener
+	//	Create a class called Mover that implements ActionListener 
 	//
-
+	
 
 // For the addition, you also will need to add the listeners in the appropriate place
 	//////////////////// MouseListener methods/////////////////////////
-
+	 
 	//////////////////// KeyListener methods/////////////////////////
 
 
 	// The JPanel's constructor
-	public DrawPanel ()
+	public DrawPanel () 
 	{
 		x = 0; y = 30;			// initial upper left corner location of red ball
 		left = up = false;		// initialize ball going right and down
+		x=0;y=30;
+		left=up=false;
 		////////////////////////////////////////////////
 		//	Declare and initialize
 		//	- an ActionListener object
 		//	- a Timer
-
+		Mover mover = new Mover();
+		timer = new Timer(5,mover);
+		timer.start();
 		////////////////////////////////////////////////
 		//	Start the timer
-
+		
 	}
-
+	
 	// paintComponent() draws the circle and increments the location.
-	public void paintComponent(Graphics g)
+	public void paintComponent(Graphics g) 
 	{
 		super.paintComponent(g);
 		setBackground(Color.MAGENTA);
 		g.setColor(Color.RED);
 		g.fillOval(x, y, 50, 50);
-
+		
 		// moves the ball right and left
-		if (!left && x < getWidth()-50)
+		if (!left && x < getWidth()-50) 
 			x++;
-		else
-		{
-			left = true;
-			x--;
+		else 
+		{ 
+			left = true; 
+			x--; 
 		}
-		if ( left && x > 0 )
+		if ( left && x > 0 ) 
 			x--;
-		else
-		{
-			left = false;
-			x++;
+		else 
+		{ 
+			left = false; 
+			x++; 
 		}
-
+		
 		// moves the ball up and down
-		if (!up && y < getHeight()-50)
+		if (!up && y < getHeight()-50) 
 			y++;
-		else
-		{
-			up = true;
-			y--;
+		else 
+		{ 
+			up = true; 
+			y--; 
 		}
-		if ( up && y > 0 )
+		if ( up && y > 0 ) 
 			y--;
-		else
-		{
-			up = false;
-			y++;
+		else 
+		{ 
+			up = false; 
+			y++; 
 		}
 	}
 }	// end class DrawPanel
+}
