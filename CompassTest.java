@@ -17,6 +17,11 @@ public class CompassTest extends JApplet implements KeyListener, FocusListener, 
 		mycompass = new Compass ( 200, 120, 80, 0, Color.gray, Color.blue );
 		myothercompass = new Compass ( 60, 300, 30, 90, Color.yellow, Color.magenta );
 	}
+
+	public CompassTest(Compass mycompass) {
+		this.mycompass = mycompass;
+	}
+
 	public static void main(String[]args)
 	{
 		CompassTest compasstesto = new CompassTest();//instantiates class
