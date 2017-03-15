@@ -87,7 +87,7 @@ public class Pillsbury
 		public void actionPerformed(ActionEvent evt)
 		{
 			String command=button.getText();
-			if(command.equals("Press my belly"))
+			if(command.equals("Press my belly."))
 			{
 				pressed=true;
 				button.setText("reset");
@@ -95,7 +95,7 @@ public class Pillsbury
 			
 			else
 			{
-				button.setText("Press my belly");
+				button.setText("Press my belly.");
 			}
 			repaint();
 

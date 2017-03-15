@@ -44,8 +44,8 @@ public class Pillsbury2
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
 		frame.setLocation(400,50);
 		frame.setResizable(true);
-		PillsburyPanel2 pillsPanel = new PillsburyPanel(); 		
-		frame.getContentPane().add( pillsPanel );	
+		PillsburyPanel2 pillsPanel2 = new PillsburyPanel2(); 		
+		frame.getContentPane().add( pillsPanel2 );	
 		frame.setVisible(true);		
 	}
 }
@@ -86,8 +86,8 @@ public class Pillsbury2
 			
 		public void actionPerformed(ActionEvent evt)
 		{
-			String command=button.getText();
-			if(command.equals("Press my belly"))
+			/*String command=button.getText();
+			if(command.equals("Press my belly."))
 			{
 				pressed=true;
 				button.setText("reset");
@@ -95,24 +95,35 @@ public class Pillsbury2
 			
 			else
 			{
-				button.setText("Press my belly");
+				button.setText("Press my belly.");
 			}
 			repaint();
+			*/
 
+	}
+
+	class ButtonHandler implements ActionListener
+	{
+		public ButtonHandler()
+		{
+			
 		}
 		
-		class buttonHandler implements ActionListener
+		public void actionPerformed(ActionEvent evt)
 		{
-			public void actionPerformed(ActionEvent e)
+			String command=button.getText();
+			if(command.equals("Press my belly."))
 			{
-				String command=evt.getActionCommand();
-				button1.setText("reset");
-				
-				Button1Handler b1Handler = new Button Handler();
-				button1.addActionListener(b1hander)
+				pressed=true;
+				button.setText("reset");
+			} 
+			
+			else
+			{
+				button.setText("Press my belly.");
 			}
+			repaint();
 		}
-
-
+	}
 
 }
