@@ -48,7 +48,7 @@ public class Pillsbury2
 		frame.getContentPane().add( pillsPanel2 );	
 		frame.setVisible(true);		
 	}
-
+}
 
 ////////////////////////////// class with ActionListener  /////////////////
 // 1.  
@@ -56,6 +56,7 @@ public class Pillsbury2
 		{
 			private boolean pressed;	// used to tell is button pressed
 			private JButton button;
+	
 		////////////// write constructor
 			public PillsburyPanel2()
 			{
@@ -99,7 +100,7 @@ public class Pillsbury2
 			repaint();
 			*/
 
-		}
+	}
 
 	class ButtonHandler implements ActionListener
 	{
@@ -125,6 +126,4 @@ public class Pillsbury2
 		}
 	}
 
-	}
 }
-
