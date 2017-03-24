@@ -1,3 +1,5 @@
+// An applet that says "Hello World" in a big bold font,
+// with three buttons to change the color of the message.
 
 import java.awt.*;
 import java.awt.event.*;
