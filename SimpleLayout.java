@@ -215,28 +215,30 @@ class MyColorPanel extends JPanel implements MouseListener
 
 	public MyColorPanel() 			// constructor
 	{	////////////////////////////////////////////////////////
-		// Initialize CardLayout and setLayout() to this panel
-		//
-		cards = new CardLayout();
-		setLayout(cards);
+		setBackground( new Color(130,50,40) );
 
-		// Create blue, green and red JPanels and set their backgrounds
-		color1 = new MyPanel(1, Color.BLUE);
-		color2 = new MyPanel(2, Color.GREEN);
-		color3 = new MyPanel(3, Color.RED);
+	setLayout( new BorderLayout(3,3) );  // BorderLayout with 3-pixel gaps.
 
-		////////////////////////////////////////////////////////
-		// Add the MouseListener to *each* JPanel and add
+	CardPanel board = new CardPanel();  // Where the cards are drawn.
+	add(board, BorderLayout.CENTER);
 
-		color1.addMouseListener(this);
-		color2.addMouseListener(this);
-		color3.addMouseListener(this);
-		// each JPanel to MyColorPanel (this)
-		add(color1,"Panel 1");
-		add(color2,"Panel 2");
-		add(color3,"Panel 3");
-		int counter = 0;
-		//
+	JPanel buttonPanel = new JPanel();  // The subpanel that holds the buttons.
+	buttonPanel.setBackground( new Color(220,200,180) );
+	add(buttonPanel, BorderLayout.SOUTH);
+
+	JButton higher = new JButton( "Higher" );
+	higher.addActionListener(board);   // The CardPanel listens for events.
+	buttonPanel.add(higher);
+
+	JButton lower = new JButton( "Lower" );
+	lower.addActionListener(board);
+	buttonPanel.add(lower);
+
+	JButton newGame = new JButton( "New Game" );
+	newGame.addActionListener(board);
+	buttonPanel.add(newGame);
+
+	setBorder(BorderFactory.createLineBorder( new Color(130,50,40), 3) );
 	}
 	public void mousePressed(MouseEvent evt)
 	{
