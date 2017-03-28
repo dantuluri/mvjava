@@ -96,9 +96,9 @@ class RadioProbability extends JPanel implements ActionListener
 	private JButton button;
 	public RadioProbability(int numIn, Color colorIn) 		//numbers on the panel
 	{
-		JRadioButton radiobutton = new JRadioButton("1");
-		radiobutton.addActionListener(this);
-		add(radiobutton);
+		JRadioButton radiobutton1 = new JRadioButton("1");
+		radiobutton1.addActionListener(this);
+		add(radiobutton1);
 		JRadioButton radiobutton2 = new JRadioButton("2");
 		radiobutton2.addActionListener(this);
 		add(radiobutton2);
@@ -108,6 +108,12 @@ class RadioProbability extends JPanel implements ActionListener
 		JRadioButton radiobutton4 = new JRadioButton("4");
 		radiobutton4.addActionListener(this);
 		add(radiobutton4);
+
+		ButtonGroup group = new ButtonGroup();
+	 group.add(radiobutton1);
+	 group.add(radiobutton2);
+	 group.add(radiobutton3);
+	 group.add(radiobutton4);
 	}
 	public void paintComponent(Graphics g)
 	{
