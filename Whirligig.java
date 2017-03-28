@@ -38,6 +38,7 @@ public class Whirligig
 	public Whirligig()
 	{
 		RadioProbability panFL1;
+		ScrollRisk panFL2;
 		// Create a JFrame with BorderLayout
 		flowFrame = new JFrame("FlowLayout");	// Create the JFrame
 
@@ -116,6 +117,7 @@ class RadioProbability extends JPanel implements ActionListener
 	 group.add(radiobutton3);
 	 group.add(radiobutton4);
 	}
+<<<<<<< HEAD
 
 	public void makeFlowLayout()
 	{
@@ -165,6 +167,8 @@ class RadioProbability extends JPanel implements ActionListener
 
 
 
+=======
+>>>>>>> parent of 44844ef... done
 	public void paintComponent(Graphics g)
 	{
 		//super.paintComponent(g);
@@ -186,16 +190,34 @@ class RadioProbability extends JPanel implements ActionListener
 		}
 		repaint();
 	}
-
 }	// end class MyPanel
 
 class ScrollRisk extends JPanel implements ActionListener
 {
-	public ScrollRisk()
+	private String num;
+	private Color color;
+	private boolean pressed;	// used to tell is button pressed
+	private JButton button;
+	public ScrollRisk(int numIn, Color colorIn) 		//numbers on the panel
 	{
-		ScrollRisk panFL2;
-
+		JRadioButton radiobutton = new JRadioButton("1");
+		radiobutton.addActionListener(this);
+		add(radiobutton);
+		JRadioButton radiobutton2 = new JRadioButton("2");
+		radiobutton2.addActionListener(this);
+		add(radiobutton2);
+		JRadioButton radiobutton3 = new JRadioButton("3");
+		radiobutton3.addActionListener(this);
+		add(radiobutton3);
+		JRadioButton radiobutton4 = new JRadioButton("4");
+		radiobutton4.addActionListener(this);
+		add(radiobutton4);
+		if(radiobutton.isSelected())
+		{
+			System.out.println("it works woot");
+		}
 	}
+<<<<<<< HEAD
 	// public void makeGridLayout()
 	// {
 	// 	// Create a JFrame with BorderLayout
@@ -228,4 +250,18 @@ class ScrollRisk extends JPanel implements ActionListener
 	// 	// Make the JFrame visible
 	// 	gridFrame.setVisible(true);
 	// }
+=======
+	public void paintComponent(Graphics g)
+	{
+		//super.paintComponent(g);
+		//g.setFont(new Font("Arial", Font.BOLD, 18));
+		//g.setColor(Color.RED);
+		//g.drawString(num, 10, 20);
+	}
+	public void actionPerformed(ActionEvent evt)
+	{
+
+
+	}
+>>>>>>> parent of 44844ef... done
 }
