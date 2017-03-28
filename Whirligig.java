@@ -5,7 +5,7 @@
 
 	1. BorderLayout
 	2. GridLayout
-	3. FlowLayout
+	3. onlyFrame
 	4. CardLayout
 	5. Nested layouts
 */
@@ -34,43 +34,48 @@ import javax.swing.JCheckBox;
 
 public class Whirligig
 {
-	JFrame flowFrame;
+	JFrame onlyFrame;
+
 	public Whirligig()
 	{
 		RadioProbability panFL1;
-		ScrollRisk panFL2;
+		ScrollRisk panGL1;
 		// Create a JFrame with BorderLayout
-		flowFrame = new JFrame("FlowLayout");	// Create the JFrame
+		onlyFrame = new JFrame("onlyLayout");	// Create the JFrame
 
 		/////////////////////////////////////////////////
-		// Set the layout to FlowLayout
-		flowFrame.setLayout(new FlowLayout());
+		// Set the layout to onlyFrame
+		onlyFrame.setLayout(new GridLayout());
 		//
 		panFL1 = new RadioProbability(1, Color.RED);
-		//panFL2 = new ScrollRisk(2, Color.BLUE);
+		panGL1 = new ScrollRisk();
 
 
 
 		// notice this has DISPOSE.  What is the effect of that?
-		flowFrame.setDefaultCloseOperation(flowFrame.DISPOSE_ON_CLOSE);
-		flowFrame.setSize(1400, 1100);
-		flowFrame.setLocation(0, 0);
+		onlyFrame.setDefaultCloseOperation(onlyFrame.DISPOSE_ON_CLOSE);
+		onlyFrame.setSize(450, 400);
+		onlyFrame.setLocation(0, 0);
 
+		onlyFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		onlyFrame.setSize(450, 400);
+		onlyFrame.setLocation(0, 0);
 		// Initialize panels
 
 		/////////////////////////////////////////////////
 		// setPreferredSize for all panels - 1st we will run the prog with out this.
 		//
 		panFL1.setPreferredSize(new Dimension(450,400));
-		//panFL2.setPreferredSize(new Dimension(450,400));
+		panFL1.setPreferredSize(new Dimension(450,400));
 
 
-		flowFrame.getContentPane().add(panFL1);
-	//	flowFrame.getContentPane().add(panFL2);
+		onlyFrame.getContentPane().add(panFL1);
+		onlyFrame.getContentPane().add(panGL1);
 
 
 		// Make the JFrame visible
-		flowFrame.setVisible(true);
+		onlyFrame.setVisible(true);
+		onlyFrame.setVisible(true);
 	}//end constructor
 
 	public static void main(String[] args)
@@ -82,11 +87,11 @@ public class Whirligig
 
 	//public void run()
 	//{
-		//makeFlowLayout();		// FlowLayout window
+		//makeonlyFrame();		// onlyFrame window
 	//}
 
 
-	//public void makeFlowLayout()
+	//public void makeonlyFrame()
 	//{
 
 	//}
@@ -150,15 +155,15 @@ class ScrollRisk extends JPanel
 	// {
 	// 	MyPanel panGL1, panGL2, panGL3, panGL4, panGL5, panGL6;
 	// 	// Create a JFrame with BorderLayout
-	// 	gridFrame = new JFrame("GridLayout");	// Create the JFrame
+	// 	onlyFrame = new JFrame("GridLayout");	// Create the JFrame
 	//
 	// 	/////////////////////////////////////////////////
 	// 	// Set the layout to GridLayout
-	// 	gridFrame.setLayout(new GridLayout(5,2));
+	// 	onlyFrame.setLayout(new GridLayout(5,2));
 	//
-	// 	gridFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	// 	gridFrame.setSize(300, 300);
-	// 	gridFrame.setLocation(210, 120);
+	// 	onlyFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	// 	onlyFrame.setSize(300, 300);
+	// 	onlyFrame.setLocation(210, 120);
 	//
 	// 	// Create panels
 	// 	panGL1 = new MyPanel(1, Color.RED);
@@ -169,13 +174,13 @@ class ScrollRisk extends JPanel
 	// 	panGL6 = new MyPanel(6, Color.YELLOW);
 	//
 	// 	// Add panels to the frame
-	// 	gridFrame.getContentPane().add(panGL1);
-	// 	gridFrame.getContentPane().add(panGL2);
-	// 	gridFrame.getContentPane().add(panGL3);
-	// 	gridFrame.getContentPane().add(panGL4);
-	// 	gridFrame.getContentPane().add(panGL5);
-	// 	gridFrame.getContentPane().add(panGL6);
+	// 	onlyFrame.getContentPane().add(panGL1);
+	// 	onlyFrame.getContentPane().add(panGL2);
+	// 	onlyFrame.getContentPane().add(panGL3);
+	// 	onlyFrame.getContentPane().add(panGL4);
+	// 	onlyFrame.getContentPane().add(panGL5);
+	// 	onlyFrame.getContentPane().add(panGL6);
 
 		// Make the JFrame visible
-	//	gridFrame.setVisible(true);
+	//	onlyFrame.setVisible(true);
 }
