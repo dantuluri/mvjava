@@ -24,9 +24,16 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.CardLayout;
 import java.awt.FlowLayout;
+import javax.swing.JButton;
+import javax.swing.JRadioButton;
 public class SimpleLayout
 {
 	JFrame borderFrame, gridFrame, flowFrame, cardFrame;
+	private String num;
+	private Color color;
+	private boolean pressed;	// used to tell is button pressed
+	private JButton button;
+
 
 	public static void main(String[] args)
 	{
@@ -106,6 +113,28 @@ public class SimpleLayout
 		panGL4 = new MyPanel(4, Color.ORANGE);
 		panGL5 = new MyPanel(5, Color.MAGENTA);
 		panGL6 = new MyPanel(6, Color.YELLOW);
+
+		JRadioButton radiobutton1 = new JRadioButton("1");
+		radiobutton1.addActionListener(this);
+		add(radiobutton1);
+		JRadioButton radiobutton2 = new JRadioButton("2");
+		radiobutton2.addActionListener(this);
+		add(radiobutton2);
+		JRadioButton radiobutton3 = new JRadioButton("3");
+		radiobutton3.addActionListener(this);
+		add(radiobutton3);
+		JRadioButton radiobutton4 = new JRadioButton("4");
+		radiobutton4.addActionListener(this);
+		add(radiobutton4);
+		panGL1.add(radiobutton1);
+		panGL1.add(radiobutton2);
+		panGL1.add(radiobutton3);
+		panGL1.add(radiobutton4);
+		ButtonGroup group = new ButtonGroup();
+	 group.add(radiobutton1);
+	 group.add(radiobutton2);
+	 group.add(radiobutton3);
+	 group.add(radiobutton4);
 
 		// Add panels to the frame
 		gridFrame.getContentPane().add(panGL1);
