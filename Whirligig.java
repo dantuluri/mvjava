@@ -120,44 +120,44 @@ class RadioProbability extends JPanel implements ActionListener
 	public void makeFlowLayout()
 	{
 		RadioProbability panFL1;
-
-		// Create a JFrame with BorderLayout
-		flowFrame = new JFrame("FlowLayout");	// Create the JFrame
-
-		/////////////////////////////////////////////////
-		// Set the layout to FlowLayout
-		flowFrame.setLayout(new FlowLayout());
 		//
-
-
-		// notice this has DISPOSE.  What is the effect of that?
-		flowFrame.setDefaultCloseOperation(flowFrame.DISPOSE_ON_CLOSE);
-		flowFrame.setSize(300, 300);
-		flowFrame.setLocation(310, 220);
-
-		// Initialize panels
-
-		panFL6 = new MyPanel(6, Color.YELLOW);
-
-		/////////////////////////////////////////////////
-		// setPreferredSize for all panels - 1st we will run the prog with out this.
+		// // Create a JFrame with BorderLayout
+		// flowFrame = new JFrame("FlowLayout");	// Create the JFrame
 		//
-		panFL1.setPreferredSize(new Dimension(40,100));
-		panFL2.setPreferredSize(new Dimension(50,200));
-		panFL3.setPreferredSize(new Dimension(60,300));
-		panFL4.setPreferredSize(new Dimension(70,100));
-		panFL5.setPreferredSize(new Dimension(40,300));
-		panFL6.setPreferredSize(new Dimension(40,300));
-
-		flowFrame.getContentPane().add(panFL1);
-		flowFrame.getContentPane().add(panFL2);
-		flowFrame.getContentPane().add(panFL3);
-		flowFrame.getContentPane().add(panFL4);
-		flowFrame.getContentPane().add(panFL5);
-		flowFrame.getContentPane().add(panFL6);
-
-		// Make the JFrame visible
-		flowFrame.setVisible(true);
+		// /////////////////////////////////////////////////
+		// // Set the layout to FlowLayout
+		// flowFrame.setLayout(new FlowLayout());
+		// //
+		//
+		//
+		// // notice this has DISPOSE.  What is the effect of that?
+		// flowFrame.setDefaultCloseOperation(flowFrame.DISPOSE_ON_CLOSE);
+		// flowFrame.setSize(300, 300);
+		// flowFrame.setLocation(310, 220);
+		//
+		// // Initialize panels
+		//
+		// panFL6 = new MyPanel(6, Color.YELLOW);
+		//
+		// /////////////////////////////////////////////////
+		// // setPreferredSize for all panels - 1st we will run the prog with out this.
+		// //
+		// panFL1.setPreferredSize(new Dimension(40,100));
+		// panFL2.setPreferredSize(new Dimension(50,200));
+		// panFL3.setPreferredSize(new Dimension(60,300));
+		// panFL4.setPreferredSize(new Dimension(70,100));
+		// panFL5.setPreferredSize(new Dimension(40,300));
+		// panFL6.setPreferredSize(new Dimension(40,300));
+		//
+		// flowFrame.getContentPane().add(panFL1);
+		// flowFrame.getContentPane().add(panFL2);
+		// flowFrame.getContentPane().add(panFL3);
+		// flowFrame.getContentPane().add(panFL4);
+		// flowFrame.getContentPane().add(panFL5);
+		// flowFrame.getContentPane().add(panFL6);
+		//
+		// // Make the JFrame visible
+		// flowFrame.setVisible(true);
 	}
 
 
@@ -196,36 +196,36 @@ class ScrollRisk extends JPanel implements ActionListener
 		ScrollRisk panFL2;
 
 	}
-	public void makeGridLayout()
-	{
-		// Create a JFrame with BorderLayout
-		gridFrame = new JFrame("GridLayout");	// Create the JFrame
-
-		/////////////////////////////////////////////////
-		// Set the layout to GridLayout
-		gridFrame.setLayout(new GridLayout(5,2));
-
-		gridFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		gridFrame.setSize(300, 300);
-		gridFrame.setLocation(210, 120);
-
-		// Create panels
-		panGL1 = new MyPanel(1, Color.RED);
-		panGL2 = new MyPanel(2, Color.BLUE);
-		panGL3 = new MyPanel(3, Color.GREEN);
-		panGL4 = new MyPanel(4, Color.ORANGE);
-		panGL5 = new MyPanel(5, Color.MAGENTA);
-		panGL6 = new MyPanel(6, Color.YELLOW);
-
-		// Add panels to the frame
-		gridFrame.getContentPane().add(panGL1);
-		gridFrame.getContentPane().add(panGL2);
-		gridFrame.getContentPane().add(panGL3);
-		gridFrame.getContentPane().add(panGL4);
-		gridFrame.getContentPane().add(panGL5);
-		gridFrame.getContentPane().add(panGL6);
-
-		// Make the JFrame visible
-		gridFrame.setVisible(true);
-	}
+	// public void makeGridLayout()
+	// {
+	// 	// Create a JFrame with BorderLayout
+	// 	gridFrame = new JFrame("GridLayout");	// Create the JFrame
+	//
+	// 	/////////////////////////////////////////////////
+	// 	// Set the layout to GridLayout
+	// 	gridFrame.setLayout(new GridLayout(5,2));
+	//
+	// 	gridFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	// 	gridFrame.setSize(300, 300);
+	// 	gridFrame.setLocation(210, 120);
+	//
+	// 	// Create panels
+	// 	panGL1 = new MyPanel(1, Color.RED);
+	// 	panGL2 = new MyPanel(2, Color.BLUE);
+	// 	panGL3 = new MyPanel(3, Color.GREEN);
+	// 	panGL4 = new MyPanel(4, Color.ORANGE);
+	// 	panGL5 = new MyPanel(5, Color.MAGENTA);
+	// 	panGL6 = new MyPanel(6, Color.YELLOW);
+	//
+	// 	// Add panels to the frame
+	// 	gridFrame.getContentPane().add(panGL1);
+	// 	gridFrame.getContentPane().add(panGL2);
+	// 	gridFrame.getContentPane().add(panGL3);
+	// 	gridFrame.getContentPane().add(panGL4);
+	// 	gridFrame.getContentPane().add(panGL5);
+	// 	gridFrame.getContentPane().add(panGL6);
+	//
+	// 	// Make the JFrame visible
+	// 	gridFrame.setVisible(true);
+	// }
 }
