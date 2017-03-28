@@ -68,7 +68,7 @@ public class Whirligig
 
 		// Make the JFrame visible
 		flowFrame.setVisible(true);
-	}
+	}//end constructor
 
 	public static void main(String[] args)
 	{
@@ -87,10 +87,7 @@ public class Whirligig
 	//{
 
 	//}
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+}
 class RadioProbability extends JPanel implements ActionListener
 {
 	private String num;
@@ -100,18 +97,17 @@ class RadioProbability extends JPanel implements ActionListener
 	public RadioProbability(int numIn, Color colorIn) 		//numbers on the panel
 	{
 		JRadioButton radiobutton = new JRadioButton("1");
-			radiobutton.addActionListener(this);
-				add(radiobutton);
-				JRadioButton radiobutton2 = new JRadioButton("2");
-			radiobutton2.addActionListener(this);
-				add(radiobutton2);
-				JRadioButton radiobutton3 = new JRadioButton("3");
-			radiobutton3.addActionListener(this);
-				add(radiobutton3);
-				JRadioButton radiobutton4 = new JRadioButton("4");
-			radiobutton4.addActionListener(this);
-				add(radiobutton4);
-
+		radiobutton.addActionListener(this);
+		add(radiobutton);
+		JRadioButton radiobutton2 = new JRadioButton("2");
+		radiobutton2.addActionListener(this);
+		add(radiobutton2);
+		JRadioButton radiobutton3 = new JRadioButton("3");
+		radiobutton3.addActionListener(this);
+		add(radiobutton3);
+		JRadioButton radiobutton4 = new JRadioButton("4");
+		radiobutton4.addActionListener(this);
+		add(radiobutton4);
 	}
 	public void paintComponent(Graphics g)
 	{
@@ -120,25 +116,22 @@ class RadioProbability extends JPanel implements ActionListener
 		//g.setColor(Color.RED);
 		//g.drawString(num, 10, 20);
 	}
-
 	public void actionPerformed(ActionEvent evt)
+	{
+		String command=button.getText();
+		if(command.equals("Press my belly."))
 		{
-			String command=button.getText();
-			if(command.equals("Press my belly."))
-			{
-				pressed=true;
-				button.setText("reset");
-			}
-
-			else
-			{
-				button.setText("Press my belly.");
-			}
-			repaint();
-
+			pressed=true;
+			button.setText("reset");
+		}
+		else
+		{
+			button.setText("Press my belly.");
+		}
+		repaint();
 	}
 }	// end class MyPanel
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 class ScrollRisk extends JPanel implements ActionListener
 {
 	private String num;
@@ -148,21 +141,21 @@ class ScrollRisk extends JPanel implements ActionListener
 	public ScrollRisk(int numIn, Color colorIn) 		//numbers on the panel
 	{
 		JRadioButton radiobutton = new JRadioButton("1");
-			radiobutton.addActionListener(this);
-				add(radiobutton);
-				JRadioButton radiobutton2 = new JRadioButton("2");
-			radiobutton2.addActionListener(this);
-				add(radiobutton2);
-				JRadioButton radiobutton3 = new JRadioButton("3");
-			radiobutton3.addActionListener(this);
-				add(radiobutton3);
-				JRadioButton radiobutton4 = new JRadioButton("4");
-			radiobutton4.addActionListener(this);
-				add(radiobutton4);
-				if(radiobutton.isSelected())
-				{
-				System.out.println("it works woot");
-				}
+		radiobutton.addActionListener(this);
+		add(radiobutton);
+		JRadioButton radiobutton2 = new JRadioButton("2");
+		radiobutton2.addActionListener(this);
+		add(radiobutton2);
+		JRadioButton radiobutton3 = new JRadioButton("3");
+		radiobutton3.addActionListener(this);
+		add(radiobutton3);
+		JRadioButton radiobutton4 = new JRadioButton("4");
+		radiobutton4.addActionListener(this);
+		add(radiobutton4);
+		if(radiobutton.isSelected())
+		{
+			System.out.println("it works woot");
+		}
 	}
 	public void paintComponent(Graphics g)
 	{
@@ -171,19 +164,9 @@ class ScrollRisk extends JPanel implements ActionListener
 		//g.setColor(Color.RED);
 		//g.drawString(num, 10, 20);
 	}
-
 	public void actionPerformed(ActionEvent evt)
-		{
+	{
 
 
 	}
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
 }
