@@ -32,124 +32,143 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
 
-public class Whirligig
+public class Whirligig extends JFrame
 {
 	JFrame onlyFrame;
-
-	public Whirligig()
-	{
-		RadioProbability panFL1;
-		ScrollRisk panGL1;
-		// Create a JFrame with BorderLayout
-		onlyFrame = new JFrame("onlyLayout");	// Create the JFrame
-
-		/////////////////////////////////////////////////
-		// Set the layout to onlyFrame
-		onlyFrame.setLayout(new GridLayout());
-		//
-		panFL1 = new RadioProbability(1, Color.RED);
-		panGL1 = new ScrollRisk();
-
-
-
-		// notice this has DISPOSE.  What is the effect of that?
-		onlyFrame.setDefaultCloseOperation(onlyFrame.DISPOSE_ON_CLOSE);
-		onlyFrame.setSize(450, 400);
-		onlyFrame.setLocation(0, 0);
-
-		onlyFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		onlyFrame.setSize(450, 400);
-		onlyFrame.setLocation(0, 0);
-		// Initialize panels
-
-		/////////////////////////////////////////////////
-		// setPreferredSize for all panels - 1st we will run the prog with out this.
-		//
-		panFL1.setPreferredSize(new Dimension(450,400));
-		panFL1.setPreferredSize(new Dimension(450,400));
-
-
-		onlyFrame.getContentPane().add(panFL1);
-		onlyFrame.getContentPane().add(panGL1);
-
-
-		// Make the JFrame visible
-		onlyFrame.setVisible(true);
-		onlyFrame.setVisible(true);
-	}//end constructor
-
-	public static void main(String[] args)
-	{
-		System.out.println("I will remember to log out.");
-		Whirligig gig = new Whirligig();
-		//gig.run();
-	}
-
-	//public void run()
-	//{
-		//makeonlyFrame();		// onlyFrame window
-	//}
-
-
-	//public void makeonlyFrame()
-	//{
-
-	//}
-}
-class RadioProbability extends JPanel implements ActionListener
-{
-
 	private String num;
 	private Color color;
 	private boolean pressed;	// used to tell is button pressed
 	private JButton button;
-	public RadioProbability(int numIn, Color colorIn) 		//numbers on the panel
-	{
-		JRadioButton radiobutton1 = new JRadioButton("1");
-		radiobutton1.addActionListener(this);
-		add(radiobutton1);
-		JRadioButton radiobutton2 = new JRadioButton("2");
-		radiobutton2.addActionListener(this);
-		add(radiobutton2);
-		JRadioButton radiobutton3 = new JRadioButton("3");
-		radiobutton3.addActionListener(this);
-		add(radiobutton3);
-		JRadioButton radiobutton4 = new JRadioButton("4");
-		radiobutton4.addActionListener(this);
-		add(radiobutton4);
 
-		ButtonGroup group = new ButtonGroup();
-	 group.add(radiobutton1);
-	 group.add(radiobutton2);
-	 group.add(radiobutton3);
-	 group.add(radiobutton4);
-	}
-	public void paintComponent(Graphics g)
+
+	public Whirligig()
 	{
-		//super.paintComponent(g);
-		//g.setFont(new Font("Arial", Font.BOLD, 18));
-		//g.setColor(Color.RED);
-		//g.drawString(num, 10, 20);
-	}
-	public void actionPerformed(ActionEvent evt)
-	{
-		String command=button.getText();
-		if(command.equals("Press my belly."))
-		{
-			pressed=true;
-			button.setText("reset");
+
+
+				JRadioButton radiobutton1 = new JRadioButton("1");
+				radiobutton1.addActionListener(this);
+				add(radiobutton1);
+				JRadioButton radiobutton2 = new JRadioButton("2");
+				radiobutton2.addActionListener(this);
+				add(radiobutton2);
+				JRadioButton radiobutton3 = new JRadioButton("3");
+				radiobutton3.addActionListener(this);
+				add(radiobutton3);
+				JRadioButton radiobutton4 = new JRadioButton("4");
+				radiobutton4.addActionListener(this);
+				add(radiobutton4);
+
+				ButtonGroup bgroup = new ButtonGroup();
+					 bgroup.add(radiobutton1);
+					 bgroup.add(radiobutton2);
+					 bgroup.add(radiobutton3);
+					 bgroup.add(radiobutton4);
+
+					 JPanel radioPanel = new JPanel();
+					 radioPanel.setLayout(new GridLayout(3, 1));
+					 radioPanel.add(radiobutton1);
+					 radioPanel.add(radiobutton2);
+					 radioPanel.add(radiobutton3);
+					 radioPanel.add(radiobutton4);
+
+					 radioPanel.setBorder(BorderFactory.createTitledBorder(
+				                   BorderFactory.createEtchedBorder(), "Married?"));
+
+													 setContentPane(radioPanel);  // Button panel is only content.
+		        pack();
+
+
 		}
-		else
-		{
-			button.setText("Press my belly.");
-		}
-		repaint();
+
+
+		public static void main(String[] args) {
+	        JFrame window = new RadioDemo1();
+	        window.setTitle("RadioDemo1");  // But window is too small to show it!
+	        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        window.setLocationRelativeTo(null);  // Center window.
+	        window.setVisible(true);
+	    }
 	}
-}	// end class MyPanel
 
-class ScrollRisk extends JPanel
 
-{
+
+
+
+
+
+
+		// RadioProbability panFL1;
+		// ScrollRisk panGL1;
+		// // Create a JFrame with BorderLayout
+		// onlyFrame = new JFrame("onlyLayout");	// Create the JFrame
+		//
+		// /////////////////////////////////////////////////
+		// // Set the layout to onlyFrame
+		// onlyFrame.setLayout(new GridLayout());
+		// //
+		// panFL1 = new RadioProbability(1, Color.RED);
+		// panGL1 = new ScrollRisk();
+
+
+
+		// notice this has DISPOSE.  What is the effect of that?
+		// onlyFrame.setDefaultCloseOperation(onlyFrame.DISPOSE_ON_CLOSE);
+		// onlyFrame.setSize(450, 400);
+		// onlyFrame.setLocation(0, 0);
+		//
+		// onlyFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// onlyFrame.setSize(450, 400);
+		// onlyFrame.setLocation(0, 0);
+		// // Initialize panels
+
+		/////////////////////////////////////////////////
+		// setPreferredSize for all panels - 1st we will run the prog with out this.
+		//
+		// panFL1.setPreferredSize(new Dimension(450,400));
+		// panFL1.setPreferredSize(new Dimension(450,400));
+		//
+		//
+		// onlyFrame.getContentPane().add(panFL1);
+		// onlyFrame.getContentPane().add(panGL1);
+
+
+		// Make the JFrame visible
+		// onlyFrame.setVisible(true);
+		// onlyFrame.setVisible(true);
+	//end constructor
+
+
+
+
+
+
+
+	// public void paintComponent(Graphics g)
+	// {
+	// 	//super.paintComponent(g);
+	// 	//g.setFont(new Font("Arial", Font.BOLD, 18));
+	// 	//g.setColor(Color.RED);
+	// 	//g.drawString(num, 10, 20);
+	// }
+// 	public void actionPerformed(ActionEvent evt)
+// 	{
+// 		String command=button.getText();
+// 		if(command.equals("Press my belly."))
+// 		{
+// 			pressed=true;
+// 			button.setText("reset");
+// 		}
+// 		else
+// 		{
+// 			button.setText("Press my belly.");
+// 		}
+// 		repaint();
+// 	}
+// }	// end class MyPanel
+
+//class ScrollRisk extends JPanel
+
+
 
 	// public void makeGridLayout()
 	// {
@@ -183,4 +202,3 @@ class ScrollRisk extends JPanel
 
 		// Make the JFrame visible
 	//	onlyFrame.setVisible(true);
-}
