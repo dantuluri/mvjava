@@ -74,3 +74,21 @@ public class EZRadioButtonPanel extends JPanel {
         _buttonGroup.clearSelection();
     }
 }
+
+class MyPanel extends JPanel
+{
+	private String num;
+	private Color color;
+	public MyPanel(int numIn, Color colorIn)
+	{
+		num = "" + numIn;
+		setBackground(colorIn);
+	}
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		g.setFont(new Font("Arial", Font.BOLD, 18));
+		g.setColor(Color.WHITE);
+		g.drawString(num, 10, 20);
+	}
+}	// end clasz
