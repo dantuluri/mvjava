@@ -34,16 +34,18 @@ import javax.swing.JCheckBox;
 
 public class Whirligig extends JFrame
 {
-	JFrame onlyFrame;
-	private String num;
-	private Color color;
-	private boolean pressed;	// used to tell is button pressed
-	private JButton button;
+	JFrame gridFramr;
+	
 
 
 	public Whirligig()
 	{
+		gridFramr = new JFrame("GridLayout");	// Create the JFrame
+		gridFramr.setLayout(new GridLayout(3,2));
 
+		gridFramr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		gridFramr.setSize(300, 300);
+		gridFramr.setLocation(210, 120);
 
 				JRadioButton radiobutton1 = new JRadioButton("1");
 				add(radiobutton1);
@@ -54,18 +56,20 @@ public class Whirligig extends JFrame
 				JRadioButton radiobutton4 = new JRadioButton("4");
 				add(radiobutton4);
 
-				ButtonGroup bgroup = new ButtonGroup();
-					 bgroup.add(radiobutton1);
-					 bgroup.add(radiobutton2);
-					 bgroup.add(radiobutton3);
-					 bgroup.add(radiobutton4);
+				JPanel nwradioPanel = new JPanel();			//THIS IS THE PANEL
+				nweadioPanel.setLayout(new GridLayout(3, 1));
+				nwradioPanel.add(radiobutton1);
+				nwradioPanel.add(radiobutton2);
+				nwradioPanel.add(radiobutton3);
+				nwradioPanel.add(radiobutton4);
 
-					 JPanel radioPanel = new JPanel();			//THIS IS THE PANEL
-					 radioPanel.setLayout(new GridLayout(3, 1));
-					 radioPanel.add(radiobutton1);
-					 radioPanel.add(radiobutton2);
-					 radioPanel.add(radiobutton3);
-					 radioPanel.add(radiobutton4);
+				ButtonGroup buttogroup = new ButtonGroup();
+					 buttogroup.add(radiobutton1);
+					 buttogroup.add(radiobutton2);
+					 buttoogroup.add(radiobutton3);
+					 buttogroup.add(radiobutton4);
+
+
 
 
 
