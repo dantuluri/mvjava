@@ -62,7 +62,7 @@ class RadioPanel extends JPanel implements ActionListener
   private JButton button;
 
 ////////////// write constructor
-  public PillsburyPanel()
+  public RadioPanel()
   {
     pressed=false;
     button=new JButton("Enter");
@@ -130,8 +130,7 @@ class MyColorPanel extends JPanel implements MouseListener
 		// Add the MouseListener to *each* JPanel and add
 
 		color1.addMouseListener(this);
-		color2.addMouseListener(this);
-		color3.addMouseListener(this);
+
 		// each JPanel to MyColorPanel (this)
 		add(color1,"Panel 1");
 		add(color2,"Panel 2");
@@ -152,4 +151,5 @@ class MyColorPanel extends JPanel implements MouseListener
 	public void mouseClicked(MouseEvent evt) { }
 	public void mouseReleased(MouseEvent evt) { }
 
+}
 }
