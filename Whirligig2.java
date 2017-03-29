@@ -12,30 +12,36 @@ class RadioDemo1 extends JFrame {
     //========================================================== constructor
     RadioDemo1() {
         //... Create the buttons.
-        JRadioButton yesButton   = new JRadioButton("Yes", true);
-        JRadioButton noButton    = new JRadioButton("No");
-        JRadioButton maybeButton = new JRadioButton("Maybe");
+        JRadioButton onep   = new JRadioButton("1");
+        JRadioButton twop    = new JRadioButton("2");
+        JRadioButton threep = new JRadioButton("3");
+        JRadioButton fourp = new JRadioButton("4");
+
 
         //... Create a button group and add the buttons.
         ButtonGroup bgroup = new ButtonGroup();
-        bgroup.add(yesButton);
-        bgroup.add(noButton);
-        bgroup.add(maybeButton);
+        bgroup.add(onep);
+        bgroup.add(twop);
+        bgroup.add(threep);
+        bgroup.add(fourp);
+
 
         //... Arrange buttons vertically in a panel
         JPanel radioPanel = new JPanel();
-        radioPanel.setLayout(new GridLayout(3, 1));
-        radioPanel.add(yesButton);
-        radioPanel.add(noButton);
-        radioPanel.add(maybeButton);
+        radioPanel.setLayout(new GridLayout(4, 1));
+        radioPanel.add(onep);
+        radioPanel.add(twop);
+        radioPanel.add(threep);
+        radioPanel.add(fourp);
+
 
         //... Add a titled border to the button panel.
-        radioPanel.setBorder(BorderFactory.createTitledBorder(
-                   BorderFactory.createEtchedBorder(), "How many people have you shared your food with today?"));
-
-        //... Set window attributes.
-        setContentPane(radioPanel);  // Button panel is only content.
-        pack();                      // Layout window.
+        // radioPanel.setBorder(BorderFactory.createTitledBorder(
+        //            BorderFactory.createEtchedBorder(), "Married?"));
+        //
+        // //... Set window attributes.
+         setContentPane(radioPanel);  // Button panel is only content.
+         pack();                      // Layout window.
     }
 
     //================================================================= main

@@ -34,18 +34,10 @@ import javax.swing.JCheckBox;
 
 public class Whirligig extends JFrame
 {
-	JFrame gridFramr;
-	
-
 
 	public Whirligig()
 	{
-		gridFramr = new JFrame("GridLayout");	// Create the JFrame
-		gridFramr.setLayout(new GridLayout(3,2));
 
-		gridFramr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		gridFramr.setSize(300, 300);
-		gridFramr.setLocation(210, 120);
 
 				JRadioButton radiobutton1 = new JRadioButton("1");
 				add(radiobutton1);
@@ -57,7 +49,7 @@ public class Whirligig extends JFrame
 				add(radiobutton4);
 
 				JPanel nwradioPanel = new JPanel();			//THIS IS THE PANEL
-				nweadioPanel.setLayout(new GridLayout(3, 1));
+				nwradioPanel.setLayout(new GridLayout(3, 1));
 				nwradioPanel.add(radiobutton1);
 				nwradioPanel.add(radiobutton2);
 				nwradioPanel.add(radiobutton3);
@@ -66,24 +58,25 @@ public class Whirligig extends JFrame
 				ButtonGroup buttogroup = new ButtonGroup();
 					 buttogroup.add(radiobutton1);
 					 buttogroup.add(radiobutton2);
-					 buttoogroup.add(radiobutton3);
+					 buttogroup.add(radiobutton3);
 					 buttogroup.add(radiobutton4);
 
-
-
-
-
-
+					 setContentPane(nwradioPanel);
+					 pack();
 
 		}
 
 
 		public static void main(String[] args) {
-	        JFrame window = new RadioDemo1();
-	        window.setTitle("RadioDemo1");  // But window is too small to show it!
-	        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        window.setLocationRelativeTo(null);  // Center window.
-	        window.setVisible(true);
+			JFrame gridFramr;
+					gridFramr = new JFrame("GridLayout");	// Create the JFrame
+					gridFramr.setLayout(new GridLayout(1,1));
+
+					gridFramr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					gridFramr.setSize(300, 300);
+					gridFramr.setLocation(0, 0);
+	        gridFramr.setTitle("Memees");  // But window is too small to show it!
+	        gridFramr.setVisible(true);
 	    }
 	}
 
