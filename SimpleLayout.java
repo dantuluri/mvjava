@@ -28,7 +28,7 @@ import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import java.awt.event.ActionListener;
 
-public class SimpleLayout extends JPanel implements ActionListener
+public class SimpleLayout extends JPanel
 {
 	JFrame borderFrame, gridFrame, flowFrame, cardFrame;
 	private String num;

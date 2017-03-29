@@ -88,14 +88,21 @@ public class Whiri
 
 
 
+
+	//public void makeonlyFrame()
+	//{
+
+	//}
+}
+class RadioProbability extends JPanel implements ActionListener
+{
 	JPanel panel = new JPanel(new GridLayout(4,4));
 
 	private String num;
 	private Color color;
 	private boolean pressed;	// used to tell is button pressed
 	private JButton button;
-
-	public void RadioProbability(int numIn, Color colorIn) 		//numbers on the panel
+	public RadioProbability(int numIn, Color colorIn) 		//numbers on the panel
 	{
 		JRadioButton radiobutton1 = new JRadioButton("1");
 		radiobutton1.addActionListener(this);
@@ -132,6 +139,9 @@ public class Whiri
 	public void actionPerformed(ActionEvent evt)
 	{
 	}
+
+	public void makeGridLayout()
+	{
 		MyPanel panGL1, panGL2, panGL3, panGL4, panGL5, panGL6;
 		// Create a JFrame with BorderLayout
 		gridFrame = new JFrame("GridLayout");	// Create the JFrame
