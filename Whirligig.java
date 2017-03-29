@@ -46,16 +46,12 @@ public class Whirligig extends JFrame
 
 
 				JRadioButton radiobutton1 = new JRadioButton("1");
-				radiobutton1.addActionListener(this);
 				add(radiobutton1);
 				JRadioButton radiobutton2 = new JRadioButton("2");
-				radiobutton2.addActionListener(this);
 				add(radiobutton2);
 				JRadioButton radiobutton3 = new JRadioButton("3");
-				radiobutton3.addActionListener(this);
 				add(radiobutton3);
 				JRadioButton radiobutton4 = new JRadioButton("4");
-				radiobutton4.addActionListener(this);
 				add(radiobutton4);
 
 				ButtonGroup bgroup = new ButtonGroup();
@@ -64,18 +60,15 @@ public class Whirligig extends JFrame
 					 bgroup.add(radiobutton3);
 					 bgroup.add(radiobutton4);
 
-					 JPanel radioPanel = new JPanel();
+					 JPanel radioPanel = new JPanel();			//THIS IS THE PANEL
 					 radioPanel.setLayout(new GridLayout(3, 1));
 					 radioPanel.add(radiobutton1);
 					 radioPanel.add(radiobutton2);
 					 radioPanel.add(radiobutton3);
 					 radioPanel.add(radiobutton4);
 
-					 radioPanel.setBorder(BorderFactory.createTitledBorder(
-				                   BorderFactory.createEtchedBorder(), "Married?"));
 
-													 setContentPane(radioPanel);  // Button panel is only content.
-		        pack();
+
 
 
 		}

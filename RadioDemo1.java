@@ -30,12 +30,10 @@ class RadioDemo1 extends JFrame {
         radioPanel.add(maybeButton);
 
         //... Add a titled border to the button panel.
-        radioPanel.setBorder(BorderFactory.createTitledBorder(
-                   BorderFactory.createEtchedBorder(), "Married?"));
+
 
         //... Set window attributes.
         setContentPane(radioPanel);  // Button panel is only content.
-        pack();                      // Layout window.
     }
 
     //================================================================= main
