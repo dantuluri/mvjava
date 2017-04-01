@@ -100,46 +100,47 @@ public class Whirligig//main frame by Ulric
 				   //setBorder(BorderFactory.createTitledBorder(
 					 //                  BorderFactory.createEtchedBorder(), "How many people did you share your food with today?"));
 		Code is nonfunctional*/
-    public void actionPerformed(ActionEvent evt)
-    {
-        JButton button=new JButton("Enter");
-        button.addActionListener(this);
-        add(button);
-    }
+//     public void actionPerformed(ActionEvent evt)
+//     {
+//         JButton button=new JButton("Enter");
+//         button.addActionListener(this);
+//         add(button);
+//     }
 }
-	public class ScrollRisk{//Surya JScrollbar
 
-		public JPanel createContentPane (){
-
-			// As usual, we create our bottom-level panel.
-			JPanel totalGUI = new JPanel();
-
-			// This is the story we took from Wikipedia.
-			String story = ("1. Make sure your food is away from others, so that your friends don't feel the urge to take your fot your friends don't feel the urge to take your. ALso excerzie more so that you won't get diseases or bacteria from other's food. 2.Make sure your food is covered with protective layers such as aluminum foil so that it won't be vulnerable to others sptting on your food.");
-
-			// We create the TextArea and pass the story in as an argument.
-			// We also set it to be non-editable, and the line and word wraps set to true.
-			JTextArea storyArea = new JTextArea(story);
-			storyArea.setEditable(false);
-			storyArea.setLineWrap(true);
-			storyArea.setWrapStyleWord(true);
-
-			// We create the ScrollPane and instantiate it with the TextArea as an argument
-			// along with two constants that define the behaviour of the scrollbars.
-			JScrollPane area = new JScrollPane(storyArea,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
-											   JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-
-			// We then set the preferred size of the scrollpane.
-			area.setPreferredSize(new Dimension(300, 200));
-
-			// and add it to the GUI.
-			totalGUI.add(area);
-			totalGUI.setOpaque(true);
-			return totalGUI;
-		}
-
-
-	}
+	//  class ScrollRisk{//Surya JScrollbar
+	//
+	// 	public JPanel createContentPane (){
+	//
+	// 		// As usual, we create our bottom-level panel.
+	// 		JPanel totalGUI = new JPanel();
+	// 
+	// 		// This is the story we took from Wikipedia.
+	// 		String story = ("1. Make sure your food is away from others, so that your friends don't feel the urge to take your fot your friends don't feel the urge to take your. ALso excerzie more so that you won't get diseases or bacteria from other's food. 2.Make sure your food is covered with protective layers such as aluminum foil so that it won't be vulnerable to others sptting on your food.");
+	//
+	// 		// We create the TextArea and pass the story in as an argument.
+	// 		// We also set it to be non-editable, and the line and word wraps set to true.
+	// 		JTextArea storyArea = new JTextArea(story);
+	// 		storyArea.setEditable(false);
+	// 		storyArea.setLineWrap(true);
+	// 		storyArea.setWrapStyleWord(true);
+	//
+	// 		// We create the ScrollPane and instantiate it with the TextArea as an argument
+	// 		// along with two constants that define the behaviour of the scrollbars.
+	// 		JScrollPane area = new JScrollPane(storyArea,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+	// 										   JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+	//
+	// 		// We then set the preferred size of the scrollpane.
+	// 		area.setPreferredSize(new Dimension(300, 200));
+	//
+	// 		// and add it to the GUI.
+	// 		totalGUI.add(area);
+	// 		totalGUI.setOpaque(true);
+	// 		return totalGUI;
+	// 	}
+	//
+	//
+	// }
 	class MenuPanel extends JPanel implements ActionListener
 	{  //Ulric Wu, JMenu
 		/////////
