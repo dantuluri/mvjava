@@ -1,4 +1,6 @@
-
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
  public class UpperCaseField extends JTextField {
 
      public UpperCaseField(int cols) {
