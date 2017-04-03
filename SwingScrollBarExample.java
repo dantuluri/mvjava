@@ -1,4 +1,4 @@
-//Surya Dantuluri
+//Surya Dantuluricard
 import java.awt.BorderLayout;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
