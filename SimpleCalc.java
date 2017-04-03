@@ -149,7 +149,7 @@ public class SimpleCalc extends JApplet {
           from the button.  Note that division by zero produces
           an error message. */
 
-         String op = evt.getActionCommand();
+         String op = evt.getActionCommand();          //get actionary
          if (op.equals("+"))
             answer.setText( "x + y = " + (x+y) );
          else if (op.equals("-"))
