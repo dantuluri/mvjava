@@ -20,15 +20,28 @@ import java.awt.Graphics;
 import java.awt.Font;
 import java.awt.Dimension;
 ///////////////////////// import Classes needed for Layouts ////////////////////////
-// import java.awt.BorderLayout;
-// import java.awt.GridLayout;
-// import java.awt.CardLayout;
-// import java.awt.FlowLayout;
-
-
-class BorderLayout extends JFrame
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.CardLayout;
+import java.awt.FlowLayout;
+public class SimpleLayout
 {
-	JFrame borderFrame;
+	JFrame borderFrame, gridFrame, flowFrame, cardFrame;
+
+	public static void main(String[] args)
+	{
+		SimpleLayout sl = new SimpleLayout();
+		sl.run();
+	}
+
+	public void run()
+	{
+		makeBorderLayout();		// BorderLayout window
+		makeGridLayout();		// GridLayout window
+		makeFlowLayout();		// FlowLayout window
+		makeCardLayout();		// CardLayout window
+	}
+
 	public void makeBorderLayout()
 	{
 		MyPanel panBL1, panBL2, panBL3, panBL4, panBL5;
@@ -71,11 +84,7 @@ class BorderLayout extends JFrame
 		// Make the JFrame visible
 		borderFrame.setVisible(true);
 	}
-}
 
-class GridLayout extends JFrame
-{
-	JFrame gridFrame;
 	public void makeGridLayout()
 	{
 		MyPanel panGL1, panGL2, panGL3, panGL4, panGL5, panGL6;
@@ -109,10 +118,7 @@ class GridLayout extends JFrame
 		// Make the JFrame visible
 		gridFrame.setVisible(true);
 	}
-}
-class FlowLayout extends JFrame
-{
-	JFrame flowFrame;
+
 	public void makeFlowLayout()
 	{
 		MyPanel panFL1, panFL2, panFL3, panFL4, panFL5, panFL6;
@@ -158,11 +164,7 @@ class FlowLayout extends JFrame
 		// Make the JFrame visible
 		flowFrame.setVisible(true);
 	}
-}
 
-	class CardLayout extends JFrame
-	{
-		JFrame cardFrame;
 	public void makeCardLayout()
 	{
 		MyColorPanel colorPanel;
@@ -202,7 +204,6 @@ class MyPanel extends JPanel
 		g.drawString(num, 10, 20);
 	}
 }	// end class MyPanel
-
 
 class MyColorPanel extends JPanel implements MouseListener
 {
