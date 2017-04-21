@@ -38,68 +38,62 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
 
-public class Game
+public class EatHealthy
 {
     JFrame frame;
-    public Game()
+    public EatHealthy()
     {
         landingPage landPage;
         healthPanel panBar;
         // Create a JFrame with BorderLayout
         frame = new JFrame("FlowLayout");	// Create the JFrame
-        
+
         // notice this has DISPOSE.  What is the effect of that?
         frame.setDefaultCloseOperation(flowFrame.DISPOSE_ON_CLOSE);
         frame.setSize(800, 800);
         frame.setLocation(0, 0);
-        
+
         // Initialize panels
         //send stuff to  panBar = new RadioProbability(1, Color.RED);
         //send stuff to panFL2 = new ScrollRisk(2, Color.BLUE);
-        
+
         /////////////////////////////////////////////////
         // setPreferredSize for all panels - 1st we will run the prog with out this.
         //
         landPage.setPreferredSize(new Dimension(800,800));
         panBar.setPreferredSize(new Dimension(220,70));
-        
-        
+
+
         frame.getContentPane().add(landPage);
         frame.getContentPane().add(panBar);
-        
-        
+
+
         // Make the JFrame visible
         frame.setVisible(true);
     }
-    
+
     public static void main(String[] args)
     {
         System.out.println("I will remember to log out.");
-        Whirligig gig = new Whirligig();
+        EatHealthy eaty = new EatHealthy();
         //gig.run();
     }
-    
+
     //public void run()
     //{
     //makeFlowLayout();		// FlowLayout window
     //}
-    
-    
+
+
     //public void makeFlowLayout()
     //{
-    
+
     //}
-    
-    
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    class RadioProbability extends JPanel implements ActionListener
+
+    class Mouth extends JPanel implements ActionListener
     {
-        private String num;
-        private Color color;
-        private boolean pressed;	// used to tell is button pressed
-        private JButton button;
-        public RadioProbability(int numIn, Color colorIn) 		//numbers on the panel
+      //variables
+        public Mouth(int numIn, Color colorIn) 		//numbers on the panel
         {
             JRadioButton radiobutton = new JRadioButton("1");
             radiobutton.addActionListener(this);
@@ -113,7 +107,7 @@ public class Game
             JRadioButton radiobutton4 = new JRadioButton("4");
             radiobutton4.addActionListener(this);
             add(radiobutton4);
-            
+
         }
         public void paintComponent(Graphics g)
         {
@@ -122,7 +116,7 @@ public class Game
             //g.setColor(Color.RED);
             //g.drawString(num, 10, 20);
         }
-        
+
         public void actionPerformed(ActionEvent evt)
         {
             String command=button.getText();
@@ -130,18 +124,16 @@ public class Game
             {
                 pressed=true;
                 button.setText("reset");
-            } 
-            
+            }
+
             else
             {
                 button.setText("Press my belly.");
             }
             repaint();
-            
+
         }
-    }	// end class MyPanel
-    
-    
+    }	// end class Mouth
+
+
 }
-
-
