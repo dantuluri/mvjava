@@ -17,8 +17,14 @@
  *
  */
 
+ import java.awt.Graphics;//add graphics
+ import java.awt.Graphics2D;
+ import java.awt.Image;
+ import java.awt.Toolkit;//add toolkit to move images around
+ import java.awt.event.MouseEvent;
+ import java.awt.event.MouseMotionListener;
 import javax.swing.JFrame;	//import javax.swing.*;
-import javax.swing.JPanel;
+import javax.swing.JPanel;//add jpanel
 
 //import java.awt.event.MouseEvent;
 
@@ -50,8 +56,8 @@ public class EatHealthy
 
         // notice this has DISPOSE.  What is the effect of that?
         frame.setDefaultCloseOperation(flowFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(800, 800);
-        frame.setLocation(0, 0);
+        frame.setSize(800, 800);//set size of frame
+        frame.setLocation(0, 0);//set location of frmae
 
         // Initialize panels
         //send stuff to  panBar = new RadioProbability(1, Color.RED);
@@ -96,20 +102,20 @@ public class EatHealthy
         public Mouth(int numIn, Color colorIn) 		//numbers on the panel
         {
             JRadioButton radiobutton = new JRadioButton("1");
-            radiobutton.addActionListener(this);
+            radiobutton.addActionListener(this);//set radio button of mouth panel to add quiz questions
             add(radiobutton);
-            JRadioButton radiobutton2 = new JRadioButton("2");
+            JRadioButton radiobutton2 = new JRadioButton("2");//quiz questions
             radiobutton2.addActionListener(this);
             add(radiobutton2);
-            JRadioButton radiobutton3 = new JRadioButton("3");
+            JRadioButton radiobutton3 = new JRadioButton("3");//quiz questions
             radiobutton3.addActionListener(this);
             add(radiobutton3);
-            JRadioButton radiobutton4 = new JRadioButton("4");
+            JRadioButton radiobutton4 = new JRadioButton("4");//quiz quistions
             radiobutton4.addActionListener(this);
             add(radiobutton4);
 
         }
-        public void paintComponent(Graphics g)
+        public void paintComponent(Graphics g)//paintComponent of Mouth Class
         {
             //super.paintComponent(g);
             //g.setFont(new Font("Arial", Font.BOLD, 18));
@@ -136,4 +142,46 @@ public class EatHealthy
     }	// end class Mouth
 
 
+}
+
+class Esophogous
+public class DragImage extends JComponent implements MouseMotionListener {
+  static int imageWidth = 60, imageHeight = 60;
+  int imageX, imageY;
+
+  Image image;
+
+  public DragImage(Image i) {
+    image = i;
+    addMouseMotionListener(this);
+  }
+
+  public void mouseDragged(MouseEvent e) {
+    imageX = e.getX();
+    imageY = e.getY();
+    repaint();
+  }
+
+  public void mouseMoved(MouseEvent e) {
+  }
+
+  public void paint(Graphics g) {
+    Graphics2D g2 = (Graphics2D) g;
+
+    g2.drawImage(image, imageX, imageY, this);
+  }
+
+  public static void main(String[] args) {
+    String imageFile = "A.jpg";
+    // Turn off double buffering
+    RepaintManager.currentManager(null).setDoubleBufferingEnabled(false);
+
+    Image image = Toolkit.getDefaultToolkit().getImage(DragImage.class.getResource(imageFile));
+    image = image.getScaledInstance(imageWidth, imageHeight, Image.SCALE_DEFAULT);
+    JFrame frame = new JFrame("DragImage");
+    frame.getContentPane().add(new DragImage(image));
+    frame.setSize(300, 300);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(true);
+  }
 }
