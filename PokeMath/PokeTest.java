@@ -177,7 +177,7 @@ class PanelHolder extends JPanel
 		}
 	}
 
-	class BottomPanel extends JPanel
+	class BottomPanel extends JPanel		//bottom panel for
 	{
 		public BottomPanel()
 		{

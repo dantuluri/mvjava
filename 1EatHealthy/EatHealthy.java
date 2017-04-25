@@ -136,27 +136,23 @@ class PanelHolder extends JPanel
     class WelcomePage extends JPanel
       {
 
-         boolean dirPressed;                //make proper boolean variables for directions, start button, and the scores button, so it can can conduct the corresponding actions
-         boolean startPressed;
-         boolean hsPressed;
-         String tempString;
-         Image PokeBack1 = Toolkit.getDefaultToolkit().getImage("PokeBack1.png");
-
-
+         boolean isPressed;                //make proper boolean variables for directions, start button, and the scores button, so it can can conduct the corresponding actions
+         String actionListenerString;
+         Image PokeBack1 = Toolkit.getDefaultToolkit().getImage("welcome.jpg");
         JTextField enterName;
         String name;
         boolean somethingEntered;
 
          public WelcomePage()//constructor initlizses the backgound, bottom panel as well as the name field for the user to enter their name to be displayed, and to make it a more personal experience.
          {
-           setLayout(null);                                //Use BorderLayout in main panel. Incorporate Card Layout for all the others
+           setLayout(cards);                                //Use BorderLayout in main panel. Incorporate Card Layout for all the others
           //Card Layout made( needs more pseudocode)
           setBackground(Color.WHITE);
           Font titleFont = new Font("Serif", Font.BOLD, 20);                //Set Fonts
            setFont(titleFont);
-          BottomPanel bp = new BottomPanel();                //Instantiate the Start Panel
-          bp.setBounds(0,600,1500,50);                //set bounds for bottom panel
-           add(bp);
+          //BottomPanel bp = new BottomPanel();                //Instantiate the Start Panel
+          //bp.setBounds(0,600,1500,50);                //set bounds for bottom panel
+           //add(bp);
 
            enterName = new JTextField("Enter Name");    // intializes JTextField to enter the name of the person
            SPTF sptf = new SPTF();
@@ -169,7 +165,7 @@ class PanelHolder extends JPanel
         public void paintComponent(Graphics g)    //paint compoenent to set bottom image as well as the bottom panel for button
         {                //graphics method header
            super.paintComponent(g);                        // draw Images first, draws background then Pokemath logo
-           g.drawImage(PokeBack1, 0,0,1500,850,this);
+           g.drawImage(background, 0,0,1500,850,this);
           g.drawImage(PokeMathLogo, 600,10,250,130,this);
            //g.drawImage(PokeBack, 0,0,600,400,this);
            if (startPressed)
@@ -177,23 +173,23 @@ class PanelHolder extends JPanel
               enterName.setBounds(650,500,200,50);      //enter name as string in order for game to be more interactive
               startPressed = false;
               if(somethingEntered)
-                cards.show(pHolder, "Creation Panel");
+                cards.show(pHolder, "Landing Page");
            }
            if (hsPressed)
            {
-               g.drawString("you just pressed high scores bro", 100, 100);  //impossible to press hsPressed
-               hsPressed = false;
+               g.drawString("you just pressed high scores bro", 100, 100);  //impossible to press hsPressed	 NOT POSSIBLE
+               isPressed = false;
 
            }
 
         }
-        class SPTF implements ActionListener//implement SPTF for action command regarding the text field
+        class StartGameButton implements ActionListener//implement SPTF for action command regarding the text field
         {
           public void actionPerformed(ActionEvent e)
           {
-            sp.name = e.getActionCommand();
-            sp.somethingEntered = true;
-            sp.repaint();
+            sgb.name = e.getActionCommand();
+            sgb.somethingEntered = true;
+            sgb.repaint();
           }
         }
       }
@@ -202,11 +198,11 @@ class PanelHolder extends JPanel
       {
         public BottomPanel()
         {
-          setLayout(null);
+          setLayout(cards);
 
-          JButton start = new JButton("Start Game");
-          JButtonHandlerS jbhs = new JButtonHandlerS();
-          start.addActionListener(jbhs);
+          JButton start = new JButton("Start Game!");
+          JButtonHandlerS buttonHandler = new JButtonHandlerS();
+          start.addActionListener(buttonHandler);
           start.setBounds(0,0,1500,50);
           add(start);
 
