@@ -142,15 +142,12 @@ class PanelHolder extends JPanel
          String tempString;
          Image PokeBack1 = Toolkit.getDefaultToolkit().getImage("PokeBack1.png");
 
-        boolean squirtleChosen;
-        boolean charizardChosen;
-        boolean bulbasaurChosen;
 
         JTextField enterName;
         String name;
         boolean somethingEntered;
 
-         public WelcomePage()
+         public WelcomePage()//constructor initlizses the backgound, bottom panel as well as the name field for the user to enter their name to be displayed, and to make it a more personal experience.
          {
            setLayout(null);                                //Use BorderLayout in main panel. Incorporate Card Layout for all the others
           //Card Layout made( needs more pseudocode)
@@ -158,18 +155,18 @@ class PanelHolder extends JPanel
           Font titleFont = new Font("Serif", Font.BOLD, 20);                //Set Fonts
            setFont(titleFont);
           BottomPanel bp = new BottomPanel();                //Instantiate the Start Panel
-          bp.setBounds(0,600,1500,50);
+          bp.setBounds(0,600,1500,50);                //set bounds for bottom panel
            add(bp);
 
-           enterName = new JTextField("Enter Name");
+           enterName = new JTextField("Enter Name");    // intializes JTextField to enter the name of the person
            SPTF sptf = new SPTF();
-           enterName.addActionListener(sptf);
+           enterName.addActionListener(sptf); //add action listener for intering names
            enterName.setBounds(0,0,0,0);
            add(enterName);
 
           }
 
-        public void paintComponent(Graphics g)
+        public void paintComponent(Graphics g)    //paint compoenent to set bottom image as well as the bottom panel for button
         {                //graphics method header
            super.paintComponent(g);                        // draw Images first, draws background then Pokemath logo
            g.drawImage(PokeBack1, 0,0,1500,850,this);
@@ -177,20 +174,20 @@ class PanelHolder extends JPanel
            //g.drawImage(PokeBack, 0,0,600,400,this);
            if (startPressed)
            {                                //boolean for startPressed and hsPressed to trigger thecorresponding CardLayout. For testing we'll just use a String
-              enterName.setBounds(650,500,200,50);
+              enterName.setBounds(650,500,200,50);      //enter name as string in order for game to be more interactive
               startPressed = false;
               if(somethingEntered)
                 cards.show(pHolder, "Creation Panel");
            }
            if (hsPressed)
            {
-               g.drawString("you just pressed high scores bro", 100, 100);
+               g.drawString("you just pressed high scores bro", 100, 100);  //impossible to press hsPressed
                hsPressed = false;
 
            }
 
         }
-        class SPTF implements ActionListener
+        class SPTF implements ActionListener//implement SPTF for action command regarding the text field
         {
           public void actionPerformed(ActionEvent e)
           {
@@ -214,12 +211,12 @@ class PanelHolder extends JPanel
           add(start);
 
     }
-    class Mouth extends JPanel implements ActionListener
+    class Mouth extends JPanel implements ActionListener//mouth class not finished(unneccesary buttons)
     {
       //variables
         public Mouth(int numIn, Color colorIn) 		//numbers on the panel
         {
-            JRadioButton radiobutton = new JRadioButton("1");
+            JRadioButton radiobutton = new JRadioButton("1"); //add buttons (unneccesary)
             radiobutton.addActionListener(this);
             add(radiobutton);
             JRadioButton radiobutton2 = new JRadioButton("2");
@@ -233,7 +230,7 @@ class PanelHolder extends JPanel
             add(radiobutton4);
 
         }
-        public void paintComponent(Graphics g)
+        public void paintComponent(Graphics g)  //paintComponent for implementing image
         {
             //super.paintComponent(g);
             //g.setFont(new Font("Arial", Font.BOLD, 18));
@@ -241,7 +238,7 @@ class PanelHolder extends JPanel
             //g.drawString(num, 10, 20);
         }
 
-        public void actionPerformed(ActionEvent evt)
+        public void actionPerformed(ActionEvent evt)//to set borders for panels
         {
             String command=button.getText();
             if(command.equals("Press my belly."))
@@ -258,3 +255,5 @@ class PanelHolder extends JPanel
 
         }
     }	// end class Mouth
+
+    //start Esophogous class panels
