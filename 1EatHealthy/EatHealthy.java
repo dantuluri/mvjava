@@ -49,7 +49,7 @@ public class EatHealthy extends JFrame
 {
       private PanelHolder pHolder;//panel holder
             private CardLayout cards;//card layout
-            private HomePage homePan;//welcome screen
+            private WelcomePage welcomePan;//welcome screen                      ADD THAT THE GOAL IS TO MAKE THE PERSON HAPPY
             private LandingPage landingPan;//where the user is most of the time
             private HealthBarPanel healthyBar;//health bar panel in LandingPage
             private FoodPanel foodyBar;//list of images regarding food in LandingPage
@@ -64,6 +64,7 @@ public class EatHealthy extends JFrame
             private SmallIntestineQuestions smallintestineQuiz;
             private LargeIntestinePanel largeIntestineProcess;
             private LargeIntestineQuestions largeIntestineQuiz;
+            private EndingPanel ending;
 
 
 
@@ -88,7 +89,7 @@ public class EatHealthy extends JFrame
 
 		pHolder.setLayout(cards);
 
-		homePan = new HomePanel();
+		welcomePan = new WelcomePage();
       landingPan = new LandingPage();  /// AKHIL, ADD TUTORIALPANEL INSTANCE (TP) AS A
       healthyBar = new HealthyBarPanel();
       foodyBar = new FoodPanel();
@@ -102,32 +103,25 @@ public class EatHealthy extends JFrame
      smallintestineQuiz = new SmallIntestineQuestions();
      largeIntestineProcess = new LargeIntestinePanel();
      largeIntestineQuiz = new LargeIntestineQuestions();
-     ap = new AreaPanel();
-     rp = new RadiusPanel();
-     ep = new EndPanel();
+     ending = new EndingPanel();
 
 
-		 pHolder.add(sp, "Start Panel");
-                pHolder.add(pp, "PythagPanel");
-                pHolder.add(pp1, "PythagPanel1");
-                pHolder.add(pp2, "PythagPanel2");
-                pHolder.add(pp3, "PythagPanel3");
-                pHolder.add(pp4, "PythagPanel4");
-                pHolder.add(pp5, "PythagPanel5");
-                pHolder.add(pp6, "PythagPanel6");
-                pHolder.add(pp7, "PythagPanel7");
-                pHolder.add(pp8, "PythagPanel8");
-                pHolder.add(cp, "Creation Panel");
-                pHolder.add(pret, "PreTut");
-                pHolder.add(tp, "Tutorial Panel");
-                pHolder.add(bp, "Battle Panel");
-                pHolder.add(circp, "Circumference Panel");
-                pHolder.add(ap, "Area Panel");
-                pHolder.add(rp, "Radius Panel");
-                pHolder.add(ep, "End Panel");
+		 pHolder.add(welcomePan, "WelcomePage");
+                pHolder.add(landingPan, "LandingPage");
+                pHolder.add(healthyBar, "HealthyBarPanel");
+                pHolder.add(foodyBar, "FoodPanel");
+                pHolder.add(mouthProcess, "MouthPanel");
+                pHolder.add(mouthQuiz, "MouthQuestions");
+                pHolder.add(esophogousProcess, "EsophogousPanel");
+                pHolder.add(esophogousQuiz, "EsophogousQuestions");
+                pHolder.add(stomachProcess, "StomachPanel");
+                pHolder.add(stomachQuiz, "StomachQuestions");
+                pHolder.add(smallIntestineProcess, "SmallIntestinePanel");
+                pHolder.add(smallintestineQuiz, "SmallIntestineQuestions");
+                pHolder.add(largeIntestineProcess, "LargeIntestinePanel");
+                pHolder.add(largeIntestineQuiz, "LargeIntestineQuestions");
+                pHolder.add(ending, "EndingPanel");
 		add(pHolder);
-
-
 		setVisible(true);
 	}
 
@@ -224,6 +218,86 @@ class PanelHolder extends JPanel
 
         }
     }	// end class Mouth
+    class StartPanel extends JPanel
+    	{
 
+    		 boolean dirPressed;                //make proper boolean variables for directions, start button, and the scores button, so it can can conduct the corresponding actions
+    		 boolean startPressed;
+    		 boolean hsPressed;
+    		 String tempString;
+    		 Image PokeMathLogo = Toolkit.getDefaultToolkit().getImage("PokeLogo.JPG");//getsImage from my computer using the get DefaultToolKit
+    		 Image PokeBack1 = Toolkit.getDefaultToolkit().getImage("PokeBack1.png");
+    				//        g.drawImage(PokeMathLogo, 60,150,800,625,this);
+
+    		boolean squirtleChosen;
+    		boolean charizardChosen;
+    		boolean bulbasaurChosen;
+
+    		JTextField enterName;
+    		String name;
+    		boolean somethingEntered;
+
+    		 public StartPanel()
+    		 {
+    		   setLayout(null);                                //Use BorderLayout in main panel. Incorporate Card Layout for all the others
+    			//Card Layout made( needs more pseudocode)
+    			setBackground(Color.WHITE);
+    			Font titleFont = new Font("Serif", Font.BOLD, 20);                //Set Fonts
+    			 setFont(titleFont);
+    			BottomPanel bp = new BottomPanel();                //Instantiate the Start Panel
+    			bp.setBounds(0,600,1500,50);
+    			 add(bp);
+
+    			 enterName = new JTextField("Enter Name");
+    			 SPTF sptf = new SPTF();
+    			 enterName.addActionListener(sptf);
+    			 enterName.setBounds(0,0,0,0);
+    			 add(enterName);
+
+    		  }
+
+    		public void paintComponent(Graphics g)
+    		{                //graphics method header
+    			 super.paintComponent(g);                        // draw Images first, draws background then Pokemath logo
+    			 g.drawImage(PokeBack1, 0,0,1500,850,this);
+    			g.drawImage(PokeMathLogo, 600,10,250,130,this);
+    			 //g.drawImage(PokeBack, 0,0,600,400,this);
+    			 if (startPressed)
+    			 {                                //boolean for startPressed and hsPressed to trigger thecorresponding CardLayout. For testing we'll just use a String
+    					enterName.setBounds(650,500,200,50);
+    					startPressed = false;
+    					if(somethingEntered)
+    						cards.show(pHolder, "Creation Panel");
+    			 }
+    			 if (hsPressed)
+    			 {
+    					 g.drawString("you just pressed high scores bro", 100, 100);
+    					 hsPressed = false;
+
+    			 }
+
+    		}
+    		class SPTF implements ActionListener
+    		{
+    			public void actionPerformed(ActionEvent e)
+    			{
+    				sp.name = e.getActionCommand();
+    				sp.somethingEntered = true;
+    				sp.repaint();
+    			}
+    		}
+    	}
+
+    	class BottomPanel extends JPanel
+    	{
+    		public BottomPanel()
+    		{
+    			setLayout(null);
+
+    			JButton start = new JButton("Start Game");
+    			JButtonHandlerS jbhs = new JButtonHandlerS();
+    			start.addActionListener(jbhs);
+    			start.setBounds(0,0,1500,50);
+    			add(start);
 
 }
