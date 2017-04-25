@@ -90,7 +90,7 @@ public class EatHealthy extends JFrame
 		pHolder.setLayout(cards);
 
 		welcomePan = new WelcomePage();
-      landingPan = new LandingPage();  /// AKHIL, ADD TUTORIALPANEL INSTANCE (TP) AS A
+      landingPan = new LandingPage();
       healthyBar = new HealthyBarPanel();
       foodyBar = new FoodPanel();
       mouthProcess = new MouthPanel();
@@ -133,47 +133,87 @@ class PanelHolder extends JPanel
 	}                                //  Panel holder (Holds all the Panels,for the Card Layout)(essentially)
 }
 
+    class WelcomePage extends JPanel
+      {
 
-    //     // Create a JFrame with BorderLayout
-    //     frame = new JFrame("FlowLayout");	// Create the JFrame
-    //
-    //     // notice this has DISPOSE.  What is the effect of that?
-    //     frame.setDefaultCloseOperation(flowFrame.DISPOSE_ON_CLOSE);
-    //     frame.setSize(800, 800);
-    //     frame.setLocation(0, 0);
-    //
-    //     // Initialize panels
-    //     //send stuff to  panBar = new RadioProbability(1, Color.RED);
-    //     //send stuff to panFL2 = new ScrollRisk(2, Color.BLUE);
-    //
-    //     /////////////////////////////////////////////////
-    //     // setPreferredSize for all panels - 1st we will run the prog with out this.
-    //     //
-    //     landPage.setPreferredSize(new Dimension(800,800));
-    //     panBar.setPreferredSize(new Dimension(220,70));
-    //
-    //
-    //     frame.getContentPane().add(landPage);
-    //     frame.getContentPane().add(panBar);
-    //
-    //
-    //     // Make the JFrame visible
-    //     frame.setVisible(true);
-    // }
-    //
-    //
-    //
-    // //public void run()
-    // //{
-    // //makeFlowLayout();		// FlowLayout window
-    // //}
-    //
-    //
-    // //public void makeFlowLayout()
-    // //{
-    //
-    // //}
+         boolean dirPressed;                //make proper boolean variables for directions, start button, and the scores button, so it can can conduct the corresponding actions
+         boolean startPressed;
+         boolean hsPressed;
+         String tempString;
+         Image PokeBack1 = Toolkit.getDefaultToolkit().getImage("PokeBack1.png");
 
+        boolean squirtleChosen;
+        boolean charizardChosen;
+        boolean bulbasaurChosen;
+
+        JTextField enterName;
+        String name;
+        boolean somethingEntered;
+
+         public WelcomePage()
+         {
+           setLayout(null);                                //Use BorderLayout in main panel. Incorporate Card Layout for all the others
+          //Card Layout made( needs more pseudocode)
+          setBackground(Color.WHITE);
+          Font titleFont = new Font("Serif", Font.BOLD, 20);                //Set Fonts
+           setFont(titleFont);
+          BottomPanel bp = new BottomPanel();                //Instantiate the Start Panel
+          bp.setBounds(0,600,1500,50);
+           add(bp);
+
+           enterName = new JTextField("Enter Name");
+           SPTF sptf = new SPTF();
+           enterName.addActionListener(sptf);
+           enterName.setBounds(0,0,0,0);
+           add(enterName);
+
+          }
+
+        public void paintComponent(Graphics g)
+        {                //graphics method header
+           super.paintComponent(g);                        // draw Images first, draws background then Pokemath logo
+           g.drawImage(PokeBack1, 0,0,1500,850,this);
+          g.drawImage(PokeMathLogo, 600,10,250,130,this);
+           //g.drawImage(PokeBack, 0,0,600,400,this);
+           if (startPressed)
+           {                                //boolean for startPressed and hsPressed to trigger thecorresponding CardLayout. For testing we'll just use a String
+              enterName.setBounds(650,500,200,50);
+              startPressed = false;
+              if(somethingEntered)
+                cards.show(pHolder, "Creation Panel");
+           }
+           if (hsPressed)
+           {
+               g.drawString("you just pressed high scores bro", 100, 100);
+               hsPressed = false;
+
+           }
+
+        }
+        class SPTF implements ActionListener
+        {
+          public void actionPerformed(ActionEvent e)
+          {
+            sp.name = e.getActionCommand();
+            sp.somethingEntered = true;
+            sp.repaint();
+          }
+        }
+      }
+
+      class BottomPanel extends JPanel
+      {
+        public BottomPanel()
+        {
+          setLayout(null);
+
+          JButton start = new JButton("Start Game");
+          JButtonHandlerS jbhs = new JButtonHandlerS();
+          start.addActionListener(jbhs);
+          start.setBounds(0,0,1500,50);
+          add(start);
+
+    }
     class Mouth extends JPanel implements ActionListener
     {
       //variables
@@ -218,86 +258,3 @@ class PanelHolder extends JPanel
 
         }
     }	// end class Mouth
-    class WelcomePage extends JPanel
-    	{
-
-    		 boolean dirPressed;                //make proper boolean variables for directions, start button, and the scores button, so it can can conduct the corresponding actions
-    		 boolean startPressed;
-    		 boolean hsPressed;
-    		 String tempString;
-    		 Image PokeMathLogo = Toolkit.getDefaultToolkit().getImage("PokeLogo.JPG");//getsImage from my computer using the get DefaultToolKit
-    		 Image PokeBack1 = Toolkit.getDefaultToolkit().getImage("PokeBack1.png");
-    				//        g.drawImage(PokeMathLogo, 60,150,800,625,this);
-
-    		boolean squirtleChosen;
-    		boolean charizardChosen;
-    		boolean bulbasaurChosen;
-
-    		JTextField enterName;
-    		String name;
-    		boolean somethingEntered;
-
-    		 public StartPanel()
-    		 {
-    		   setLayout(null);                                //Use BorderLayout in main panel. Incorporate Card Layout for all the others
-    			//Card Layout made( needs more pseudocode)
-    			setBackground(Color.WHITE);
-    			Font titleFont = new Font("Serif", Font.BOLD, 20);                //Set Fonts
-    			 setFont(titleFont);
-    			BottomPanel bp = new BottomPanel();                //Instantiate the Start Panel
-    			bp.setBounds(0,600,1500,50);
-    			 add(bp);
-
-    			 enterName = new JTextField("Enter Name");
-    			 SPTF sptf = new SPTF();
-    			 enterName.addActionListener(sptf);
-    			 enterName.setBounds(0,0,0,0);
-    			 add(enterName);
-
-    		  }
-
-    		public void paintComponent(Graphics g)
-    		{                //graphics method header
-    			 super.paintComponent(g);                        // draw Images first, draws background then Pokemath logo
-    			 g.drawImage(PokeBack1, 0,0,1500,850,this);
-    			g.drawImage(PokeMathLogo, 600,10,250,130,this);
-    			 //g.drawImage(PokeBack, 0,0,600,400,this);
-    			 if (startPressed)
-    			 {                                //boolean for startPressed and hsPressed to trigger thecorresponding CardLayout. For testing we'll just use a String
-    					enterName.setBounds(650,500,200,50);
-    					startPressed = false;
-    					if(somethingEntered)
-    						cards.show(pHolder, "Creation Panel");
-    			 }
-    			 if (hsPressed)
-    			 {
-    					 g.drawString("you just pressed high scores bro", 100, 100);
-    					 hsPressed = false;
-
-    			 }
-
-    		}
-    		class SPTF implements ActionListener
-    		{
-    			public void actionPerformed(ActionEvent e)
-    			{
-    				sp.name = e.getActionCommand();
-    				sp.somethingEntered = true;
-    				sp.repaint();
-    			}
-    		}
-    	}
-
-    	class BottomPanel extends JPanel
-    	{
-    		public BottomPanel()
-    		{
-    			setLayout(null);
-
-    			JButton start = new JButton("Start Game");
-    			JButtonHandlerS jbhs = new JButtonHandlerS();
-    			start.addActionListener(jbhs);
-    			start.setBounds(0,0,1500,50);
-    			add(start);
-
-}
