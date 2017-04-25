@@ -89,23 +89,22 @@ public class EatHealthy extends JFrame
 		pHolder.setLayout(cards);
 
 		homePan = new HomePanel();
-                cp = new CreationPanel();                                                                                /// AKHIL, ADD TUTORIALPANEL INSTANCE (TP) AS A
-                tp = new TutorialPanel();
-                bp = new BattlePanel();
-                pp = new PythagPanel();
-                pp1 = new PythagPanel1();
-               pp2 = new PythagPanel2();
-               pp3 = new PythagPanel3();
-               pp4 = new PythagPanel4();
-               pp5 = new PythagPanel5();
-               pp6 = new PythagPanel6();
-               pp7 = new PythagPanel7();
-               pp8 = new PythagPanel8();
-               pret = new PreTut();
-               circp = new CircPanel();
-               ap = new AreaPanel();
-               rp = new RadiusPanel();
-               ep = new EndPanel();
+      landingPan = new LandingPage();  /// AKHIL, ADD TUTORIALPANEL INSTANCE (TP) AS A
+      healthyBar = new HealthyBarPanel();
+      foodyBar = new FoodPanel();
+      mouthProcess = new MouthPanel();
+      mouthQuiz = new MouthQuestions();
+     esophogousProcess = new EsophogousPanel();
+     esophogousQuiz = new EsophogousQuestions();
+     stomachProcess = new StomachPanel();
+     stomachQuiz = new StomachQuestions();
+     smallIntestineProcess = new SmallIntestinePanel();
+     smallintestineQuiz = new SmallIntestineQuestions();
+     largeIntestineProcess = new LargeIntestinePanel();
+     largeIntestineQuiz = new LargeIntestineQuestions();
+     ap = new AreaPanel();
+     rp = new RadiusPanel();
+     ep = new EndPanel();
 
 
 		 pHolder.add(sp, "Start Panel");
