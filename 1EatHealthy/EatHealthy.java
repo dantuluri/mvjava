@@ -218,7 +218,7 @@ class PanelHolder extends JPanel
 
         }
     }	// end class Mouth
-    class StartPanel extends JPanel
+    class WelcomePage extends JPanel
     	{
 
     		 boolean dirPressed;                //make proper boolean variables for directions, start button, and the scores button, so it can can conduct the corresponding actions
