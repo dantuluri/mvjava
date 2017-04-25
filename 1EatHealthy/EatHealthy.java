@@ -144,14 +144,60 @@ public class EatHealthy
 
 }
 
-class Esophogous
-public class DragImage extends JComponent implements MouseMotionListener {
+class Stomach extends JComponent implements MouseMotionListener
+{
+
+// drag jcomponent to move image
   static int imageWidth = 60, imageHeight = 60;
   int imageX, imageY;
 
   Image image;
 
-  public DragImage(Image i) {
+  public Esophogous(Image i) {
+    image = i;//include image
+    addMouseMotionListener(this);
+  }
+
+  public void mouseDragged(MouseEvent e) {
+    imageX = e.getX();
+    imageY = e.getY();
+    repaint();
+  }
+
+  public void mouseMoved(MouseEvent e) {
+  }
+
+  public void paint(Graphics g) {
+    Graphics2D g2 = (Graphics2D) g;
+
+    g2.drawImage(image, imageX, imageY, this);
+  }
+
+  public static void main(String[] args) {
+    String imageFile = "A.jpg";
+    // Turn off double buffering
+    RepaintManager.currentManager(null).setDoubleBufferingEnabled(false);
+
+    Image image = Toolkit.getDefaultToolkit().getImage(DragImage.class.getResource(imageFile));//include toolkit to drag images around
+    image = image.getScaledInstance(imageWidth, imageHeight, Image.SCALE_DEFAULT);//include width and height of the image
+    JFrame frame = new JFrame("DragImage");//make new fram but CHANGE TO PANEL
+    frame.getContentPane().add(new DragImage(image));
+    frame.setSize(300, 300);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(true);
+  }
+}
+
+class SmallIntestine extends JComponent implements MouseMotionListener
+{
+
+// drag jcomponent to move image
+  static int imageWidth = 60, imageHeight = 60;
+  int imageX, imageY;
+
+  Image image;
+
+  public SmallIntestine(Image i) {
     image = i;
     addMouseMotionListener(this);
   }
@@ -176,9 +222,53 @@ public class DragImage extends JComponent implements MouseMotionListener {
     // Turn off double buffering
     RepaintManager.currentManager(null).setDoubleBufferingEnabled(false);
 
-    Image image = Toolkit.getDefaultToolkit().getImage(DragImage.class.getResource(imageFile));
-    image = image.getScaledInstance(imageWidth, imageHeight, Image.SCALE_DEFAULT);
-    JFrame frame = new JFrame("DragImage");
+    Image image = Toolkit.getDefaultToolkit().getImage(DragImage.class.getResource(imageFile));//include toolkit to drag images around
+    image = image.getScaledInstance(imageWidth, imageHeight, Image.SCALE_DEFAULT);//include width and height of the image
+    JFrame frame = new JFrame("DragImage");//make new fram but CHANGE TO PANEL
+    frame.getContentPane().add(new DragImage(image));
+    frame.setSize(300, 300);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(true);
+  }
+}
+
+class LargeIntestine extends JComponent implements MouseMotionListener
+{
+
+// drag jcomponent to move image
+  static int imageWidth = 60, imageHeight = 60;
+  int imageX, imageY;
+
+  Image image;
+
+  public LargeIntestine(Image i) {
+    image = i;
+    addMouseMotionListener(this);
+  }
+
+  public void mouseDragged(MouseEvent e) {
+    imageX = e.getX();
+    imageY = e.getY();
+    repaint();
+  }
+
+  public void mouseMoved(MouseEvent e) {
+  }
+
+  public void paint(Graphics g) {
+    Graphics2D g2 = (Graphics2D) g;
+
+    g2.drawImage(image, imageX, imageY, this);
+  }
+
+  public static void main(String[] args) {
+    String imageFile = "A.jpg";
+    // Turn off double buffering
+    RepaintManager.currentManager(null).setDoubleBufferingEnabled(false);
+
+    Image image = Toolkit.getDefaultToolkit().getImage(DragImage.class.getResource(imageFile));//include toolkit to drag images around
+    image = image.getScaledInstance(imageWidth, imageHeight, Image.SCALE_DEFAULT);//include width and height of the image
+    JFrame frame = new JFrame("DragImage");//make new fram but CHANGE TO PANEL
     frame.getContentPane().add(new DragImage(image));
     frame.setSize(300, 300);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
