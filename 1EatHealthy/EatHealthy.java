@@ -47,8 +47,8 @@ import javax.swing.JCheckBox;
 
 public class EatHealthy extends JFrame
 {
-      private PanelHolder pHolder;
-            private CardLayout cards;
+      private PanelHolder pHolder;//panel holder
+            private CardLayout cards;//card layout
             private HomePage homePan;//welcome screen
             private LandingPage landingPan;//where the user is most of the time
             private HealthBarPanel healthyBar;//health bar panel in LandingPage
@@ -62,54 +62,124 @@ public class EatHealthy extends JFrame
             private StomachQuestions stomachQuiz;
             private SmallIntestinePanel smallIntestineProcess;
             private SmallIntestineQuestions smallintestineQuiz;
-            private LargeIntestine esophogousProcess;
-            private LargeIntestine esophogousQuiz;
+            private LargeIntestinePanel largeIntestineProcess;
+            private LargeIntestineQuestions largeIntestineQuiz;
 
 
-        // Create a JFrame with BorderLayout
-        frame = new JFrame("FlowLayout");	// Create the JFrame
-
-        // notice this has DISPOSE.  What is the effect of that?
-        frame.setDefaultCloseOperation(flowFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(800, 800);
-        frame.setLocation(0, 0);
-
-        // Initialize panels
-        //send stuff to  panBar = new RadioProbability(1, Color.RED);
-        //send stuff to panFL2 = new ScrollRisk(2, Color.BLUE);
-
-        /////////////////////////////////////////////////
-        // setPreferredSize for all panels - 1st we will run the prog with out this.
-        //
-        landPage.setPreferredSize(new Dimension(800,800));
-        panBar.setPreferredSize(new Dimension(220,70));
-
-
-        frame.getContentPane().add(landPage);
-        frame.getContentPane().add(panBar);
-
-
-        // Make the JFrame visible
-        frame.setVisible(true);
-    }
 
     public static void main(String[] args)
     {
-        System.out.println("I will remember to log out.");
+        System.out.println("CheckPoint1");
         EatHealthy eaty = new EatHealthy();
-        //gig.run();
     }
 
-    //public void run()
-    //{
-    //makeFlowLayout();		// FlowLayout window
-    //}
+    public EatHealthy()
+	{
+		super("Eat Healthy!");
+	//	setLayout(new BorderLayouyt());
+		setSize(800, 800);		//will change later
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setLocation(0,0);
+		setResizable(false);
+
+		pHolder = new PanelHolder();
+		cards = new CardLayout();
 
 
-    //public void makeFlowLayout()
-    //{
+		pHolder.setLayout(cards);
 
-    //}
+		homePan = new HomePanel();
+                cp = new CreationPanel();                                                                                /// AKHIL, ADD TUTORIALPANEL INSTANCE (TP) AS A
+                tp = new TutorialPanel();
+                bp = new BattlePanel();
+                pp = new PythagPanel();
+                pp1 = new PythagPanel1();
+               pp2 = new PythagPanel2();
+               pp3 = new PythagPanel3();
+               pp4 = new PythagPanel4();
+               pp5 = new PythagPanel5();
+               pp6 = new PythagPanel6();
+               pp7 = new PythagPanel7();
+               pp8 = new PythagPanel8();
+               pret = new PreTut();
+               circp = new CircPanel();
+               ap = new AreaPanel();
+               rp = new RadiusPanel();
+               ep = new EndPanel();
+
+
+		 pHolder.add(sp, "Start Panel");
+                pHolder.add(pp, "PythagPanel");
+                pHolder.add(pp1, "PythagPanel1");
+                pHolder.add(pp2, "PythagPanel2");
+                pHolder.add(pp3, "PythagPanel3");
+                pHolder.add(pp4, "PythagPanel4");
+                pHolder.add(pp5, "PythagPanel5");
+                pHolder.add(pp6, "PythagPanel6");
+                pHolder.add(pp7, "PythagPanel7");
+                pHolder.add(pp8, "PythagPanel8");
+                pHolder.add(cp, "Creation Panel");
+                pHolder.add(pret, "PreTut");
+                pHolder.add(tp, "Tutorial Panel");
+                pHolder.add(bp, "Battle Panel");
+                pHolder.add(circp, "Circumference Panel");
+                pHolder.add(ap, "Area Panel");
+                pHolder.add(rp, "Radius Panel");
+                pHolder.add(ep, "End Panel");
+		add(pHolder);
+
+
+		setVisible(true);
+	}
+
+class PanelHolder extends JPanel
+{
+	public PanelHolder()
+	{
+		setBackground(Color.BLUE);
+	}                                //  Panel holder (Holds all the Panels,for the Card Layout)(essentially)
+}
+
+
+    //     // Create a JFrame with BorderLayout
+    //     frame = new JFrame("FlowLayout");	// Create the JFrame
+    //
+    //     // notice this has DISPOSE.  What is the effect of that?
+    //     frame.setDefaultCloseOperation(flowFrame.DISPOSE_ON_CLOSE);
+    //     frame.setSize(800, 800);
+    //     frame.setLocation(0, 0);
+    //
+    //     // Initialize panels
+    //     //send stuff to  panBar = new RadioProbability(1, Color.RED);
+    //     //send stuff to panFL2 = new ScrollRisk(2, Color.BLUE);
+    //
+    //     /////////////////////////////////////////////////
+    //     // setPreferredSize for all panels - 1st we will run the prog with out this.
+    //     //
+    //     landPage.setPreferredSize(new Dimension(800,800));
+    //     panBar.setPreferredSize(new Dimension(220,70));
+    //
+    //
+    //     frame.getContentPane().add(landPage);
+    //     frame.getContentPane().add(panBar);
+    //
+    //
+    //     // Make the JFrame visible
+    //     frame.setVisible(true);
+    // }
+    //
+    //
+    //
+    // //public void run()
+    // //{
+    // //makeFlowLayout();		// FlowLayout window
+    // //}
+    //
+    //
+    // //public void makeFlowLayout()
+    // //{
+    //
+    // //}
 
     class Mouth extends JPanel implements ActionListener
     {
