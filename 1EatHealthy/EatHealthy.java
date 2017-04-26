@@ -163,29 +163,28 @@ class PanelHolder extends JPanel
 
     class WelcomePage extends JPanel
       {
-        JFrame flowFrame;
+
         private String imageName;
          public WelcomePage()
          {
            imageName="welcome.jpg";
+           setLayout(new FlowLayout(FlowLayout.CENTER,1000,50));
            setLayout(cards);
           Font titleFont = new Font("Serif", Font.BOLD, 20);                //Set Fonts
            setFont(titleFont);                                      //WELCOME GUYS TEXTTTT
 
-		frame.setLayout(FlowLayout); //get ContentRaw().setLayout(null);
-		label=new JLabel("Calvin");
+//		label=new JLabel("WelcomeHere");
 		Font font =new Font("Arial",Font.BOLD,40);
-		label.setFont(font);
-		frame.getContentPane().add(label);
-		canvas=new DrawingArea();
-		frame.getContentPane().add(canvas);
+//		label.setFont(font);
+//	getContentPane().add(label);
+//		getContentPane().add(canvas);
 		getMyImage();
-		label.setBounds(355,0,300,100);
-		frame.setBackground(Color.GRAY);
-		frame.setSize(800,750);
-		frame.setLocation(300,0);
-		frame.setResizable(false);
-		frame.setVisible(true);
+//		label.setBounds(355,0,300,100);
+		setBackground(Color.GRAY);
+		setSize(800,750);
+		setLocation(300,0);
+		setResizable(false);
+		setVisible(true);
           }
 
   public void getMyImage()
