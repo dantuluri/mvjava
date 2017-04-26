@@ -164,9 +164,10 @@ class PanelHolder extends JPanel
     class WelcomePage extends JPanel
       {
         private String imageName;
-
-
-
+        public static void main( String[] args )
+    {
+        WelcomePage welcomePan = new WelcomePage();
+    }
          public WelcomePage()
          {
            imageName="welcome.jpg";
@@ -194,10 +195,11 @@ class PanelHolder extends JPanel
           super.paintComponent (g);	// draw background
       Font font = new Font ("Serif", Font.BOLD, 30);
       g.setFont( font );
-      g.drawString("tee hee",10,100);
+      g.drawString("Family Friendly",10,100);
         }
 
         }
+
 
 
     }//correct
