@@ -47,6 +47,7 @@ import javax.swing.JPanel;
 
 import java.awt.event.MouseListener;	// or import java.awt.event.*;
 import java.awt.event.MouseEvent;
+import java.awt.Image; //imports graphics components with swing
 
 import java.awt.Color;		//import java.awt.*;
 import java.awt.Graphics;
