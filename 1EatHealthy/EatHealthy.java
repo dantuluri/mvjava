@@ -137,8 +137,8 @@ class PanelHolder extends JPanel
       {
 
          boolean isPressed;                //make proper boolean variables for directions, start button, and the scores button, so it can can conduct the corresponding actions
-         String actionListenerString;
-         Image PokeBack1 = Toolkit.getDefaultToolkit().getImage("welcome.jpg");
+         String username;
+         Image Background = Toolkit.getDefaultToolkit().getImage("welcome.jpg");
         JTextField enterName;
         String name;
         boolean somethingEntered;
