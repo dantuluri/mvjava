@@ -35,13 +35,13 @@
 
 import java.io.FileWriter;
 import java.io.IOException;
-
+import java.io.BufferedWriter;
+import java.awt.Toolkit;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.JLabel;
 import javax.imageio.ImageIO;
 import java.io.File;
-
-import javax.swing.JLabel;
-
 import javax.swing.JFrame;	//import javax.swing.*;
 import javax.swing.JPanel;
 
@@ -162,81 +162,109 @@ class PanelHolder extends JPanel
 	}                                //  Panel holder (Holds all the Panels,for the Card Layout)(essentially)
 }
 
-    class WelcomePage extends JPanel
-      {
-
-        private String imageName;
-         public WelcomePage()
-         {
-           imageName="welcome.jpg";
-           setLayout(cards);
-           setLayout(new FlowLayout());
-    setContentPane(new JLabel(new ImageIcon("/Users/surya/Desktop/Coding/mvjava/1EatHealthy/welcome.jpg")));
-    setLayout(new FlowLayout());
-
-
-//		label=new JLabel("WelcomeHere");
-		Font font =new Font("Arial",Font.BOLD,40);
-//		label.setFont(font);
-//	getContentPane().add(label);
-//		getContentPane().add(canvas);
-		getMyImage();
-//		label.setBounds(355,0,300,100);
-		setBackground(Color.GRAY);
-		setSize(800,750);
-		setLocation(300,0);
-		setResizable(false);
-		setVisible(true);
-          }
-
-  public void getMyImage()
+class WelcomePage extends JPanel
 	{
-		try
-		{
-			image=ImageIO.read(new File(imageName));
+
+		 boolean dirPressed;                //make proper boolean variables for directions, start button, and the scores button, so it can can conduct the corresponding actions
+		 boolean startPressed;
+		 boolean hsPressed;
+		 String tempString;
+		 Image welcomeBackground = Toolkit.getDefaultToolkit().getImage("welcome.jpg");//getsImage from my computer using the get DefaultToolKit
+				//        g.drawImage(PokeMathLogo, 60,150,800,625,this);
+
+		boolean squirtleChosen;
+		boolean charizardChosen;
+		boolean bulbasaurChosen;
+
+		JTextField enterName;
+		String name;
+		boolean somethingEntered;
+
+		 public WelcomePage()
+		 {
+		   setLayout(null);                                //Use BorderLayout in main panel. Incorporate Card Layout for all the others
+			//Card Layout made( needs more pseudocode)
+			setBackground(Color.WHITE);
+			Font titleFont = new Font("Serif", Font.BOLD, 20);                //Set Fonts
+			 setFont(titleFont);
+			BottomPanel bp = new BottomPanel();                //Instantiate the Start Panel
+			bp.setBounds(0,600,1500,50);
+			 add(bp);
+
+			 enterName = new JTextField("Enter Name");
+			 SPTF sptf = new SPTF();
+			 enterName.addActionListener(sptf);
+			 enterName.setBounds(0,0,0,0);
+			 add(enterName);
+
+		  }
+
+		public void paintComponent(Graphics g)
+		{                //graphics method header
+			 super.paintComponent(g);                        // draw Images first, draws background then Pokemath logo
+			 g.drawImage(welcomeBackground, 0,0,800,800,this);
+			 //g.drawImage(PokeBack, 0,0,600,400,this);
+			 if (startPressed)
+			 {                                //boolean for startPressed and hsPressed to trigger thecorresponding CardLayout. For testing we'll just use a String
+					enterName.setBounds(650,500,200,50);
+					startPressed = false;
+					if(somethingEntered)
+						cards.show(pHolder, "Creation Panel");
+			 }
+			 if (hsPressed)
+			 {
+					 g.drawString("you just pressed high scores bro", 100, 100);
+					 hsPressed = false;
+
+			 }
+
 		}
-		catch(IOException e)
+		class SPTF implements ActionListener
 		{
-		System.err.println("\n\n"+imageName+"can't be found. \n\n");
-		e.printStackTrace();
+			public void actionPerformed(ActionEvent e)
+			{
+				welcomePan.name = e.getActionCommand();
+				welcomePan.somethingEntered = true;
+				welcomePan.repaint();
+			}
 		}
 	}
 
-  // public void run()
-	// {
-	// 	JFrame frame = new JFrame("ShowImage");
-	// 	frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
-	// 	frame.setLayout(null); //get ContentRaw().setLayout(null);
-	// 	label=new JLabel("Calvin");
-	// 	Font font =new Font("Arial",Font.BOLD,40);
-	// 	label.setFont(font);
-	// 	frame.getContentPane().add(label);
-	// 	canvas=new DrawingArea();
-	// 	frame.getContentPane().add(canvas);
-	// 	getMyImage();
-	// 	label.setBounds(355,0,300,100);
-	// 	frame.setBackground(Color.GRAY);
-	// 	frame.setSize(800,750);
-	// 	frame.setLocation(300,0);
-	// 	frame.setResizable(false);
-	// 	frame.setVisible(true);
-	// }
+	class BottomPanel extends JPanel
+	{
+		public BottomPanel()
+		{
+			setLayout(null);
 
-        public void paintComponent(Graphics g)
-        {
-
-      super.paintComponent (g);	// draw background
-        Font font = new Font ("Serif", Font.BOLD, 30);
-        g.setFont( font );
+			JButton start = new JButton("Start Game");
+			JButtonHandlerS jbhs = new JButtonHandlerS();
+			start.addActionListener(jbhs);
+			start.setBounds(0,0,200,50);
+			add(start);
 
 
-            g.drawString("tee hee",10,100);
+		}
+	}
+	class JButtonHandlerS implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			welcomePan.tempString = "You just pressed start";
+			welcomePan.enterName.setBounds(300,500,200,50);
+			welcomePan.startPressed = true;
+			welcomePan.repaint();
+		}
+	}
 
-        }
-
-        }
-
-
+	class JButtonHandlerH implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			welcomePan.tempString = "you just pressed the high scores button brodie";
+			welcomePan.hsPressed = true;
+			welcomePan.repaint();
+		}
+	}
 
     }//correct
     // class Mouth extends JPanel implements ActionListener//mouth class not finished(unneccesary buttons)
