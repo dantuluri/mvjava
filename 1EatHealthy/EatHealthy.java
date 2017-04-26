@@ -163,18 +163,29 @@ class PanelHolder extends JPanel
 
     class WelcomePage extends JPanel
       {
+        JFrame flowFrame;
         private String imageName;
-        public static void main( String[] args )
-    {
-        WelcomePage welcomePan = new WelcomePage();
-    }
          public WelcomePage()
          {
            imageName="welcome.jpg";
            setLayout(cards);
           Font titleFont = new Font("Serif", Font.BOLD, 20);                //Set Fonts
-           setFont(titleFont);
+           setFont(titleFont);                                      //WELCOME GUYS TEXTTTT
 
+		frame.setLayout(FlowLayout); //get ContentRaw().setLayout(null);
+		label=new JLabel("Calvin");
+		Font font =new Font("Arial",Font.BOLD,40);
+		label.setFont(font);
+		frame.getContentPane().add(label);
+		canvas=new DrawingArea();
+		frame.getContentPane().add(canvas);
+		getMyImage();
+		label.setBounds(355,0,300,100);
+		frame.setBackground(Color.GRAY);
+		frame.setSize(800,750);
+		frame.setLocation(300,0);
+		frame.setResizable(false);
+		frame.setVisible(true);
           }
 
   public void getMyImage()
@@ -189,6 +200,26 @@ class PanelHolder extends JPanel
 		e.printStackTrace();
 		}
 	}
+
+  // public void run()
+	// {
+	// 	JFrame frame = new JFrame("ShowImage");
+	// 	frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+	// 	frame.setLayout(null); //get ContentRaw().setLayout(null);
+	// 	label=new JLabel("Calvin");
+	// 	Font font =new Font("Arial",Font.BOLD,40);
+	// 	label.setFont(font);
+	// 	frame.getContentPane().add(label);
+	// 	canvas=new DrawingArea();
+	// 	frame.getContentPane().add(canvas);
+	// 	getMyImage();
+	// 	label.setBounds(355,0,300,100);
+	// 	frame.setBackground(Color.GRAY);
+	// 	frame.setSize(800,750);
+	// 	frame.setLocation(300,0);
+	// 	frame.setResizable(false);
+	// 	frame.setVisible(true);
+	// }
 
         public void paintComponent(Graphics g)
         {
