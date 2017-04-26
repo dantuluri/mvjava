@@ -135,16 +135,19 @@ class PanelHolder extends JPanel
 
     class WelcomePage extends JPanel
       {
-
-         boolean isPressed;                //make proper boolean variables for directions, start button, and the scores button, so it can can conduct the corresponding actions
+        private String imageName;
+        private Image image;
+        imageName = "/Users/surya/Desktop/Coding/mvjava/1EatHealthy/welcome.jpg";
+         boolean isPressed;
          String username;
-         Image Background = Toolkit.getDefaultToolkit().getImage("welcome.jpg");
         JTextField enterName;
         String name;
         boolean somethingEntered;
 
          public WelcomePage()//constructor initlizses the backgound, bottom panel as well as the name field for the user to enter their name to be displayed, and to make it a more personal experience.
          {
+           imageName="welcome.jpg";
+
            setLayout(cards);                                //Use BorderLayout in main panel. Incorporate Card Layout for all the others
           //Card Layout made( needs more pseudocode)
           setBackground(Color.WHITE);
@@ -155,12 +158,25 @@ class PanelHolder extends JPanel
            //add(bp);
 
            enterName = new JTextField("Enter Name");    // intializes JTextField to enter the name of the person
-           SPTF sptf = new SPTF();
-           enterName.addActionListener(sptf); //add action listener for intering names
-           enterName.setBounds(0,0,0,0);
-           add(enterName);
+           //SPTF sptf = new SPTF();
+           //enterName.addActionListener(sptf); //add action listener for intering names
+           //enterName.setBounds(0,0,0,0);
+           //add(enterName);
 
           }
+
+  public void getMyImage()
+	{
+		try
+		{
+			image=ImageIO.read(new File(imageName));
+		}
+		catch(IOException e)
+		{
+		System.err.println("\n\n"+imageName+"can't be found. \n\n");
+		e.printStackTrace();
+		}
+	}
 
         public void paintComponent(Graphics g)    //paint compoenent to set bottom image as well as the bottom panel for button
         {                //graphics method header
