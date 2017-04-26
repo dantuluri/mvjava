@@ -38,7 +38,9 @@ import java.io.IOException;
 
 import javax.swing.JLabel;
 import javax.imageio.ImageIO;
+import java.io.File;
 
+import javax.swing.JLabel;
 
 import javax.swing.JFrame;	//import javax.swing.*;
 import javax.swing.JPanel;
@@ -70,6 +72,8 @@ import java.awt.event.ActionEvent;
 
 public class EatHealthy extends JFrame
 {
+  private Image image;
+
       private PanelHolder pHolder;//panel holder
             private CardLayout cards;//card layout
             private WelcomePage welcomePan;//welcome screen                      ADD THAT THE GOAL IS TO MAKE THE PERSON HAPPY
@@ -159,7 +163,6 @@ class PanelHolder extends JPanel
     class WelcomePage extends JPanel
       {
         private String imageName;
-        private Image image;
 
 
 
