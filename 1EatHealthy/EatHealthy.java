@@ -63,6 +63,7 @@ import javax.swing.JRadioButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
+import javax.swing.ImageIcon;
 
 import java.io.BufferedWriter;
 
@@ -168,10 +169,11 @@ class PanelHolder extends JPanel
          public WelcomePage()
          {
            imageName="welcome.jpg";
-           setLayout(new FlowLayout(FlowLayout.CENTER,1000,50));
            setLayout(cards);
-          Font titleFont = new Font("Serif", Font.BOLD, 20);                //Set Fonts
-           setFont(titleFont);                                      //WELCOME GUYS TEXTTTT
+           setLayout(new FlowLayout());
+    setContentPane(new JLabel(new ImageIcon("/Users/surya/Desktop/Coding/mvjava/1EatHealthy/welcome.jpg")));
+    setLayout(new FlowLayout());
+
 
 //		label=new JLabel("WelcomeHere");
 		Font font =new Font("Arial",Font.BOLD,40);
@@ -222,10 +224,14 @@ class PanelHolder extends JPanel
 
         public void paintComponent(Graphics g)
         {
-          super.paintComponent (g);	// draw background
-      Font font = new Font ("Serif", Font.BOLD, 30);
-      g.setFont( font );
-      g.drawString("Family Friendly",10,100);
+
+      super.paintComponent (g);	// draw background
+        Font font = new Font ("Serif", Font.BOLD, 30);
+        g.setFont( font );
+
+
+            g.drawString("tee hee",10,100);
+
         }
 
         }
