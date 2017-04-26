@@ -32,11 +32,11 @@ public class Pillsbury2
         Pillsbury2 pills2 = new Pillsbury2();
         pills2.runIt();
     }
-    
+
     public Pillsbury2()
     {
     }
-    
+
     public void runIt()
     {
         JFrame frame = new JFrame("Pillsbury Dough boy");
@@ -57,6 +57,10 @@ class PillsburyPanel2 extends JPanel
     private boolean pressed;	// used to tell is button pressed
     private JButton button;
     ////////////// write constructor
+    public static void main( String[] args )
+    {
+        PillsburyPanel2 pillspanel2 = new PillsburyPanel2();
+    }
     public PillsburyPanel2()
     {
         pressed=false;
@@ -67,39 +71,39 @@ class PillsburyPanel2 extends JPanel
     }
     //////
     // 2.  instantiate the button.  add everything needed.
-    
-    
+
+
     public void paintComponent(Graphics g)	// paint component
     {
         super.paintComponent (g);	// draw background
         Font font = new Font ("Serif", Font.BOLD, 30);
         g.setFont( font );
-        
+
         if(pressed)
         {
             g.drawString("tee hee",10,100);
             pressed=false;
         }
-        
+
     }
     class ButtonHandler implements ActionListener
     {
-        
+
         public ButtonHandler()
         {
-            
+
         }
-        
+
         public void actionPerformed(ActionEvent evt)
         {
             String command1=evt.getActionCommand();
-            
+
             if(command1.equals("Press my belly"))
             {
                 pressed=true;
                 button.setText("reset");
-            } 
-            
+            }
+
             else
             {
                 button.setText("Press my belly");
@@ -107,10 +111,6 @@ class PillsburyPanel2 extends JPanel
             repaint();
         }
     }
-    
-    
+
+
 }
-
-
-
-
