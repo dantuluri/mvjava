@@ -186,6 +186,8 @@ public class EatHealthy extends JFrame
 			setBackground(Color.WHITE);
 			System.out.println("WelcomePage Constructor");
 			enterGameButton = new JButton("Enter the god dam game");
+			enterGameButton.setPreferredSize(new Dimension(300, 100));
+
 			enterGameButton.addActionListener(this);
 			add(enterGameButton);
 
@@ -201,30 +203,26 @@ public class EatHealthy extends JFrame
 			g.setFont(font);//sets font int graphics
 			g.drawString("Welcome to the Eat Healthy Game!",100,100);//sets the string that is displayed on the panel
 			System.out.println("WelcomePage painComponent pt.2");
-			if (startPressed)//if the button is pressed
-			{                                //boolean for startPressed and hsPressed to trigger thecorresponding CardLayout. For testing we'll just use a String
-				enterName.setBounds(650,500,200,50);
-				startPressed = false;
-				System.out.println("startPressed idk what is");
+
 				if(somethingEntered)
 				{
 					cards.show(pHolder, "LandingPage");
 					System.out.println("CardLayout changes to LandingPage");
 					//HOLY SHUIT THIS IS WHAT IVE BEEN LOOOKING GOR FOR SO MANY UEARS
 				}
-			}
 		}//end of paintComponent
+
 
 		public void actionPerformed(ActionEvent e)
 		{
 			name = e.getActionCommand();//gets the action command check what evt.getActionCommand does too
+			System.out.println(name);
 			String enteringGameButton = enterGameButton.getText();
 			if (enteringGameButton == "Enter the god dam game")
 			{
-				System.out.println("YEEOOEOOEOOEOEOOEOEOEOEOOEEOOOEOEOAMAMAMAMAMMAMAMAMAMAMMAMs");
+				System.out.println("YEEOOEOOEOOEOEOOEOEOEOEOOEEOOOEOEOAMAMAMAMAMMAMAMAMAMAMMAM");
 
 			}
-			somethingEntered = true;//IF SOMETHING  DO IT LMAO CHECK THE NOTES
 			System.out.println("Checkpoint TextField Handler");
 			repaint();
 		}
