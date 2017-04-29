@@ -112,7 +112,7 @@ public class EatHealthy extends JFrame
 
 		welcomePan = new WelcomePage();
 		landingPan = new LandingPage();
-		//   healthyBar = new HealthyBarPanel();
+		//healthyBar = new HealthyBarPanel();
 		//   foodyBar = new FoodPanel();
 		//   mouthProcess = new MouthPanel();
 		//   mouthQuiz = new MouthQuestions();
@@ -129,7 +129,7 @@ public class EatHealthy extends JFrame
 
 		pHolder.add(welcomePan, "WelcomePage");
 		pHolder.add(landingPan, "LandingPage");
-		// pHolder.add(healthyBar, "HealthyBarPanel");
+	 	//pHolder.add(healthyBar, "HealthyBarPanel");
 		// pHolder.add(foodyBar, "FoodPanel");
 		// pHolder.add(mouthProcess, "MouthPanel");
 		// pHolder.add(mouthQuiz, "MouthQuestions");
@@ -183,9 +183,9 @@ public class EatHealthy extends JFrame
 			add(bp);
 			System.out.println("Checkpoint 2");
 			enterName = new JTextField("Thisis a Name");
-			SPTF sptf = new SPTF();
+			TextFieldHandler enteringName = new TextFieldHandler();
 			//TODO WHAT DOES SPTF TF MEAN
-			enterName.addActionListener(sptf);
+			enterName.addActionListener(enteringName);
 			enterName.setBounds(0,0,0,0);
 			add(enterName);
 		}
@@ -200,7 +200,7 @@ public class EatHealthy extends JFrame
 			g.setFont(font);
 			g.drawString("Welcome to the Eat Healthy Game!",100,100);
 
-			if (startPressed)
+			if (startPressed)//if the button is pressed
 			{                                //boolean for startPressed and hsPressed to trigger thecorresponding CardLayout. For testing we'll just use a String
 				enterName.setBounds(650,500,200,50);
 				buttonStatus = "Enter name!";
@@ -208,16 +208,17 @@ public class EatHealthy extends JFrame
 				if(somethingEntered)
 				{
 					cards.show(pHolder, "LandingPage");
+					//HOLY SHUIT THIS IS WHAT IVE BEEN LOOOKING GOR FOR SO MANY UEARS
 				}
 			}
 		}
-		class SPTF implements ActionListener
+		class TextFieldHandler implements ActionListener
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				welcomePan.name = e.getActionCommand();
-				welcomePan.somethingEntered = true;
-				System.out.println("Checkpoint 4");
+				welcomePan.name = e.getActionCommand();//gets the action command check what evt.getActionCommand does too
+				welcomePan.somethingEntered = true;//IF SOMETHING THAT IS NOT DIFFERENTO FROM ORIGINALDOESNT DO IT LMAO CHECK THE NOTES
+				System.out.println("Checkpoint TextField Handler");
 				welcomePan.repaint();
 			}
 		}
@@ -228,11 +229,11 @@ public class EatHealthy extends JFrame
 		public BottomPanel()
 		{
 			setLayout(flow);
-			String buttonStatus = "Start Game!";
+			String buttonStatus = "BETA Game!";//the buttonStatus is useless because it doesnt help anyone
 			JButton start = new JButton(buttonStatus);
-			JButtonHandlerS jbhs = new JButtonHandlerS();
+			JButtonHandlerS jbhs = new JButtonHandlerS();//button handler check on this tomorrow.
 			start.addActionListener(jbhs);
-			start.setBounds(0,0,200,50);
+			start.setBounds(0,0,100,50);
 			System.out.println("Checkpoint 5");
 			add(start);
 		}
@@ -262,9 +263,9 @@ public class EatHealthy extends JFrame
 
 		public LandingPage()
 		{
-			setLayout(flow);
+			setLayout(flow);//sets the layout to flow
 			//Card Layout made( needs more pseudocode)
-			setBackground(Color.YELLOW);
+			setBackground(Color.YELLOW);//set background to yello
 			Font titleFont = new Font("Serif", Font.BOLD, 20);                //Set Fonts
 			setFont(titleFont);
 			System.out.println("Checkpoint Next Panel");
