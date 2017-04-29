@@ -162,10 +162,10 @@ public class EatHealthy extends JFrame
 		boolean hsPressed;
 		String tempString;
 		Image welcomeBackground = Toolkit.getDefaultToolkit().getImage("welcome.jpg");//getsImage from my computer using the get DefaultToolKit
-		//        g.drawImage(welcomeBacky, 60,150,800,625,this);
-		boolean squirtleChosen;
-		boolean charizardChosen;
-		boolean bulbasaurChosen;
+
+		//boolean squirtleChosen;
+		//boolean charizardChosen;
+		//boolean bulbasaurChosen;
 
 		JTextField enterName;
 		String name;
@@ -182,8 +182,9 @@ public class EatHealthy extends JFrame
 			bp.setBounds(0,100,700,50);
 			add(bp);
 			System.out.println("Checkpoint 2");
-			enterName = new JTextField("Enter Name");
+			enterName = new JTextField("Thisis a Name");
 			SPTF sptf = new SPTF();
+			//TODO WHAT DOES SPTF TF MEAN
 			enterName.addActionListener(sptf);
 			enterName.setBounds(0,0,0,0);
 			add(enterName);
