@@ -173,6 +173,7 @@ public class EatHealthy extends JFrame
 		boolean startPressed;
 		boolean hsPressed;
 		String tempString;
+		private JButton enterGameButton;
 		Image welcomeBackground = Toolkit.getDefaultToolkit().getImage("welcome.jpg");//getsImage from my computer using the get DefaultToolKit sets the background
 		JTextField enterName;
 		String name;
@@ -184,18 +185,11 @@ public class EatHealthy extends JFrame
 			//Card Layout made( needs more pseudocode)
 			setBackground(Color.WHITE);
 			System.out.println("WelcomePage Constructor");
-			enterName = new JTextField("Enter your name");
-			addActionListener(enterName);
-			//enterName.setBounds(10,100,200,300);
-			add(enterName);
-			String buttonStatus = "BETA Game!";//the buttonStatus is useless because it doesnt help anyone
-			System.out.println("what the heck is bottom panel");
-			JButton start = new JButton(buttonStatus);
-			start.addActionListener(jbhs);
-			start.setBounds(0,0,100,50);
-			System.out.println("Checkpoint 5");
-			add(start);
-		}
+			enterGameButton = new JButton("Enter the god dam game");
+			enterGameButton.addActionListener(this);
+			add(enterGameButton);
+
+				}
 
 		public void paintComponent(Graphics g)
 		{                //graphics method header
@@ -224,7 +218,12 @@ public class EatHealthy extends JFrame
 		public void actionPerformed(ActionEvent e)
 		{
 			name = e.getActionCommand();//gets the action command check what evt.getActionCommand does too
+			String enteringGameButton = enterGameButton.getText();
+			if (enteringGameButton == "Enter the god dam game")
+			{
+				System.out.println("this button works yayaya YEOOMANNNN");
 
+			}
 			somethingEntered = true;//IF SOMETHING  DO IT LMAO CHECK THE NOTES
 			System.out.println("Checkpoint TextField Handler");
 			repaint();
