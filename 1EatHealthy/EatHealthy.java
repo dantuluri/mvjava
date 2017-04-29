@@ -118,6 +118,7 @@ public class EatHealthy extends JFrame
 		pHolder = new PanelHolder();
 		cards = new CardLayout();
 		flow = new FlowLayout();
+		border = new BorderLayout();
 
 		pHolder.setLayout(cards);
 
@@ -187,7 +188,6 @@ public class EatHealthy extends JFrame
 			System.out.println("WelcomePage Constructor");
 			enterGameButton = new JButton("Enter the god dam game");
 			enterGameButton.setPreferredSize(new Dimension(300, 100));
-
 			enterGameButton.addActionListener(this);
 			add(enterGameButton);
 
