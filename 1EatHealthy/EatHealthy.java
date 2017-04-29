@@ -221,7 +221,7 @@ public class EatHealthy extends JFrame
 			String enteringGameButton = enterGameButton.getText();
 			if (enteringGameButton == "Enter the god dam game")
 			{
-				System.out.println("this button works yayaya YEOOMANNNN");
+				System.out.println("YEEOOEOOEOOEOEOOEOEOEOEOOEEOOOEOEOAMAMAMAMAMMAMAMAMAMAMMAMs");
 
 			}
 			somethingEntered = true;//IF SOMETHING  DO IT LMAO CHECK THE NOTES
