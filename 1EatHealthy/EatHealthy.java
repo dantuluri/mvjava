@@ -179,7 +179,7 @@ public class EatHealthy extends JFrame
 			Font titleFont = new Font("Serif", Font.BOLD, 20);                //Set Fonts
 			setFont(titleFont);
 			BottomPanel bp = new BottomPanel();                //Instantiate the Start Panel
-			bp.setBounds(0,100,700,50);
+			bp.setBounds(0,100,700,50);//add bottom panel
 			add(bp);
 			System.out.println("Checkpoint 2");
 			enterName = new JTextField("Thisis a Name");
@@ -196,9 +196,9 @@ public class EatHealthy extends JFrame
 			super.paintComponent(g);                        // draw Images first, draws background
 			g.drawImage(welcomeBackground, 0,0,800,800,this);//this makes the image
 			//g.drawImage(back, 0,0,600,400,this);
-			Font font = new Font ("Sans", Font.BOLD, 30);
-			g.setFont(font);
-			g.drawString("Welcome to the Eat Healthy Game!",100,100);
+			Font font = new Font ("Sans", Font.BOLD, 30);//initializes font
+			g.setFont(font);//sets font int graphics
+			g.drawString("Welcome to the Eat Healthy Game!",100,100);//sets the string that is displayed on the panel
 
 			if (startPressed)//if the button is pressed
 			{                                //boolean for startPressed and hsPressed to trigger thecorresponding CardLayout. For testing we'll just use a String
@@ -214,10 +214,10 @@ public class EatHealthy extends JFrame
 		}
 		class TextFieldHandler implements ActionListener
 		{
-			public void actionPerformed(ActionEvent e)
+			public void actionPerformed(ActionEvent evt)
 			{
-				welcomePan.name = e.getActionCommand();//gets the action command check what evt.getActionCommand does too
-				welcomePan.somethingEntered = true;//IF SOMETHING THAT IS NOT DIFFERENTO FROM ORIGINALDOESNT DO IT LMAO CHECK THE NOTES
+				welcomePan.name = evt.getActionCommand();//gets the action command check what evt.getActionCommand does too
+				welcomePan.somethingEntered = true;//IF SOMETHING  DO IT LMAO CHECK THE NOTES
 				System.out.println("Checkpoint TextField Handler");
 				welcomePan.repaint();
 			}
