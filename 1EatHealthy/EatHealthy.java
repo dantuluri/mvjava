@@ -78,6 +78,8 @@ import javax.swing.ImageIcon;
 import java.io.BufferedWriter;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 public class EatHealthy extends JFrame
 {
 	private Image image;
@@ -167,7 +169,7 @@ public class EatHealthy extends JFrame
 		}                                //  Panel holder (Holds all the Panels,for the Card Layout)(essentially)
 	}
 
-	class WelcomePage extends JPanel implements ActionListener
+	class WelcomePage extends JPanel implements ActionListener, FocusListener
 	{
 		String buttonStatus;
 		boolean dirPressed;                //make proper boolean variables for directions, start button, and the scores button, so it can can conduct the corresponding actions
@@ -180,12 +182,16 @@ public class EatHealthy extends JFrame
 		String name;
 		boolean somethingEntered;
 
+
 		public WelcomePage()
 		{
 			setLayout(flow);//set flow layout for welcome page
 			//Card Layout made( needs more pseudocode)
 			setBackground(Color.WHITE);
 			System.out.println("WelcomePage Constructor");
+			JTextField textField = new JTextField("A TextField");
+    textField.addFocusListener(this);
+
 			enterGameButton = new JButton("Enter the god dam game");
 			enterGameButton.setPreferredSize(new Dimension(300, 100));
 			enterGameButton.addActionListener(this);
