@@ -15,7 +15,18 @@
 * Health bar is shown.
 * Virtual human player urges normal human player to eat food by showing food on the right.
 *
+WelcomePage panel shows up with the background
+Asks for name and you press start Game
+If name is not provided and they press start:::: give them alert asking them to enter a name
+
+
+
+
+
+
 */
+
+
 
 // import javax.swing.JFrame;	//import javax.swing.*;
 // import javax.swing.JPanel;
@@ -150,113 +161,76 @@ public class EatHealthy extends JFrame
 	{
 		public PanelHolder()
 		{
-			setBackground(Color.BLUE);
+			setBackground(Color.GREEN);
+			System.out.print("PanelHolder");
 		}                                //  Panel holder (Holds all the Panels,for the Card Layout)(essentially)
 	}
 
-	class WelcomePage extends JPanel
+	class WelcomePage extends JPanel implements ActionListener
 	{
 		String buttonStatus;
 		boolean dirPressed;                //make proper boolean variables for directions, start button, and the scores button, so it can can conduct the corresponding actions
 		boolean startPressed;
 		boolean hsPressed;
 		String tempString;
-		Image welcomeBackground = Toolkit.getDefaultToolkit().getImage("welcome.jpg");//getsImage from my computer using the get DefaultToolKit
-
-		//boolean squirtleChosen;
-		//boolean charizardChosen;
-		//boolean bulbasaurChosen;
-
+		Image welcomeBackground = Toolkit.getDefaultToolkit().getImage("welcome.jpg");//getsImage from my computer using the get DefaultToolKit sets the background
 		JTextField enterName;
 		String name;
 		boolean somethingEntered;
 
 		public WelcomePage()
 		{
-			setLayout(flow);
+			setLayout(flow);//set flow layout for welcome page
 			//Card Layout made( needs more pseudocode)
 			setBackground(Color.WHITE);
-			Font titleFont = new Font("Serif", Font.BOLD, 20);                //Set Fonts
-			setFont(titleFont);
-			BottomPanel bp = new BottomPanel();                //Instantiate the Start Panel
-			bp.setBounds(0,100,700,50);//add bottom panel
-			add(bp);
-			System.out.println("Checkpoint 2");
-			enterName = new JTextField("Thisis a Name");
-			TextFieldHandler enteringName = new TextFieldHandler();
-			//TODO WHAT DOES SPTF TF MEAN
-			enterName.addActionListener(enteringName);
-			enterName.setBounds(0,0,0,0);
+			System.out.println("WelcomePage Constructor");
+			enterName = new JTextField("Enter your name");
+			addActionListener(enterName);
+			//enterName.setBounds(10,100,200,300);
 			add(enterName);
+			String buttonStatus = "BETA Game!";//the buttonStatus is useless because it doesnt help anyone
+			System.out.println("what the heck is bottom panel");
+			JButton start = new JButton(buttonStatus);
+			start.addActionListener(jbhs);
+			start.setBounds(0,0,100,50);
+			System.out.println("Checkpoint 5");
+			add(start);
 		}
 
 		public void paintComponent(Graphics g)
 		{                //graphics method header
-			System.out.println("Checkpoint 3");
+			System.out.println("WelcomePage paintComponent");
 			super.paintComponent(g);                        // draw Images first, draws background
 			g.drawImage(welcomeBackground, 0,0,800,800,this);//this makes the image
 			//g.drawImage(back, 0,0,600,400,this);
 			Font font = new Font ("Sans", Font.BOLD, 30);//initializes font
 			g.setFont(font);//sets font int graphics
 			g.drawString("Welcome to the Eat Healthy Game!",100,100);//sets the string that is displayed on the panel
-
+			System.out.println("WelcomePage painComponent pt.2");
 			if (startPressed)//if the button is pressed
 			{                                //boolean for startPressed and hsPressed to trigger thecorresponding CardLayout. For testing we'll just use a String
 				enterName.setBounds(650,500,200,50);
-				buttonStatus = "Enter name!";
 				startPressed = false;
+				System.out.println("startPressed idk what is");
 				if(somethingEntered)
 				{
 					cards.show(pHolder, "LandingPage");
+					System.out.println("CardLayout changes to LandingPage");
 					//HOLY SHUIT THIS IS WHAT IVE BEEN LOOOKING GOR FOR SO MANY UEARS
 				}
 			}
-		}
-		class TextFieldHandler implements ActionListener
-		{
-			public void actionPerformed(ActionEvent evt)
-			{
-				welcomePan.name = evt.getActionCommand();//gets the action command check what evt.getActionCommand does too
-				welcomePan.somethingEntered = true;//IF SOMETHING  DO IT LMAO CHECK THE NOTES
-				System.out.println("Checkpoint TextField Handler");
-				welcomePan.repaint();
-			}
-		}
-	}
+		}//end of paintComponent
 
-	class BottomPanel extends JPanel
-	{
-		public BottomPanel()
-		{
-			setLayout(flow);
-			String buttonStatus = "BETA Game!";//the buttonStatus is useless because it doesnt help anyone
-			JButton start = new JButton(buttonStatus);
-			JButtonHandlerS jbhs = new JButtonHandlerS();//button handler check on this tomorrow.
-			start.addActionListener(jbhs);
-			start.setBounds(0,0,100,50);
-			System.out.println("Checkpoint 5");
-			add(start);
-		}
-	}
-	class JButtonHandlerS implements ActionListener
-	{
 		public void actionPerformed(ActionEvent e)
 		{
-			welcomePan.tempString = "You just pressed start";
-			welcomePan.enterName.setBounds(300,500,200,50);
-			String buttonStatus = "Enter Name";
-			JButton start = new JButton(buttonStatus);
-			JButtonHandlerS jbhs = new JButtonHandlerS();
-			start.addActionListener(jbhs);
-			welcomePan.startPressed = true;
-			System.out.println("Checkpoint 6");
+			name = e.getActionCommand();//gets the action command check what evt.getActionCommand does too
 
-
-			//IF PRESSED THE BUTTON 			welcomePan.switchpanel("LandingPage");
- //SWITCHES PANELS
-			welcomePan.repaint();
+			somethingEntered = true;//IF SOMETHING  DO IT LMAO CHECK THE NOTES
+			System.out.println("Checkpoint TextField Handler");
+			repaint();
 		}
-	}
+
+	}//end of welcomePage
 
 	class LandingPage extends JPanel
 	{
@@ -268,9 +242,9 @@ public class EatHealthy extends JFrame
 			setBackground(Color.YELLOW);//set background to yello
 			Font titleFont = new Font("Serif", Font.BOLD, 20);                //Set Fonts
 			setFont(titleFont);
-			System.out.println("Checkpoint Next Panel");
+			System.out.println("Houston, we've landed");
 		}
-	}
+	}//end of landing page
 }
 
 
