@@ -80,12 +80,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+
+
 public class EatHealthy extends JFrame
 {
 	private Image image;
 	private PanelHolder pHolder;//panel holder
 	private CardLayout cards;//card layout
 	private FlowLayout flow;
+	private BorderLayout border;
+
 	private WelcomePage welcomePan;//welcome screen                      ADD THAT THE GOAL IS TO MAKE THE PERSON HAPPY
 	private LandingPage landingPan;//where the user is most of the time
 	// private HealthBarPanel healthyBar;//health bar panel in LandingPage
@@ -99,7 +103,8 @@ public class EatHealthy extends JFrame
 	// private StomachQuestions stomachQuiz;
 	// private SmallIntestinePanel smallIntestineProcess;
 	// private SmallIntestineQuestions smallintestineQuiz;
-	// private LargeIntestinePanel largeIntestineProcess;
+	// pri
+	vate LargeIntestinePanel largeIntestineProcess;
 	// private LargeIntestineQuestions largeIntestineQuiz;
 	// private EndingPanel ending;
 	public static void main(String[] args)
@@ -232,6 +237,14 @@ public class EatHealthy extends JFrame
 			System.out.println("Checkpoint TextField Handler");
 			repaint();
 		}
+
+		public void focusGained(FocusEvent e) {
+       // Do whatever you want
+    }
+
+    public void focusLost(FocusEvent e) {
+       // Save the text in the field to your id variable
+    }
 
 	}//end of welcomePage
 
