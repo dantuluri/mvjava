@@ -97,7 +97,8 @@ public class SimpleCalc extends JApplet {
          add(buttonPanel);
          add(answer);
 
-         /* Try to give the input focus to xInput, which is the natural
+         /* Try to give the input
+          to xInput, which is the natural
           place for the user to start. */
 
          xInput.requestFocus();
