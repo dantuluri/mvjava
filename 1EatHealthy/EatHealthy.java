@@ -90,6 +90,7 @@ public class EatHealthy extends JFrame
 	private FlowLayout flow;
 	private BorderLayout border;
 	private GridLayout grid;
+	private String name;
 
 	private InitializeGame initPan;
 	private WelcomePage welcomePan;//welcome screen                      ADD THAT THE GOAL IS TO MAKE THE PERSON HAPPY
@@ -185,11 +186,7 @@ public class EatHealthy extends JFrame
 
 	class WelcomePage extends JPanel implements ActionListener
 	{
-		String buttonStatus;
-		boolean dirPressed;                //make proper boolean variables for directions, start button, and the scores button, so it can can conduct the corresponding actions
-		boolean startPressed;
-		boolean hsPressed;
-		String tempString;
+
 		Image welcomeBackground = Toolkit.getDefaultToolkit().getImage("welcome.jpg");//getsImage from my computer using the get DefaultToolKit sets the background
 		String name;
 		boolean somethingEntered;
@@ -201,7 +198,6 @@ public class EatHealthy extends JFrame
 			setLayout(flow);			//Card Layout made( needs more pseudocode)
 			setBackground(Color.WHITE);
 			//add(textFieldo, BorderLayout.NORTH);
-
 
 		}//end panel
 
@@ -215,13 +211,7 @@ public class EatHealthy extends JFrame
 			g.setFont(font);//sets font int graphics
 			g.drawString("Welcome to the Eat Healthy Game!",100,100);//sets the string that is displayed on the panel
 			System.out.println("WelcomePage painComponent pt.2");
-			System.out.println(name);
-				if(somethingEntered)
-				{
-					cards.show(pHolder, "LandingPage");
-					System.out.println("CardLayout changes to LandingPage");
-					//HOLY SHUIT THIS IS WHAT IVE BEEN LOOOKING GOR FOR SO MANY UEARS
-				}
+
 
 
 		}//end of paintComponent
@@ -268,12 +258,12 @@ public class EatHealthy extends JFrame
 		{
 			setLayout(flow);
 
-			JButton start = new JButton("Start Game");
+			//JButton start = new JButton("Start Game");
 			//JButtonHandlerS jbhs = new JButtonHandlerS();
 			//start.addActionListener(this);
 			//start.addActionListener(jbhs);
-			start.setBounds(0,0,700,70);
-			add(start);
+			//start.setBounds(0,0,700,70);
+			//add(start);
 
 			enterGameButton.setPreferredSize(new Dimension(50, 50));
 			enterGameButton.addActionListener(this);
@@ -308,7 +298,22 @@ public class EatHealthy extends JFrame
 
 
 
+
 		}
+
+		public void paintComponent(Graphics g)
+		{
+			if(somethingEntered)
+			{
+				cards.show(pHolder, "LandingPage");
+				System.out.println("CardLayout changes to LandingPage");
+				//HOLY SHUIT THIS IS WHAT IVE BEEN LOOOKING GOR FOR SO MANY UEARS
+			}
+			System.out.println(name);
+
+		}
+
+
 	}
 	//
 	// class JButtonHandlerS implements ActionListener
