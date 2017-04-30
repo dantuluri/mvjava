@@ -167,7 +167,7 @@ public class EatHealthy extends JFrame
 		add(pHolder);
 		setVisible(true);
 
-
+		welcomePan.setBounds(0, 0, 790, 200);
 
 	}
 
@@ -189,9 +189,8 @@ public class EatHealthy extends JFrame
 		boolean startPressed;
 		boolean hsPressed;
 		String tempString;
-		JButton enterGameButton = new JButton("Enter");
+		JButton enterGameButton = new JButton("enterGameButton");
 		Image welcomeBackground = Toolkit.getDefaultToolkit().getImage("welcome.jpg");//getsImage from my computer using the get DefaultToolKit sets the background
-		JTextField enterName;
 		String name;
 		boolean somethingEntered;
 		JTextField textFieldo = new JTextField(10);
@@ -200,9 +199,8 @@ public class EatHealthy extends JFrame
 
 		public WelcomePage()
 		{
-			setLayout(border);			//Card Layout made( needs more pseudocode)
+			setLayout(flow);			//Card Layout made( needs more pseudocode)
 			setBackground(Color.WHITE);
-			System.out.println("WelcomePage Constructor");
 			//add(textFieldo, BorderLayout.NORTH);
 			add(textFieldo);
 			enterGameButton.setPreferredSize(new Dimension(50, 50));
@@ -233,7 +231,7 @@ public class EatHealthy extends JFrame
 			});
 
 			add(labelo);
-			add(textFieldo, BorderLayout.SOUTH);
+			add(textFieldo);
 			System.out.println(name);
 
 		}//end panel
@@ -264,7 +262,7 @@ public class EatHealthy extends JFrame
 		{
 			name = e.getActionCommand();//gets the action command check what evt.getActionCommand does too
 			System.out.println(name);
-			add(new JButton("Center"),BorderLayout.CENTER);
+			// if something ahppens this POPs UPP WOOOT   add(new JButton("Center"),BorderLayout.CENTER);
 			String enteringGameButton = enterGameButton.getText();
 			if (enteringGameButton == "Enter the god dam game")
 			{
@@ -299,25 +297,26 @@ public class EatHealthy extends JFrame
 			setLayout(flow);
 
 			JButton start = new JButton("Start Game");
-			JButtonHandlerS jbhs = new JButtonHandlerS();
-			start.addActionListener(jbhs);
+			//JButtonHandlerS jbhs = new JButtonHandlerS();
+			//start.addActionListener(this);
+			//start.addActionListener(jbhs);
 			start.setBounds(0,0,700,70);
 			add(start);
 
 
 		}
 	}
-
-	class JButtonHandlerS implements ActionListener
-	{
-		public void actionPerformed(ActionEvent e)
-		{
-			welcomePan.tempString = "you just pressed start bro";
-			welcomePan.enterName.setBounds(650,500,200,50);
-			welcomePan.startPressed = true;
-			welcomePan.repaint();
-		}
-	}
+	//
+	// class JButtonHandlerS implements ActionListener
+	// {
+	// 	public void actionPerformed(ActionEvent e)
+	// 	{
+	// 		welcomePan.tempString = "you just pressed start bro";
+	// 		welcomePan.enterName.setBounds(650,500,200,50);
+	// 		welcomePan.startPressed = true;
+	// 		welcomePan.repaint();
+	// 	}
+	// }
 
 	// class JButtonHandlerH implements ActionListener
 	// {
