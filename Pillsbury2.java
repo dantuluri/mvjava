@@ -27,7 +27,7 @@ import java.awt.event.ActionEvent;
 
 public class Pillsbury2
 {
-    public static void main( String[] args )
+    public static void main(String[] args )xs
     {
         Pillsbury2 pills2 = new Pillsbury2();
         pills2.runIt();

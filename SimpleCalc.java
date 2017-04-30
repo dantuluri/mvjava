@@ -24,6 +24,8 @@ public class SimpleCalc extends JApplet {
 
    public static class CalcPanel extends JPanel implements ActionListener {
 
+
+
       private JTextField xInput, yInput;  // Input boxes for the numbers.
 
         private JLabel answer;  // JLabel for displaying the answer, or an
@@ -97,7 +99,8 @@ public class SimpleCalc extends JApplet {
          add(buttonPanel);
          add(answer);
 
-         /* Try to give the input focus to xInput, which is the natural
+         /* Try to give the input
+          to xInput, which is the natural
           place for the user to start. */
 
          xInput.requestFocus();
