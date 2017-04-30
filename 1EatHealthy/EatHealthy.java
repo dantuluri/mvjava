@@ -185,6 +185,7 @@ public class EatHealthy extends JFrame
 		JTextField enterName;
 		String name;
 		boolean somethingEntered;
+		private JTextField tf;
 
 
 		public WelcomePage()
@@ -231,7 +232,6 @@ public class EatHealthy extends JFrame
 			if (enteringGameButton == "Enter the god dam game")
 			{
 				System.out.println("YEEOOEofihwepofjioFIEIFWIEFHWIEHFIWEUHFIWEUHFIUEHOOEOOEM");
-
 			}
 			System.out.println("Checkpoint TextField Handler");
 			repaint();

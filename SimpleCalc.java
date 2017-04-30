@@ -24,6 +24,8 @@ public class SimpleCalc extends JApplet {
 
    public static class CalcPanel extends JPanel implements ActionListener {
 
+
+
       private JTextField xInput, yInput;  // Input boxes for the numbers.
 
         private JLabel answer;  // JLabel for displaying the answer, or an
