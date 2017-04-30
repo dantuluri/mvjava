@@ -168,7 +168,7 @@ public class EatHealthy extends JFrame
 		setVisible(true);
 
 
-		
+
 	}
 
 	class PanelHolder extends JPanel
@@ -180,14 +180,7 @@ public class EatHealthy extends JFrame
 		}                                //  Panel holder (Holds all the Panels,for the Card Layout)(essentially)
 	}
 
-	class InitializeGame extends JPanel
-	{
-		public InitializeGame()
-		{
-			setLayout(flow);
-			setBackground(Color.BLUE);
-		}
-	}
+
 
 	class WelcomePage extends JPanel implements ActionListener
 	{
@@ -215,6 +208,10 @@ public class EatHealthy extends JFrame
 			enterGameButton.setPreferredSize(new Dimension(50, 50));
 			enterGameButton.addActionListener(this);
 			add(enterGameButton, BorderLayout.NORTH);
+
+			textFieldo = new JTextField("Enter Name");
+			 textFieldo.setBounds(0,0,0,0);
+
 			textFieldo.addActionListener(new ActionListener()
 			{
 						 public void actionPerformed(ActionEvent e)
@@ -235,6 +232,7 @@ public class EatHealthy extends JFrame
 			});
 
 			add(labelo);
+			add(textFieldo);
 
 		}//end panel
 
@@ -278,9 +276,57 @@ public class EatHealthy extends JFrame
 			repaint();
 		}
 
+		// class SPTF implements ActionListener
+		// {
+		// 	public void actionPerformed(ActionEvent e)
+		// 	{
+		// 		welcomePan.name = e.getActionCommand();
+		// 		welcomePan.somethingEntered = true;
+		// 		welcomePan.repaint();
+		// 	}
+		// }
+
+
 
 
 	}//end of welcomePage
+
+	class InitializeGame extends JPanel
+	{
+		public InitializeGame()
+		{
+			setLayout(flow);
+
+			JButton start = new JButton("Start Game");
+			JButtonHandlerS jbhs = new JButtonHandlerS();
+			start.addActionListener(jbhs);
+			start.setBounds(0,0,700,70);
+			add(start);
+
+
+		}
+	}
+
+	class JButtonHandlerS implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			welcomePan.tempString = "you just pressed start bro";
+			welcomePan.enterName.setBounds(650,500,200,50);
+			welcomePan.startPressed = true;
+			welcomePan.repaint();
+		}
+	}
+
+	// class JButtonHandlerH implements ActionListener
+	// {
+	// 	public void actionPerformed(ActionEvent e)
+	// 	{
+	// 		welcomePan.tempString = "you just pressed the high scores button brodie";
+	// 		welcomePan.hsPressed = true;
+	// 		welcomePan.repaint();
+	// 	}
+	// }
 
 	class LandingPage extends JPanel
 	{
