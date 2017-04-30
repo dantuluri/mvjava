@@ -167,7 +167,8 @@ public class EatHealthy extends JFrame
 		add(pHolder);
 		setVisible(true);
 
-		welcomePan.setBounds(0, 0, 790, 200);
+		welcomePan.setBounds(0, 0, 800, 600);
+		initPan.setBounds(0,600,800,600);
 
 	}
 
@@ -189,11 +190,9 @@ public class EatHealthy extends JFrame
 		boolean startPressed;
 		boolean hsPressed;
 		String tempString;
-		JButton enterGameButton = new JButton("enterGameButton");
 		Image welcomeBackground = Toolkit.getDefaultToolkit().getImage("welcome.jpg");//getsImage from my computer using the get DefaultToolKit sets the background
 		String name;
 		boolean somethingEntered;
-		JTextField textFieldo = new JTextField(10);
 		Integer asciiInput;
 		JLabel labelo = new JLabel();
 
@@ -202,37 +201,7 @@ public class EatHealthy extends JFrame
 			setLayout(flow);			//Card Layout made( needs more pseudocode)
 			setBackground(Color.WHITE);
 			//add(textFieldo, BorderLayout.NORTH);
-			add(textFieldo);
-			enterGameButton.setPreferredSize(new Dimension(50, 50));
-			enterGameButton.addActionListener(this);
-			add(enterGameButton, BorderLayout.NORTH);
 
-			textFieldo = new JTextField("Enter Name");
-			 textFieldo.setBounds(10,20,40,50);
-
-			textFieldo.addActionListener(new ActionListener()
-			{
-						 public void actionPerformed(ActionEvent e)
-						 {
-									 String input = textFieldo.getText();
-									 labelo.setText(input);
-									 name = input;
-						 }
-			});
-
-			add(enterGameButton);
-			enterGameButton.addActionListener(new ActionListener()
-			{
-							public void actionPerformed(ActionEvent e)
-							{
-										 String input = textFieldo.getText();
-										 labelo.setText(input);
-							}
-			});
-
-			add(labelo);
-			add(textFieldo);
-			System.out.println(name);
 
 		}//end panel
 
@@ -240,7 +209,7 @@ public class EatHealthy extends JFrame
 		{                //graphics method header
 			System.out.println("WelcomePage paintComponent");
 			super.paintComponent(g);                        // draw Images first, draws background
-			g.drawImage(welcomeBackground, 0,0,800,800,this);//this makes the image
+			g.drawImage(welcomeBackground, 0,0,800,600,this);//this makes the image
 			//g.drawImage(back, 0,0,600,400,this);
 			Font font = new Font ("Sans", Font.BOLD, 30);//initializes font
 			g.setFont(font);//sets font int graphics
@@ -292,6 +261,9 @@ public class EatHealthy extends JFrame
 
 	class InitializeGame extends JPanel
 	{
+		JButton enterGameButton = new JButton("enterGameButton");
+		JTextField textFieldo = new JTextField(10);
+
 		public InitializeGame()
 		{
 			setLayout(flow);
@@ -302,6 +274,38 @@ public class EatHealthy extends JFrame
 			//start.addActionListener(jbhs);
 			start.setBounds(0,0,700,70);
 			add(start);
+
+			enterGameButton.setPreferredSize(new Dimension(50, 50));
+			enterGameButton.addActionListener(this);
+			add(enterGameButton, BorderLayout.NORTH);
+
+			textFieldo = new JTextField("Enter Name");
+			 textFieldo.setBounds(10,20,40,50);
+
+			textFieldo.addActionListener(new ActionListener()
+			{
+						 public void actionPerformed(ActionEvent e)
+						 {
+									 String input = textFieldo.getText();
+									 labelo.setText(input);
+									 name = input;
+						 }
+			});
+
+			add(enterGameButton);
+			enterGameButton.addActionListener(new ActionListener()
+			{
+							public void actionPerformed(ActionEvent e)
+							{
+										 String input = textFieldo.getText();
+										 labelo.setText(input);
+							}
+			});
+
+			add(labelo);
+			add(textFieldo);
+			System.out.println(name);
+
 
 
 		}
@@ -333,6 +337,9 @@ public class EatHealthy extends JFrame
 
 		public LandingPage()
 		{
+			setBackground(Color.RED
+
+			);
 			setLayout(flow);//sets the layout to flow
 			//Card Layout made( needs more pseudocode)
 			setBackground(Color.YELLOW);//set background to yello
