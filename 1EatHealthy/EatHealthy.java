@@ -173,44 +173,42 @@ public class EatHealthy extends JFrame
 		}                                //  Panel holder (Holds all the Panels,for the Card Layout)(essentially)
 	}
 
-	class WelcomePage extends JPanel implements ActionListener, FocusListener
+	class WelcomePage extends JPanel implements ActionListener
 	{
 		String buttonStatus;
 		boolean dirPressed;                //make proper boolean variables for directions, start button, and the scores button, so it can can conduct the corresponding actions
 		boolean startPressed;
 		boolean hsPressed;
 		String tempString;
-		private JButton enterGameButton;
+		JButton enterGameButton = new JButton("Enter");
 		Image welcomeBackground = Toolkit.getDefaultToolkit().getImage("welcome.jpg");//getsImage from my computer using the get DefaultToolKit sets the background
 		JTextField enterName;
 		String name;
 		boolean somethingEntered;
-		JTextField textFieldo = new JTextField(15);
+		JTextField textFieldo = new JTextField(10);
+		Integer asciiInput;
+		JLabel labelo = new JLabel();
 
 
 		public WelcomePage()
 		{
-			setLayout(flow);//set flow layout for welcome page
+			setLayout(border);//set flow layout for welcome page
 			//Card Layout made( needs more pseudocode)
 			setBackground(Color.WHITE);
 			System.out.println("WelcomePage Constructor");
-
-			enterGameButton = new JButton("Enter the god dam game");
-			enterGameButton.setPreferredSize(new Dimension(300, 100));
+			add(textFieldo, BorderLayout.NORTH);
+			enterGameButton.setPreferredSize(new Dimension(50, 50));
 			enterGameButton.addActionListener(this);
-			add(enterGameButton);
-			add(textFieldo);
+			add(enterGameButton, BorderLayout.SOUTH);
 
 			textFieldo.addActionListener(new ActionListener()
 			{
 						 public void actionPerformed(ActionEvent e)
 						 {
 									 String input = textFieldo.getText();
-									 //labelo.setText(input);
-									 System.out.println(input);
+									 labelo.setText(input);
 						 }
 			});
-
 
 			add(enterGameButton);
 			enterGameButton.addActionListener(new ActionListener()
@@ -218,15 +216,13 @@ public class EatHealthy extends JFrame
 							public void actionPerformed(ActionEvent e)
 							{
 										 String input = textFieldo.getText();
-										 //labelo.setText(input);
-										 System.out.println(input);
+										 labelo.setText(input);
 							}
 			});
 
-			//panelo.add(labelo);
-			//add(panelo);
+			add(labelo);
 
-				}
+		}//end panel
 
 		public void paintComponent(Graphics g)
 		{                //graphics method header
@@ -245,6 +241,9 @@ public class EatHealthy extends JFrame
 					System.out.println("CardLayout changes to LandingPage");
 					//HOLY SHUIT THIS IS WHAT IVE BEEN LOOOKING GOR FOR SO MANY UEARS
 				}
+
+
+
 		}//end of paintComponent
 
 
@@ -258,38 +257,13 @@ public class EatHealthy extends JFrame
 				System.out.println("YEEOOEofihwepofjioFIEIFWIEFHWIEHFIWEUHFIWEUHFIUEHOOEOOEM");
 			}
 			System.out.println("Checkpoint TextField Handler");
+
+
+
 			repaint();
 		}
 
-		public void focusGained(java.awt.event.FocusEvent focusEvent)
-		{
-       // Do whatever you want
-			 try {
-            JTextField src = (JTextField)focusEvent.getSource();
-            if (src.getText().equals("Text here!"))
-						{
-                src.setText("");
-            }
-        		}
-						catch (ClassCastException ignored) {
-            /* I only listen to JTextFields */
-        }
-    }
 
-    public void focusLost(java.awt.event.FocusEvent focusEvent)
-		{
-       // Save the text in the field to your id variable
-			 try {
-					 JTextField src = (JTextField)focusEvent.getSource();
-					 if (src.getText().equals("")) {
-							 src.setText("Text here!");
-					 }
-			 } catch (ClassCastException ignored) {
-					 /* I
-
-					 only listen to JTextFields */
-			 }
-    }
 
 	}//end of welcomePage
 
