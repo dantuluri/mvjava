@@ -91,6 +91,7 @@ public class EatHealthy extends JFrame
 	private BorderLayout border;
 	private GridLayout grid;
 
+	private InitializeGame initPan;
 	private WelcomePage welcomePan;//welcome screen                      ADD THAT THE GOAL IS TO MAKE THE PERSON HAPPY
 	private LandingPage landingPan;//where the user is most of the time
 	// private HealthBarPanel healthyBar;//health bar panel in LandingPage
@@ -130,6 +131,7 @@ public class EatHealthy extends JFrame
 
 		pHolder.setLayout(cards);
 
+		initPan = new InitializeGame();
 		welcomePan = new WelcomePage();
 		landingPan = new LandingPage();
 		//healthyBar = new HealthyBarPanel();
@@ -164,6 +166,9 @@ public class EatHealthy extends JFrame
 		// pHolder.add(ending, "EndingPanel");
 		add(pHolder);
 		setVisible(true);
+
+
+		
 	}
 
 	class PanelHolder extends JPanel
@@ -173,6 +178,15 @@ public class EatHealthy extends JFrame
 			setBackground(Color.GREEN);
 			System.out.print("PanelHolder");
 		}                                //  Panel holder (Holds all the Panels,for the Card Layout)(essentially)
+	}
+
+	class InitializeGame extends JPanel
+	{
+		public InitializeGame()
+		{
+			setLayout(flow);
+			setBackground(Color.BLUE);
+		}
 	}
 
 	class WelcomePage extends JPanel implements ActionListener
@@ -191,18 +205,16 @@ public class EatHealthy extends JFrame
 		Integer asciiInput;
 		JLabel labelo = new JLabel();
 
-
 		public WelcomePage()
 		{
-			setLayout(new GridLayout(20,20));			//Card Layout made( needs more pseudocode)
+			setLayout(border);			//Card Layout made( needs more pseudocode)
 			setBackground(Color.WHITE);
 			System.out.println("WelcomePage Constructor");
 			//add(textFieldo, BorderLayout.NORTH);
 			add(textFieldo);
 			enterGameButton.setPreferredSize(new Dimension(50, 50));
 			enterGameButton.addActionListener(this);
-			//add(enterGameButton, BorderLayout.SOUTH);
-			add(enterGameButton);
+			add(enterGameButton, BorderLayout.NORTH);
 			textFieldo.addActionListener(new ActionListener()
 			{
 						 public void actionPerformed(ActionEvent e)
@@ -230,7 +242,6 @@ public class EatHealthy extends JFrame
 		{                //graphics method header
 			System.out.println("WelcomePage paintComponent");
 			super.paintComponent(g);                        // draw Images first, draws background
-			add(new JButton("Center"),BorderLayout.CENTER);
 			g.drawImage(welcomeBackground, 0,0,800,800,this);//this makes the image
 			//g.drawImage(back, 0,0,600,400,this);
 			Font font = new Font ("Sans", Font.BOLD, 30);//initializes font
