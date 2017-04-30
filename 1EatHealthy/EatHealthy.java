@@ -185,7 +185,7 @@ public class EatHealthy extends JFrame
 		JTextField enterName;
 		String name;
 		boolean somethingEntered;
-		private JTextField tf;
+		JTextField textFieldo = new JTextField(15);
 
 
 		public WelcomePage()
@@ -194,13 +194,37 @@ public class EatHealthy extends JFrame
 			//Card Layout made( needs more pseudocode)
 			setBackground(Color.WHITE);
 			System.out.println("WelcomePage Constructor");
-			JTextField textField = new JTextField("A TextField");
-    textField.addFocusListener(this);
 
 			enterGameButton = new JButton("Enter the god dam game");
 			enterGameButton.setPreferredSize(new Dimension(300, 100));
 			enterGameButton.addActionListener(this);
 			add(enterGameButton);
+			add(textFieldo);
+
+			textFieldo.addActionListener(new ActionListener()
+			{
+						 public void actionPerformed(ActionEvent e)
+						 {
+									 String input = textFieldo.getText();
+									 //labelo.setText(input);
+									 System.out.println(input);
+						 }
+			});
+
+
+			add(enterGameButton);
+			enterGameButton.addActionListener(new ActionListener()
+			{
+							public void actionPerformed(ActionEvent e)
+							{
+										 String input = textFieldo.getText();
+										 //labelo.setText(input);
+										 System.out.println(input);
+							}
+			});
+
+			//panelo.add(labelo);
+			//add(panelo);
 
 				}
 

@@ -9,10 +9,11 @@ import javax.swing.JTextField;
 
 public class Tutorial extends JFrame
 {
-       JPanel jp = new JPanel();
-       JLabel jl = new JLabel();
-       JTextField jt = new JTextField(30);
-       JButton jb = new JButton("Enter");
+       JPanel panelo = new JPanel();
+       JLabel labelo = new JLabel();
+       JTextField textFieldo = new JTextField(20
+       );
+       JButton buttono = new JButton("Enter");
 
        public Tutorial()
        {
@@ -21,30 +22,30 @@ public class Tutorial extends JFrame
               setSize(400, 200);
               setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-              jp.add(jt);
+              panelo.add(textFieldo);
 
 
-              jt.addActionListener(new ActionListener()
+              textFieldo.addActionListener(new ActionListener()
               {
                      public void actionPerformed(ActionEvent e)
                      {
-                           String input = jt.getText();
-                           jl.setText(input);
+                           String input = textFieldo.getText();
+                           labelo.setText(input);
                      }
               });
 
-              jp.add(jb);
-              jb.addActionListener(new ActionListener()
+              panelo.add(buttono);
+              buttono.addActionListener(new ActionListener()
               {
                       public void actionPerformed(ActionEvent e)
                       {
-                             String input = jt.getText();
-                             jl.setText(input);
+                             String input = textFieldo.getText();
+                             labelo.setText(input);
                       }
               });
 
-              jp.add(jl);
-              add(jp);
+              panelo.add(labelo);
+              add(panelo);
 
        }
 
