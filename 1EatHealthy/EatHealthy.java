@@ -194,7 +194,7 @@ public class EatHealthy extends JFrame
 
 		public WelcomePage()
 		{
-			setLayout(new GridLayout(1,4));			//Card Layout made( needs more pseudocode)
+			setLayout(new GridLayout(20,20));			//Card Layout made( needs more pseudocode)
 			setBackground(Color.WHITE);
 			System.out.println("WelcomePage Constructor");
 			//add(textFieldo, BorderLayout.NORTH);
