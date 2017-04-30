@@ -210,7 +210,7 @@ public class EatHealthy extends JFrame
 			add(enterGameButton, BorderLayout.NORTH);
 
 			textFieldo = new JTextField("Enter Name");
-			 textFieldo.setBounds(0,0,0,0);
+			 textFieldo.setBounds(10,20,40,50);
 
 			textFieldo.addActionListener(new ActionListener()
 			{
@@ -218,6 +218,7 @@ public class EatHealthy extends JFrame
 						 {
 									 String input = textFieldo.getText();
 									 labelo.setText(input);
+									 name = input;
 						 }
 			});
 
@@ -232,7 +233,8 @@ public class EatHealthy extends JFrame
 			});
 
 			add(labelo);
-			add(textFieldo);
+			add(textFieldo, BorderLayout.SOUTH);
+			System.out.println(name);
 
 		}//end panel
 
@@ -246,14 +248,13 @@ public class EatHealthy extends JFrame
 			g.setFont(font);//sets font int graphics
 			g.drawString("Welcome to the Eat Healthy Game!",100,100);//sets the string that is displayed on the panel
 			System.out.println("WelcomePage painComponent pt.2");
-
+			System.out.println(name);
 				if(somethingEntered)
 				{
 					cards.show(pHolder, "LandingPage");
 					System.out.println("CardLayout changes to LandingPage");
 					//HOLY SHUIT THIS IS WHAT IVE BEEN LOOOKING GOR FOR SO MANY UEARS
 				}
-
 
 
 		}//end of paintComponent
