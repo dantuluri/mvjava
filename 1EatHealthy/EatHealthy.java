@@ -19,11 +19,6 @@ WelcomePage panel shows up with the background
 Asks for name and you press start Game
 If name is not provided and they press start:::: give them alert asking them to enter a name
 
-
-
-
-
-
 */
 
 
@@ -112,7 +107,7 @@ public class EatHealthy extends JFrame
 	public static void main(String[] args)
 	{
 		System.out.println("CheckPoint1");
-		EatHealthy eaty = new EatHealthy();
+		EatHealthy eaty = new EatHealthy();//initialize main frame
 	}
 
 	public EatHealthy()
@@ -120,17 +115,17 @@ public class EatHealthy extends JFrame
 		super("Eat Healthy!");
 		//	setLayout(new BorderLayouyt());
 		setSize(800, 800);		//will change later
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setLocation(0,0);
-		setResizable(false);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);//set close operation
+		setLocation(0,0);//set location of frame
+		setResizable(false);//set not to resize
 
-		pHolder = new PanelHolder();
-		cards = new CardLayout();
-		flow = new FlowLayout();
-		border = new BorderLayout();
-		grid = new GridLayout();
+		pHolder = new PanelHolder();//where I will hold all the panels to be shown
+		cards = new CardLayout();//card layout
+		flow = new FlowLayout();//init flow layout
+		border = new BorderLayout();//init border layout
+		grid = new GridLayout();//init grid
 
-		pHolder.setLayout(cards);
+		pHolder.setLayout(cards);//set the layout for the panel holder as card layout
 
 		initPan = new InitializeGame();
 		welcomePan = new WelcomePage();
@@ -150,9 +145,9 @@ public class EatHealthy extends JFrame
 		//  ending = new EndingPanel();
 
 
-		pHolder.add(welcomePan, "WelcomePage");
-		pHolder.add(initPan, "InitializeGame");
-		pHolder.add(landingPan, "LandingPage");
+		pHolder.add(welcomePan, "WelcomePage");//add welcome page to the panel holder
+		pHolder.add(initPan, "InitializeGame");//add the InitializeGame to the panel holder, although it should be taken out
+		pHolder.add(landingPan, "LandingPage");//add the landing page to the panel holder
 	 	//pHolder.add(healthyBar, "HealthyBarPanel");
 		// pHolder.add(foodyBar, "FoodPanel");
 		// pHolder.add(mouthProcess, "MouthPanel");
@@ -166,11 +161,11 @@ public class EatHealthy extends JFrame
 		// pHolder.add(largeIntestineProcess, "LargeIntestinePanel");
 		// pHolder.add(largeIntestineQuiz, "LargeIntestineQuestions");
 		// pHolder.add(ending, "EndingPanel");
-		add(pHolder);
-		setVisible(true);
+		add(pHolder);//add the panel holder
+		setVisible(true);//set everything to visible.
 
-		welcomePan.setBounds(0, 0, 800, 600);
-		initPan.setBounds(0,600,800,600);
+		welcomePan.setBounds(0, 0, 800, 600);//trying to set the bounds of the welcome panel
+		initPan.setBounds(0,600,800,600);//tring to set the bounds of the init panel to be at the bottom
 
 	}
 
@@ -178,8 +173,8 @@ public class EatHealthy extends JFrame
 	{
 		public PanelHolder()
 		{
-			setBackground(Color.GREEN);
-			System.out.print("PanelHolder");
+			setBackground(Color.GREEN);//set the background of a panel holder as green
+			System.out.print("PanelHolder");//this is a checkpoint
 		}                                //  Panel holder (Holds all the Panels,for the Card Layout)(essentially)
 	}
 
@@ -189,10 +184,10 @@ public class EatHealthy extends JFrame
 	{
 
 		Image welcomeBackground = Toolkit.getDefaultToolkit().getImage("welcome.jpg");//getsImage from my computer using the get DefaultToolKit sets the background
-		String name;
-		boolean somethingEntered;
-		Integer asciiInput;
-		JLabel labelo = new JLabel();
+		String name;//name of the user
+		boolean somethingEntered;//if something has been entered in the JTextField
+		Integer asciiInput;//set the input for the integer
+		JLabel labelo = new JLabel();//set the JLabel for making sure the JTextField works, but will take this out in the next revision
 
 		public WelcomePage()
 		{
@@ -204,14 +199,14 @@ public class EatHealthy extends JFrame
 
 		public void paintComponent(Graphics g)
 		{                //graphics method header
-			System.out.println("WelcomePage paintComponent");
+			System.out.println("WelcomePage paintComponent");//another checkpoint
 			super.paintComponent(g);                        // draw Images first, draws background
 			g.drawImage(welcomeBackground, 0,0,800,600,this);//this makes the image
 			//g.drawImage(back, 0,0,600,400,this);
 			Font font = new Font ("Sans", Font.BOLD, 30);//initializes font
 			g.setFont(font);//sets font int graphics
 			g.drawString("Welcome to the Eat Healthy Game!",100,100);//sets the string that is displayed on the panel
-			System.out.println("WelcomePage painComponent pt.2");
+			System.out.println("WelcomePage painComponent pt.2");//another checkpoint
 
 
 
@@ -229,10 +224,10 @@ public class EatHealthy extends JFrame
 
 	}//end of welcomePage
 
-	class InitializeGame extends JPanel
+	class InitializeGame extends JPanel//bottom panel
 	{
-		String name;
-		JLabel labelo = new JLabel();
+		String name;//still figuring out the layout of the game
+		JLabel labelo = new JLabel();//need to cleanup
 		public InitializeGame()
 		{
 			setLayout(flow);
@@ -242,30 +237,30 @@ public class EatHealthy extends JFrame
 			//start.addActionListener(jbhs);
 			//start.setBounds(0,0,700,70);
 			//add(start);
-			JButton enterGameButton = new JButton("enterGameButton");
-			JButtonHandlerStart buttonHandle = new JButtonHandlerStart();
-			JTextField textFieldo = new JTextField(10);
-			enterGameButton.setPreferredSize(new Dimension(50, 50));
-			enterGameButton.addActionListener(buttonHandle);//button handling 
-			add(enterGameButton, BorderLayout.NORTH);
+			JButton enterGameButton = new JButton("enterGameButton");//set the game button for entering the game
+			JButtonHandlerStart buttonHandle = new JButtonHandlerStart();//set the game button for entering the game
+			JTextField textFieldo = new JTextField(10);//set the text field of the name
+			enterGameButton.setPreferredSize(new Dimension(50, 50));//set the preffered size of the button
+			enterGameButton.addActionListener(buttonHandle);//button handling but need to figure that too
+			add(enterGameButton, BorderLayout.NORTH);//add the button in the north part of the panel on the bottom
 
-			textFieldo = new JTextField("Enter Name");
-			 textFieldo.setBounds(10,20,40,50);
-			textFieldo.addActionListener(new ActionListener()
+			textFieldo = new JTextField("Enter Name");//add a textfield for entering the name
+			 textFieldo.setBounds(10,20,40,50);//set the bounds or dimesions for the JTextField as the bottom and small
+			textFieldo.addActionListener(new ActionListener()//adding an actionListner
 			{
 						 public void actionPerformed(ActionEvent e)
 						 {
-									 String input = textFieldo.getText();
-									 name = input;
+									 String input = textFieldo.getText();//set the input to get more text
+									 name = input;//setting the input of the buttom
 						 }
 			});
 
 			add(enterGameButton);
-			enterGameButton.addActionListener(new ActionListener()
+			enterGameButton.addActionListener(new ActionListener()//button handler
 			{
 							public void actionPerformed(ActionEvent e)
 							{
-
+									//going to set the values if the button was pressed or not
 							}
 			});
 
@@ -276,13 +271,13 @@ public class EatHealthy extends JFrame
 
 		public void paintComponent(Graphics g)
 		{
-			if(somethingEntered)
+			if(somethingEntered)//if something has been entered in the text field
 			{
-				cards.show(pHolder, "LandingPage");
+				cards.show(pHolder, "LandingPage");//go to next panel if something has been entered in the new field
 				System.out.println("CardLayout changes to LandingPage");
 				//HOLY SHUIT THIS IS WHAT IVE BEEN LOOOKING GOR FOR SO MANY UEARS
 			}
-			System.out.println(name);
+			System.out.println(name);//another checkpoint
 
 		}
 
@@ -293,9 +288,9 @@ public class EatHealthy extends JFrame
 			System.out.println(name);
 			// if something ahppens this POPs UPP WOOOT   add(new JButton("Center"),BorderLayout.CENTER);
 			String enteringGameButton = enterGameButton.getText();
-			if (enteringGameButton == "Enter the god dam game")
+			if (enteringGameButton == "Enter the game")//if the action command works properly this should be true
 			{
-				System.out.println("YEEOOEofihwepofjioFIEIFWIEFHWIEHFIWEUHFIWEUHFIUEHOOEOOEM");
+				System.out.println("Action Performed Works!");//another checkpoint to make sure the action performed works
 			}
 			System.out.println("Checkpoint TextField Handler");
 			repain();
@@ -304,23 +299,23 @@ public class EatHealthy extends JFrame
 
 	}//end of InitializeGame
 
-	class JButtonHandlerStart implements ActionListener
+	class JButtonHandlerStart implements ActionListener//button handler
 	{
 		public void actionPerformed(ActionEvent e)
 		{
-			initPan.tempString = "you just pressed start bro";
-			initPan.enterName.setBounds(650,500,200,50);
-			initPan.startPressed = true;
+			initPan.tempString = "you just pressed start bro";//if button is pressed
+			initPan.enterName.setBounds(650,500,200,50);//set bounds of button if pressed
+			initPan.startPressed = true;//if pressed then repaint
 			initPan.repaint();
 		}
 	}
 
-	class SPTF implements ActionListener
+	class SPTF implements ActionListener//action listener to the init panel going to change this
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				initPan.name = e.getActionCommand();
-				initPan.somethingEntered = true;
+				initPan.name = e.getActionCommand();//sets the name to be a hot key
+				initPan.somethingEntered = true;//if something is enetered repain
 				initPan.repaint();
 			}
 		}
@@ -348,7 +343,7 @@ public class EatHealthy extends JFrame
 	// 	}
 	// }
 
-	class LandingPage extends JPanel
+	class LandingPage extends JPanel//sets the Landing page
 	{
 
 		public LandingPage()
@@ -360,8 +355,8 @@ public class EatHealthy extends JFrame
 			//Card Layout made( needs more pseudocode)
 			setBackground(Color.YELLOW);//set background to yello
 			Font titleFont = new Font("Serif", Font.BOLD, 20);                //Set Fonts
-			setFont(titleFont);
-			System.out.println("Houston, we've landed");
+			setFont(titleFont);//sets the title gont
+			System.out.println("Houston, we've landed");//another checkpoint
 		}
 	}//end of landing page
 
