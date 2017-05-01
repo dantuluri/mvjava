@@ -90,7 +90,9 @@ public class EatHealthy extends JFrame
 	private FlowLayout flow;
 	private BorderLayout border;
 	private GridLayout grid;
+	private String name;
 
+	private InitializeGame initPan;
 	private WelcomePage welcomePan;//welcome screen                      ADD THAT THE GOAL IS TO MAKE THE PERSON HAPPY
 	private LandingPage landingPan;//where the user is most of the time
 	// private HealthBarPanel healthyBar;//health bar panel in LandingPage
@@ -130,6 +132,7 @@ public class EatHealthy extends JFrame
 
 		pHolder.setLayout(cards);
 
+		initPan = new InitializeGame();
 		welcomePan = new WelcomePage();
 		landingPan = new LandingPage();
 		//healthyBar = new HealthyBarPanel();
@@ -148,6 +151,7 @@ public class EatHealthy extends JFrame
 
 
 		pHolder.add(welcomePan, "WelcomePage");
+		pHolder.add(initPan, "InitializeGame");
 		pHolder.add(landingPan, "LandingPage");
 	 	//pHolder.add(healthyBar, "HealthyBarPanel");
 		// pHolder.add(foodyBar, "FoodPanel");
@@ -164,6 +168,10 @@ public class EatHealthy extends JFrame
 		// pHolder.add(ending, "EndingPanel");
 		add(pHolder);
 		setVisible(true);
+
+		welcomePan.setBounds(0, 0, 800, 600);
+		initPan.setBounds(0,600,800,600);
+
 	}
 
 	class PanelHolder extends JPanel
@@ -175,40 +183,80 @@ public class EatHealthy extends JFrame
 		}                                //  Panel holder (Holds all the Panels,for the Card Layout)(essentially)
 	}
 
-	class WelcomePage extends JPanel implements ActionListener
+
+
+	class WelcomePage extends JPanel
 	{
-		String buttonStatus;
-		boolean dirPressed;                //make proper boolean variables for directions, start button, and the scores button, so it can can conduct the corresponding actions
-		boolean startPressed;
-		boolean hsPressed;
-		String tempString;
-		JButton enterGameButton = new JButton("Enter");
+
 		Image welcomeBackground = Toolkit.getDefaultToolkit().getImage("welcome.jpg");//getsImage from my computer using the get DefaultToolKit sets the background
-		JTextField enterName;
 		String name;
 		boolean somethingEntered;
-		JTextField textFieldo = new JTextField(10);
 		Integer asciiInput;
 		JLabel labelo = new JLabel();
 
-
 		public WelcomePage()
 		{
-			setLayout(new GridLayout(20,20));			//Card Layout made( needs more pseudocode)
+			setLayout(flow);			//Card Layout made( needs more pseudocode)
 			setBackground(Color.WHITE);
-			System.out.println("WelcomePage Constructor");
 			//add(textFieldo, BorderLayout.NORTH);
-			add(textFieldo);
+
+		}//end panel
+
+		public void paintComponent(Graphics g)
+		{                //graphics method header
+			System.out.println("WelcomePage paintComponent");
+			super.paintComponent(g);                        // draw Images first, draws background
+			g.drawImage(welcomeBackground, 0,0,800,600,this);//this makes the image
+			//g.drawImage(back, 0,0,600,400,this);
+			Font font = new Font ("Sans", Font.BOLD, 30);//initializes font
+			g.setFont(font);//sets font int graphics
+			g.drawString("Welcome to the Eat Healthy Game!",100,100);//sets the string that is displayed on the panel
+			System.out.println("WelcomePage painComponent pt.2");
+
+
+
+		}//end of paintComponent
+
+		// class SPTF implements ActionListener
+		// {
+		// 	public void actionPerformed(ActionEvent e)
+		// 	{
+		// 		welcomePan.name = e.getActionCommand();
+		// 		welcomePan.somethingEntered = true;
+		// 		welcomePan.repaint();
+		// 	}
+		// }
+
+	}//end of welcomePage
+
+	class InitializeGame extends JPanel
+	{
+		String name;
+		JLabel labelo = new JLabel();
+		public InitializeGame()
+		{
+			setLayout(flow);
+			//JButton start = new JButton("Start Game");
+			//JButtonHandlerS jbhs = new JButtonHandlerS();
+			//start.addActionListener(this);
+			//start.addActionListener(jbhs);
+			//start.setBounds(0,0,700,70);
+			//add(start);
+			JButton enterGameButton = new JButton("enterGameButton");
+			JButtonHandlerStart buttonHandle = new JButtonHandlerStart();
+			JTextField textFieldo = new JTextField(10);
 			enterGameButton.setPreferredSize(new Dimension(50, 50));
-			enterGameButton.addActionListener(this);
-			//add(enterGameButton, BorderLayout.SOUTH);
-			add(enterGameButton);
+			enterGameButton.addActionListener(buttonHandle);//button handling 
+			add(enterGameButton, BorderLayout.NORTH);
+
+			textFieldo = new JTextField("Enter Name");
+			 textFieldo.setBounds(10,20,40,50);
 			textFieldo.addActionListener(new ActionListener()
 			{
 						 public void actionPerformed(ActionEvent e)
 						 {
 									 String input = textFieldo.getText();
-									 labelo.setText(input);
+									 name = input;
 						 }
 			});
 
@@ -217,65 +265,97 @@ public class EatHealthy extends JFrame
 			{
 							public void actionPerformed(ActionEvent e)
 							{
-										 String input = textFieldo.getText();
-										 labelo.setText(input);
+
 							}
 			});
 
 			add(labelo);
-
-		}//end panel
+			add(textFieldo);
+			System.out.println(name);
+		}
 
 		public void paintComponent(Graphics g)
-		{                //graphics method header
-			System.out.println("WelcomePage paintComponent");
-			super.paintComponent(g);                        // draw Images first, draws background
-			add(new JButton("Center"),BorderLayout.CENTER);
-			g.drawImage(welcomeBackground, 0,0,800,800,this);//this makes the image
-			//g.drawImage(back, 0,0,600,400,this);
-			Font font = new Font ("Sans", Font.BOLD, 30);//initializes font
-			g.setFont(font);//sets font int graphics
-			g.drawString("Welcome to the Eat Healthy Game!",100,100);//sets the string that is displayed on the panel
-			System.out.println("WelcomePage painComponent pt.2");
+		{
+			if(somethingEntered)
+			{
+				cards.show(pHolder, "LandingPage");
+				System.out.println("CardLayout changes to LandingPage");
+				//HOLY SHUIT THIS IS WHAT IVE BEEN LOOOKING GOR FOR SO MANY UEARS
+			}
+			System.out.println(name);
 
-				if(somethingEntered)
-				{
-					cards.show(pHolder, "LandingPage");
-					System.out.println("CardLayout changes to LandingPage");
-					//HOLY SHUIT THIS IS WHAT IVE BEEN LOOOKING GOR FOR SO MANY UEARS
-				}
-
-
-
-		}//end of paintComponent
-
+		}
 
 		public void actionPerformed(ActionEvent e)
 		{
+
 			name = e.getActionCommand();//gets the action command check what evt.getActionCommand does too
 			System.out.println(name);
-			add(new JButton("Center"),BorderLayout.CENTER);
+			// if something ahppens this POPs UPP WOOOT   add(new JButton("Center"),BorderLayout.CENTER);
 			String enteringGameButton = enterGameButton.getText();
 			if (enteringGameButton == "Enter the god dam game")
 			{
 				System.out.println("YEEOOEofihwepofjioFIEIFWIEFHWIEHFIWEUHFIWEUHFIUEHOOEOOEM");
 			}
 			System.out.println("Checkpoint TextField Handler");
-
-
-
-			repaint();
+			repain();
 		}
 
 
+	}//end of InitializeGame
 
-	}//end of welcomePage
+	class JButtonHandlerStart implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			initPan.tempString = "you just pressed start bro";
+			initPan.enterName.setBounds(650,500,200,50);
+			initPan.startPressed = true;
+			initPan.repaint();
+		}
+	}
+
+	class SPTF implements ActionListener
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				initPan.name = e.getActionCommand();
+				initPan.somethingEntered = true;
+				initPan.repaint();
+			}
+		}
+	}
+
+	//
+	// class JButtonHandlerS implements ActionListener
+	// {
+	// 	public void actionPerformed(ActionEvent e)
+	// 	{
+	// 		welcomePan.tempString = "you just pressed start bro";
+	// 		welcomePan.enterName.setBounds(650,500,200,50);
+	// 		welcomePan.startPressed = true;
+	// 		welcomePan.repaint();
+	// 	}
+	// }
+
+	// class JButtonHandlerH implements ActionListener
+	// {
+	// 	public void actionPerformed(ActionEvent e)
+	// 	{
+	// 		welcomePan.tempString = "you just pressed the high scores button brodie";
+	// 		welcomePan.hsPressed = true;
+	// 		welcomePan.repaint();
+	// 	}
+	// }
 
 	class LandingPage extends JPanel
 	{
 
 		public LandingPage()
 		{
+			setBackground(Color.RED
+
+			);
 			setLayout(flow);//sets the layout to flow
 			//Card Layout made( needs more pseudocode)
 			setBackground(Color.YELLOW);//set background to yello
@@ -284,7 +364,7 @@ public class EatHealthy extends JFrame
 			System.out.println("Houston, we've landed");
 		}
 	}//end of landing page
-}
+
 
 
 //correct

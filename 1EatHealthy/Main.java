@@ -1,41 +1,27 @@
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
+import java.awt.BorderLayout;
+import javax.swing.JButton;
+import java.awt.Frame;
 
-import javax.swing.JFrame;
-import javax.swing.JTextField;
+public class Main extends Frame {
+  private JButton north, south, east, west, center;
 
-
-public class Main {
-
-  public static void main(String[] a) {
-    JFrame frame = new JFrame();
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-    JTextField textField = new JTextField("A TextField");
-    textField.addFocusListener(new FocusListener() {
-      public void focusGained(FocusEvent e) {
-        displayMessage("Focus gained", e);
-      }
-
-      public void focusLost(FocusEvent e) {
-        displayMessage("Focus lost", e);
-      }
-
-      void displayMessage(String prefix, FocusEvent e) {
-        System.out.println(prefix
-            + (e.isTemporary() ? " (temporary):" : ":")
-            + e.getComponent().getClass().getName()
-            + "; Opposite component: "
-            + (e.getOppositeComponent() != null ? e.getOppositeComponent().getClass().getName()
-                : "null"));
-      }
-
-    });
-
-    frame.add(textField,"North");
-    frame.add(new JTextField(),"South");
-    frame.setSize(300, 200);
-    frame.setVisible(true);
+  public Main(String title) {
+    super(title);
+    north = new JButton("North");
+    south = new JButton("South");
+    east = new JButton("East");
+    west = new JButton("West");
+    center = new JButton("Center");
+    this.add(north, BorderLayout.NORTH);
+    this.add(south, BorderLayout.SOUTH);
+    this.add(east, BorderLayout.EAST);
+    this.add(west, BorderLayout.WEST);
+    this.add(center, BorderLayout.CENTER);
   }
 
+  public static void main(String[] args) {
+    Frame f = new Main("BorderLayout demo");
+    f.pack();
+    f.setVisible(true);
+  }
 }
