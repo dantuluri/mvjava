@@ -151,6 +151,7 @@ public class EatHealthy extends JFrame
 
 
 		pHolder.add(welcomePan, "WelcomePage");
+		pHolder.add(initPan, "InitializeGame");
 		pHolder.add(landingPan, "LandingPage");
 	 	//pHolder.add(healthyBar, "HealthyBarPanel");
 		// pHolder.add(foodyBar, "FoodPanel");
@@ -184,7 +185,7 @@ public class EatHealthy extends JFrame
 
 
 
-	class WelcomePage extends JPanel implements ActionListener
+	class WelcomePage extends JPanel
 	{
 
 		Image welcomeBackground = Toolkit.getDefaultToolkit().getImage("welcome.jpg");//getsImage from my computer using the get DefaultToolKit sets the background
@@ -216,24 +217,6 @@ public class EatHealthy extends JFrame
 
 		}//end of paintComponent
 
-
-		public void actionPerformed(ActionEvent e)
-		{
-			name = e.getActionCommand();//gets the action command check what evt.getActionCommand does too
-			System.out.println(name);
-			// if something ahppens this POPs UPP WOOOT   add(new JButton("Center"),BorderLayout.CENTER);
-			String enteringGameButton = enterGameButton.getText();
-			if (enteringGameButton == "Enter the god dam game")
-			{
-				System.out.println("YEEOOEofihwepofjioFIEIFWIEFHWIEHFIWEUHFIWEUHFIUEHOOEOOEM");
-			}
-			System.out.println("Checkpoint TextField Handler");
-
-
-
-			repaint();
-		}
-
 		// class SPTF implements ActionListener
 		// {
 		// 	public void actionPerformed(ActionEvent e)
@@ -244,40 +227,35 @@ public class EatHealthy extends JFrame
 		// 	}
 		// }
 
-
-
-
 	}//end of welcomePage
 
 	class InitializeGame extends JPanel
 	{
-		JButton enterGameButton = new JButton("enterGameButton");
-		JTextField textFieldo = new JTextField(10);
-
+		String name;
+		JLabel labelo = new JLabel();
 		public InitializeGame()
 		{
 			setLayout(flow);
-
 			//JButton start = new JButton("Start Game");
 			//JButtonHandlerS jbhs = new JButtonHandlerS();
 			//start.addActionListener(this);
 			//start.addActionListener(jbhs);
 			//start.setBounds(0,0,700,70);
 			//add(start);
-
+			JButton enterGameButton = new JButton("enterGameButton");
+			JButtonHandlerStart buttonHandle = new JButtonHandlerStart();
+			JTextField textFieldo = new JTextField(10);
 			enterGameButton.setPreferredSize(new Dimension(50, 50));
-			enterGameButton.addActionListener(this);
+			enterGameButton.addActionListener(buttonHandle);//button handling 
 			add(enterGameButton, BorderLayout.NORTH);
 
 			textFieldo = new JTextField("Enter Name");
 			 textFieldo.setBounds(10,20,40,50);
-
 			textFieldo.addActionListener(new ActionListener()
 			{
 						 public void actionPerformed(ActionEvent e)
 						 {
 									 String input = textFieldo.getText();
-									 labelo.setText(input);
 									 name = input;
 						 }
 			});
@@ -287,18 +265,13 @@ public class EatHealthy extends JFrame
 			{
 							public void actionPerformed(ActionEvent e)
 							{
-										 String input = textFieldo.getText();
-										 labelo.setText(input);
+
 							}
 			});
 
 			add(labelo);
 			add(textFieldo);
 			System.out.println(name);
-
-
-
-
 		}
 
 		public void paintComponent(Graphics g)
@@ -313,8 +286,46 @@ public class EatHealthy extends JFrame
 
 		}
 
+		public void actionPerformed(ActionEvent e)
+		{
 
+			name = e.getActionCommand();//gets the action command check what evt.getActionCommand does too
+			System.out.println(name);
+			// if something ahppens this POPs UPP WOOOT   add(new JButton("Center"),BorderLayout.CENTER);
+			String enteringGameButton = enterGameButton.getText();
+			if (enteringGameButton == "Enter the god dam game")
+			{
+				System.out.println("YEEOOEofihwepofjioFIEIFWIEFHWIEHFIWEUHFIWEUHFIUEHOOEOOEM");
+			}
+			System.out.println("Checkpoint TextField Handler");
+			repain();
+		}
+
+
+	}//end of InitializeGame
+
+	class JButtonHandlerStart implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			initPan.tempString = "you just pressed start bro";
+			initPan.enterName.setBounds(650,500,200,50);
+			initPan.startPressed = true;
+			initPan.repaint();
+		}
 	}
+
+	class SPTF implements ActionListener
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				initPan.name = e.getActionCommand();
+				initPan.somethingEntered = true;
+				initPan.repaint();
+			}
+		}
+	}
+
 	//
 	// class JButtonHandlerS implements ActionListener
 	// {
@@ -353,7 +364,7 @@ public class EatHealthy extends JFrame
 			System.out.println("Houston, we've landed");
 		}
 	}//end of landing page
-}
+
 
 
 //correct
