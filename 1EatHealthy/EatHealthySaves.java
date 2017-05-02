@@ -198,14 +198,42 @@ public class EatHealthy extends JFrame
 			InitializeGame initGame = new InitializeGame();                //Instantiate the Start Panel
 			initGame.setBounds(0,600,800,200);
 			 add(initGame);
-
 			 enterName = new JTextField("Enter Name");
-			 StartAction login = new StartAction();
-			 enterName.addActionListener(login);
-			 enterName.setBounds(0,600,10,10);
-			 add(enterName);
+			 enterName.setBounds(0,600,800,200);
+ 			JTextField enterName = new JTextField(10);//text field
+
+ 			enterName.addActionListener(new ActionListener()//text field handler
+ 			{
+ 						 public void actionPerformed(ActionEvent e)//action listener for the enterName panel
+ 						 {
+ 									 String input = enterName.getText();
+									 System.out.println(input);
+									if(e.getActionCommand().equals(input))
+									{
+										System.out.println("We have entered the JTextField Action Performed let's see what's going on");
+									}
+									if(e.getActionCommand().equals(""))
+									{
+										System.out.println("nothing has been put as the neame");
+									}
+									 if(input == "")
+									 {
+										 noName = true;
+										 System.out.println("noName is true");
+									 }
+									 else
+									 {
+										 name = input;
+										 noName = false;
+										 System.out.println("noName is false");
+									 }
+
+ 						 }
+ 			});
+
 
  			//this is the text field handler
+			 add(enterName);
 
 		}//end Constructor
 
@@ -269,37 +297,6 @@ public class EatHealthy extends JFrame
 		}
 	}//end of InitializeGame
 
-	class StartAction implements ActionListener
-			{
-				public void actionPerformed(ActionEvent e)
-				{
-					welcomePan.name = e.getActionCommand();
-
-					System.out.println(input);
-					if(e.getActionCommand().equals("Start THE GAMEYY Game"))
-					{
-						welcomePan.isPressed = true;
-						String input = enterName.getText();
-					
-						if (user_name.getText() == null || user_name.getText().trim().isEmpty()) {
-						     // your code here
-						}
-						if (yourJTextField.getText().equals(""))
-						{
-							loginButton.setEnabled(false);
-						}
-						else
-						{
-							loginButton.setEnabled(true);
-	 					}
-					}
-					else if(e.getActionCommand().equals(""))
-					{
-
-					}
-				}
-			}
-		}
 
 	//
 	// class JButtonHandlerS implements ActionListener
