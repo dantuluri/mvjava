@@ -132,7 +132,6 @@ public class EatHealthy extends JFrame
 
 		pHolder.setLayout(cards);
 
-		initPan = new InitializeGame();
 		welcomePan = new WelcomePage();
 		landingPan = new LandingPage();
 		//healthyBar = new HealthyBarPanel();
@@ -151,7 +150,6 @@ public class EatHealthy extends JFrame
 
 
 		pHolder.add(welcomePan, "WelcomePage");
-		pHolder.add(initPan, "InitializeGame");
 		pHolder.add(landingPan, "LandingPage");
 	 	//pHolder.add(healthyBar, "HealthyBarPanel");
 		// pHolder.add(foodyBar, "FoodPanel");
@@ -170,7 +168,6 @@ public class EatHealthy extends JFrame
 		setVisible(true);
 
 		welcomePan.setBounds(0, 0, 800, 600);
-		initPan.setBounds(0,600,800,600);
 
 	}
 
@@ -184,7 +181,6 @@ public class EatHealthy extends JFrame
 	}
 
 
-
 	class WelcomePage extends JPanel
 	{
 
@@ -193,14 +189,47 @@ public class EatHealthy extends JFrame
 		boolean somethingEntered;
 		Integer asciiInput;
 		JLabel labelo = new JLabel();
-
+		boolean noName;//asks for name
+		JTextField enterName;
+		
 		public WelcomePage()
 		{
 			setLayout(flow);			//Card Layout made( needs more pseudocode)
 			setBackground(Color.WHITE);
 			//add(textFieldo, BorderLayout.NORTH);
+			InitializeGame initGame = new InitializeGame();                //Instantiate the Start Panel
+			initGame.setBounds(0,600,800,600);
+			 add(initGame);
 
-		}//end panel
+			 enterName = new JTextField("Enter Name");
+			 //SPTF sptf = new SPTF();
+			 //enterName.addActionListener(sptf);
+			 enterName.setBounds(0,0,0,0);
+ 			JTextField enterName = new JTextField(10);//text field
+
+
+ 			enterName.addActionListener(new ActionListener()//text field handler
+ 			{
+ 						 public void actionPerformed(ActionEvent e)
+ 						 {
+ 									 String input = textFieldo.getText();
+									 if(input = "")
+									 {
+										 noName = true;
+									 }
+ 									 name = input;
+ 						 }
+ 			});
+ 			//this is the text field handler
+
+
+			 add(enterName);
+
+
+
+
+
+		}//end Constructor
 
 		public void paintComponent(Graphics g)
 		{                //graphics method header
@@ -217,16 +246,6 @@ public class EatHealthy extends JFrame
 
 		}//end of paintComponent
 
-		// class SPTF implements ActionListener
-		// {
-		// 	public void actionPerformed(ActionEvent e)
-		// 	{
-		// 		welcomePan.name = e.getActionCommand();
-		// 		welcomePan.somethingEntered = true;
-		// 		welcomePan.repaint();
-		// 	}
-		// }
-
 	}//end of welcomePage
 
 	class InitializeGame extends JPanel
@@ -235,73 +254,27 @@ public class EatHealthy extends JFrame
 		JLabel labelo = new JLabel();
 		public InitializeGame()
 		{
-			setLayout(flow);
-			//JButton start = new JButton("Start Game");
-			//JButtonHandlerS jbhs = new JButtonHandlerS();
-			//start.addActionListener(this);
-			//start.addActionListener(jbhs);
-			//start.setBounds(0,0,700,70);
-			//add(start);
-			JButton enterGameButton = new JButton("enterGameButton");
-			JButtonHandlerStart buttonHandle = new JButtonHandlerStart();
-			JTextField textFieldo = new JTextField(10);
-			enterGameButton.setPreferredSize(new Dimension(50, 50));
-			enterGameButton.addActionListener(buttonHandle);//button handling 
-			add(enterGameButton, BorderLayout.NORTH);
+			setLayout(null);
 
-			textFieldo = new JTextField("Enter Name");
-			 textFieldo.setBounds(10,20,40,50);
-			textFieldo.addActionListener(new ActionListener()
-			{
-						 public void actionPerformed(ActionEvent e)
-						 {
-									 String input = textFieldo.getText();
-									 name = input;
-						 }
-			});
+			 JButton enterGameButton = new JButton("enterGameButton");
+			//JButtonHandlerS jbhs = new JButtonHandlerS();
+			enterGameButton.setPreferredSize(new Dimension(50, 50));
+			start.addActionListener(jbhs);
+			start.setBounds(0,0,1500,50);
+			add(start);
 
 			add(enterGameButton);
-			enterGameButton.addActionListener(new ActionListener()
-			{
-							public void actionPerformed(ActionEvent e)
-							{
+ 			enterGameButton.addActionListener(new ActionListener()
+ 			{
+ 							public void actionPerformed(ActionEvent e)
+ 							{
 
-							}
-			});
-
-			add(labelo);
-			add(textFieldo);
-			System.out.println(name);
-		}
-
-		public void paintComponent(Graphics g)
-		{
-			if(somethingEntered)
-			{
-				cards.show(pHolder, "LandingPage");
-				System.out.println("CardLayout changes to LandingPage");
-				//HOLY SHUIT THIS IS WHAT IVE BEEN LOOOKING GOR FOR SO MANY UEARS
-			}
-			System.out.println(name);
+ 							}
+ 			});
+ 			System.out.println(name);
+			//this is the button handler
 
 		}
-
-		public void actionPerformed(ActionEvent e)
-		{
-
-			name = e.getActionCommand();//gets the action command check what evt.getActionCommand does too
-			System.out.println(name);
-			// if something ahppens this POPs UPP WOOOT   add(new JButton("Center"),BorderLayout.CENTER);
-			String enteringGameButton = enterGameButton.getText();
-			if (enteringGameButton == "Enter the god dam game")
-			{
-				System.out.println("YEEOOEofihwepofjioFIEIFWIEFHWIEHFIWEUHFIWEUHFIUEHOOEOOEM");
-			}
-			System.out.println("Checkpoint TextField Handler");
-			repain();
-		}
-
-
 	}//end of InitializeGame
 
 	class JButtonHandlerStart implements ActionListener
