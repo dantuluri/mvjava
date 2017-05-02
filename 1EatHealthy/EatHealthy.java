@@ -196,10 +196,10 @@ public class EatHealthy extends JFrame
 			setLayout(flow);			//Card Layout made( needs more pseudocode)
 			setBackground(Color.WHITE);
 			InitializeGame initGame = new InitializeGame();                //Instantiate the Start Panel
-			initGame.setBounds(0,600,800,600);
+			initGame.setBounds(0,600,800,200);
 			 add(initGame);
 			 enterName = new JTextField("Enter Name");
-			 enterName.setBounds(0,0,0,0);
+			 enterName.setBounds(0,600,800,200);
  			JTextField enterName = new JTextField(10);//text field
 
  			enterName.addActionListener(new ActionListener()//text field handler
@@ -207,6 +207,15 @@ public class EatHealthy extends JFrame
  						 public void actionPerformed(ActionEvent e)//action listener for the enterName panel
  						 {
  									 String input = enterName.getText();
+									 System.out.println(input);
+									if(e.getActionCommand().equals(input))
+									{
+										System.out.println("We have entered the JTextField Action Performed let's see what's going on");
+									}
+									if(e.getActionCommand().equals(""))
+									{
+										System.out.println("nothing has been put as the neame");
+									}
 									 if(input == "")
 									 {
 										 noName = true;
@@ -221,6 +230,8 @@ public class EatHealthy extends JFrame
 
  						 }
  			});
+
+
  			//this is the text field handler
 			 add(enterName);
 
@@ -245,7 +256,7 @@ public class EatHealthy extends JFrame
 			}
 			if (isPressed)
 			 {                                //boolean for startPressed and hsPressed to trigger thecorresponding CardLayout. For testing we'll just use a String
-					enterName.setBounds(650,500,200,50);
+					enterName.setBounds(0,600,800,200);
 					isPressed = true;
 					System.out.println("Is PRESSED IS TRUE in paint component ");
 					if(noName==false)
@@ -262,6 +273,7 @@ public class EatHealthy extends JFrame
 		public InitializeGame()
 		{
 		setLayout(flow);
+		setBackground(Color.RED);//set background to yello
 
 			JButton enterGameButton = new JButton("Start THE GAMEYY Game");
 
@@ -277,7 +289,7 @@ public class EatHealthy extends JFrame
 								}
  							}
  			});
-			enterGameButton.setBounds(100,300,60,50);
+			enterGameButton.setBounds(0,600,800,200);
 			add(enterGameButton);
  			System.out.println(name);
 			//this is the button handler
