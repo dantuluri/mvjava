@@ -186,54 +186,46 @@ public class EatHealthy extends JFrame
 
 		Image welcomeBackground = Toolkit.getDefaultToolkit().getImage("welcome.jpg");//getsImage from my computer using the get DefaultToolKit sets the background
 		String name;
-		boolean somethingEntered;
-		Integer asciiInput;
-		JLabel labelo = new JLabel();
+		String input;
 		boolean noName;//asks for name
 		JTextField enterName;
-		
+
 		public WelcomePage()
 		{
 			setLayout(flow);			//Card Layout made( needs more pseudocode)
 			setBackground(Color.WHITE);
-			//add(textFieldo, BorderLayout.NORTH);
 			InitializeGame initGame = new InitializeGame();                //Instantiate the Start Panel
 			initGame.setBounds(0,600,800,600);
 			 add(initGame);
-
 			 enterName = new JTextField("Enter Name");
-			 //SPTF sptf = new SPTF();
-			 //enterName.addActionListener(sptf);
 			 enterName.setBounds(0,0,0,0);
  			JTextField enterName = new JTextField(10);//text field
 
-
  			enterName.addActionListener(new ActionListener()//text field handler
  			{
- 						 public void actionPerformed(ActionEvent e)
+ 						 public void actionPerformed(ActionEvent e)//action listener for the enterName panel
  						 {
- 									 String input = textFieldo.getText();
+ 									 String input = enterName.getText();
 									 if(input = "")
 									 {
 										 noName = true;
 									 }
- 									 name = input;
+									 System.out.println(input);
+									 else
+									 {
+										 name = input;
+										 noName = false;
+									 }
+
  						 }
  			});
  			//this is the text field handler
-
-
 			 add(enterName);
-
-
-
-
 
 		}//end Constructor
 
 		public void paintComponent(Graphics g)
 		{                //graphics method header
-			System.out.println("WelcomePage paintComponent");
 			super.paintComponent(g);                        // draw Images first, draws background
 			g.drawImage(welcomeBackground, 0,0,800,600,this);//this makes the image
 			//g.drawImage(back, 0,0,600,400,this);
@@ -241,7 +233,12 @@ public class EatHealthy extends JFrame
 			g.setFont(font);//sets font int graphics
 			g.drawString("Welcome to the Eat Healthy Game!",100,100);//sets the string that is displayed on the panel
 			System.out.println("WelcomePage painComponent pt.2");
-
+			if(noName)
+			{
+				g.drawString("Please enter your name!",200,200);
+				WelcomPage();
+				repaint();
+			}
 
 
 		}//end of paintComponent
@@ -250,54 +247,31 @@ public class EatHealthy extends JFrame
 
 	class InitializeGame extends JPanel
 	{
-		String name;
-		JLabel labelo = new JLabel();
-		public InitializeGame()
-		{
-			setLayout(null);
+		setLayout(null);
 
-			 JButton enterGameButton = new JButton("enterGameButton");
-			//JButtonHandlerS jbhs = new JButtonHandlerS();
-			enterGameButton.setPreferredSize(new Dimension(50, 50));
-			start.addActionListener(jbhs);
-			start.setBounds(0,0,1500,50);
-			add(start);
+			JButton enterGameButton = new JButton("Start THE GAMEYY Game");
 
-			add(enterGameButton);
- 			enterGameButton.addActionListener(new ActionListener()
+			enterGameButton.addActionListener(new ActionListener()//BUTTON HANDLER
  			{
  							public void actionPerformed(ActionEvent e)
  							{
+								if(e.getActionCommand().equals("Start THE GAMEYY Game"))
+								{
 
+								}
  							}
  			});
+			enterGameButton.setBounds(0,0,1500,50);
+			add(enterGameButton);
+
+
+
  			System.out.println(name);
 			//this is the button handler
 
 		}
 	}//end of InitializeGame
 
-	class JButtonHandlerStart implements ActionListener
-	{
-		public void actionPerformed(ActionEvent e)
-		{
-			initPan.tempString = "you just pressed start bro";
-			initPan.enterName.setBounds(650,500,200,50);
-			initPan.startPressed = true;
-			initPan.repaint();
-		}
-	}
-
-	class SPTF implements ActionListener
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				initPan.name = e.getActionCommand();
-				initPan.somethingEntered = true;
-				initPan.repaint();
-			}
-		}
-	}
 
 	//
 	// class JButtonHandlerS implements ActionListener
