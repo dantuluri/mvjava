@@ -193,7 +193,6 @@ public class EatHealthy extends JFrame
 		boolean tfinput;
 		boolean noName;//asks for name
 		boolean isPressed;
-		JTextField enterName;
 		boolean gotoLanding;
 
 		public WelcomePanelHolder()
@@ -216,18 +215,18 @@ public class EatHealthy extends JFrame
 
 	class WelcomePage extends JPanel
 	{
-
+		JTextField enterName;
 		Image welcomeBackground = Toolkit.getDefaultToolkit().getImage("welcome.jpg");//getsImage from my computer using the get DefaultToolKit sets the background
 		public WelcomePage()
 		{
 			setBackground(Color.WHITE);
 			//  add(initGame);
 
-			 welcomeHold.enterName = new JTextField("Enter Name");
+			 enterName = new JTextField("Enter Name");
 			 StartAction login = new StartAction();
-			 welcomeHold.enterName.addActionListener(login);
-			 welcomeHold.enterName.setBounds(200,400,10,10);
-			 welcomeHold.add(enterName);
+			 enterName.addActionListener(login);
+			 enterName.setBounds(200,400,10,10);
+			 add(enterName);
 
  			//this is the text field handler
 					}//end Constructor
@@ -241,14 +240,14 @@ public class EatHealthy extends JFrame
 			g.setFont(font);//sets font int graphics
 			g.drawString("Welcome to the Eat Healthy Game!",100,100);//sets the string that is displayed on the panel
 			System.out.println("paint");
-			if(noName)
+			if(welcomeHold.noName)
 			{
 				g.setColor(Color.RED);
 				g.drawString("Please enter your name!",100,200);
-				isPressed = false;
+				welcomeHold.isPressed = false;
 				System.out.println("The button has been reset");
 			}
-			if (gotoLanding)
+			if (welcomeHold.gotoLanding)
 			 {                                //boolean for startPressed and hsPressed to trigger thecorresponding CardLayout. For testing we'll just use a String
 						cards.show(pHolder, "LandingPage");
 			 }
@@ -261,7 +260,7 @@ public class EatHealthy extends JFrame
 		{
 			public InitializeGame()
 			{
-			setLayout(border);
+			setLayout(flow);
 			setBackground(Color.RED);//set background to yello
 
 			setPreferredSize(new Dimension(600,200));
@@ -269,7 +268,7 @@ public class EatHealthy extends JFrame
 				StartAction login = new StartAction();
 				enterGameButton.addActionListener(login);
 				enterGameButton.setPreferredSize(new Dimension(100,50));
-				add(enterGameButton, BorderLayout.SOUTH);
+				add(enterGameButton);
 				//added enterGameButton ActionListener
 				//this is the button handler
 
@@ -281,25 +280,25 @@ public class EatHealthy extends JFrame
 			{
 				public void actionPerformed(ActionEvent e)
 				{
-					welcomePan.input = e.getActionCommand();
+					welcomeHold.input = e.getActionCommand();
 
 					if(e.getActionCommand().equals("Start THE GAMEYY Game"))
 					{
 						System.out.println("button has been pressed");
-						welcomePan.isPressed = true;
+						welcomeHold.isPressed = true;
 						//	String input = enterName.getText();
 						System.out.println("THIS IS THE NAME AFTER THE BUTTONO");
 						System.out.println(welcomePan.enterName.getText());
 						if (welcomePan.enterName.getText() == null || welcomePan.enterName.getText().trim().isEmpty() || welcomePan.enterName.getText().equals("Enter Name"))
 						{
 							//if the textfield is empty and button is pressed
-								 welcomePan.noName = true;
+								 welcomeHold.noName = true;
 								 System.out.println("there is no name");
 								 repaint();
 						}
 						else
 						{
-							welcomePan.gotoLanding = true;
+							welcomeHold.gotoLanding = true;
 							repaint();
 						}
 					}//end of if the BUTTON IS PRESSED
