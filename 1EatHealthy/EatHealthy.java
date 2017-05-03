@@ -189,7 +189,6 @@ public class EatHealthy extends JFrame
 	class WelcomePanelHolder extends JPanel
 	{
 		String name;
-		String input;
 		boolean tfinput;
 		boolean noName;//asks for name
 		boolean isPressed;
@@ -238,18 +237,19 @@ public class EatHealthy extends JFrame
 			System.out.println(welcomeHold.noName);                  // draw Images first, draws background
 			g.drawImage(welcomeBackground, 0,0,800,600,this);//this makes the image
 			//g.drawImage(back, 0,0,600,400,this);
-			Font font = new Font ("Sans", Font.BOLD, 30);//initializes font
+			Font font = new Font ("Sans", Font.BOLD, 50);//initializes font
 			g.setFont(font);//sets font int graphics
 			g.drawString("Welcome to the Eat Healthy Game!",100,100);//sets the string that is displayed on the panel
 			System.out.println("paint");
 			if(welcomeHold.noName)
 			{
 				g.setColor(Color.RED);
-				System.out.println("HELLO HI PLEASE ENTER YOUR GO DDAM NAME");
+				System.out.println("Please enter yur name!");
 				g.drawString("Please enter your name!",100,200);
 				welcomeHold.isPressed = false;
 				if (initGame.enterName.getText() == null || initGame.enterName.getText().trim().isEmpty() || initGame.enterName.getText().equals("Enter Name"))
 				{
+					System.out.println("Welcome Panel if reset");
 					welcomeHold.isPressed = false;
 					welcomeHold.noName = true;
 				}
@@ -270,8 +270,9 @@ public class EatHealthy extends JFrame
 		}//end of paintComponent
 
 	}//end of welcomePage
-		class InitializeGame extends JPanel
+		class InitializeGame extends JPanel//init game has TEXTFIELD AND BUTTON
 		{
+			String input;
 			JTextField enterName;
 			public InitializeGame()
 			{
@@ -284,7 +285,7 @@ public class EatHealthy extends JFrame
 			enterName.setPreferredSize(new Dimension(100,50));
 		  //enterName.setBounds(200,400,10,10);
 		  add(enterName);
-
+			System.out.println("initGame");
 			setPreferredSize(new Dimension(600,200));
 				JButton enterGameButton = new JButton("Start Game");
 				enterGameButton.addActionListener(login);
@@ -301,21 +302,28 @@ public class EatHealthy extends JFrame
 			{
 				public void actionPerformed(ActionEvent e)
 				{
-					welcomeHold.input = e.getActionCommand();
-
+					initGame.input = e.getActionCommand();
+					if(e.getActionCommand().equals("Enter Name"))
+					{
+						initGame.input = e.getActionCommand();
+						System.out(initGame.input);
 					if(e.getActionCommand().equals("Start Game"))
 					{
 						System.out.println("button has been pressed");
 						welcomeHold.isPressed = true;
 						//	String input = enterName.getText();
-						System.out.println("THIS IS THE NAME AFTER THE BUTTONO");
+						initGame.input = e.getActionCommand();
+						System.out.println("getText name");
 						System.out.println(initGame.enterName.getText());
 						if (initGame.enterName.getText() == null || initGame.enterName.getText().trim().isEmpty() || initGame.enterName.getText().equals("Enter Name"))
 						{
 							//if the textfield is empty and button is pressed
 								 welcomeHold.noName = true;
 								 System.out.println("there is no name");
-								 welcomeHold.input = e.getActionCommand();
+								 initGame.input = e.getActionCommand();
+								 initGame.input = initGame.enterName.getText();//ask for text
+								 System.out.println(initGame.input);
+
 								 repaint();
 						}
 						else
