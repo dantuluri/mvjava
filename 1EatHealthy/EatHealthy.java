@@ -187,6 +187,7 @@ public class EatHealthy extends JFrame
 		Image welcomeBackground = Toolkit.getDefaultToolkit().getImage("welcome.jpg");//getsImage from my computer using the get DefaultToolKit sets the background
 		String name;
 		String input;
+		boolean tfinput;
 		boolean noName;//asks for name
 		boolean isPressed;
 		JTextField enterName;
@@ -196,7 +197,7 @@ public class EatHealthy extends JFrame
 			setLayout(flow);			//Card Layout made( needs more pseudocode)
 			setBackground(Color.WHITE);
 			InitializeGame initGame = new InitializeGame();                //Instantiate the Start Panel
-			initGame.setBounds(0,600,800,200);
+			initGame.setBounds(0,200,500,200);
 			 add(initGame);
 
 			 enterName = new JTextField("Enter Name");
@@ -222,84 +223,64 @@ public class EatHealthy extends JFrame
 			{
 				g.drawString("Please enter your name!",200,200);
 				System.out.println("Name has not been entered");
-				enterName.setText("");
 				isPressed = false;
-				repaint();
 			}
-			if (isPressed)
-			 {                                //boolean for startPressed and hsPressed to trigger thecorresponding CardLayout. For testing we'll just use a String
-					enterName.setBounds(0,600,800,200);
-					isPressed = true;
-					System.out.println("Is PRESSED IS TRUE in paint component ");
-					if(noName==false)
-						cards.show(pHolder, "LandingPage");
-			 }
 
 
 		}//end of paintComponent
 
 	}//end of welcomePage
-
-	class InitializeGame extends JPanel
-	{
-		public InitializeGame()
+		class InitializeGame extends JPanel
 		{
-		setLayout(flow);
-		setBackground(Color.RED);//set background to yello
+			public InitializeGame()
+			{
+			setLayout(border);
+			setBackground(Color.RED);//set background to yello
 
-			JButton enterGameButton = new JButton("Start THE GAMEYY Game");
 
-			enterGameButton.addActionListener(new ActionListener()//BUTTON HANDLER
- 			{
- 							public void actionPerformed(ActionEvent e)
- 							{
-								if(e.getActionCommand().equals("Start THE GAMEYY Game"))
-								{
-									welcomePan.isPressed = true;
-									System.out.println(welcomePan.isPressed);
-									System.out.println("The Button Has BEEN PRESSED");
-								}
- 							}
- 			});
-			enterGameButton.setBounds(0,600,800,200);
-			add(enterGameButton);
- 			System.out.println(name);
-			//this is the button handler
+				JButton enterGameButton = new JButton("Start THE GAMEYY Game");
+				StartAction login = new StartAction();
+				enterGameButton.addActionListener(login);
+				enterGameButton.setPreferredSize(new Dimension(100,50));
+				add(enterGameButton, BorderLayout.CENTER);
+				//added enterGameButton ActionListener
+				//this is the button handler
 
-		}
-	}//end of InitializeGame
+			}
+		}//end of InitializeGame
+
 
 	class StartAction implements ActionListener
 			{
 				public void actionPerformed(ActionEvent e)
 				{
-					welcomePan.name = e.getActionCommand();
+					welcomePan.input = e.getActionCommand();
 
-					System.out.println(input);
 					if(e.getActionCommand().equals("Start THE GAMEYY Game"))
 					{
 						welcomePan.isPressed = true;
-						String input = enterName.getText();
-					
-						if (user_name.getText() == null || user_name.getText().trim().isEmpty()) {
-						     // your code here
-						}
-						if (yourJTextField.getText().equals(""))
+						//	String input = enterName.getText();
+						System.out.println("THIS IS THE NAME AFTER THE BUTTONO");
+						System.out.println(welcomePan.enterName.getText());
+						if (welcomePan.enterName.getText() == null || welcomePan.enterName.getText().trim().isEmpty() || welcomePan.enterName.getText().equals("Enter Name"))
 						{
-							loginButton.setEnabled(false);
+							//if the textfield is empty and button is pressed
+								 welcomePan.noName = true;
+								 System.out.println("Start Action no NAmae");
+								 repaint();
 						}
-						else
+						else if(welcomePan.noName==false&&welcomePan.isPressed==true)
 						{
-							loginButton.setEnabled(true);
-	 					}
-					}
-					else if(e.getActionCommand().equals(""))
-					{
+							cards.show(pHolder, "Landing Page");
+							System.out.println("Goes to LandingPage");
+						}
+					}//end of if the BUTTON IS PRESSED
 
-					}
-				}
-			}
-		}
+			}//end of action performed
+		}//end of start action class
+
+
+
 
 	//
 	// class JButtonHandlerS implements ActionListener
