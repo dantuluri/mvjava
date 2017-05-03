@@ -7,7 +7,7 @@
 *
 * Human, health bar and foods are present. A drawing on the human pops up trying to signify that s(he) should  feed the human food.
 *
-* Should have 6 different classes signifying each of the stages: Mouth, Esophogous, Stomach, Duodenum, Small intestine, *Large intestine
+* Should have 6 different classes signifying each of the stages: Mouth, Esophogous, Stomach, Small intestine, *Large intestine
 *
 *-------
 * Game starts off with welcome screen.
@@ -304,7 +304,8 @@ public class EatHealthy extends JFrame
 							//if the textfield is empty and button is pressed
 								 welcomeHold.noName = true;
 								 System.out.println("there is no name");
-								 welcomePan.repaint();
+								 welcomeHold.input = e.getActionCommand();
+								 repaint();
 						}
 						else
 						{
