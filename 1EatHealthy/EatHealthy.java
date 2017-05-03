@@ -248,6 +248,17 @@ public class EatHealthy extends JFrame
 				System.out.println("HELLO HI PLEASE ENTER YOUR GO DDAM NAME");
 				g.drawString("Please enter your name!",100,200);
 				welcomeHold.isPressed = false;
+				if (initGame.enterName.getText() == null || initGame.enterName.getText().trim().isEmpty() || initGame.enterName.getText().equals("Enter Name"))
+				{
+					welcomeHold.isPressed = false;
+					welcomeHold.noName = true;
+				}
+				else
+				{
+					welcomeHold.gotoLanding = true;
+					repaint();
+				}
+
 				System.out.println("The button has been reset");
 			}
 			if (welcomeHold.gotoLanding)
