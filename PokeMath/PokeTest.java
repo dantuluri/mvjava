@@ -1,6 +1,4 @@
-//Sidd Rao
-//4/1/16
-//PokeTest.java is the first testing iteration of akhl and i's pokemath game
+
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
