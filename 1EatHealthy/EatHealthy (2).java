@@ -271,7 +271,7 @@ public class EatHealthy extends JFrame
     }//end of welcomePage
     class InitializeGame extends JPanel//init game has TEXTFIELD AND BUTTON
     {
-
+       
         public InitializeGame()
         {
             setLayout(flow);
