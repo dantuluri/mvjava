@@ -18,12 +18,12 @@
  WelcomePage panel shows up with the background
  Asks for name and you press start Game
  If name is not provided and they press start:::: give them alert asking them to enter a name
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
  */
 
 
@@ -91,12 +91,12 @@ public class EatHealthy extends JFrame
     private BorderLayout border;
     private GridLayout grid;
     private String name;
-    
+
     private InitializeGame initGame;
     //private WelcomePage welcomePan;//welcome screen
     private WelcomePanelHolder welcomeHold;
     private WelcomePage welcomePan;
-    
+
     private LandingPage landingPan;//where the user is most of the time
     // private HealthBarPanel healthyBar;//health bar panel in LandingPage
     // private FoodPanel foodyBar;//list of images regarding food in LandingPage
@@ -117,7 +117,7 @@ public class EatHealthy extends JFrame
         System.out.println("CheckPoint1");
         EatHealthy eaty = new EatHealthy();
     }
-    
+
     public EatHealthy()
     {
         super("Eat Healthy!");
@@ -126,15 +126,15 @@ public class EatHealthy extends JFrame
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocation(0,0);
         setResizable(false);
-        
+
         pHolder = new PanelHolder();
         cards = new CardLayout();
         flow = new FlowLayout();
         border = new BorderLayout();
         grid = new GridLayout();
-        
+
         pHolder.setLayout(cards);
-        
+
         welcomeHold = new WelcomePanelHolder();
         welcomePan = new WelcomePage();
         initGame = new InitializeGame();
@@ -152,8 +152,8 @@ public class EatHealthy extends JFrame
         //  largeIntestineProcess = new LargeIntestinePanel();
         //  largeIntestineQuiz = new LargeIntestineQuestions();
         //  ending = new EndingPanel();
-        
-        
+
+
         pHolder.add(welcomeHold, "WelcomeHolder");
         pHolder.add(landingPan, "LandingPage");
         //pHolder.add(healthyBar, "HealthyBarPanel");
@@ -171,21 +171,21 @@ public class EatHealthy extends JFrame
         // pHolder.add(ending, "EndingPanel");
         add(pHolder);
         setVisible(true);
-        
+
         //welcomePan.setBounds(0, 0, 800, 600);
-        
+
     }
-    
+
     class PanelHolder extends JPanel
     {
         public PanelHolder()
         {
             setBackground(Color.GREEN);
             System.out.print("PanelHolder");
-            
+
         }                                //  Panel holder (Holds all the Panels,for the Card Layout)(essentially)
     }
-    
+
     class WelcomePanelHolder extends JPanel
     {
         String name;
@@ -193,9 +193,14 @@ public class EatHealthy extends JFrame
         boolean noName;//asks for name
         boolean isPressed;
         boolean gotoLanding;
-        
+
         public WelcomePanelHolder()
         {
+          name="";
+          tfinput = false;
+          noName = false;
+          isPressed = false;
+          gotoLanding = false;
             setLayout(new BorderLayout(5, 5)); //Use BorderLayout in main panel. Incorporate Card Layout for all the others
             //Card Layout made( needs more pseudocode)
             setBackground(Color.YELLOW);
@@ -203,15 +208,15 @@ public class EatHealthy extends JFrame
             setFont(titleFont);
             WelcomePage welcomePan = new WelcomePage(); //Instantiate the Label Panel for the first Label
             InitializeGame initGame = new InitializeGame(); //Instantiate the Label Panel for the second Label that goes to the north
-            
+
             add(welcomePan, BorderLayout.CENTER);
             add(initGame, BorderLayout.SOUTH);
             //add(lp, BorderLayout.WEST);
             //add(rp, BorderLayout.EAST);
         }
-        
+
     }
-    
+
     class WelcomePage extends JPanel
     {
         Image welcomeBackground = Toolkit.getDefaultToolkit().getImage("welcome.jpg");//getsImage from my computer using the get DefaultToolKit sets the background
@@ -220,17 +225,17 @@ public class EatHealthy extends JFrame
             setLayout(flow);
             setBackground(Color.WHITE);
             //  add(initGame);
-            
+
             //  enterName = new JTextField("Enter Name");
             //  StartAction login = new StartAction();
             //  enterName.addActionListener(login);
             //  enterName.setBounds(200,400,10,10);
             //  add(enterName);
             //add(enterName, BorderLayout.CENTER);
-            
+
             //this is the text field handler
         }//end Constructor
-        
+
         public void paintComponent(Graphics g)
         {                //graphics method header
             super.paintComponent(g);
@@ -258,17 +263,17 @@ public class EatHealthy extends JFrame
                     welcomeHold.gotoLanding = true;
                     repaint();
                 }
-                
+
                 System.out.println("The button has been reset");
             }
             if (welcomeHold.gotoLanding)
             {                                //boolean for startPressed and hsPressed to trigger thecorresponding CardLayout. For testing we'll just use a String
                 cards.show(pHolder, "LandingPage");
             }
-            
-            
+
+
         }//end of paintComponent
-        
+
     }//end of welcomePage
     class InitializeGame extends JPanel//init game has TEXTFIELD AND BUTTON
     {
@@ -278,7 +283,7 @@ public class EatHealthy extends JFrame
         {
             setLayout(flow);
             setBackground(Color.RED);//set background to yello
-            
+
             enterName = new JTextField("Enter Name");
             StartAction login = new StartAction();
             enterName.addActionListener(login);
@@ -293,21 +298,17 @@ public class EatHealthy extends JFrame
             add(enterGameButton);
             //added enterGameButton ActionListener
             //this is the button handler
-            
+
         }
     }//end of InitializeGame
-    
-    
+
+
     class StartAction implements ActionListener
     {
         public void actionPerformed(ActionEvent e)
         {
             initGame.input = e.getActionCommand();
-            if(e.getActionCommand().equals("Enter Name"))
-            {
-                initGame.input = e.getActionCommand();
-                System.out(initGame.input);
-                if(e.getActionCommand().equals("Start Game"))
+              if(e.getActionCommand().equals("Start Game"))
                 {
                     System.out.println("button has been pressed");
                     welcomeHold.isPressed = true;
@@ -320,25 +321,33 @@ public class EatHealthy extends JFrame
                         //if the textfield is empty and button is pressed
                         welcomeHold.noName = true;
                         System.out.println("there is no name");
+                        //cards.show(pHolder, "LandingPage"); check if cards and Landing Page works
                         initGame.input = e.getActionCommand();
                         initGame.input = initGame.enterName.getText();//ask for text
                         System.out.println(initGame.input);
-                        
+
                         repaint();
                     }
+                    else if(initGame.enterName.getText().equals("Enter Name"))
+                    {
+                        initGame.input = e.getActionCommand();
+                        System.out.println("This is the new input that has come through if the action commando is Enter Name");
+
+                        System.out.println(initGame.input);
+        							}
                     else
                     {
                         welcomeHold.gotoLanding = true;
                         repaint();
                     }
                 }//end of if the BUTTON IS PRESSED
-                
+
             }//end of action performed
         }//end of start action class
-        
-        
-        
-        
+
+
+
+
         //
         // class JButtonHandlerS implements ActionListener
         // {
@@ -350,7 +359,7 @@ public class EatHealthy extends JFrame
         // 		welcomePan.repaint();
         // 	}
         // }
-        
+
         // class JButtonHandlerH implements ActionListener
         // {
         // 	public void actionPerformed(ActionEvent e)
@@ -360,10 +369,10 @@ public class EatHealthy extends JFrame
         // 		welcomePan.repaint();
         // 	}
         // }
-        
+
         class LandingPage extends JPanel
         {
-            
+
             public LandingPage()
             {
                 setLayout(flow);//sets the layout to flow
@@ -375,7 +384,7 @@ public class EatHealthy extends JFrame
             }
         }//end of landing page
     }
-    
+
     //correct
     // class Mouth extends JPanel implements ActionListener//mouth class not finished(unneccesary buttons)
     // {
@@ -418,8 +427,8 @@ public class EatHealthy extends JFrame
     //             button.setText("Press my belly.");
     //         }
     //         repaint();
-    
+
     //  }
     // end class Mouth
-    
+
     //start Esophogous class panels
