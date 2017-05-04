@@ -1,27 +1,12 @@
-/*
-* Surya Dantuluri
-* March 2, 2017
-* Accessibility.java
-* Simple program that displays a repeated pattern of shapes *on a fabric, which is then covered by polygons to display a *picture of pajamas on a panel.
-* Uses JFrame class and JPanel container.
-* Uses integers and arrays.
-*
-* Class first declares extending JFrame class.
-* Then sets size, sets size of origin of content panel, sets * if window is resizable or not.
-*
-* Sets new panel then sets background
-* Sets pattern, covering all of the panel
-* Overlays pattern with other shapes in panel to make the
-* output look like pajamas.
-*
-*Testing Plan:
-*input: no input
-*output:
+/*Surya Dantuluri
+Accessibility.java
+3/6/17
+
 */
 
-import java.awt.Color;     //imports abstract window toolkit
-import java.awt.Graphics; //imports possible events of abstract window toolkit
-import java.awt.Image; //imports graphics components with swing
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Font;
 import java.awt.event.MouseListener;
 import java.awt.event.KeyListener;
@@ -34,97 +19,108 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+
 public class AccessibilityRunner
 {
-	private Accessibility canvas;
-	private Image image;
-	private JLabel label;
-	private int xpos, ypos;
-	private boolean keyClear;
-	private int sizeX, sizeY;
-	private String imageName;
-	private boolean shiftkey;
-	private boolean clicked;
-	private boolean watered;
-	private int clearcode;
-	private boolean mouseWater;
-	private boolean mouseFlower;
-	private boolean waterBackground;
-	private boolean flowerclick;
-	private boolean cleargarden;
+		public static void main(String[] args)
+		{
+			AccessibilityRunner ar = new AccessibilityRunner();
+		}
+		
+		public AccessibilityRunner()
+		{
+			JFrame frame = new JFrame("Accessibility");
+			frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+			frame.setLayout(null);    //getContentRaw().setLayout(null);
+			frame.getContentPane();
+			frame.setSize(1000, 800);
+			frame.setLocation(0, 0);
+			frame.setResizable(false);
+			frame.setVisible(true);        
+		}
+}
 
+class Accessibility extends JPanel implements MouseListener,KeyListener
+{
+	private Color backgroundColor;
+	private int fontSize;
+	private int x;
+	private int y;
+	
 	public Accessibility()
 	{
-    //constructor
-  }
-  public static void main(String[]args)
-  {
-    AccessibilityRunner accrun = new AccessibilityRunner();
-    accrun.run();
-  }
-
-  public void run()
+		x = 100;
+		y=12;
+		
+		backgroundColor = new Color(x, x, x);
+		fontSize = y;
+		
+		addMouseListener(this);
+        addKeyListener(this);
+	}
+	
+	public void drawRectanglesWithLabels(Graphics g)
 	{
-		JFrame frame = new JFrame("AccessibilityRunner");//sets up new jframe
-		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
-		frame.setLayout(null); //get ContentRaw().setLayout(null);
-		frame.getContentPane();//sets content pane
-		canvas=new Accessibility();//sets canvas as garden
-		frame.getContentPane().add(canvas);//gets content pane and adds canvas
-		frame.setBackground(Color.PINK);//sets background color to pink
-		frame.setSize(1000,1000);//sets size for frame
-		frame.setLocation(0,0);//sets origin
-		frame.setResizable(false);//sets if resizable or not
-		frame.setVisible(true);//sets if frame is visible or not
+		g.setColor(Color.RED);
+		g.fillRect(10,10,100,20);
+		g.fillRect(115,10,100,20);
+		g.setColor(Color.BLACK);
+		g.drawString("brighter", 15, 80);
+		g.drawString("darker", 115, 80);
+	}
+	
+	public void medicalPageContent(Graphics g){ } /*Assume this method is complete. */
+	
+	public void paintComponent(Graphics g)
+	{
+		setBackground(backgroundColor);
+		//draw background color
+		drawRectanglesWithLabels(g);
+		g.setColor(Color.BLACK);
+		Font f = new Font("Serif", Font.PLAIN, fontSize);
+		g.setFont(f);
+		medicalPageContent(g);
+	}
+	
+	public void keyPressed(KeyEvent e)		
+	{
+		int code = e.getKeyCode();
+		
+		if(code == KeyEvent.VK_UP)
+		{
+			if(x+3 <= 255)
+			{	
+				x += 3;
+				repaint();
+			}
+		}
+		/*determine if the user used the keyboard appropriately to elicit a graphical response, record or
+		change information as appropriate, and call the method to make the appropriate graphical response */
+		if(code == KeyEvent.VK_DOWN)
+		{
+			if(x-3 >= 34)
+			{	
+				x -= 3;
+				repaint();
+			}
+		}
+	}
+	
+	public void keyTyped (KeyEvent e){}
+	public void keyReleased (KeyEvent e){}
+	
+	public void mousePressed(MouseEvent e)
+	{
+		requestFocusInWindow();
+	}
+	
+	public void mouseClicked(MouseEvent e)
+	{
+		int a = e.getX();
+		int b = e.getY();
 	}
 
-JPanel class: Accessibility
-// import each class needed
-//be sure to complete the class header
-public class
-Accessibility___________________________________________________________________________
-{
-private Color backgroundColor;
-private int fontSize;
-public Accessibility() //add listeners as appropriate
-{
-backgroundColor = new Color(100,100,100);
-fontSize = 12;
-}
-public void drawRectanglesWithLabels(Graphics g) //This method is complete
-{
-g.setColor(Color.RED);
-g.fillRect(10,10,100,20);
-g.fillRect(115,10,100,20);
-g.setColor(Color.BLACK);
-g.drawString(“brighter”, 15, 80)
-g.drawString(“darker”, 115, 80);
-}
-public void medicalPageContent(Graphics g){ } /*Assume this method is complete. */
-public void paintComponent(Graphics g)
-{
-setBackground(backgroundColor);
-//draw background color
-drawRectanglesWithLabels(g)
-g.setColor(Color.BLACK);
-g.setFont(“Serif”, Font.PLAIN, fontSize);
-medicalPageContent(g);
-}
-public void key_______________(KeyEvent e) //fill in blank
-{ /*determine if the user used the keyboard appropriately to elicit a graphical response, record or
-change information as appropriate, and call the method to make the appropriate graphical response */
-}
-public void key_______________ (KeyEvent e){} //Fill in blank.
-public void key_______________ (KeyEvent e){} //Fill in blank.
-public void mousePressed(MouseEvent e)
-{ //make it so the keyboard will work!
-}
-public void mouseClicked(MouseEvent e)
-{ /*determine if the user is clicking on one of the appropriate rectangles to elicit a graphical response,
-record or change information as appropriate, and call the method to make the appropriate graphical
-response*/
-}
-public void mouseReleased(MouseEvent e){} //This method is complete.
-public void mouseEntered(MouseEvent e){} //This method is complete.
-public void mouseExited(MouseEvent e){} //This method is complete.
+	public void mouseReleased(MouseEvent e){}
+	public void mouseEntered(MouseEvent e){}
+	public void mouseExited(MouseEvent e){}
 }

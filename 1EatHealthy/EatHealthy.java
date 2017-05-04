@@ -242,9 +242,9 @@ public class EatHealthy extends JFrame
             System.out.println(welcomeHold.noName);                  // draw Images first, draws background
             g.drawImage(welcomeBackground, 0,0,800,600,this);//this makes the image
             //g.drawImage(back, 0,0,600,400,this);
-            Font font = new Font ("Sans", Font.BOLD, 50);//initializes font
+            Font font = new Font ("Sans", Font.BOLD, 40);//initializes font
             g.setFont(font);//sets font int graphics
-            g.drawString("Welcome to the Eat Healthy Game!",100,100);//sets the string that is displayed on the panel
+            g.drawString("Welcome to the Eat Healthy Game!",0,100);//sets the string that is displayed on the panel
             System.out.println("paint");
             if(welcomeHold.noName)
             {
@@ -287,7 +287,7 @@ public class EatHealthy extends JFrame
             enterName = new JTextField("Enter Name");
             StartAction login = new StartAction();
             enterName.addActionListener(login);
-            enterName.setPreferredSize(new Dimension(100,50));
+            enterName.setPreferredSize(new Dimension(300,70));
             //enterName.setBounds(200,400,10,10);
             add(enterName);
             System.out.println("initGame");
@@ -310,6 +310,7 @@ public class EatHealthy extends JFrame
             initGame.input = e.getActionCommand();
               if(e.getActionCommand().equals("Start Game"))
                 {
+
                     System.out.println("button has been pressed");
                     welcomeHold.isPressed = true;
                     //	String input = enterName.getText();
