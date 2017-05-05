@@ -188,7 +188,7 @@ public class EatHealthy extends JFrame
         public PanelHolder()
         {
             setBackground(Color.GREEN);
-            System.out.print("PanelHolder");
+            System.out.print("PanelHolder is reached");
 
         }                                //  Panel holder (Holds all the Panels,for the Card Layout)(essentially)
     }
@@ -197,6 +197,7 @@ public class EatHealthy extends JFrame
     {
         public WelcomePanelHolder()
         {
+          System.out.println("WelcomePanelHolder reached");
           name="";
           tfinput = false;
           noName = false;
@@ -209,7 +210,6 @@ public class EatHealthy extends JFrame
             setFont(titleFont);
             WelcomePage welcomePan = new WelcomePage(); //Instantiate the Label Panel for the first Label
             InitializeGame initGame = new InitializeGame(); //Instantiate the Label Panel for the second Label that goes to the north
-        System.out.println("WelcomePanelHolder constructor");
             add(welcomePan, BorderLayout.CENTER);
             add(initGame, BorderLayout.SOUTH);
             //add(lp, BorderLayout.WEST);
@@ -231,8 +231,7 @@ public class EatHealthy extends JFrame
 
         public void paintComponent(Graphics g)
         {                //graphics method header
-            super.paintComponent(g);
-            System.out.println(noName);                  // draw Images first, draws background
+            super.paintComponent(g);                  // draw Images first, draws background
             g.drawImage(welcomeBackground, 0,0,800,600,this);//this makes the image
             //g.drawImage(back, 0,0,600,400,this);
             Font font = new Font ("Sans", Font.BOLD, 40);//initializes font
@@ -274,6 +273,7 @@ public class EatHealthy extends JFrame
 
         public InitializeGame()
         {
+          System.out.println("InitializeGame reached");
             setLayout(flow);
             setBackground(Color.RED);//set background to yello
 
@@ -283,7 +283,6 @@ public class EatHealthy extends JFrame
             enterName.setPreferredSize(new Dimension(300,70));
             //enterName.setBounds(200,400,10,10);
             add(enterName);
-            System.out.println("initGame");
             setPreferredSize(new Dimension(600,200));//set Preferred Size of initialize game of the panel
             JButton enterGameButton = new JButton("Start Game");
             enterGameButton.addActionListener(login);//set the entergame button action listener
@@ -368,12 +367,13 @@ public class EatHealthy extends JFrame
 
             public LandingPage()
             {
+              System.out.println(name);
                 setLayout(flow);//sets the layout to flow
                 //Card Layout made( needs more pseudocode)
                 setBackground(Color.BLUE);//set background to yello
                 Font titleFont = new Font("Serif", Font.BOLD, 20);                //Set Fonts
                 setFont(titleFont);
-                System.out.println("Houston, we've landed");
+                System.out.println("LandingPage reached");
             }
         }//end of landing page
     }
