@@ -362,9 +362,8 @@ public class EatHealthy extends JFrame
         // 	}
         // }
 
-        class LandingPage extends JPanel
+        class LandingPage extends JPanel implements MouseListener,KeyListener
         {
-
             public LandingPage()
             {
               System.out.println(name);
@@ -375,6 +374,19 @@ public class EatHealthy extends JFrame
                 setFont(titleFont);
                 System.out.println("LandingPage reached");
             }
+
+            public void getMyImage()
+          	{
+          		try
+          		{
+          			image=ImageIO.read(new File(imageName));
+          		}
+          		catch(IOException e)
+          		{
+          		System.err.println("\n\n"+imageName+"can't be found. \n\n");
+          		e.printStackTrace();
+          		}
+          	}
         }//end of landing page
     }
 
