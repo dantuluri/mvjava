@@ -43,6 +43,28 @@
 // import java.awt.FlowLayout;
 // import javax.swing.JButton;
 // import javax.swing.JRadioButton;
+import java.awt.Dimension;
+import java.awt.Frame;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import java.awt.Color;     //imports abstract window toolkit
+import java.awt.Graphics; //imports possible events of abstract window toolkit
+import java.awt.Image; //imports graphics components with swing
+import java.awt.Font;
+import java.awt.event.MouseListener;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.KeyEvent;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -315,9 +337,45 @@ public class EatHealthy extends JFrame
   }//end of start action class
 
       class LandingPage extends JPanel
-      {
+      {//donut, oatmeal, soda, avocado
+        public DrawingArea canvas;
+
+        public Image donut;
+        public Image oatmeal;
+        public Image soda;
+        public Image avocado;
+
+        public JLabel label;
+
+        public int xpos, ypos;
+
+        public boolean keyClear;
+
+        public int donutX, donutY, oatmealX, oatmealY, sodaX, sodaY, avocadoX, avocadoY;
+
+        public String donutName;
+        public String avocadoName;
+        public String sodaName;
+        public String oatmealName;
+
         public LandingPage()
         {
+          donutX=217;
+          donutY=301;
+          oatmealX=217;
+          oatmealY=301;
+          sodaX=217;
+          sodaY=301;
+          avocadoX=217;
+          avocadoY=301;
+          donutX=217;
+          donutY=301;
+          imageName="calvin.jpg";
+
+          //xpos=ypos=200;
+
+          keyClear=true;
+
           System.out.println(name);
           setLayout(flow);//sets the layout to flow
           //Card Layout made( needs more pseudocode)
@@ -325,7 +383,31 @@ public class EatHealthy extends JFrame
           Font titleFont = new Font("Serif", Font.BOLD, 20);                //Set Fonts
           setFont(titleFont);
           System.out.println("LandingPage reached");
-        }
+          addMouseMotionListener(new MouseMotionAdapter()
+          {
+            // invoked when mouse is dragged
+            public void mouseDragged(MouseEvent me)
+            {
+              Point point = me.getPoint();
+              System.out.println("HELLO"+point);
+            }
+          });
+        }//end of constructor
+
+        public void getMyImage()
+	{
+		try
+		{
+			image=ImageIO.read(new File(imageName));
+		}
+		catch(IOException e)
+		{
+		System.err.println("\n\n"+imageName+"can't be found. \n\n");
+		e.printStackTrace();
+		}
+	}
+
+
       }//end of landing page
   //start mouth class panels
   //start Esophogous class panels
