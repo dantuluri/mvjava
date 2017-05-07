@@ -43,6 +43,23 @@
 // import java.awt.FlowLayout;
 // import javax.swing.JButton;
 // import javax.swing.JRadioButton;
+
+import java.awt.Color;     //imports abstract window toolkit
+import java.awt.Graphics; //imports possible events of abstract window toolkit
+import java.awt.Image; //imports graphics components with swing
+import java.awt.Font; //imports fonts
+import java.awt.event.MouseListener; //imports package for mouse listener
+import java.awt.event.KeyListener; //imports packaga for any key listener
+import java.awt.event.MouseEvent; //imports package for any mouse events
+import java.awt.event.KeyEvent; //imports packsage for any key events;
+import javax.swing.JFrame; //iexpansion pack used for importing GUI JFrame
+import javax.swing.JPanel; //imports JPanel
+import javax.swing.JLabel; //imports JLabel
+import java.io.File; //imports file io
+import java.io.IOException; //imports for input out io exception
+import javax.imageio.ImageIO; //imports image io
+
+
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Point;
@@ -125,6 +142,8 @@ public class EatHealthy extends JFrame
   public boolean gotoLanding;
   public String input;
   public JTextField enterName;
+  private LandingPage canvas;
+
 
   private WelcomePanelHolder welcomeHold;
   private LandingPage landingPan;//where the user is most of the time
@@ -155,6 +174,10 @@ public class EatHealthy extends JFrame
     setDefaultCloseOperation(DISPOSE_ON_CLOSE);//sets default close opertation
     setLocation(0,0);//sets the "origin"
     setResizable(false);//does not allow the frame to be resized
+
+    getContentPane();//sets content pane
+    canvas=new LandingPage();//sets canvas as LandingPage
+    getContentPane().add(canvas);//gets content pane and adds canvas
 
     pHolder = new PanelHolder();//initliazes the panel holder that "holds" all the panels
     cards = new CardLayout();//initilizes cards as CardLayout to be called
@@ -406,6 +429,7 @@ public class EatHealthy extends JFrame
           setFont(titleFont);
           System.out.println("LandingPage reached");
           addMouseMotionListener(this);
+          addMouseListener(this);//adds MouseListener
           run();
 //new MouseMotionAdapter()
         }//end of constructor
@@ -414,17 +438,18 @@ public class EatHealthy extends JFrame
           getMyImage();
         }
 
-        public void mouseClicked(MouseEvent e)
-        {
-
-        }
+        public void mouseClicked(MouseEvent e){}
         public void mouseEntered(MouseEvent e){}
         public void mouseExited(MouseEvent e){}
         public void mousePressed(MouseEvent e)
         {
-         mousex = e.getX();
-         mousey = e.getY();
-         System.out.println("where did I click??? XPOSITION: "+mousex+" OH REALLY? OKAY SO HERE's MOUSEY: "+mousey);
+          System.out.println("does this even work");
+          requestFocus();
+          mousex=e.getX();
+          mousey=e.getY();
+          xpos=e.getX()-50;
+          System.out.println("where did I click??? XPOSITION: "+mousex+" OH REALLY? OKAY SO HERE's MOUSEY: "+mousey);
+          repaint();
         }
         public void mouseReleased(MouseEvent e)
         {
@@ -433,6 +458,7 @@ public class EatHealthy extends JFrame
 
         public void mouseDragged(MouseEvent e)
         {
+          requestFocus();
           originalme = e.toString();//holds the string that comes from the mouse event
           mouseDraggedPlace = originalme.indexOf("MOUSE_DRAGGED,");//returns the value of where MOUSE_DRAGGED is
           mouseDraggedPlace = mouseDraggedPlace+15;//go to front of mousedragged string

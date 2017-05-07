@@ -89,6 +89,7 @@ public class ShowImage
 		{
 			requestFocus();
 			xpos=e.getX()-50;
+			System.out.println("THIS IS THE XPOS"+xpos);
 			ypos=e.getY()-50;
 			repaint();
 		}
