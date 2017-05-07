@@ -345,6 +345,8 @@ public class EatHealthy extends JFrame
         public String mousePoint;
         public int xfind;
         public int commax;
+        public int commay;//used to find the y value with comma of x plus 1
+        public int parany;//paranthesis of y
         public int yfind;
         public int brackety;
         public int xpos;
@@ -414,7 +416,15 @@ public class EatHealthy extends JFrame
               commax = originalme.indexOf(',',mouseDraggedPlace);//sets the end of the x value
               xstring = originalme.substring(mouseDraggedPlace,commax);//finds the x position
               xpos = Integer.parseInt(xstring);//casts the string as an int
-              System.out.println(xpos);
+              xpos = Math.max(0, xpos);//uses math methods to set negative x position to 0 if negative
+              System.out.print("xpos"+xpos+",");
+
+              commay = commax+1;
+              parany = originalme.indexOf(")");
+              ystring  = originalme.substring(commay,parany);
+              ypos = Integer.parseInt(ystring);
+              ypos = Math.max(0, ypos);//uses math methods to set negative y position to 0 if negative
+              System.out.println("ypos"+ypos);
 
               // int stringa = stringo.indexOf("absolute");
               // System.out.println(stringa);
