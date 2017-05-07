@@ -51,6 +51,10 @@ import java.awt.event.MouseMotionAdapter;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import java.util.Scanner;
+
+
+
 import java.awt.Color;     //imports abstract window toolkit
 import java.awt.Graphics; //imports possible events of abstract window toolkit
 import java.awt.Image; //imports graphics components with swing
@@ -338,7 +342,13 @@ public class EatHealthy extends JFrame
 
       class LandingPage extends JPanel
       {//donut, oatmeal, soda, avocado
-        public DrawingArea canvas;
+        public String mousePoint;
+        public int xfind;
+        public int commax;
+        public int yfind;
+        public int brackety;
+        public int xpos;
+        public int ypos;
 
         public Image donut;
         public Image oatmeal;
@@ -347,7 +357,6 @@ public class EatHealthy extends JFrame
 
         public JLabel label;
 
-        public int xpos, ypos;
 
         public boolean keyClear;
 
@@ -370,7 +379,10 @@ public class EatHealthy extends JFrame
           avocadoY=301;
           donutX=217;
           donutY=301;
-          imageName="calvin.jpg";
+          donutName="donut.png";
+          avocadoName="avocado.png";
+          sodaName="soda.png";
+          oatmealName="oatmeal.png";
 
           //xpos=ypos=200;
 
@@ -388,24 +400,56 @@ public class EatHealthy extends JFrame
             // invoked when mouse is dragged
             public void mouseDragged(MouseEvent me)
             {
+              requestFocus();
               Point point = me.getPoint();
-              System.out.println("HELLO"+point);
+              String mousePoint = point;
+
+                xfind = mousePoint.indexOf('=');//returns 16
+                commax = mousePoint.indexOf(',');
+                yfind = mousePoint.indexOf('=',xfind);//return 22
+                backety = mousePoint.indexOf(']');
+
+                xpos = mousePoint.substring(xfind,commax);
+                ypos = mousePoint.substring(yfind,brackety);
+
+                System.out.println("x pos:"+xpos+"  y pos:"+ypos);
             }
           });
         }//end of constructor
 
         public void getMyImage()
-	{
-		try
-		{
-			image=ImageIO.read(new File(imageName));
-		}
-		catch(IOException e)
-		{
-		System.err.println("\n\n"+imageName+"can't be found. \n\n");
-		e.printStackTrace();
-		}
-	}
+        {
+          try
+          {
+            donut=ImageIO.read(new File(donutName));
+            oatmeal=ImageIO.read(new File(oatmealName));
+            avocado=ImageIO.read(new File(avocadoName));
+            soda=ImageIO.read(new File(sodaName));
+          }
+          catch(IOException e)
+          {
+            System.err.println("\n\n"+donutName+"can't be found. \n\n");
+            System.err.println("\n\n"+oatmealName+"can't be found. \n\n");
+            System.err.println("\n\n"+sodaName+"can't be found. \n\n");
+            System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
+
+            e.printStackTrace();
+          }
+        }//end of get my image
+
+        public void paintComponent(Graphics g)
+        {
+          if(keyClear)
+          {
+            super.paintComponent(g);
+          }
+          else
+          {
+            //g.drawImage(image,xpos,ypos,sizeX,sizeY,this);
+          }
+          keyClear=false;
+
+        }
 
 
       }//end of landing page
