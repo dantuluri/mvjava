@@ -406,18 +406,23 @@ public class EatHealthy extends JFrame
         public String xstring;
         public String ystring;
 
+        public boolean donuton;
+        public boolean avocadoon;
+        public boolean oatmealon;
+        public boolean sodaon;
+
         public LandingPage()
         {
           //sizeX=217;
 		      //sizeY=301;
-          donutX = 690;
-          donutY = 200;
-          oatmealX = donutX;
-          sodaX = donutX;
-          avocadoX = donutX;
-          oatmealY = donutY+200;
-          sodaY = donutY+200;
-          avocadoY = donutY+200;
+          donutX = 600;//donut-(600 to 750 ,75 to 225)
+          donutY = 75;////donut-(600 to 750 ,75 to 225)
+          oatmealX = donutX;////oatmeal-(640 to 790 ,255 to 405)
+          oatmealY = donutY+180;//oatmeal-(640 to 790 ,255 to 405)
+          sodaX = donutX;//soda-(640 to 790 ,440 to 590)
+          sodaY = 440;//donut-(soda-(640 to 790 ,440 to 590)
+          avocadoX = donutX;//avocado-(640 to 790 ,620 to 770)
+          avocadoY = sodaY+180;//avocado-(640 to 790 ,620 to 770)
 
           calvinHungryName="calvin_hungry.png";
           donutName="donut.png";
@@ -449,11 +454,35 @@ public class EatHealthy extends JFrame
         public void mouseClicked(MouseEvent e){}
         public void mouseEntered(MouseEvent e){}
         public void mouseExited(MouseEvent e){}
+
         public void mousePressed(MouseEvent e)
         {
           requestFocus();
           mousex=e.getX();
           mousey=e.getY();
+          System.out.println("mousexy");
+
+          if(mousex>600 && mousex<750 && mousey>75 && mousey<225)//donut
+          {
+            donuton = true;
+            System.out.println("donut pressed");
+          }
+          if(mousex>640 && mousex<790 && mousey>255 && mousey<405)//oatmeal
+          {
+            oatmealon = true;
+            System.out.println("oatmeal pressed");
+          }
+          if(mousex>640 && mousex<790 && mousey>440 && mousey<590)//soda
+          {
+            sodaon = true;
+            System.out.println("soda pressed");
+          }
+          if(mousex>640 && mousex<790 && mousey>620 && mousey<770)//avocado
+          {
+            avocadoon = true;
+            System.out.println("avocado pressed");
+          }
+
           repaint();
         }
         public void mouseReleased(MouseEvent e)
@@ -519,10 +548,10 @@ public class EatHealthy extends JFrame
         {
           super.paintComponent(g);
           g.drawImage(calvinHungry,150,140,300,600,null);
-          g.drawImage(avocado,avocadoX-50,avocadoY-50,this);
-          g.drawImage(donut,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
-          g.drawImage(soda,sodaX-50,sodaY-50,this);
-          g.drawImage(oatmeal,oatmealX-50,oatmealY-50,this);
+          g.drawImage(avocado,avocadoX,avocadoY,this);
+          g.drawImage(donut,donutX,donutY,this);// IF THE DONUT IS SELECTED
+          g.drawImage(soda,sodaX,sodaY,this);
+          g.drawImage(oatmeal,oatmealX,oatmealY,this);
 
 
           System.out.println("paint donut");
