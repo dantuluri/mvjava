@@ -380,8 +380,8 @@ public class EatHealthy extends JFrame
 
         public LandingPage()
         {
-          sizeX=217;
-		      sizeY=301;
+          //sizeX=217;
+		      //sizeY=301;
           donutX=217;
           donutY=301;
           oatmealX=217;
@@ -409,8 +409,20 @@ public class EatHealthy extends JFrame
           setFont(titleFont);
           System.out.println("LandingPage reached");
           addMouseMotionListener(this);
+          run();
 //new MouseMotionAdapter()
         }//end of constructor
+
+
+
+        public void run()
+        {
+
+          //frame.getContentPane().add(label);
+        //canvas=new DrawingArea();
+          //frame.getContentPane().add(canvas);
+          getMyImage();
+        }
 
         public void mouseDragged(MouseEvent e)
         {
@@ -434,6 +446,7 @@ public class EatHealthy extends JFrame
           repaint();
         }
         public void mouseMoved(MouseEvent e){}
+
         public void getMyImage()
         {
           try
@@ -458,6 +471,7 @@ public class EatHealthy extends JFrame
 
         public void paintComponent(Graphics g)
         {
+          super.paintComponent(g);
           g.drawImage(donut,xpos,ypos,this);
           System.out.println("paint donut");
         }
