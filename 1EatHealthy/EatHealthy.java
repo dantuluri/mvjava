@@ -367,6 +367,12 @@ public class EatHealthy extends JFrame
         public String sodaName;
         public String oatmealName;
 
+        public String originalme;
+        public int mouseDraggedPlace;
+
+        public String xstring;
+        public String ystring;
+
         public LandingPage()
         {
           donutX=217;
@@ -401,18 +407,30 @@ public class EatHealthy extends JFrame
             public void mouseDragged(MouseEvent me)
             {
               requestFocus();
-              Point point = me.getPoint();
-              String mousePoint = point;
 
-                xfind = mousePoint.indexOf('=');//returns 16
-                commax = mousePoint.indexOf(',');
-                yfind = mousePoint.indexOf('=',xfind);//return 22
-                backety = mousePoint.indexOf(']');
+              originalme = me.toString();//holds the string that comes from the mouse event
+              mouseDraggedPlace = originalme.indexOf("MOUSE_DRAGGED,");//returns the value of where MOUSE_DRAGGED is
+              mouseDraggedPlace = mouseDraggedPlace+15;//go to front of mousedragged string
+              commax = originalme.indexOf(',',mouseDraggedPlace);//sets the end of the x value
+              xstring = originalme.substring(mouseDraggedPlace,commax);//finds the x position
+              xpos = Integer.parseInt(xstring);//casts the string as an int
+              System.out.println(xpos);
 
-                xpos = mousePoint.substring(xfind,commax);
-                ypos = mousePoint.substring(yfind,brackety);
-
-                System.out.println("x pos:"+xpos+"  y pos:"+ypos);
+              // int stringa = stringo.indexOf("absolute");
+              // System.out.println(stringa);
+              //
+              // Point point = me.getPoint();
+              // String mousePoint = point;
+              //
+              //   xfind = mousePoint.indexOf('=');//returns 16
+              //   commax = mousePoint.indexOf(',');
+              //   yfind = mousePoint.indexOf('=',xfind);//return 22
+              //   backety = mousePoint.indexOf(']');
+              //
+              //   xpos = mousePoint.substring(xfind,commax);
+              //   ypos = mousePoint.substring(yfind,brackety);
+              //
+              //   System.out.println("x pos:"+xpos+"  y pos:"+ypos);
             }
           });
         }//end of constructor
