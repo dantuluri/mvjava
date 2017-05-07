@@ -1,27 +1,71 @@
-import java.awt.BorderLayout;
-import javax.swing.JButton;
-import java.awt.Frame;
 
-public class Main extends Frame {
-  private JButton north, south, east, west, center;
+/* w w  w .ja v  a2s  . c o  m*/
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
-  public Main(String title) {
-    super(title);
-    north = new JButton("North");
-    south = new JButton("South");
-    east = new JButton("East");
-    west = new JButton("West");
-    center = new JButton("Center");
-    this.add(north, BorderLayout.NORTH);
-    this.add(south, BorderLayout.SOUTH);
-    this.add(east, BorderLayout.EAST);
-    this.add(west, BorderLayout.WEST);
-    this.add(center, BorderLayout.CENTER);
-  }
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class Main {
 
   public static void main(String[] args) {
-    Frame f = new Main("BorderLayout demo");
-    f.pack();
-    f.setVisible(true);
+    JFrame aWindow = new JFrame();
+    aWindow.setBounds(200, 200, 200, 200);
+    aWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    Container content = aWindow.getContentPane();
+    content.add(new MouseMotionEvents());
+    aWindow.setVisible(true);
+  }
+}
+
+class MouseMotionEvents extends JPanel implements MouseListener,
+    MouseMotionListener {
+  Point p;
+
+  public MouseMotionEvents() {
+    addMouseListener(this);
+    addMouseMotionListener(this);
+  }
+
+  public void mouseClicked(MouseEvent me) {
+  }
+
+  public void mouseEntered(MouseEvent me) {
+  }
+
+  public void mouseExited(MouseEvent me) {
+  }
+
+  public void mousePressed(MouseEvent me) {
+    p = me.getPoint();
+    repaint();
+  }
+
+  public void mouseReleased(MouseEvent me) {
+    p = null;
+    repaint();
+  }
+
+  public void mouseDragged(MouseEvent me) {
+    p = me.getPoint();
+    repaint();
+  }
+
+  public void mouseMoved(MouseEvent me) {
+  }
+
+  public void paint(Graphics g) {
+    if (p != null) {
+      Dimension d = getSize();
+      int xc = d.width / 2;
+      int yc = d.height / 2;
+      g.drawLine(xc, yc, p.x, p.y);
+    }
   }
 }

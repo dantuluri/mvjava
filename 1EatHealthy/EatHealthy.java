@@ -342,7 +342,7 @@ public class EatHealthy extends JFrame
     }//end of action performed
   }//end of start action class
 
-      class LandingPage extends JPanel implements MouseMotionListener
+      class LandingPage extends JPanel implements MouseMotionListener, MouseListener
       {//donut, oatmeal, soda, avocado
 
         public String mousePoint;
@@ -377,6 +377,9 @@ public class EatHealthy extends JFrame
         public String originalme;
         public int mouseDraggedPlace;
 
+        public int mousex;
+        public int mousey;
+
         public String xstring;
         public String ystring;
 
@@ -384,20 +387,21 @@ public class EatHealthy extends JFrame
         {
           //sizeX=217;
 		      //sizeY=301;
+          donutX=donutY=400;
           calvinHungryName="calvin_hungry.png";
           donutName="donut.png";
           avocadoName="avocado.png";
           sodaName="soda.png";
           oatmealName="oatmeal.png";
 
-          xpos=ypos=200;//sets the inital location of the image
+          //xpos=ypos=200;//sets the inital location of the image
 
           keyClear=true;
 
           System.out.println(name);
           setLayout(flow);//sets the layout to flow
           //Card Layout made( needs more pseudocode)
-          setBackground(Color.BLUE);//set background to yello
+          setBackground(Color.WHITE);//set background to yello
           Font titleFont = new Font("Serif", Font.BOLD, 20);                //Set Fonts
           setFont(titleFont);
           System.out.println("LandingPage reached");
@@ -408,6 +412,23 @@ public class EatHealthy extends JFrame
         public void run()
         {
           getMyImage();
+        }
+
+        public void mouseClicked(MouseEvent e)
+        {
+
+        }
+        public void mouseEntered(MouseEvent e){}
+        public void mouseExited(MouseEvent e){}
+        public void mousePressed(MouseEvent e)
+        {
+         mousex = e.getX();
+         mousey = e.getY();
+         System.out.println("where did I click??? XPOSITION: "+mousex+" OH REALLY? OKAY SO HERE's MOUSEY: "+mousey);
+        }
+        public void mouseReleased(MouseEvent e)
+        {
+
         }
 
         public void mouseDragged(MouseEvent e)
@@ -466,9 +487,9 @@ public class EatHealthy extends JFrame
         public void paintComponent(Graphics g)
         {
           super.paintComponent(g);
-          g.drawImage(calvinHungry,250,55,this);
+          g.drawImage(calvinHungry,150,140,300,600,null);
           //g.drawImage(donut,xpos-50,ypos-50,this); IF THE DONUT IS SELECTED
-          g.drawImage(donut,xpos-75,ypos-75,this);// IF THE DONUT IS SELECTED
+          g.drawImage(donut,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
           //g.drawImage(soda,xpos-50,ypos-50,this); IF THE DONUT IS SELECTED
           //g.drawImage(oatmeal,xpos-50,ypos-50,this); IF THE DONUT IS SELECTED
 
