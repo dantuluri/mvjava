@@ -53,6 +53,8 @@ import java.awt.event.WindowEvent;
 
 import java.util.Scanner;
 
+import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseEvent;
 
 
 import java.awt.Color;     //imports abstract window toolkit
@@ -340,8 +342,9 @@ public class EatHealthy extends JFrame
     }//end of action performed
   }//end of start action class
 
-      class LandingPage extends JPanel
+      class LandingPage extends JPanel implements MouseMotionListener
       {//donut, oatmeal, soda, avocado
+
         public String mousePoint;
         public int xfind;
         public int commax;
@@ -377,6 +380,8 @@ public class EatHealthy extends JFrame
 
         public LandingPage()
         {
+          sizeX=217;
+		      sizeY=301;
           donutX=217;
           donutY=301;
           oatmealX=217;
@@ -403,63 +408,49 @@ public class EatHealthy extends JFrame
           Font titleFont = new Font("Serif", Font.BOLD, 20);                //Set Fonts
           setFont(titleFont);
           System.out.println("LandingPage reached");
-          addMouseMotionListener(new MouseMotionAdapter()
-          {
-            // invoked when mouse is dragged
-            public void mouseDragged(MouseEvent me)
-            {
-              requestFocus();
-
-              originalme = me.toString();//holds the string that comes from the mouse event
-              mouseDraggedPlace = originalme.indexOf("MOUSE_DRAGGED,");//returns the value of where MOUSE_DRAGGED is
-              mouseDraggedPlace = mouseDraggedPlace+15;//go to front of mousedragged string
-              commax = originalme.indexOf(',',mouseDraggedPlace);//sets the end of the x value
-              xstring = originalme.substring(mouseDraggedPlace,commax);//finds the x position
-              xpos = Integer.parseInt(xstring);//casts the string as an int
-              xpos = Math.max(0, xpos);//uses math methods to set negative x position to 0 if negative
-              System.out.print("xpos"+xpos+",");
-
-              commay = commax+1;
-              parany = originalme.indexOf(")");
-              ystring  = originalme.substring(commay,parany);
-              ypos = Integer.parseInt(ystring);
-              ypos = Math.max(0, ypos);//uses math methods to set negative y position to 0 if negative
-              System.out.println("ypos"+ypos);
-
-              // int stringa = stringo.indexOf("absolute");
-              // System.out.println(stringa);
-              //
-              // Point point = me.getPoint();
-              // String mousePoint = point;
-              //
-              //   xfind = mousePoint.indexOf('=');//returns 16
-              //   commax = mousePoint.indexOf(',');
-              //   yfind = mousePoint.indexOf('=',xfind);//return 22
-              //   backety = mousePoint.indexOf(']');
-              //
-              //   xpos = mousePoint.substring(xfind,commax);
-              //   ypos = mousePoint.substring(yfind,brackety);
-              //
-              //   System.out.println("x pos:"+xpos+"  y pos:"+ypos);
-            }
-          });
+          addMouseMotionListener(this);
+//new MouseMotionAdapter()
         }//end of constructor
 
+        public void mouseDragged(MouseEvent e)
+        {
+
+          originalme = e.toString();//holds the string that comes from the mouse event
+          mouseDraggedPlace = originalme.indexOf("MOUSE_DRAGGED,");//returns the value of where MOUSE_DRAGGED is
+          mouseDraggedPlace = mouseDraggedPlace+15;//go to front of mousedragged string
+          commax = originalme.indexOf(',',mouseDraggedPlace);//sets the end of the x value
+          xstring = originalme.substring(mouseDraggedPlace,commax);//finds the x position
+          xpos = Integer.parseInt(xstring);//casts the string as an int
+          xpos = Math.max(0, xpos);//uses math methods to set negative x position to 0 if negative
+          System.out.print("xpos"+xpos+",");
+
+          commay = commax+1;
+          parany = originalme.indexOf(")");
+          ystring  = originalme.substring(commay,parany);
+          ypos = Integer.parseInt(ystring);
+          ypos = Math.max(0, ypos);//uses math methods to set negative y position to 0 if negative
+          System.out.println("ypos"+ypos);
+
+          repaint();
+        }
+        public void mouseMoved(MouseEvent e){}
         public void getMyImage()
         {
           try
           {
             donut=ImageIO.read(new File(donutName));
-            oatmeal=ImageIO.read(new File(oatmealName));
-            avocado=ImageIO.read(new File(avocadoName));
-            soda=ImageIO.read(new File(sodaName));
+            System.out.println("donutName");
+            // oatmeal=ImageIO.read(new File(oatmealName));
+            // avocado=ImageIO.read(new File(avocadoName));
+            // soda=ImageIO.read(new File(sodaName));
           }
           catch(IOException e)
           {
             System.err.println("\n\n"+donutName+"can't be found. \n\n");
-            System.err.println("\n\n"+oatmealName+"can't be found. \n\n");
-            System.err.println("\n\n"+sodaName+"can't be found. \n\n");
-            System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
+            System.out.println("catched donut");
+            // System.err.println("\n\n"+oatmealName+"can't be found. \n\n");
+            // System.err.println("\n\n"+sodaName+"can't be found. \n\n");
+            // System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
 
             e.printStackTrace();
           }
@@ -467,16 +458,8 @@ public class EatHealthy extends JFrame
 
         public void paintComponent(Graphics g)
         {
-          if(keyClear)
-          {
-            super.paintComponent(g);
-          }
-          else
-          {
-            //g.drawImage(image,xpos,ypos,sizeX,sizeY,this);
-          }
-          keyClear=false;
-
+          g.drawImage(donut,xpos,ypos,this);
+          System.out.println("paint donut");
         }
 
 

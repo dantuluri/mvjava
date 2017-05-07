@@ -29,10 +29,10 @@ public class ShowImage
 
 	public ShowImage()
 	{
-		sizeX=217;
-		sizeY=301;
+		sizeX=50;
+		sizeY=50;
 		imageName="calvin.jpg";
-		xpos=ypos=200;
+		xpos=ypos=210;
 		keyClear=true;
 	}
 	public static void main(String[]args)
@@ -88,8 +88,8 @@ public class ShowImage
 		public void mousePressed(MouseEvent e)
 		{
 			requestFocus();
-			xpos=e.getX()-110;
-			ypos=e.getY()-150;
+			xpos=e.getX()-50;
+			ypos=e.getY()-50;
 			repaint();
 		}
 
@@ -119,7 +119,7 @@ public class ShowImage
 			}
 			else
 			{
-				g.drawImage(image,xpos,ypos,sizeX,sizeY,this);
+				g.drawImage(image,xpos,ypos,this);
 			}
 			keyClear=false;
 
