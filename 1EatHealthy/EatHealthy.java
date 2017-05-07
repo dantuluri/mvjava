@@ -415,14 +415,14 @@ public class EatHealthy extends JFrame
         {
           //sizeX=217;
 		      //sizeY=301;
-          donutX = 600;//donut-(600 to 750 ,75 to 225)
-          donutY = 75;////donut-(600 to 750 ,75 to 225)
+          donutX = 600-75;//donut-(600 to 750 ,75 to 225)
+          donutY = 75-75;////donut-(600 to 750 ,75 to 225)
           oatmealX = donutX;////oatmeal-(640 to 790 ,255 to 405)
-          oatmealY = donutY+180;//oatmeal-(640 to 790 ,255 to 405)
+          oatmealY = donutY+180-75;//oatmeal-(640 to 790 ,255 to 405)
           sodaX = donutX;//soda-(640 to 790 ,440 to 590)
-          sodaY = 440;//donut-(soda-(640 to 790 ,440 to 590)
+          sodaY = 440-75;//donut-(soda-(640 to 790 ,440 to 590)
           avocadoX = donutX;//avocado-(640 to 790 ,620 to 770)
-          avocadoY = sodaY+180;//avocado-(640 to 790 ,620 to 770)
+          avocadoY = sodaY+180-75;//avocado-(640 to 790 ,620 to 770)
 
           calvinHungryName="calvin_hungry.png";
           donutName="donut.png";
@@ -466,21 +466,33 @@ public class EatHealthy extends JFrame
           {
             donuton = true;
             System.out.println("donut pressed");
+            oatmealon = false;
+            sodaon = false;
+            avocadoon = false;
           }
           if(mousex>640 && mousex<790 && mousey>255 && mousey<405)//oatmeal
           {
             oatmealon = true;
             System.out.println("oatmeal pressed");
+            donuton = false;
+            sodaon = false;
+            avocadoon = false;
           }
           if(mousex>640 && mousex<790 && mousey>440 && mousey<590)//soda
           {
             sodaon = true;
             System.out.println("soda pressed");
+            oatmealon = false;
+            donuton = false;
+            avocadoon = false;
           }
           if(mousex>640 && mousex<790 && mousey>620 && mousey<770)//avocado
           {
             avocadoon = true;
             System.out.println("avocado pressed");
+            oatmealon = false;
+            sodaon = false;
+            donuton = false;
           }
 
           repaint();
@@ -509,6 +521,26 @@ public class EatHealthy extends JFrame
           ypos = Math.max(0, ypos);//uses math methods to set negative y position to 0 if negative
           System.out.println("ypos"+ypos);
 
+          if(donuton)
+          {
+          donutX = xpos;
+          donutY = ypos;
+          }
+          if(oatmealon)
+          {
+          oatmealX = xpos;
+          oatmealY = ypos;
+          }
+          if(sodaon)
+          {
+          sodaX = xpos;
+          sodaY = ypos;
+          }
+          if(avocadoon)
+          {
+          avocadoX = xpos;
+          avocadoY = ypos;
+          }
           repaint();
         }
         public void mouseMoved(MouseEvent e){}
@@ -548,10 +580,10 @@ public class EatHealthy extends JFrame
         {
           super.paintComponent(g);
           g.drawImage(calvinHungry,150,140,300,600,null);
-          g.drawImage(avocado,avocadoX,avocadoY,this);
-          g.drawImage(donut,donutX,donutY,this);// IF THE DONUT IS SELECTED
-          g.drawImage(soda,sodaX,sodaY,this);
-          g.drawImage(oatmeal,oatmealX,oatmealY,this);
+          g.drawImage(avocado,avocadoX-75,avocadoY-75,this);
+          g.drawImage(donut,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
+          g.drawImage(soda,sodaX-75,sodaY-75,this);
+          g.drawImage(oatmeal,oatmealX-75,oatmealY-75,this);
 
 
           System.out.println("paint donut");
