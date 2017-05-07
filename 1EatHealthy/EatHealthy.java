@@ -355,6 +355,7 @@ public class EatHealthy extends JFrame
         public int xpos;
         public int ypos;
 
+        public Image calvinHungry;
         public Image donut;
         public Image oatmeal;
         public Image soda;
@@ -367,6 +368,7 @@ public class EatHealthy extends JFrame
 
         public int donutX, donutY, oatmealX, oatmealY, sodaX, sodaY, avocadoX, avocadoY;
 
+        public String calvinHungryName;
         public String donutName;
         public String avocadoName;
         public String sodaName;
@@ -382,22 +384,13 @@ public class EatHealthy extends JFrame
         {
           //sizeX=217;
 		      //sizeY=301;
-          donutX=217;
-          donutY=301;
-          oatmealX=217;
-          oatmealY=301;
-          sodaX=217;
-          sodaY=301;
-          avocadoX=217;
-          avocadoY=301;
-          donutX=217;
-          donutY=301;
+          calvinHungryName="calvin_hungry.png";
           donutName="donut.png";
           avocadoName="avocado.png";
           sodaName="soda.png";
           oatmealName="oatmeal.png";
 
-          //xpos=ypos=200;
+          xpos=ypos=200;//sets the inital location of the image
 
           keyClear=true;
 
@@ -412,21 +405,13 @@ public class EatHealthy extends JFrame
           run();
 //new MouseMotionAdapter()
         }//end of constructor
-
-
-
         public void run()
         {
-
-          //frame.getContentPane().add(label);
-        //canvas=new DrawingArea();
-          //frame.getContentPane().add(canvas);
           getMyImage();
         }
 
         public void mouseDragged(MouseEvent e)
         {
-
           originalme = e.toString();//holds the string that comes from the mouse event
           mouseDraggedPlace = originalme.indexOf("MOUSE_DRAGGED,");//returns the value of where MOUSE_DRAGGED is
           mouseDraggedPlace = mouseDraggedPlace+15;//go to front of mousedragged string
@@ -451,20 +436,29 @@ public class EatHealthy extends JFrame
         {
           try
           {
+            calvinHungry=ImageIO.read(new File(calvinHungryName));
+            System.out.println("calvinHungryName");
             donut=ImageIO.read(new File(donutName));
             System.out.println("donutName");
-            // oatmeal=ImageIO.read(new File(oatmealName));
-            // avocado=ImageIO.read(new File(avocadoName));
-            // soda=ImageIO.read(new File(sodaName));
+            oatmeal=ImageIO.read(new File(oatmealName));
+            System.out.println("oatmealName");
+            avocado=ImageIO.read(new File(avocadoName));
+            System.out.println("avocadoName");
+            soda=ImageIO.read(new File(sodaName));
+            System.out.println("sodaName");
           }
           catch(IOException e)
           {
+            System.err.println("\n\n"+calvinHungryName+"can't be found. \n\n");
+            System.out.println("catched calvinHungry");
             System.err.println("\n\n"+donutName+"can't be found. \n\n");
             System.out.println("catched donut");
-            // System.err.println("\n\n"+oatmealName+"can't be found. \n\n");
-            // System.err.println("\n\n"+sodaName+"can't be found. \n\n");
-            // System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
-
+            System.err.println("\n\n"+oatmealName+"can't be found. \n\n");
+            System.out.println("catched oatmeal");
+            System.err.println("\n\n"+sodaName+"can't be found. \n\n");
+            System.out.println("catched soda");
+            System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
+            System.out.println("catched avocado");
             e.printStackTrace();
           }
         }//end of get my image
@@ -472,7 +466,13 @@ public class EatHealthy extends JFrame
         public void paintComponent(Graphics g)
         {
           super.paintComponent(g);
-          g.drawImage(donut,xpos,ypos,this);
+          g.drawImage(calvinHungry,250,55,this);
+          //g.drawImage(donut,xpos-50,ypos-50,this); IF THE DONUT IS SELECTED
+          g.drawImage(donut,xpos-75,ypos-75,this);// IF THE DONUT IS SELECTED
+          //g.drawImage(soda,xpos-50,ypos-50,this); IF THE DONUT IS SELECTED
+          //g.drawImage(oatmeal,xpos-50,ypos-50,this); IF THE DONUT IS SELECTED
+
+
           System.out.println("paint donut");
         }
 
