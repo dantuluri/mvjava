@@ -410,7 +410,15 @@ public class EatHealthy extends JFrame
         {
           //sizeX=217;
 		      //sizeY=301;
-          donutX=donutY=400;
+          donutX = 690;
+          donutY = 200;
+          oatmealX = donutX;
+          sodaX = donutX;
+          avocadoX = donutX;
+          oatmealY = donutY+200;
+          sodaY = donutY+200;
+          avocadoY = donutY+200;
+
           calvinHungryName="calvin_hungry.png";
           donutName="donut.png";
           avocadoName="avocado.png";
@@ -428,14 +436,14 @@ public class EatHealthy extends JFrame
           Font titleFont = new Font("Serif", Font.BOLD, 20);                //Set Fonts
           setFont(titleFont);
           System.out.println("LandingPage reached");
-          addMouseMotionListener(this);
-          addMouseListener(this);//adds MouseListener
+          addMouseMotionListener(this);//adds the mouse motion listner for dragging images
+          addMouseListener(this);//adds MouseListener for clicking on images
           run();
 //new MouseMotionAdapter()
         }//end of constructor
         public void run()
         {
-          getMyImage();
+          getMyImage();//gets images
         }
 
         public void mouseClicked(MouseEvent e){}
@@ -443,12 +451,9 @@ public class EatHealthy extends JFrame
         public void mouseExited(MouseEvent e){}
         public void mousePressed(MouseEvent e)
         {
-          System.out.println("does this even work");
           requestFocus();
           mousex=e.getX();
           mousey=e.getY();
-          xpos=e.getX()-50;
-          System.out.println("where did I click??? XPOSITION: "+mousex+" OH REALLY? OKAY SO HERE's MOUSEY: "+mousey);
           repaint();
         }
         public void mouseReleased(MouseEvent e)
@@ -514,10 +519,10 @@ public class EatHealthy extends JFrame
         {
           super.paintComponent(g);
           g.drawImage(calvinHungry,150,140,300,600,null);
-          //g.drawImage(donut,xpos-50,ypos-50,this); IF THE DONUT IS SELECTED
+          g.drawImage(avocado,avocadoX-50,avocadoY-50,this);
           g.drawImage(donut,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
-          //g.drawImage(soda,xpos-50,ypos-50,this); IF THE DONUT IS SELECTED
-          //g.drawImage(oatmeal,xpos-50,ypos-50,this); IF THE DONUT IS SELECTED
+          g.drawImage(soda,sodaX-50,sodaY-50,this);
+          g.drawImage(oatmeal,oatmealX-50,oatmealY-50,this);
 
 
           System.out.println("paint donut");
