@@ -19,6 +19,8 @@
  Asks for name and you press start Game
  If name is not provided and they press start:::: give them alert asking them to enter a name
 
+ LandingPage
+ User moves desired food to the mouth of hungry calvin, which goes to mouth panel to show process of breakdown of food
 
 
 
@@ -127,7 +129,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 
-public class EatHealthy extends JFrame
+public class EatHealthy extends JFrame//JFrame that holds all panels
 {
   private Image image;//sets the image name
   private PanelHolder pHolder;//panel holder
@@ -167,7 +169,7 @@ public class EatHealthy extends JFrame
       EatHealthy eaty = new EatHealthy();
   }
 
-  public EatHealthy()
+  public EatHealthy()//initializes location, size, close operation, and sets up canvas for landing page as well as intitalize panels/layouts
   {
     super("Eat Healthy!");//initlizes the parents class and names the Eat Healthy game
     setSize(800, 800);		//sets the eat healthy frame size
@@ -235,9 +237,9 @@ public class EatHealthy extends JFrame
     }                                //  Panel holder (Holds all the Panels,for the Card Layout)(essentially)
   }
 
-  class WelcomePanelHolder extends JPanel//Another panel holder that holds both the top panel and bottom panel of the welcome page
+  class WelcomePanelHolder extends JPanel//Another panel holder that holds both the top panel and bottom panel of the welcome page for layout purposes
   {
-    public WelcomePanelHolder()//constructor
+    public WelcomePanelHolder()//constructor that sets up the panel and makes border layout
     {
       System.out.println("WelcomePanelHolder reached");//Debugging checkpoint
       name="";//sets the username to null
@@ -259,17 +261,17 @@ public class EatHealthy extends JFrame
     }
   }
 
-  class WelcomePage extends JPanel
+  class WelcomePage extends JPanel//panel that holds text welcoming user, and other instructions to play game
   {
     Image welcomeBackground = Toolkit.getDefaultToolkit().getImage("welcome.jpg");//getsImage from my computer using the get DefaultToolKit sets the background
-    public WelcomePage()
+    public WelcomePage()//constructor that sets up the panel
     {
       setLayout(flow);
       setBackground(Color.YELLOW);
        System.out.println("WelcomePage constructor");
     }//end Constructor
 
-    public void paintComponent(Graphics g)
+    public void paintComponent(Graphics g)//paints the text and instructions for game
     {                //graphics method header
       super.paintComponent(g);                  // draw Images first, draws background
       g.drawImage(welcomeBackground, 0,0,800,600,this);//this makes the image
@@ -285,9 +287,9 @@ public class EatHealthy extends JFrame
         g.drawString("Please enter your name!",100,200);
         isPressed = false;
 
-        if (enterName.getText() == null || enterName.getText().trim().isEmpty() || enterName.getText().equals("Enter Name"))
+        if (enterName.getText() == null || enterName.getText().trim().isEmpty() || enterName.getText().equals("Enter Name"))//if else blocks to make sure user has entered name
         {
-          System.out.println("Welcome Panel is reset");
+          System.out.println("Welcome Panel is reset");//debuggin
           isPressed = false;
           noName = true;
         }
@@ -305,7 +307,9 @@ public class EatHealthy extends JFrame
       }
     }//end of paintComponent
   }//end of welcomePage
-  class InitializeGame extends JPanel//init game has TEXTFIELD AND BUTTON
+  class InitializeGame extends JPanel//bottom panel of the welcome page
+  //Uses JButton and JTextField to ask for name
+  //uses flow layout and adds action listeners handlers different classes
   {
     public InitializeGame()
     {
@@ -326,9 +330,9 @@ public class EatHealthy extends JFrame
     }
   }//end of InitializeGame
 
-  class StartAction implements ActionListener
+  class StartAction implements ActionListener//action listener class that holds action listener for both the JTextField and JButton in InitializeGame class
   {
-    public void actionPerformed(ActionEvent e)
+    public void actionPerformed(ActionEvent e)//action performed method for both the button and the JTextField
     {
       input = e.getActionCommand();
       if(e.getActionCommand().equals("Start Game"))
@@ -365,10 +369,12 @@ public class EatHealthy extends JFrame
     }//end of action performed
   }//end of start action class
 
-      class LandingPage extends JPanel implements MouseMotionListener, MouseListener
+      class LandingPage extends JPanel implements MouseMotionListener, MouseListener//Landing Page panel where user feeds calvin food for digestion. User's goal is to feed Calvin healthy food for him to become a healthier person.
+
+      //Uses drawImage and FileIO
+      //uses mouseDragged method to drag images around and mousePressed to see if image is selected to move around
       {//donut, oatmeal, soda, avocado
 
-        public String mousePoint;
         public int xfind;
         public int commax;
         public int commay;//used to find the y value with comma of x plus 1
@@ -391,25 +397,25 @@ public class EatHealthy extends JFrame
 
         public int donutX, donutY, oatmealX, oatmealY, sodaX, sodaY, avocadoX, avocadoY;
 
-        public String calvinHungryName;
-        public String donutName;
-        public String avocadoName;
-        public String sodaName;
-        public String oatmealName;
+        public String calvinHungryName;//name of the file name
+        public String donutName;//file name
+        public String avocadoName;//file name
+        public String sodaName;//file name
+        public String oatmealName;//file name
 
-        public String originalme;
-        public int mouseDraggedPlace;
+        public String originalme;//what is produced by action performed
+        public int mouseDraggedPlace;//where the user drags the mouse to
 
         public int mousex;
         public int mousey;
 
-        public String xstring;
-        public String ystring;
+        public String xstring;//the string where the x is substringed out of
+        public String ystring;//the string whre the y is substringed out of
 
-        public boolean donuton;
-        public boolean avocadoon;
-        public boolean oatmealon;
-        public boolean sodaon;
+        public boolean donuton;//if donut is pressed
+        public boolean avocadoon;//if avocado is pressed
+        public boolean oatmealon;//if oatmeal is pressed
+        public boolean sodaon;//if soda is pressed
 
         public LandingPage()
         {
@@ -424,11 +430,11 @@ public class EatHealthy extends JFrame
           avocadoX = donutX;//avocado-(640 to 790 ,620 to 770)
           avocadoY = sodaY+180-75;//avocado-(640 to 790 ,620 to 770)
 
-          calvinHungryName="calvin_hungry.png";
-          donutName="donut.png";
-          avocadoName="avocado.png";
-          sodaName="soda.png";
-          oatmealName="oatmeal.png";
+          calvinHungryName="calvin_hungry.png";//file name
+          donutName="donut.png";//file name
+          avocadoName="avocado.png";//file name
+          sodaName="soda.png";//file name
+          oatmealName="oatmeal.png";//file name
 
           //xpos=ypos=200;//sets the inital location of the image
 
@@ -446,7 +452,7 @@ public class EatHealthy extends JFrame
           run();
 //new MouseMotionAdapter()
         }//end of constructor
-        public void run()
+        public void run()//calls and runs getMyImage method to get image to use
         {
           getMyImage();//gets images
         }
@@ -455,7 +461,7 @@ public class EatHealthy extends JFrame
         public void mouseEntered(MouseEvent e){}
         public void mouseExited(MouseEvent e){}
 
-        public void mousePressed(MouseEvent e)
+        public void mousePressed(MouseEvent e)//if the image is selected then do the following
         {
           requestFocus();
           mousex=e.getX();
