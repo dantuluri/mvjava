@@ -598,5 +598,22 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
         //     public int foodX;
         //     public int foodY;
         //     public Mouth();
+        // helping
+        // int x, y; //of the thing you're controlling
+        // int speed = 5; //how fast you want to move your ting
+        // BufferedImage img = ImageIO.read("mouthpic.png");
+        //
+        // //In the key method
+        //
+        // if(up) {
+        //   boolean collided = false;
+        //   for(int i = 0; i < speed; i++) {
+        //     int val = img.getRGB(x, y - i); //getRGB returns the color of the pixel, y - i because going up, & 0xffffff to get rid of first 8 bytes of color (unecessary right now)
+        //     if(val == 0) {
+        //       collided = true;
+        //     }
+        //   }
+        //   if(collided) y -= speed;
+        // }
         //  }
          }
