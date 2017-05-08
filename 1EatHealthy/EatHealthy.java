@@ -503,12 +503,8 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
 
           repaint();
         }
-        public void mouseReleased(MouseEvent e)
-        {
-
-        }
-
-        public void mouseDragged(MouseEvent e)
+        public void mouseReleased(MouseEvent e) {}
+        public void mouseDragged(MouseEvent e)//if the image is selected then do the following
         {
           requestFocus();
           originalme = e.toString();//holds the string that comes from the mouse event
@@ -551,7 +547,7 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
         }
         public void mouseMoved(MouseEvent e){}
 
-        public void getMyImage()
+        public void getMyImage()//gets image for use
         {
           try
           {
