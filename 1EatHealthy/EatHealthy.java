@@ -509,6 +509,10 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public void mouseDragged(MouseEvent e)//if the image is selected then do the following
           {
             requestFocus();
+            int number = 0;
+            System.out.print("This is mouseDragged Numero:  ");
+            System.out.println(number);
+            number = number+1;
             originalme = e.toString();//holds the string that comes from the mouse event
             mouseDraggedPlace = originalme.indexOf("MOUSE_DRAGGED,");//returns the value of where MOUSE_DRAGGED is
             mouseDraggedPlace = mouseDraggedPlace+15;//go to front of mousedragged string
@@ -518,12 +522,23 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             xpos = Math.max(0, xpos);//uses math methods to set negative x position to 0 if negative
             System.out.print("xpos"+xpos+",");
 
+/*
+int donutx;
+int donuty;
+donutx =;
+donuty = 200;
+int[][] positions = new int[4][2];
+positions[0][0] = mousex;
+positions[0][1] = mousey;
+*/
+
             commay = commax+1;
             parany = originalme.indexOf(")");
             ystring  = originalme.substring(commay,parany);
             ypos = Integer.parseInt(ystring);
             ypos = Math.max(0, ypos);//uses math methods to set negative y position to 0 if negative
             System.out.println("ypos"+ypos);
+
 
             if(donuton)
             {
@@ -547,7 +562,9 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             repaint();
           }
-          public void mouseMoved(MouseEvent e){}
+          public void mouseMoved(MouseEvent e){
+            //System.out.println("mouse MOVED WRORORKRKRKRKRKRKKKRKRKRKRKRKRKRKKRKRKRKRKRKRKRKRS");
+          }
 
             public void getMyImage()//gets image for use
             {
@@ -617,3 +634,12 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
         // }
         //  }
          }
+
+
+/*
+Why don't you just setLayout(null) on the parent panel and then, before adding the sub panel to parent , set it's position and dimensions using it's setBounds method. This way there is no need to use paintComponent for positioning the sub panel.
+
+Is case you parent panel should have specific layout with other components and sub should overlay all that, look into JLayer(Java 7) / JXLayer(Java 6).
+
+Third solution can be using JLayeredPane.
+*/
