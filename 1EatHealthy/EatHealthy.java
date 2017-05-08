@@ -154,8 +154,8 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
   private LandingPage landingPan;//where the user is most of the time
   // private HealthBarPanel healthyBar;//health bar panel in LandingPage
   // //Mouth, Esophogous, Stomach, Duodenum, Small intestine, *Large intestine
-  private MouthPanel mouthProcess;
-  private MouthQuestions mouthQuiz;
+  //private MouthPanel mouthProcess;
+  //private MouthQuestions mouthQuiz;
   // private EsophogousPanel esophogousProcess;
   // private EsophogousQuestions esophogousQuiz;
   // private StomachPanel stomachProcess;
@@ -195,8 +195,8 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
     landingPan = new LandingPage();//initializes the WelcomePanelHolder
     //healthyBar = new HealthyBarPanel();
     //   foodyBar = new FoodPanel();
-    mouthProcess = new MouthPanel();
-    mouthQuiz = new MouthQuestions();
+    //mouthProcess = new MouthPanel();
+    //mouthQuiz = new MouthQuestions();
     //  esophogousProcess = new EsophogousPanel();
     //  esophogousQuiz = new EsophogousQuestions();
     //  stomachProcess = new StomachPanel();
@@ -212,8 +212,8 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
     pHolder.add(landingPan, "LandingPage");//adds the landing panel to the panel holder panel
     //pHolder.add(healthyBar, "HealthyBarPanel");
     // pHolder.add(foodyBar, "FoodPanel");
-    pHolder.add(mouthProcess, "MouthPanel");
-    pHolder.add(mouthQuiz, "MouthQuestions");
+    //pHolder.add(mouthProcess, "MouthPanel");
+    //pHolder.add(mouthQuiz, "MouthQuestions");
     // pHolder.add(esophogousProcess, "EsophogousPanel");
     // pHolder.add(esophogousQuiz, "EsophogousQuestions");
     // pHolder.add(stomachProcess, "StomachPanel");
@@ -592,10 +592,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
           }//end of landing page
           //start mouth class panels
-          class Mouth extends JPanel//mouth panel that 
-          {
-            public int foodX;
-            public int foodY;
-            public Mouth();
-          }
-        }
+        //   class Mouth extends JPanel//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
+        //   //also tied in with MouthQuiz to ask questions regarding the class
+        //   {
+        //     public int foodX;
+        //     public int foodY;
+        //     public Mouth();
+        //  }
+         }
