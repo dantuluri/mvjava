@@ -1,32 +1,32 @@
 /*Surya Dantuluri
- * April 17th 2017
- *
- * Digestive System Game
- *
- * Welcome screen starts and button is under title
- *
- * Human, health bar and foods are present. A drawing on the human pops up trying to signify that s(he) should  feed the human food.
- *
- * Should have 6 different classes signifying each of the stages: Mouth, Esophogous, Stomach, Small intestine, *Large intestine
- *
- *-------
- * Game starts off with welcome screen.
- * Human points to the food options on the right
- * Health bar is shown.
- * Virtual human player urges normal human player to eat food by showing food on the right.
- *
- WelcomePage panel shows up with the background
- Asks for name and you press start Game
- If name is not provided and they press start:::: give them alert asking them to enter a name
+* April 17th 2017
+*
+* Digestive System Game
+*
+* Welcome screen starts and button is under title
+*
+* Human, health bar and foods are present. A drawing on the human pops up trying to signify that s(he) should  feed the human food.
+*
+* Should have 6 different classes signifying each of the stages: Mouth, Esophogous, Stomach, Small intestine, *Large intestine
+*
+*-------
+* Game starts off with welcome screen.
+* Human points to the food options on the right
+* Health bar is shown.
+* Virtual human player urges normal human player to eat food by showing food on the right.
+*
+WelcomePage panel shows up with the background
+Asks for name and you press start Game
+If name is not provided and they press start:::: give them alert asking them to enter a name
 
- LandingPage
- User moves desired food to the mouth of hungry calvin, which goes to mouth panel to show process of breakdown of food
-
-
+LandingPage
+User moves desired food to the mouth of hungry calvin, which goes to mouth panel to show process of breakdown of food
 
 
 
- */
+
+
+*/
 
 
 
@@ -61,6 +61,9 @@ import java.io.File; //imports file io
 import java.io.IOException; //imports for input out io exception
 import javax.imageio.ImageIO; //imports image io
 
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 
 import java.awt.Dimension;
 import java.awt.Frame;
@@ -150,10 +153,9 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
   private WelcomePanelHolder welcomeHold;
   private LandingPage landingPan;//where the user is most of the time
   // private HealthBarPanel healthyBar;//health bar panel in LandingPage
-  // private FoodPanel foodyBar;//list of images regarding food in LandingPage
   // //Mouth, Esophogous, Stomach, Duodenum, Small intestine, *Large intestine
-  // private MouthPanel mouthProcess;
-  // private MouthQuestions mouthQuiz;
+  private MouthPanel mouthProcess;
+  private MouthQuestions mouthQuiz;
   // private EsophogousPanel esophogousProcess;
   // private EsophogousQuestions esophogousQuiz;
   // private StomachPanel stomachProcess;
@@ -165,8 +167,8 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
   // private EndingPanel ending;
   public static void main(String[] args)//main method of the eat healthy game and initialize the frame
   {
-      System.out.println("class EatHealthy main method");
-      EatHealthy eaty = new EatHealthy();
+    System.out.println("class EatHealthy main method");
+    EatHealthy eaty = new EatHealthy();
   }
 
   public EatHealthy()//initializes location, size, close operation, and sets up canvas for landing page as well as intitalize panels/layouts
@@ -193,8 +195,8 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
     landingPan = new LandingPage();//initializes the WelcomePanelHolder
     //healthyBar = new HealthyBarPanel();
     //   foodyBar = new FoodPanel();
-    //   mouthProcess = new MouthPanel();
-    //   mouthQuiz = new MouthQuestions();
+    mouthProcess = new MouthPanel();
+    mouthQuiz = new MouthQuestions();
     //  esophogousProcess = new EsophogousPanel();
     //  esophogousQuiz = new EsophogousQuestions();
     //  stomachProcess = new StomachPanel();
@@ -210,8 +212,8 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
     pHolder.add(landingPan, "LandingPage");//adds the landing panel to the panel holder panel
     //pHolder.add(healthyBar, "HealthyBarPanel");
     // pHolder.add(foodyBar, "FoodPanel");
-    // pHolder.add(mouthProcess, "MouthPanel");
-    // pHolder.add(mouthQuiz, "MouthQuestions");
+    pHolder.add(mouthProcess, "MouthPanel");
+    pHolder.add(mouthQuiz, "MouthQuestions");
     // pHolder.add(esophogousProcess, "EsophogousPanel");
     // pHolder.add(esophogousQuiz, "EsophogousQuestions");
     // pHolder.add(stomachProcess, "StomachPanel");
@@ -268,7 +270,7 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
     {
       setLayout(flow);
       setBackground(Color.YELLOW);
-       System.out.println("WelcomePage constructor");
+      System.out.println("WelcomePage constructor");
     }//end Constructor
 
     public void paintComponent(Graphics g)//paints the text and instructions for game
@@ -302,164 +304,164 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
       }//end of noName if
       if (gotoLanding)
       { //boolean for startPressed and hsPressed to trigger thecorresponding CardLayout. For testing we'll just use a String
-        cards.show(pHolder, "LandingPage");
-        System.out.println("Card Layout go to Landing Page");
-      }
-    }//end of paintComponent
-  }//end of welcomePage
-  class InitializeGame extends JPanel//bottom panel of the welcome page
-  //Uses JButton and JTextField to ask for name
-  //uses flow layout and adds action listeners handlers different classes
-  {
-    public InitializeGame()
-    {
-      System.out.println("InitializeGame reached");
-      setLayout(flow);
-      setBackground(Color.RED);//set background to yello
-
-      enterName = new JTextField("Enter Name");
-      StartAction login = new StartAction();
-      enterName.addActionListener(login);
-      enterName.setPreferredSize(new Dimension(300,70));
-      add(enterName);
-      setPreferredSize(new Dimension(600,200));//set Preferred Size of initialize game of the panel
-      JButton enterGameButton = new JButton("Start Game");
-      enterGameButton.addActionListener(login);//set the entergame button action listener
-      enterGameButton.setPreferredSize(new Dimension(300,70));//prefereed size of button
-      add(enterGameButton);//add the game button to the panel
+      cards.show(pHolder, "LandingPage");
+      System.out.println("Card Layout go to Landing Page");
     }
-  }//end of InitializeGame
-
-  class StartAction implements ActionListener//action listener class that holds action listener for both the JTextField and JButton in InitializeGame class
+  }//end of paintComponent
+}//end of welcomePage
+class InitializeGame extends JPanel//bottom panel of the welcome page
+//Uses JButton and JTextField to ask for name
+//uses flow layout and adds action listeners handlers different classes
+{
+  public InitializeGame()
   {
-    public void actionPerformed(ActionEvent e)//action performed method for both the button and the JTextField
+    System.out.println("InitializeGame reached");
+    setLayout(flow);
+    setBackground(Color.RED);//set background to yello
+
+    enterName = new JTextField("Enter Name");
+    StartAction login = new StartAction();
+    enterName.addActionListener(login);
+    enterName.setPreferredSize(new Dimension(300,70));
+    add(enterName);
+    setPreferredSize(new Dimension(600,200));//set Preferred Size of initialize game of the panel
+    JButton enterGameButton = new JButton("Start Game");
+    enterGameButton.addActionListener(login);//set the entergame button action listener
+    enterGameButton.setPreferredSize(new Dimension(300,70));//prefereed size of button
+    add(enterGameButton);//add the game button to the panel
+  }
+}//end of InitializeGame
+
+class StartAction implements ActionListener//action listener class that holds action listener for both the JTextField and JButton in InitializeGame class
+{
+  public void actionPerformed(ActionEvent e)//action performed method for both the button and the JTextField
+  {
+    input = e.getActionCommand();
+    if(e.getActionCommand().equals("Start Game"))
     {
+      System.out.println("button has been pressed");
+      isPressed = true;
       input = e.getActionCommand();
-      if(e.getActionCommand().equals("Start Game"))
-        {
-          System.out.println("button has been pressed");
-          isPressed = true;
-          input = e.getActionCommand();
-          System.out.println("getText name");
-          System.out.println(enterName.getText());
-          if (enterName.getText() == null || enterName.getText().trim().isEmpty() || enterName.getText().equals("Enter Name"))
-          {
-            //if the textfield is empty and button is pressed
-            noName = true;
-            System.out.println("there is no name");
-            //cards.show(pHolder, "LandingPage"); check if cards and Landing Page works
-            input = e.getActionCommand();
-             input = enterName.getText();//ask for text
-            System.out.println(input);
-            repaint();
-          }
-          else if(enterName.getText().equals("Enter Name"))
-          {
-            input = e.getActionCommand();
-            System.out.println("This is the new input that has come through if the action commando is Enter Name");
-            System.out.println(input);
-					}
-          else
-          {
-            gotoLanding = true;
-            repaint();
-          }
-        }//end of if the BUTTON IS PRESSED
+      System.out.println("getText name");
+      System.out.println(enterName.getText());
+      if (enterName.getText() == null || enterName.getText().trim().isEmpty() || enterName.getText().equals("Enter Name"))
+      {
+        //if the textfield is empty and button is pressed
+        noName = true;
+        System.out.println("there is no name");
+        //cards.show(pHolder, "LandingPage"); check if cards and Landing Page works
+        input = e.getActionCommand();
+        input = enterName.getText();//ask for text
+        System.out.println(input);
+        repaint();
+      }
+      else if(enterName.getText().equals("Enter Name"))
+      {
+        input = e.getActionCommand();
+        System.out.println("This is the new input that has come through if the action commando is Enter Name");
+        System.out.println(input);
+      }
+      else
+      {
+        gotoLanding = true;
+        repaint();
+      }
+    }//end of if the BUTTON IS PRESSED
 
-    }//end of action performed
-  }//end of start action class
+  }//end of action performed
+}//end of start action class
 
-      class LandingPage extends JPanel implements MouseMotionListener, MouseListener//Landing Page panel where user feeds calvin food for digestion. User's goal is to feed Calvin healthy food for him to become a healthier person.
+class LandingPage extends JPanel implements MouseMotionListener, MouseListener//Landing Page panel where user feeds calvin food for digestion. User's goal is to feed Calvin healthy food for him to become a healthier person.
 
-      //Uses drawImage and FileIO
-      //uses mouseDragged method to drag images around and mousePressed to see if image is selected to move around
-      {//donut, oatmeal, soda, avocado
+//Uses drawImage and FileIO
+//uses mouseDragged method to drag images around and mousePressed to see if image is selected to move around
+{//donut, oatmeal, soda, avocado
 
-        public int xfind;
-        public int commax;
-        public int commay;//used to find the y value with comma of x plus 1
-        public int parany;//paranthesis of y
-        public int yfind;
-        public int brackety;
-        public int xpos;
-        public int ypos;
+  public int xfind;
+  public int commax;
+  public int commay;//used to find the y value with comma of x plus 1
+  public int parany;//paranthesis of y
+  public int yfind;
+  public int brackety;
+  public int xpos;
+  public int ypos;
 
-        public Image calvinHungry;
-        public Image donut;
-        public Image oatmeal;
-        public Image soda;
-        public Image avocado;
+  public Image calvinHungry;
+  public Image donut;
+  public Image oatmeal;
+  public Image soda;
+  public Image avocado;
 
-        public JLabel label;
+  public JLabel label;
 
 
-        public boolean keyClear;
+  public boolean keyClear;
 
-        public int donutX, donutY, oatmealX, oatmealY, sodaX, sodaY, avocadoX, avocadoY;
+  public int donutX, donutY, oatmealX, oatmealY, sodaX, sodaY, avocadoX, avocadoY;
 
-        public String calvinHungryName;//name of the file name
-        public String donutName;//file name
-        public String avocadoName;//file name
-        public String sodaName;//file name
-        public String oatmealName;//file name
+  public String calvinHungryName;//name of the file name
+  public String donutName;//file name
+  public String avocadoName;//file name
+  public String sodaName;//file name
+  public String oatmealName;//file name
 
-        public String originalme;//what is produced by action performed
-        public int mouseDraggedPlace;//where the user drags the mouse to
+  public String originalme;//what is produced by action performed
+  public int mouseDraggedPlace;//where the user drags the mouse to
 
-        public int mousex;
-        public int mousey;
+  public int mousex;
+  public int mousey;
 
-        public String xstring;//the string where the x is substringed out of
-        public String ystring;//the string whre the y is substringed out of
+  public String xstring;//the string where the x is substringed out of
+  public String ystring;//the string whre the y is substringed out of
 
-        public boolean donuton;//if donut is pressed
-        public boolean avocadoon;//if avocado is pressed
-        public boolean oatmealon;//if oatmeal is pressed
-        public boolean sodaon;//if soda is pressed
+  public boolean donuton;//if donut is pressed
+  public boolean avocadoon;//if avocado is pressed
+  public boolean oatmealon;//if oatmeal is pressed
+  public boolean sodaon;//if soda is pressed
 
-        public LandingPage()
-        {
-          //sizeX=217;
-		      //sizeY=301;
-          donutX = 600-75;//donut-(600 to 750 ,75 to 225)
-          donutY = 75-75;////donut-(600 to 750 ,75 to 225)
-          oatmealX = donutX;////oatmeal-(640 to 790 ,255 to 405)
-          oatmealY = donutY+180-75;//oatmeal-(640 to 790 ,255 to 405)
-          sodaX = donutX;//soda-(640 to 790 ,440 to 590)
-          sodaY = 440-75;//donut-(soda-(640 to 790 ,440 to 590)
-          avocadoX = donutX;//avocado-(640 to 790 ,620 to 770)
-          avocadoY = sodaY+180-75;//avocado-(640 to 790 ,620 to 770)
+  public LandingPage()
+  {
+    //sizeX=217;
+    //sizeY=301;
+    donutX = 600-75;//donut-(600 to 750 ,75 to 225)
+    donutY = 75-75;////donut-(600 to 750 ,75 to 225)
+    oatmealX = donutX;////oatmeal-(640 to 790 ,255 to 405)
+    oatmealY = donutY+180-75;//oatmeal-(640 to 790 ,255 to 405)
+    sodaX = donutX;//soda-(640 to 790 ,440 to 590)
+    sodaY = 440-75;//donut-(soda-(640 to 790 ,440 to 590)
+    avocadoX = donutX;//avocado-(640 to 790 ,620 to 770)
+    avocadoY = sodaY+180-75;//avocado-(640 to 790 ,620 to 770)
 
-          calvinHungryName="calvin_hungry.png";//file name
-          donutName="donut.png";//file name
-          avocadoName="avocado.png";//file name
-          sodaName="soda.png";//file name
-          oatmealName="oatmeal.png";//file name
+    calvinHungryName="calvin_hungry.png";//file name
+    donutName="donut.png";//file name
+    avocadoName="avocado.png";//file name
+    sodaName="soda.png";//file name
+    oatmealName="oatmeal.png";//file name
 
-          //xpos=ypos=200;//sets the inital location of the image
+    //xpos=ypos=200;//sets the inital location of the image
 
-          keyClear=true;
+    keyClear=true;
 
-          System.out.println(name);
-          setLayout(flow);//sets the layout to flow
-          //Card Layout made( needs more pseudocode)
-          setBackground(Color.WHITE);//set background to yello
-          Font titleFont = new Font("Serif", Font.BOLD, 20);                //Set Fonts
-          setFont(titleFont);
-          System.out.println("LandingPage reached");
-          addMouseMotionListener(this);//adds the mouse motion listner for dragging images
-          addMouseListener(this);//adds MouseListener for clicking on images
-          run();
-//new MouseMotionAdapter()
-        }//end of constructor
-        public void run()//calls and runs getMyImage method to get image to use
-        {
-          getMyImage();//gets images
-        }
+    System.out.println(name);
+    setLayout(flow);//sets the layout to flow
+    //Card Layout made( needs more pseudocode)
+    setBackground(Color.WHITE);//set background to yello
+    Font titleFont = new Font("Serif", Font.BOLD, 20);                //Set Fonts
+    setFont(titleFont);
+    System.out.println("LandingPage reached");
+    addMouseMotionListener(this);//adds the mouse motion listner for dragging images
+    addMouseListener(this);//adds MouseListener for clicking on images
+    run();
+    //new MouseMotionAdapter()
+  }//end of constructor
+  public void run()//calls and runs getMyImage method to get image to use
+  {
+    getMyImage();//gets images
+  }
 
-        public void mouseClicked(MouseEvent e){}
-        public void mouseEntered(MouseEvent e){}
-        public void mouseExited(MouseEvent e){}
+  public void mouseClicked(MouseEvent e){}
+    public void mouseEntered(MouseEvent e){}
+      public void mouseExited(MouseEvent e){}
 
         public void mousePressed(MouseEvent e)//if the image is selected then do the following
         {
@@ -504,95 +506,96 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
           repaint();
         }
         public void mouseReleased(MouseEvent e) {}
-        public void mouseDragged(MouseEvent e)//if the image is selected then do the following
-        {
-          requestFocus();
-          originalme = e.toString();//holds the string that comes from the mouse event
-          mouseDraggedPlace = originalme.indexOf("MOUSE_DRAGGED,");//returns the value of where MOUSE_DRAGGED is
-          mouseDraggedPlace = mouseDraggedPlace+15;//go to front of mousedragged string
-          commax = originalme.indexOf(',',mouseDraggedPlace);//sets the end of the x value
-          xstring = originalme.substring(mouseDraggedPlace,commax);//finds the x position
-          xpos = Integer.parseInt(xstring);//casts the string as an int
-          xpos = Math.max(0, xpos);//uses math methods to set negative x position to 0 if negative
-          System.out.print("xpos"+xpos+",");
+          public void mouseDragged(MouseEvent e)//if the image is selected then do the following
+          {
+            requestFocus();
+            originalme = e.toString();//holds the string that comes from the mouse event
+            mouseDraggedPlace = originalme.indexOf("MOUSE_DRAGGED,");//returns the value of where MOUSE_DRAGGED is
+            mouseDraggedPlace = mouseDraggedPlace+15;//go to front of mousedragged string
+            commax = originalme.indexOf(',',mouseDraggedPlace);//sets the end of the x value
+            xstring = originalme.substring(mouseDraggedPlace,commax);//finds the x position
+            xpos = Integer.parseInt(xstring);//casts the string as an int
+            xpos = Math.max(0, xpos);//uses math methods to set negative x position to 0 if negative
+            System.out.print("xpos"+xpos+",");
 
-          commay = commax+1;
-          parany = originalme.indexOf(")");
-          ystring  = originalme.substring(commay,parany);
-          ypos = Integer.parseInt(ystring);
-          ypos = Math.max(0, ypos);//uses math methods to set negative y position to 0 if negative
-          System.out.println("ypos"+ypos);
+            commay = commax+1;
+            parany = originalme.indexOf(")");
+            ystring  = originalme.substring(commay,parany);
+            ypos = Integer.parseInt(ystring);
+            ypos = Math.max(0, ypos);//uses math methods to set negative y position to 0 if negative
+            System.out.println("ypos"+ypos);
 
-          if(donuton)
-          {
-          donutX = xpos;
-          donutY = ypos;
+            if(donuton)
+            {
+              donutX = xpos;
+              donutY = ypos;
+            }
+            if(oatmealon)
+            {
+              oatmealX = xpos;
+              oatmealY = ypos;
+            }
+            if(sodaon)
+            {
+              sodaX = xpos;
+              sodaY = ypos;
+            }
+            if(avocadoon)
+            {
+              avocadoX = xpos;
+              avocadoY = ypos;
+            }
+            repaint();
           }
-          if(oatmealon)
+          public void mouseMoved(MouseEvent e){}
+
+            public void getMyImage()//gets image for use
+            {
+              try
+              {
+                calvinHungry=ImageIO.read(new File(calvinHungryName));
+                System.out.println("calvinHungryName");
+                donut=ImageIO.read(new File(donutName));
+                System.out.println("donutName");
+                oatmeal=ImageIO.read(new File(oatmealName));
+                System.out.println("oatmealName");
+                avocado=ImageIO.read(new File(avocadoName));
+                System.out.println("avocadoName");
+                soda=ImageIO.read(new File(sodaName));
+                System.out.println("sodaName");
+              }
+              catch(IOException e)
+              {
+                System.err.println("\n\n"+calvinHungryName+"can't be found. \n\n");
+                System.out.println("catched calvinHungry");
+                System.err.println("\n\n"+donutName+"can't be found. \n\n");
+                System.out.println("catched donut");
+                System.err.println("\n\n"+oatmealName+"can't be found. \n\n");
+                System.out.println("catched oatmeal");
+                System.err.println("\n\n"+sodaName+"can't be found. \n\n");
+                System.out.println("catched soda");
+                System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
+                System.out.println("catched avocado");
+                e.printStackTrace();
+              }
+            }//end of get my image
+
+            public void paintComponent(Graphics g)
+            {
+              super.paintComponent(g);
+              g.drawImage(calvinHungry,150,140,300,600,null);
+              g.drawImage(avocado,avocadoX-75,avocadoY-75,this);
+              g.drawImage(donut,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
+              g.drawImage(soda,sodaX-75,sodaY-75,this);
+              g.drawImage(oatmeal,oatmealX-75,oatmealY-75,this);
+              System.out.println("paint donut");
+            }
+          }//end of landing page
+          //start mouth class panels
+          class Mouth extends JPanel//mouth panel that 
           {
-          oatmealX = xpos;
-          oatmealY = ypos;
+            public int foodX;
+            public int foodY;
+            public Mouth();
           }
-          if(sodaon)
-          {
-          sodaX = xpos;
-          sodaY = ypos;
-          }
-          if(avocadoon)
-          {
-          avocadoX = xpos;
-          avocadoY = ypos;
-          }
-          repaint();
         }
-        public void mouseMoved(MouseEvent e){}
-
-        public void getMyImage()//gets image for use
-        {
-          try
-          {
-            calvinHungry=ImageIO.read(new File(calvinHungryName));
-            System.out.println("calvinHungryName");
-            donut=ImageIO.read(new File(donutName));
-            System.out.println("donutName");
-            oatmeal=ImageIO.read(new File(oatmealName));
-            System.out.println("oatmealName");
-            avocado=ImageIO.read(new File(avocadoName));
-            System.out.println("avocadoName");
-            soda=ImageIO.read(new File(sodaName));
-            System.out.println("sodaName");
-          }
-          catch(IOException e)
-          {
-            System.err.println("\n\n"+calvinHungryName+"can't be found. \n\n");
-            System.out.println("catched calvinHungry");
-            System.err.println("\n\n"+donutName+"can't be found. \n\n");
-            System.out.println("catched donut");
-            System.err.println("\n\n"+oatmealName+"can't be found. \n\n");
-            System.out.println("catched oatmeal");
-            System.err.println("\n\n"+sodaName+"can't be found. \n\n");
-            System.out.println("catched soda");
-            System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
-            System.out.println("catched avocado");
-            e.printStackTrace();
-          }
-        }//end of get my image
-
-        public void paintComponent(Graphics g)
-        {
-          super.paintComponent(g);
-          g.drawImage(calvinHungry,150,140,300,600,null);
-          g.drawImage(avocado,avocadoX-75,avocadoY-75,this);
-          g.drawImage(donut,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
-          g.drawImage(soda,sodaX-75,sodaY-75,this);
-          g.drawImage(oatmeal,oatmealX-75,oatmealY-75,this);
-
-
-          System.out.println("paint donut");
-        }
-
-
-      }//end of landing page
-  //start mouth class panels
-  //start Esophogous class panels
-}
