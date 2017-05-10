@@ -399,6 +399,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
   public int xpos;
   public int ypos;
 
+  public Image landingBackground;
   public Image calvinHungry;
   public Image donut;
   public Image oatmeal;
@@ -412,6 +413,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
   public int donutX, donutY, oatmealX, oatmealY, sodaX, sodaY, avocadoX, avocadoY;
 
+  public String landingBackgroundString;
   public String calvinHungryName;//name of the file name
   public String donutName;//file name
   public String avocadoName;//file name
@@ -487,6 +489,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
     avocadoY = 640;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
 
     //find out what donutX is doing tbh
+    landingBackgroundString="landing_back.png";
     calvinHungryName="calvin_hungry.png";//file name
     donutName="donut.png";//file name
     avocadoName="avocado.png";//file name
@@ -520,13 +523,22 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
         public void mousePressed(MouseEvent e)//if the image is selected then do the following
         {
+          donutX = 640;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
+          donutY = 75;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+          oatmealX = 640;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+          oatmealY = 280;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+          sodaX = 640;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
+          sodaY = 460;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+          avocadoX = 640;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+          avocadoY = 640;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+
           requestFocus();
           mousex=e.getX();
           mousey=e.getY();
           System.out.println("mousexy");
           System.out.println("MOUonutlandingX: " + landingDonutX[donutArrayNumber-1]);
           System.out.println("MOUSEYdonutlandingY: " + landingDonutY[donutArrayNumber-1]);
-          if(mousex>600 && mousex<750 && mousey>75 && mousey<225)//donut
+          if(mousex>640 && mousex<790 && mousey>75 && mousey<225)//donut
           {
             donuton = true;
             System.out.println("donut pressed");
@@ -534,7 +546,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             sodaon = false;
             avocadoon = false;
           }
-          if(mousex>640 && mousex<790 && mousey>255 && mousey<405)//oatmeal
+          if(mousex>640 && mousex<790 && mousey>280 && mousey<430)//oatmeal
           {
             oatmealon = true;
             System.out.println("oatmeal pressed");
@@ -542,7 +554,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             sodaon = false;
             avocadoon = false;
           }
-          if(mousex>640 && mousex<790 && mousey>440 && mousey<590)//soda
+          if(mousex>640 && mousex<790 && mousey>460 && mousey<610)//soda
           {
             sodaon = true;
             System.out.println("soda pressed");
@@ -550,8 +562,45 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             donuton = false;
             avocadoon = false;
           }
-          if(mousex>640 && mousex<790 && mousey>620 && mousey<770)//avocado
+          if(mousex>640 && mousex<790 && mousey>640 && mousey<790)//avocado
           {
+            avocadoon = true;
+            System.out.println("avocado pressed");
+            oatmealon = false;
+            sodaon = false;
+            donuton = false;
+          }
+
+          if((mousex<(landingDonutX[donutArrayNumber]-75) || mousex>landingDonutX[donutArrayNumber]+75) && (mousey<(landingDonutY[donutArrayNumber]-75) || mousey>landingDonutY[donutArrayNumber]+75))//the the array points
+          {
+            //then  donuton = true;
+            donuton = true;
+            System.out.println("donut pressed");
+            oatmealon = false;
+            sodaon = false;
+            avocadoon = false;
+          }
+          if((mousex<(landingSodaX[sodaArrayNumber]-75) || mousex>landingSodaX[sodaArrayNumber]+75) && (mousey<(landingSodaY[sodaArrayNumber]-75) || mousey>landingSodaY[sodaArrayNumber]+75))//the the array points
+          {
+            //then  donuton = true;
+            sodaon = true;
+            System.out.println("soda pressed");
+            oatmealon = false;
+            donuton = false;
+            avocadoon = false;
+          }
+          if((mousex<(landingOatmealX[oatmealArrayNumber]-75) || mousex>landingOatmealX[oatmealArrayNumber]+75) && (mousey<(landingOatmealY[oatmealArrayNumber]-75) || mousey>landingOatmealY[oatmealArrayNumber]+75))//the the array points
+          {
+            //then  donuton = true;
+            oatmealon = true;
+            System.out.println("oatmeal pressed");
+            donuton = false;
+            sodaon = false;
+            avocadoon = false;
+          }
+          if((mousex<(landingAvocadoX[avocadoArrayNumber]-75) || mousex>landingAvocadoX[avocadoArrayNumber]+75) && (mousey<(landingAvocadoY[avocadoArrayNumber]-75) || mousey>landingAvocadoY[avocadoArrayNumber]+75))//the the array points
+          {
+            //then  donuton = true;
             avocadoon = true;
             System.out.println("avocado pressed");
             oatmealon = false;
@@ -681,6 +730,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               avocadoX = xpos;
               avocadoY = ypos;
             }
+
             repaint();
           }
           public void mouseMoved(MouseEvent e){
@@ -691,6 +741,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           {
             try
             {
+              landingBackground=ImageIO.read(new File(landingBackgroundString));
+              System.out.println("landingBackground");
               calvinHungry=ImageIO.read(new File(calvinHungryName));
               System.out.println("calvinHungryName");
               donut=ImageIO.read(new File(donutName));
@@ -704,6 +756,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             catch(IOException e)
             {
+              System.err.println("\n\n"+landingBackgroundString+"can't be found. \n\n");
+              System.out.println("catched landingBackground");
               System.err.println("\n\n"+calvinHungryName+"can't be found. \n\n");
               System.out.println("catched calvinHungry");
               System.err.println("\n\n"+donutName+"can't be found. \n\n");
@@ -721,6 +775,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public void paintComponent(Graphics g)
           {
             super.paintComponent(g);
+            g.drawImage(landingBackground,0,0,800,800,null);
             g.drawImage(calvinHungry,120,200,420,600,null);
             g.drawImage(avocado,avocadoX-75,avocadoY-75,this);
             g.drawImage(donut,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
