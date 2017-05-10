@@ -407,6 +407,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
   public Image oatmeal;
   public Image soda;
   public Image avocado;
+  public Image areaIn;
 
   public JLabel label;
 
@@ -421,6 +422,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
   public String avocadoName;//file name
   public String sodaName;//file name
   public String oatmealName;//file name
+  public String areaInName;
 
   public String originalme;//what is produced by action performed
   public int mouseDraggedPlace;//where the user drags the mouse to
@@ -497,7 +499,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
     avocadoName="avocado.png";//file name
     sodaName="soda.png";//file name
     oatmealName="oatmeal.png";//file name
-
+    areaInName="areain.png";
     //xpos=ypos=200;//sets the inital location of the image
 
     keyClear=true;
@@ -755,6 +757,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               System.out.println("avocadoName");
               soda=ImageIO.read(new File(sodaName));
               System.out.println("sodaName");
+              areaIn=ImageIO.read(new File(areaInName));//if user presses in
+              System.out.println("areaIn");
             }
             catch(IOException e)
             {
@@ -770,6 +774,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               System.out.println("catched soda");
               System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
               System.out.println("catched avocado");
+              System.err.println("\n\n"+areaInName+"can't be found. \n\n");
+              System.out.println("catched areaInName");
               e.printStackTrace();
             }
           }//end of get my image
@@ -783,16 +789,28 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             g.drawImage(donut,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
             g.drawImage(soda,sodaX-75,sodaY-75,this);
             g.drawImage(oatmeal,oatmealX-75,oatmealY-75,this);
+            g.drawImage(areaIn,225,465,null);
             System.out.println("paint donut");
           }
         }//end of landing page
         //start mouth class panels
-        //   class Mouth extends JPanel//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
+        class Mouth extends JPanel//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
         //   //also tied in with MouthQuiz to ask questions regarding the class
-        //   {
-        //     public int foodX;
-        //     public int foodY;
-        //     public Mouth();
+          {
+            public int foodX;
+            public int foodY;
+            public Mouth();
+            {
+              System.out.println("moutha");
+            }
+          }
+          class MouthQuiz extends JPanel
+          {
+            public MouthQuiz()
+            {
+              System.out.println("mouthquiz");
+            }
+          }
         // helping
         // int x, y; //of the thing you're controlling
         // int speed = 5; //how fast you want to move your ting
