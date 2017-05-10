@@ -47,6 +47,8 @@ User moves desired food to the mouth of hungry calvin, which goes to mouth panel
 // import javax.swing.JRadioButton;
 
 import javax.swing.JOptionPane;
+import javax.swing.JDialog;
+
 
 import java.lang.Object;
 import java.awt.Color;     //imports abstract window toolkit
@@ -723,8 +725,27 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               System.out.println("donutonX: "+donutX+"donutonY: "+donutY);
               if(donutX>225 && donutX<425 && donutY>465 && donutY<565)
               {
-                food = "donut";
-                cards.show(pHolder, "MouthPanel");
+                // food = "donut";
+                // cards.show(pHolder, "MouthPanel");
+                String inputValue = JOptionPane.showInputDialog("Type in CONTINUE or CANCEL depending on if you intended to feed Calvin an avocado");
+
+                if(inputValue.equals("CONTINUE"))
+                {
+                  food = "avocado";
+                  System.out.println("INPUT VALUE WORKS AVOCADO MOUTH PANEL MOVE");
+                  cards.show(pHolder, "MouthPanel");
+                }
+                else if(inputValue.equals("CANCEL") || inputValue.equals("NO"))
+                {
+                  System.out.println("CANCEL INPUT VALUE");
+                  cards.show(pHolder, "LandingPage");
+                  repaint();
+                }
+                else
+                {
+                  inputValue = JOptionPane.showInputDialog("Type in CONTINUE or CANCEL depending on if you intended to feed Calvin an" + food);
+                }
+
               }
             }
             if(oatmealon)
@@ -745,8 +766,26 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               System.out.println("sodaX: "+sodaX+"sodaY: "+sodaY);
               if(sodaX>225 && sodaX<425 && sodaY>465 && sodaY<565)
               {
-                food = "soda";
-                cards.show(pHolder, "MouthPanel");
+
+                String inputValue = JOptionPane.showInputDialog("Type in CONTINUE or CANCEL depending on if you intended to give Calvin ");
+
+
+                if(inputValue.equals("CONTINUE"))
+                {
+                  food = "avocado";
+                  System.out.println("INPUT VALUE WORKS AVOCADO MOUTH PANEL MOVE");
+                  cards.show(pHolder, "MouthPanel");
+                }
+                else if(inputValue.equals("CANCEL") || inputValue.equals("NO"))
+                {
+                  System.out.println("CANCEL INPUT VALUE");
+                  cards.show(pHolder, "LandingPage");
+                  repaint();
+                }
+                else
+                {
+                  inputValue = JOptionPane.showInputDialog("Type in CONTINUE or CANCEL depending on if you intended to feed Calvin an" + food);
+                }
               }
             }
             if(avocadoon)
@@ -756,16 +795,47 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               System.out.println("avocadoX: "+avocadoX+"avocadoY: "+avocadoY);
               if(avocadoX>225 && avocadoX<425 && avocadoY>465 && avocadoY<565)
               {
-                food = "avocado";
-                cards.show(pHolder, "MouthPanel");
+
+                //cards.show(pHolder, "MouthPanel");
+
+                String inputValue = JOptionPane.showInputDialog("Type in CONTINUE or CANCEL depending on if you intended to feed Calvin an avocado");
+
+
+                if(inputValue.equals("CONTINUE"))
+                {
+                  food = "avocado";
+                  System.out.println("INPUT VALUE WORKS AVOCADO MOUTH PANEL MOVE");
+                  cards.show(pHolder, "MouthPanel");
+                }
+                else if(inputValue.equals("CANCEL") || inputValue.equals("NO"))
+                {
+                  System.out.println("CANCEL INPUT VALUE");
+                  cards.show(pHolder, "LandingPage");
+                  repaint();
+                }
+                else
+                {
+                  inputValue = JOptionPane.showInputDialog("Type in CONTINUE or CANCEL depending on if you intended to feed Calvin an" + food);
+                }
+
+
                 //JOptionPane.showMessageDialog(null, "You have fed Calvin an Avocado", "Confirmation", JOptionPane.ERROR_MESSAGE);
                 //JOptionPane.showConfirmDialog(null,"choose one", "choose one", JOptionPane.YES_NO_OPTION);
 
-                Object[] options = { "OK", "CANCEL" };
-                JOptionPane.showOptionDialog(null, "Click OK to continue", "Confirmation",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
-                null, options, options[0]);
+                // Object[] options = { "OK", "CANCEL" };
+                // JOptionPane.showOptionDialog(null, "Click OK to continue", "Confirmation",
+                // JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,null, options, options[0]);
 
+                //Component source = (Component) actionEvent.getSource();
+
+                // JOptionPane optionPane = new JOptionPane("Continue printing?",
+                // JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
+                // JDialog dialog = optionPane.createDialog(source,
+                // "Manual Creation");
+                // dialog.show();
+                // int selection = OptionPaneUtils.getSelection(optionPane);
+                // System.out.println(selection);
+                //
 
               }
             }
@@ -831,22 +901,22 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
         //start mouth class panels
         class MouthPanel extends JPanel//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
         //   //also tied in with MouthQuiz to ask questions regarding the class
+        {
+          public int foodX;
+          public int foodY;
+          public MouthPanel()
           {
-            public int foodX;
-            public int foodY;
-            public MouthPanel()
-            {
-              System.out.println("moutha");
-              setBackground(Color.RED);//set background to yello
-            }
+            System.out.println("moutha");
+            setBackground(Color.RED);//set background to yello
           }
-          class MouthQuestions extends JPanel
+        }
+        class MouthQuestions extends JPanel
+        {
+          public MouthQuestions()
           {
-            public MouthQuestions()
-            {
-              System.out.println("mouthquiz");
-            }
+            System.out.println("mouthquiz");
           }
+        }
         // helping
         // int x, y; //of the thing you're controlling
         // int speed = 5; //how fast you want to move your ting
