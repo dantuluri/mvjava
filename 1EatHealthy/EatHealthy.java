@@ -541,7 +541,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           if(mousex>640 && mousex<790 && mousey>75 && mousey<225)//donut
           {
             donuton = true;
-            System.out.println("donut pressed");
+            System.out.println("donut_ pressed");
             oatmealon = false;
             sodaon = false;
             avocadoon = false;
@@ -549,7 +549,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           if(mousex>640 && mousex<790 && mousey>280 && mousey<430)//oatmeal
           {
             oatmealon = true;
-            System.out.println("oatmeal pressed");
+            System.out.println("oatmeal_ pressed");
             donuton = false;
             sodaon = false;
             avocadoon = false;
@@ -557,7 +557,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           if(mousex>640 && mousex<790 && mousey>460 && mousey<610)//soda
           {
             sodaon = true;
-            System.out.println("soda pressed");
+            System.out.println("soda_ pressed");
             oatmealon = false;
             donuton = false;
             avocadoon = false;
@@ -565,17 +565,16 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           if(mousex>640 && mousex<790 && mousey>640 && mousey<790)//avocado
           {
             avocadoon = true;
-            System.out.println("avocado pressed");
+            System.out.println("avocado_ pressed");
             oatmealon = false;
             sodaon = false;
             donuton = false;
           }
-
-          if((mousex<(landingDonutX[donutArrayNumber]-75) || mousex>landingDonutX[donutArrayNumber]+75) && (mousey<(landingDonutY[donutArrayNumber]-75) || mousey>landingDonutY[donutArrayNumber]+75))//the the array points
+          if((mousex<(landingDonutX[donutArrayNumber-1]-75) || mousex>landingDonutX[donutArrayNumber-1]+75) && (mousey<(landingDonutY[donutArrayNumber-1]-75) || mousey>landingDonutY[donutArrayNumber-1]+75))//the the array points
           {
             //then  donuton = true;
             donuton = true;
-            System.out.println("donut pressed");
+            System.out.println("donutARRAY pressed");
             oatmealon = false;
             sodaon = false;
             avocadoon = false;
@@ -584,7 +583,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           {
             //then  donuton = true;
             sodaon = true;
-            System.out.println("soda pressed");
+            System.out.println("sodaARRAY pressed");
             oatmealon = false;
             donuton = false;
             avocadoon = false;
@@ -593,16 +592,16 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           {
             //then  donuton = true;
             oatmealon = true;
-            System.out.println("oatmeal pressed");
+            System.out.println("oatmealARRAY pressed");
             donuton = false;
             sodaon = false;
             avocadoon = false;
           }
-          if((mousex<(landingAvocadoX[avocadoArrayNumber]-75) || mousex>landingAvocadoX[avocadoArrayNumber]+75) && (mousey<(landingAvocadoY[avocadoArrayNumber]-75) || mousey>landingAvocadoY[avocadoArrayNumber]+75))//the the array points
+          if((mousex<(landingAvocadoX[avocadoArrayNumber-1]-75) || mousex>landingAvocadoX[avocadoArrayNumber-1]+75) && (mousey<(landingAvocadoY[avocadoArrayNumber-1]-75) || mousey>landingAvocadoY[avocadoArrayNumber-1]+75))//the the array points
           {
             //then  donuton = true;
             avocadoon = true;
-            System.out.println("avocado pressed");
+            System.out.println("avocadoARRAY pressed");
             oatmealon = false;
             sodaon = false;
             donuton = false;
