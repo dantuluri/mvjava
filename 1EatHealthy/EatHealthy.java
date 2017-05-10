@@ -449,9 +449,23 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
     //sizeX=217;
     //sizeY=301;
 
-    landingArray = 1;
-    landingX = new int[9999999];
-    landingY = new int[9999999];
+    sodaArrayNumber = 1;
+    oatmealArrayNumber = 1;
+    donutArrayNumber = 1;
+    avocadoArrayNumber = 1;
+
+    landingDonutX = new int[9999999];
+    landingDonutY = new int[9999999];
+
+    landingAvocadoX = new int[9999999];
+    landingAvocadoY = new int[9999999];
+
+    landingSodaX = new int[9999999];
+    landingSodaY = new int[9999999];
+
+    landingOatmealX = new int[9999999];
+    landingOatmealY = new int[9999999];
+
     donutX = 600-75;//donut-(600 to 750 ,75 to 225)
     donutY = 75-75;////donut-(600 to 750 ,75 to 225)
     oatmealX = donutX;////oatmeal-(640 to 790 ,255 to 405)
@@ -553,9 +567,15 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               xpos = 800;
             }
             xpos = Math.max(0, xpos);//uses math methods to set negative x position to 0 if negative
-            landingX[landingArray] = xpos;
-            //landingX[1] = xpos;
-            System.out.println("THIS IS THE LADNING ARRAY NUMBERX :   "+landingArray);
+            if(donuton)
+            landingDonutX[donutArrayNumber] = xpos;
+            else if(oatmealon)
+            landingOatmealX[donutArrayNumber] = xpos;
+            else if(sodaon)
+            landingSodaX[donutArrayNumber] = xpos;
+            else if(avocadoon)
+            landingAvocadoX[donutArrayNumber] = xpos;
+
             System.out.print("xpos"+xpos+",");
 
 
@@ -569,12 +589,19 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               ypos = 800;
             }
             ypos = Math.max(0, ypos);//uses math methods to set negative y position to 0 if negative
-            landingY[landingArray] = ypos;
+            if(donuton)
+            landingDonutY[donutArrayNumber] = ypos;
+            else if(oatmealon)
+            landingOatmealY[donutArrayNumber] = ypos;
+            else if(sodaon)
+            landingSodaY[donutArrayNumber] = ypos;
+            else if(avocadoon)
+            landingAvocadoY[donutArrayNumber] = ypos;
             System.out.println("ypos"+ypos);
             //once all arrays are updated
-            System.out.println("THIS IS THE LADNING ARRAY NUMBERY :   "+landingArray);
-            System.out.println("landingX: " + landingX[landingArray]);
-            System.out.println("landingY: " + landingY[landingArray]);
+
+            //System.out.println("landingX: " + landingX[landingArray]);
+            //System.out.println("landingY: " + landingY[landingArray]);
             landingArray = landingArray+1;
 
 
