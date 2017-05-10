@@ -61,6 +61,8 @@ import java.io.File; //imports file io
 import java.io.IOException; //imports for input out io exception
 import javax.imageio.ImageIO; //imports image io
 
+import java.util.ArrayList;
+
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -419,10 +421,37 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
   public boolean oatmealon;//if oatmeal is pressed
   public boolean sodaon;//if soda is pressed
 
+  public int[] landingDonutX;
+  public int[] landingDonutY;
+
+  public int[] landingAvocadoX;
+  public int[] landingAvocadoY;
+
+  public int[] landingOatmealX;
+  public int[] landingOatmealY;
+
+  public int[] landingSodaX;
+  public int[] landingSodaY;
+
+
+  public int sodaArrayNumber;
+  public int oatmealArrayNumber;
+  public int donutArrayNumber;
+  public int avocadoArrayNumber;
+
+
+
+  //ArrayList landingX = new ArrayList();
+  //ArrayList landingY = new ArrayList();
+
   public LandingPage()
   {
     //sizeX=217;
     //sizeY=301;
+
+    landingArray = 1;
+    landingX = new int[9999999];
+    landingY = new int[9999999];
     donutX = 600-75;//donut-(600 to 750 ,75 to 225)
     donutY = 75-75;////donut-(600 to 750 ,75 to 225)
     oatmealX = donutX;////oatmeal-(640 to 790 ,255 to 405)
@@ -506,40 +535,61 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           repaint();
         }
         public void mouseReleased(MouseEvent e) {}
+
           public void mouseDragged(MouseEvent e)//if the image is selected then do the following
           {
             requestFocus();
-            int number = 0;
-            System.out.print("This is mouseDragged Numero:  ");
-            System.out.println(number);
-            number = number+1;
+
+
+
             originalme = e.toString();//holds the string that comes from the mouse event
             mouseDraggedPlace = originalme.indexOf("MOUSE_DRAGGED,");//returns the value of where MOUSE_DRAGGED is
             mouseDraggedPlace = mouseDraggedPlace+15;//go to front of mousedragged string
             commax = originalme.indexOf(',',mouseDraggedPlace);//sets the end of the x value
             xstring = originalme.substring(mouseDraggedPlace,commax);//finds the x position
             xpos = Integer.parseInt(xstring);//casts the string as an int
+            if(xpos>800)
+            {
+              xpos = 800;
+            }
             xpos = Math.max(0, xpos);//uses math methods to set negative x position to 0 if negative
+            landingX[landingArray] = xpos;
+            //landingX[1] = xpos;
+            System.out.println("THIS IS THE LADNING ARRAY NUMBERX :   "+landingArray);
             System.out.print("xpos"+xpos+",");
 
-/*
-int donutx;
-int donuty;
-donutx =;
-donuty = 200;
-int[][] positions = new int[4][2];
-positions[0][0] = mousex;
-positions[0][1] = mousey;
-*/
+
 
             commay = commax+1;
             parany = originalme.indexOf(")");
             ystring  = originalme.substring(commay,parany);
             ypos = Integer.parseInt(ystring);
+            if(ypos>800)
+            {
+              ypos = 800;
+            }
             ypos = Math.max(0, ypos);//uses math methods to set negative y position to 0 if negative
+            landingY[landingArray] = ypos;
             System.out.println("ypos"+ypos);
+            //once all arrays are updated
+            System.out.println("THIS IS THE LADNING ARRAY NUMBERY :   "+landingArray);
+            System.out.println("landingX: " + landingX[landingArray]);
+            System.out.println("landingY: " + landingY[landingArray]);
+            landingArray = landingArray+1;
 
 
+            //make array that sets x and y position as the array number and each time it changes the number increases, uses 2d array and
+            //array
+
+            /*
+            int donutx;
+            int donuty;
+            donutx =;
+            donuty = 200;
+            int[][] positions = new int[4][2];
+            positions[0][0] = mousex;
+            positions[0][1] = mousey;
+            */
             if(donuton)
             {
               donutX = xpos;
@@ -566,49 +616,49 @@ positions[0][1] = mousey;
             //System.out.println("mouse MOVED WRORORKRKRKRKRKRKKKRKRKRKRKRKRKRKKRKRKRKRKRKRKRKRS");
           }
 
-            public void getMyImage()//gets image for use
+          public void getMyImage()//gets image for use
+          {
+            try
             {
-              try
-              {
-                calvinHungry=ImageIO.read(new File(calvinHungryName));
-                System.out.println("calvinHungryName");
-                donut=ImageIO.read(new File(donutName));
-                System.out.println("donutName");
-                oatmeal=ImageIO.read(new File(oatmealName));
-                System.out.println("oatmealName");
-                avocado=ImageIO.read(new File(avocadoName));
-                System.out.println("avocadoName");
-                soda=ImageIO.read(new File(sodaName));
-                System.out.println("sodaName");
-              }
-              catch(IOException e)
-              {
-                System.err.println("\n\n"+calvinHungryName+"can't be found. \n\n");
-                System.out.println("catched calvinHungry");
-                System.err.println("\n\n"+donutName+"can't be found. \n\n");
-                System.out.println("catched donut");
-                System.err.println("\n\n"+oatmealName+"can't be found. \n\n");
-                System.out.println("catched oatmeal");
-                System.err.println("\n\n"+sodaName+"can't be found. \n\n");
-                System.out.println("catched soda");
-                System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
-                System.out.println("catched avocado");
-                e.printStackTrace();
-              }
-            }//end of get my image
-
-            public void paintComponent(Graphics g)
-            {
-              super.paintComponent(g);
-              g.drawImage(calvinHungry,150,140,300,600,null);
-              g.drawImage(avocado,avocadoX-75,avocadoY-75,this);
-              g.drawImage(donut,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
-              g.drawImage(soda,sodaX-75,sodaY-75,this);
-              g.drawImage(oatmeal,oatmealX-75,oatmealY-75,this);
-              System.out.println("paint donut");
+              calvinHungry=ImageIO.read(new File(calvinHungryName));
+              System.out.println("calvinHungryName");
+              donut=ImageIO.read(new File(donutName));
+              System.out.println("donutName");
+              oatmeal=ImageIO.read(new File(oatmealName));
+              System.out.println("oatmealName");
+              avocado=ImageIO.read(new File(avocadoName));
+              System.out.println("avocadoName");
+              soda=ImageIO.read(new File(sodaName));
+              System.out.println("sodaName");
             }
-          }//end of landing page
-          //start mouth class panels
+            catch(IOException e)
+            {
+              System.err.println("\n\n"+calvinHungryName+"can't be found. \n\n");
+              System.out.println("catched calvinHungry");
+              System.err.println("\n\n"+donutName+"can't be found. \n\n");
+              System.out.println("catched donut");
+              System.err.println("\n\n"+oatmealName+"can't be found. \n\n");
+              System.out.println("catched oatmeal");
+              System.err.println("\n\n"+sodaName+"can't be found. \n\n");
+              System.out.println("catched soda");
+              System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
+              System.out.println("catched avocado");
+              e.printStackTrace();
+            }
+          }//end of get my image
+
+          public void paintComponent(Graphics g)
+          {
+            super.paintComponent(g);
+            g.drawImage(calvinHungry,150,140,300,600,null);
+            g.drawImage(avocado,avocadoX-75,avocadoY-75,this);
+            g.drawImage(donut,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
+            g.drawImage(soda,sodaX-75,sodaY-75,this);
+            g.drawImage(oatmeal,oatmealX-75,oatmealY-75,this);
+            System.out.println("paint donut");
+          }
+        }//end of landing page
+        //start mouth class panels
         //   class Mouth extends JPanel//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
         //   //also tied in with MouthQuiz to ask questions regarding the class
         //   {
@@ -633,13 +683,13 @@ positions[0][1] = mousey;
         //   if(collided) y -= speed;
         // }
         //  }
-         }
+      }
 
 
-/*
-Why don't you just setLayout(null) on the parent panel and then, before adding the sub panel to parent , set it's position and dimensions using it's setBounds method. This way there is no need to use paintComponent for positioning the sub panel.
+      /*
+      Why don't you just setLayout(null) on the parent panel and then, before adding the sub panel to parent , set it's position and dimensions using it's setBounds method. This way there is no need to use paintComponent for positioning the sub panel.
 
-Is case you parent panel should have specific layout with other components and sub should overlay all that, look into JLayer(Java 7) / JXLayer(Java 6).
+      Is case you parent panel should have specific layout with other components and sub should overlay all that, look into JLayer(Java 7) / JXLayer(Java 6).
 
-Third solution can be using JLayeredPane.
-*/
+      Third solution can be using JLayeredPane.
+      */
