@@ -45,6 +45,9 @@ User moves desired food to the mouth of hungry calvin, which goes to mouth panel
 // import java.awt.FlowLayout;
 // import javax.swing.JButton;
 // import javax.swing.JRadioButton;
+
+import javax.swing.JOptionPane;
+
 import java.lang.Object;
 import java.awt.Color;     //imports abstract window toolkit
 import java.awt.Graphics; //imports possible events of abstract window toolkit
@@ -156,8 +159,8 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
   private LandingPage landingPan;//where the user is most of the time
   // private HealthBarPanel healthyBar;//health bar panel in LandingPage
   // //Mouth, Esophogous, Stomach, Duodenum, Small intestine, *Large intestine
-  //private MouthPanel mouthProcess;
-  //private MouthQuestions mouthQuiz;
+  private MouthPanel mouthProcess;
+  private MouthQuestions mouthQuiz;
   // private EsophogousPanel esophogousProcess;
   // private EsophogousQuestions esophogousQuiz;
   // private StomachPanel stomachProcess;
@@ -196,9 +199,8 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
     welcomeHold = new WelcomePanelHolder();//initializes the WelcomePanelHolder
     landingPan = new LandingPage();//initializes the WelcomePanelHolder
     //healthyBar = new HealthyBarPanel();
-    //   foodyBar = new FoodPanel();
-    //mouthProcess = new MouthPanel();
-    //mouthQuiz = new MouthQuestions();
+    mouthProcess = new MouthPanel();
+    mouthQuiz = new MouthQuestions();
     //  esophogousProcess = new EsophogousPanel();
     //  esophogousQuiz = new EsophogousQuestions();
     //  stomachProcess = new StomachPanel();
@@ -213,9 +215,8 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
     pHolder.add(welcomeHold, "WelcomeHolder");//adds the WelcomeHolder to the panel holder panel
     pHolder.add(landingPan, "LandingPage");//adds the landing panel to the panel holder panel
     //pHolder.add(healthyBar, "HealthyBarPanel");
-    // pHolder.add(foodyBar, "FoodPanel");
-    //pHolder.add(mouthProcess, "MouthPanel");
-    //pHolder.add(mouthQuiz, "MouthQuestions");
+    pHolder.add(mouthProcess, "MouthPanel");
+    pHolder.add(mouthQuiz, "MouthQuestions");
     // pHolder.add(esophogousProcess, "EsophogousPanel");
     // pHolder.add(esophogousQuiz, "EsophogousQuestions");
     // pHolder.add(stomachProcess, "StomachPanel");
@@ -718,21 +719,41 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             {
               donutX = xpos;
               donutY = ypos;
+              System.out.println("donutonX: "+donutX+"donutonY: "+donutY);
+              if(donutX>225 && donutX<425 && donutY>465 && donutY<565)
+              {
+                cards.show(pHolder, "MouthPanel");
+              }
             }
             if(oatmealon)
             {
               oatmealX = xpos;
               oatmealY = ypos;
+              System.out.println("oatmealX: "+oatmealX+"oatmealY: "+oatmealY);
+              if(oatmealX>225 && oatmealX<425 && oatmealY>465 && oatmealY<565)
+              {
+                cards.show(pHolder, "MouthPanel");
+              }
             }
             if(sodaon)
             {
               sodaX = xpos;
               sodaY = ypos;
+              System.out.println("sodaX: "+sodaX+"sodaY: "+sodaY);
+              if(sodaX>225 && sodaX<425 && sodaY>465 && sodaY<565)
+              {
+                cards.show(pHolder, "MouthPanel");
+              }
             }
             if(avocadoon)
             {
               avocadoX = xpos;
               avocadoY = ypos;
+              System.out.println("avocadoX: "+avocadoX+"avocadoY: "+avocadoY);
+              if(avocadoX>225 && avocadoX<425 && avocadoY>465 && avocadoY<565)
+              {
+                cards.show(pHolder, "MouthPanel");
+              }
             }
 
             repaint();
@@ -757,8 +778,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               System.out.println("avocadoName");
               soda=ImageIO.read(new File(sodaName));
               System.out.println("sodaName");
-              areaIn=ImageIO.read(new File(areaInName));//if user presses in
-              System.out.println("areaIn");
+              //areaIn=ImageIO.read(new File(areaInName));//if user presses in
+              //System.out.println("areaIn");
             }
             catch(IOException e)
             {
@@ -774,8 +795,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               System.out.println("catched soda");
               System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
               System.out.println("catched avocado");
-              System.err.println("\n\n"+areaInName+"can't be found. \n\n");
-              System.out.println("catched areaInName");
+              //System.err.println("\n\n"+areaInName+"can't be found. \n\n");
+              //System.out.println("catched areaInName");
               e.printStackTrace();
             }
           }//end of get my image
@@ -789,24 +810,25 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             g.drawImage(donut,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
             g.drawImage(soda,sodaX-75,sodaY-75,this);
             g.drawImage(oatmeal,oatmealX-75,oatmealY-75,this);
-            g.drawImage(areaIn,225,465,null);
+            //g.drawImage(areaIn,225,465,null);
             System.out.println("paint donut");
           }
         }//end of landing page
         //start mouth class panels
-        class Mouth extends JPanel//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
+        class MouthPanel extends JPanel//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
         //   //also tied in with MouthQuiz to ask questions regarding the class
           {
             public int foodX;
             public int foodY;
-            public Mouth();
+            public MouthPanel()
             {
               System.out.println("moutha");
+              setBackground(Color.RED);//set background to yello
             }
           }
-          class MouthQuiz extends JPanel
+          class MouthQuestions extends JPanel
           {
-            public MouthQuiz()
+            public MouthQuestions()
             {
               System.out.println("mouthquiz");
             }
