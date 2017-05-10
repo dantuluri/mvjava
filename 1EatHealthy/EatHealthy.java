@@ -153,6 +153,7 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
   public String input;
   public JTextField enterName;
   private LandingPage canvas;
+  public String food;
 
 
   private WelcomePanelHolder welcomeHold;
@@ -722,6 +723,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               System.out.println("donutonX: "+donutX+"donutonY: "+donutY);
               if(donutX>225 && donutX<425 && donutY>465 && donutY<565)
               {
+                food = "donut";
                 cards.show(pHolder, "MouthPanel");
               }
             }
@@ -732,6 +734,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               System.out.println("oatmealX: "+oatmealX+"oatmealY: "+oatmealY);
               if(oatmealX>225 && oatmealX<425 && oatmealY>465 && oatmealY<565)
               {
+                food = "oatmeal";
                 cards.show(pHolder, "MouthPanel");
               }
             }
@@ -742,6 +745,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               System.out.println("sodaX: "+sodaX+"sodaY: "+sodaY);
               if(sodaX>225 && sodaX<425 && sodaY>465 && sodaY<565)
               {
+                food = "soda";
                 cards.show(pHolder, "MouthPanel");
               }
             }
@@ -752,7 +756,17 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               System.out.println("avocadoX: "+avocadoX+"avocadoY: "+avocadoY);
               if(avocadoX>225 && avocadoX<425 && avocadoY>465 && avocadoY<565)
               {
+                food = "avocado";
                 cards.show(pHolder, "MouthPanel");
+                //JOptionPane.showMessageDialog(null, "You have fed Calvin an Avocado", "Confirmation", JOptionPane.ERROR_MESSAGE);
+                //JOptionPane.showConfirmDialog(null,"choose one", "choose one", JOptionPane.YES_NO_OPTION);
+
+                Object[] options = { "OK", "CANCEL" };
+                JOptionPane.showOptionDialog(null, "Click OK to continue", "Confirmation",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+                null, options, options[0]);
+
+
               }
             }
 
