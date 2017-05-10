@@ -466,14 +466,14 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
     landingOatmealX = new int[2262002];
     landingOatmealY = new int[2262002];
 
-    donutX = 600-75;//donut-(600 to 750 ,75 to 225)
-    donutY = 75-75;////donut-(600 to 750 ,75 to 225)
-    oatmealX = donutX;////oatmeal-(640 to 790 ,255 to 405)
-    oatmealY = donutY+180-75;//oatmeal-(640 to 790 ,255 to 405)
-    sodaX = donutX;//soda-(640 to 790 ,440 to 590)
-    sodaY = 440-75;//donut-(soda-(640 to 790 ,440 to 590)
-    avocadoX = donutX;//avocado-(640 to 790 ,620 to 770)
-    avocadoY = sodaY+180-75;//avocado-(640 to 790 ,620 to 770)
+    donutX = 600;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
+    donutY = 75;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+    oatmealX = 600;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+    oatmealY = 255;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+    sodaX = 600;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
+    sodaY = 440;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+    avocadoX = 600;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+    avocadoY = 620;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
 
     //find out what donutX is doing tbh
     calvinHungryName="calvin_hungry.png";//file name
@@ -513,7 +513,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           mousex=e.getX();
           mousey=e.getY();
           System.out.println("mousexy");
-
+          System.out.println("MOUonutlandingX: " + landingDonutX[donutArrayNumber-1]);
+          System.out.println("MOUSEYdonutlandingY: " + landingDonutY[donutArrayNumber-1]);
           if(mousex>600 && mousex<750 && mousey>75 && mousey<225)//donut
           {
             donuton = true;
