@@ -454,17 +454,17 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
     donutArrayNumber = 1;
     avocadoArrayNumber = 1;
 
-    landingDonutX = new int[9999999];
-    landingDonutY = new int[9999999];
+    landingDonutX = new int[2262002];
+    landingDonutY = new int[2262002];
 
-    landingAvocadoX = new int[9999999];
-    landingAvocadoY = new int[9999999];
+    landingAvocadoX = new int[2262002];
+    landingAvocadoY = new int[2262002];
 
-    landingSodaX = new int[9999999];
-    landingSodaY = new int[9999999];
+    landingSodaX = new int[2262002];
+    landingSodaY = new int[2262002];
 
-    landingOatmealX = new int[9999999];
-    landingOatmealY = new int[9999999];
+    landingOatmealX = new int[2262002];
+    landingOatmealY = new int[2262002];
 
     donutX = 600-75;//donut-(600 to 750 ,75 to 225)
     donutY = 75-75;////donut-(600 to 750 ,75 to 225)
@@ -475,6 +475,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
     avocadoX = donutX;//avocado-(640 to 790 ,620 to 770)
     avocadoY = sodaY+180-75;//avocado-(640 to 790 ,620 to 770)
 
+    //find out what donutX is doing tbh
     calvinHungryName="calvin_hungry.png";//file name
     donutName="donut.png";//file name
     avocadoName="avocado.png";//file name
@@ -568,15 +569,22 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             xpos = Math.max(0, xpos);//uses math methods to set negative x position to 0 if negative
             if(donuton)
-            landingDonutX[donutArrayNumber] = xpos;
+            {
+              landingDonutX[donutArrayNumber] = xpos;
+            }
             else if(oatmealon)
-            landingOatmealX[donutArrayNumber] = xpos;
+            {
+              landingOatmealX[oatmealArrayNumber] = xpos;
+            }
             else if(sodaon)
-            landingSodaX[donutArrayNumber] = xpos;
+            {
+              landingSodaX[sodaArrayNumber] = xpos;
+            }
             else if(avocadoon)
-            landingAvocadoX[donutArrayNumber] = xpos;
-
-            System.out.print("xpos"+xpos+",");
+            {
+              landingAvocadoX[avocadoArrayNumber] = xpos;
+            }
+            System.out.println("CURRxpos"+xpos+",");
 
 
 
@@ -590,19 +598,43 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             ypos = Math.max(0, ypos);//uses math methods to set negative y position to 0 if negative
             if(donuton)
-            landingDonutY[donutArrayNumber] = ypos;
+            {
+              landingDonutY[donutArrayNumber] = ypos;
+              System.out.println("PREdonutlandingX: " + landingDonutX[donutArrayNumber-1]);
+              System.out.println("PREdonutlandingY: " + landingDonutY[donutArrayNumber-1]);
+              donutArrayNumber++;
+
+            }
             else if(oatmealon)
-            landingOatmealY[donutArrayNumber] = ypos;
+            {
+              landingOatmealY[oatmealArrayNumber] = ypos;
+              System.out.println("oatmeallandingX: " + landingOatmealX[oatmealArrayNumber]);
+              System.out.println("oatmeallandingY: " + landingOatmealY[oatmealArrayNumber]);
+              oatmealArrayNumber++;
+
+            }
             else if(sodaon)
-            landingSodaY[donutArrayNumber] = ypos;
+            {
+              landingSodaY[sodaArrayNumber] = ypos;
+              System.out.println("sodalandingX: " + landingSodaX[sodaArrayNumber]);
+              System.out.println("sodalandingY: " + landingSodaY[sodaArrayNumber]);
+              sodaArrayNumber++;
+
+            }
             else if(avocadoon)
-            landingAvocadoY[donutArrayNumber] = ypos;
-            System.out.println("ypos"+ypos);
+            {
+              landingAvocadoY[avocadoArrayNumber] = ypos;
+              System.out.println("avolandingX: " + landingAvocadoX[avocadoArrayNumber]);
+              System.out.println("avolandingY: " + landingAvocadoY[avocadoArrayNumber]);
+              avocadoArrayNumber++;
+
+            }
+            System.out.println("CURRypos"+ypos);
             //once all arrays are updated
 
             //System.out.println("landingX: " + landingX[landingArray]);
             //System.out.println("landingY: " + landingY[landingArray]);
-            landingArray = landingArray+1;
+            //landingArray = landingArray+1; add one after everything is done
 
 
             //make array that sets x and y position as the array number and each time it changes the number increases, uses 2d array and
