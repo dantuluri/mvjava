@@ -45,7 +45,7 @@ User moves desired food to the mouth of hungry calvin, which goes to mouth panel
 // import java.awt.FlowLayout;
 // import javax.swing.JButton;
 // import javax.swing.JRadioButton;
-
+import java.lang.Object;
 import java.awt.Color;     //imports abstract window toolkit
 import java.awt.Graphics; //imports possible events of abstract window toolkit
 import java.awt.Image; //imports graphics components with swing
@@ -280,9 +280,20 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
       super.paintComponent(g);                  // draw Images first, draws background
       g.drawImage(welcomeBackground, 0,0,800,600,this);//this makes the image
       //g.drawImage(back, 0,0,600,400,this);
-      Font font = new Font ("Sans", Font.BOLD, 40);//initializes font
-      g.setFont(font);//sets font int graphics
-      g.drawString("Welcome to the Eat Healthy Game!",0,100);//sets the string that is displayed on the panel
+      Font helvec = new Font ("Helvetica Neue", Font.BOLD, 40);//initializes font
+      g.setFont(helvec);//sets font int graphics
+      g.drawString("Welcome to the Eat Healthy Game!",60,100);//sets the string that is displayed on the panel
+      Color purplo = new Color (194,24,91);
+      g.setColor(purplo);
+      Font chalkboard = new Font ("Chalkboard", Font.BOLD, 20);//initializes font
+      g.setFont(chalkboard);//sets font int graphics
+      g.drawString("Help Calvin restore his health after a whole day of playing with Hobbes!",20,200);//sets the string that is displayed on the panel
+      Color orango = new Color (255,23,68);
+      g.setColor(orango);
+      Font comic = new Font ("Comic Sans MS", Font.BOLD, 20);//initializes font
+      g.setFont(comic);//sets font int graphics
+      g.drawString("To start the game, please enter your name and press the Start Game button",20,500);//sets the string that is displayed on the panel
+
       System.out.println("WelcomePage paint");
       if(noName)
       {
@@ -319,7 +330,7 @@ class InitializeGame extends JPanel//bottom panel of the welcome page
   {
     System.out.println("InitializeGame reached");
     setLayout(flow);
-    setBackground(Color.RED);//set background to yello
+    setBackground(Color.GREEN);//set background to yello
 
     enterName = new JTextField("Enter Name");
     StartAction login = new StartAction();
@@ -466,14 +477,14 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
     landingOatmealX = new int[2262002];
     landingOatmealY = new int[2262002];
 
-    donutX = 600;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
+    donutX = 640;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
     donutY = 75;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
-    oatmealX = 600;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
-    oatmealY = 255;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
-    sodaX = 600;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
-    sodaY = 440;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
-    avocadoX = 600;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
-    avocadoY = 620;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+    oatmealX = 640;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+    oatmealY = 280;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+    sodaX = 640;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
+    sodaY = 460;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+    avocadoX = 640;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+    avocadoY = 640;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
 
     //find out what donutX is doing tbh
     calvinHungryName="calvin_hungry.png";//file name
@@ -710,7 +721,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public void paintComponent(Graphics g)
           {
             super.paintComponent(g);
-            g.drawImage(calvinHungry,150,140,300,600,null);
+            g.drawImage(calvinHungry,120,200,420,600,null);
             g.drawImage(avocado,avocadoX-75,avocadoY-75,this);
             g.drawImage(donut,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
             g.drawImage(soda,sodaX-75,sodaY-75,this);
