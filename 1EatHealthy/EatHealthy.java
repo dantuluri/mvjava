@@ -954,16 +954,16 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           g.setColor(purplo);
           g.drawString("Calvin is "+ healthName ,60,100);//sets the string that is displayed on the panel ADD THE HEALTHA ND IF ELSE STATEMENTS
 
-          Font chalkboard = new Font ("Chalkboard", Font.BOLD, 20);//initializes font
-          g.setFont(chalkboard);//sets font int graphics
-          g.drawString("Help Calvin restore his health after a whole day of playing with Hobbes!",20,200);//sets the string that is displayed on the panel
-          Color orango = new Color (255,23,68);
-          g.setColor(orango);
-          Font comic = new Font ("Comic Sans MS", Font.BOLD, 20);//initializes font
-          g.setFont(comic);//sets font int graphics
-          g.drawString("To start the game, please enter your name and press the Start Game button",20,500);
-        //g.drawImage(areaIn,225,465,null);
-        System.out.println("paint donut");
+        //   Font chalkboard = new Font ("Chalkboard", Font.BOLD, 20);//initializes font
+        //   g.setFont(chalkboard);//sets font int graphics
+        //   g.drawString("Help Calvin restore his health after a whole day of playing with Hobbes!",20,200);//sets the string that is displayed on the panel
+        //   Color orango = new Color (255,23,68);
+        //   g.setColor(orango);
+        //   Font comic = new Font ("Comic Sans MS", Font.BOLD, 20);//initializes font
+        //   g.setFont(comic);//sets font int graphics
+        //   g.drawString("To start the game, please enter your name and press the Start Game button",20,500);
+        // //g.drawImage(areaIn,225,465,null);
+        // System.out.println("paint donut");
       }
     }//end of landing page
     //start mouth class panels
