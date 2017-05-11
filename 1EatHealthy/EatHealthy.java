@@ -727,7 +727,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               {
                 // food = "donut";
                 // cards.show(pHolder, "MouthPanel");
-                String inputValue = JOptionPane.showInputDialog("Type in CONTINUE or CANCEL depending on if you intended to feed Calvin an avocado");
+                String inputValue = JOptionPane.showInputDialog("Type in CONTINUE or CANCEL depending on if you intended to feed Calvin a donut");
 
                 if(inputValue.equals("CONTINUE"))
                 {
