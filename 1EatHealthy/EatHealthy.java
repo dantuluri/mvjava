@@ -174,7 +174,7 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
   public int protein;
   public int sugar;
   public int health;
-
+  public String healthName;
 
   private WelcomePanelHolder welcomeHold;
   private LandingPage landingPan;//where the user is most of the time
@@ -206,6 +206,7 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
     setResizable(false);//does not allow the frame to be resized
     health=0;
     food = "surya";
+    healthName="surya";
     getContentPane();//sets content pane
     canvas=new LandingPage();//sets canvas as LandingPage
     getContentPane().add(canvas);//gets content pane and adds canvas
@@ -922,9 +923,24 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
         g.drawImage(landingBackground,0,0,800,800,null);
         if(health>40 && health<120)
         {
-          g.drawImage()
+          g.drawImage(calvinNormal,120,200,420,600,null);
+          healthName = "feeling okay";
         }
+        if(health<0)
+        {
+          g.drawImage(calvinTriggered,120,200,420,600,null);
+          healthName="feeling so bad that Calvin is angry";
+        }
+        if(health>121)
+        {
+          g.drawImage(calvinHappy,120,200,420,600,null);
+          healthName="feeling really good!";
+        }
+        if(health>=0 && health<40)
+        {
         g.drawImage(calvinHungry,120,200,420,600,null);
+        healthName="feeling hungry";
+        }
         g.drawImage(avocado,avocadoX-75,avocadoY-75,this);
         g.drawImage(donut,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
         g.drawImage(soda,sodaX-75,sodaY-75,this);
@@ -932,11 +948,12 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
 
 
-          Font helvec = new Font ("Helvetica Neue", Font.BOLD, 40);//initializes font
+          Font helvec = new Font ("Helvetica Neue", Font.BOLD, 60);//initializes font
           g.setFont(helvec);//sets font int graphics
-          g.drawString("Calvin is "+ ,60,100);//sets the string that is displayed on the panel ADD THE HEALTHA ND IF ELSE STATEMENTS
           Color purplo = new Color (194,24,91);
           g.setColor(purplo);
+          g.drawString("Calvin is "+ healthName ,60,100);//sets the string that is displayed on the panel ADD THE HEALTHA ND IF ELSE STATEMENTS
+
           Font chalkboard = new Font ("Chalkboard", Font.BOLD, 20);//initializes font
           g.setFont(chalkboard);//sets font int graphics
           g.drawString("Help Calvin restore his health after a whole day of playing with Hobbes!",20,200);//sets the string that is displayed on the panel
