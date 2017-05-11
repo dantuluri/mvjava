@@ -874,7 +874,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
           Font helvec = new Font ("Helvetica Neue", Font.BOLD, 40);//initializes font
           g.setFont(helvec);//sets font int graphics
-          g.drawString("Calvin is "+ ,60,100);//sets the string that is displayed on the panel
+          g.drawString("Calvin is "+ ,60,100);//sets the string that is displayed on the panel ADD THE HEALTHA ND IF ELSE STATEMENTS
           Color purplo = new Color (194,24,91);
           g.setColor(purplo);
           Font chalkboard = new Font ("Chalkboard", Font.BOLD, 20);//initializes font
