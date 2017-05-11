@@ -939,7 +939,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
         if(health>=0 && health<40)
         {
         g.drawImage(calvinHungry,120,200,420,600,null);
-        healthName="feeling hungry";
+        healthName="feeling hungry!";
         }
         g.drawImage(avocado,avocadoX-75,avocadoY-75,this);
         g.drawImage(donut,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
@@ -948,12 +948,21 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
 
 
-          Font helvec = new Font ("Helvetica Neue", Font.BOLD, 60);//initializes font
+          Font helvec = new Font ("Helvetica Neue", Font.BOLD, 48);//initializes font
           g.setFont(helvec);//sets font int graphics
-          Color purplo = new Color (194,24,91);
-          g.setColor(purplo);
-          g.drawString("Calvin is "+ healthName ,60,100);//sets the string that is displayed on the panel ADD THE HEALTHA ND IF ELSE STATEMENTS
+          Color blueo = new Color (231,37,48);
+          g.setColor(blueo);
 
+          g.drawString("Calvin is "+ healthName ,10,100);//sets the string that is displayed on the panel ADD THE HEALTHA ND IF ELSE STATEMENTS
+          Font tahoma = new Font ("Tahoma", Font.BOLD, 28);//initializes font
+          g.setFont(tahoma);//sets font int graphic
+          Color maroon = new Color (212,193,145);
+          g.setColor(maroon);
+          g.drawString("Feed him some food or give him a drink!",20,150);
+            Font dido = new Font ("Apple Casual", Font.BOLD, 15);
+            g.setFont(dido);
+            g.setColor(Color.BLUE);
+          g.drawString("Keep in mind that healthy food would give him more enegry and would help him heal better!",5,750);
 
       }
     }//end of landing page
