@@ -31,6 +31,14 @@ Calvin starts at 0 Health
 
 You are reaching for 100 health!
 
+If health is negative -> then angry Calvin
+
+If health is more than 0 and less than 5- -> normal Calvin
+
+If health is more than 150 including 150 then very happy calvin
+
+Propmt user telling them that calvin will feel bad if you feed him the SAME FOOD
+
 
 */
 
@@ -162,6 +170,9 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
   public JTextField enterName;
   private LandingPage canvas;
   public String food;
+  public int fiber;
+  public int protein;
+  public int sugar;
   public int health;
 
 
@@ -194,6 +205,7 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
     setLocation(0,0);//sets the "origin"
     setResizable(false);//does not allow the frame to be resized
     health=0;
+    food = "surya";
     getContentPane();//sets content pane
     canvas=new LandingPage();//sets canvas as LandingPage
     getContentPane().add(canvas);//gets content pane and adds canvas
@@ -530,6 +542,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
   public void run()//calls and runs getMyImage method to get image to use
   {
     getMyImage();//gets images
+    getHealth();
   }
 
   public void mouseClicked(MouseEvent e){}
@@ -862,6 +875,26 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
         }
       }//end of get my image
 
+      public void getHealth()
+      {
+        if(food.equals("donut"))
+        {
+          health = health-50;
+        }
+        else if(food.equals("oatmeal"))
+        {
+          health = health+ 100;
+        }
+        else if(food.equals("soda"))
+        {
+          health = health+ 50;
+        }
+        else if(food.equals("avocado"))
+        {
+          health = health+50;
+        }
+      }
+
       public void paintComponent(Graphics g)
       {
         super.paintComponent(g);
@@ -871,6 +904,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
         g.drawImage(donut,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
         g.drawImage(soda,sodaX-75,sodaY-75,this);
         g.drawImage(oatmeal,oatmealX-75,oatmealY-75,this);
+
+
 
           Font helvec = new Font ("Helvetica Neue", Font.BOLD, 40);//initializes font
           g.setFont(helvec);//sets font int graphics
