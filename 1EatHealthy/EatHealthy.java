@@ -23,7 +23,13 @@ LandingPage
 User moves desired food to the mouth of hungry calvin, which goes to mouth panel to show process of breakdown of food
 
 
+Calvin starts at 0 Health
++50 for avocado
++100 for oatmeal
+-50 for soda
+-100 for donut
 
+You are reaching for 100 health!
 
 
 */
@@ -156,6 +162,7 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
   public JTextField enterName;
   private LandingPage canvas;
   public String food;
+  public int health;
 
 
   private WelcomePanelHolder welcomeHold;
@@ -186,7 +193,7 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
     setDefaultCloseOperation(DISPOSE_ON_CLOSE);//sets default close opertation
     setLocation(0,0);//sets the "origin"
     setResizable(false);//does not allow the frame to be resized
-
+    health=0;
     getContentPane();//sets content pane
     canvas=new LandingPage();//sets canvas as LandingPage
     getContentPane().add(canvas);//gets content pane and adds canvas
@@ -291,7 +298,7 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
       g.setColor(purplo);
       Font chalkboard = new Font ("Chalkboard", Font.BOLD, 20);//initializes font
       g.setFont(chalkboard);//sets font int graphics
-      g.drawString("Help Calvin restore his health after a whole day of playing with Hobbes!",20,200);//sets the string that is displayed on the panel
+      g.drawString("Help Calvin restore his health after spending a fun filled afternoon of playing with Hobbes!",20,200);//sets the string that is displayed on the panel
       Color orango = new Color (255,23,68);
       g.setColor(orango);
       Font comic = new Font ("Comic Sans MS", Font.BOLD, 20);//initializes font
@@ -701,23 +708,9 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             System.out.println("CURRypos"+ypos);
             //once all arrays are updated
 
-            //System.out.println("landingX: " + landingX[landingArray]);
-            //System.out.println("landingY: " + landingY[landingArray]);
-            //landingArray = landingArray+1; add one after everything is done
-
-
             //make array that sets x and y position as the array number and each time it changes the number increases, uses 2d array and
             //array
 
-            /*
-            int donutx;
-            int donuty;
-            donutx =;
-            donuty = 200;
-            int[][] positions = new int[4][2];
-            positions[0][0] = mousex;
-            positions[0][1] = mousey;
-            */
             if(donuton)
             {
               donutX = xpos;
@@ -729,21 +722,17 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 // cards.show(pHolder, "MouthPanel");
                 String inputValue = JOptionPane.showInputDialog("Type in CONTINUE or CANCEL depending on if you intended to feed Calvin a donut");
 
-                if(inputValue.equals("CONTINUE"))
+                if(inputValue.equals("CONTINUE")||inputValue.equals("continue"))
                 {
-                  food = "avocado";
+                  food = "donut";
                   System.out.println("INPUT VALUE WORKS AVOCADO MOUTH PANEL MOVE");
                   cards.show(pHolder, "MouthPanel");
                 }
-                else if(inputValue.equals("CANCEL") || inputValue.equals("NO"))
+                else if(inputValue.equals("CANCEL") || inputValue.equals("NO") || inputValue.equals("cancel"))
                 {
                   System.out.println("CANCEL INPUT VALUE");
                   cards.show(pHolder, "LandingPage");
                   repaint();
-                }
-                else
-                {
-                  inputValue = JOptionPane.showInputDialog("Type in CONTINUE or CANCEL depending on if you intended to feed Calvin an" + food);
                 }
 
               }
@@ -755,8 +744,21 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               System.out.println("oatmealX: "+oatmealX+"oatmealY: "+oatmealY);
               if(oatmealX>225 && oatmealX<425 && oatmealY>465 && oatmealY<565)
               {
-                food = "oatmeal";
-                cards.show(pHolder, "MouthPanel");
+                String inputValue = JOptionPane.showInputDialog("Type in CONTINUE or CANCEL depending on if you intended to feed Calvin oatmeal");
+
+                if(inputValue.equals("CONTINUE")||inputValue.equals("continue"))
+                {
+                  food = "oatmeal";
+                  System.out.println("INPUT VALUE WORKS AVOCADO MOUTH PANEL MOVE");
+                  cards.show(pHolder, "MouthPanel");
+                }
+                else if(inputValue.equals("CANCEL") || inputValue.equals("NO") || inputValue.equals("cancel"))
+                {
+                  System.out.println("CANCEL INPUT VALUE");
+                  cards.show(pHolder, "LandingPage");
+                  repaint();
+                }
+
               }
             }
             if(sodaon)
@@ -767,12 +769,12 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               if(sodaX>225 && sodaX<425 && sodaY>465 && sodaY<565)
               {
 
-                String inputValue = JOptionPane.showInputDialog("Type in CONTINUE or CANCEL depending on if you intended to give Calvin ");
+                String inputValue = JOptionPane.showInputDialog("Type in CONTINUE or CANCEL depending on if you intended to give Calvin soda");
 
 
                 if(inputValue.equals("CONTINUE"))
                 {
-                  food = "avocado";
+                  food = "soda";
                   System.out.println("INPUT VALUE WORKS AVOCADO MOUTH PANEL MOVE");
                   cards.show(pHolder, "MouthPanel");
                 }
@@ -782,10 +784,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   cards.show(pHolder, "LandingPage");
                   repaint();
                 }
-                else
-                {
-                  inputValue = JOptionPane.showInputDialog("Type in CONTINUE or CANCEL depending on if you intended to feed Calvin an" + food);
-                }
+
               }
             }
             if(avocadoon)
@@ -796,10 +795,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               if(avocadoX>225 && avocadoX<425 && avocadoY>465 && avocadoY<565)
               {
 
-                //cards.show(pHolder, "MouthPanel");
-
                 String inputValue = JOptionPane.showInputDialog("Type in CONTINUE or CANCEL depending on if you intended to feed Calvin an avocado");
-
 
                 if(inputValue.equals("CONTINUE"))
                 {
@@ -813,135 +809,130 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   cards.show(pHolder, "LandingPage");
                   repaint();
                 }
-                else
-                {
-                  inputValue = JOptionPane.showInputDialog("Type in CONTINUE or CANCEL depending on if you intended to feed Calvin an" + food);
-                }
-
-
-                //JOptionPane.showMessageDialog(null, "You have fed Calvin an Avocado", "Confirmation", JOptionPane.ERROR_MESSAGE);
-                //JOptionPane.showConfirmDialog(null,"choose one", "choose one", JOptionPane.YES_NO_OPTION);
-
-                // Object[] options = { "OK", "CANCEL" };
-                // JOptionPane.showOptionDialog(null, "Click OK to continue", "Confirmation",
-                // JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,null, options, options[0]);
-
-                //Component source = (Component) actionEvent.getSource();
-
-                // JOptionPane optionPane = new JOptionPane("Continue printing?",
-                // JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
-                // JDialog dialog = optionPane.createDialog(source,
-                // "Manual Creation");
-                // dialog.show();
-                // int selection = OptionPaneUtils.getSelection(optionPane);
-                // System.out.println(selection);
-                //
 
               }
             }
 
             repaint();
-          }
-          public void mouseMoved(MouseEvent e){
-            //System.out.println("mouse MOVED WRORORKRKRKRKRKRKKKRKRKRKRKRKRKRKKRKRKRKRKRKRKRKRS");
-          }
+          }//MOUSEDRAGGED end
 
-          public void getMyImage()//gets image for use
-          {
-            try
-            {
-              landingBackground=ImageIO.read(new File(landingBackgroundString));
-              System.out.println("landingBackground");
-              calvinHungry=ImageIO.read(new File(calvinHungryName));
-              System.out.println("calvinHungryName");
-              donut=ImageIO.read(new File(donutName));
-              System.out.println("donutName");
-              oatmeal=ImageIO.read(new File(oatmealName));
-              System.out.println("oatmealName");
-              avocado=ImageIO.read(new File(avocadoName));
-              System.out.println("avocadoName");
-              soda=ImageIO.read(new File(sodaName));
-              System.out.println("sodaName");
-              //areaIn=ImageIO.read(new File(areaInName));//if user presses in
-              //System.out.println("areaIn");
-            }
-            catch(IOException e)
-            {
-              System.err.println("\n\n"+landingBackgroundString+"can't be found. \n\n");
-              System.out.println("catched landingBackground");
-              System.err.println("\n\n"+calvinHungryName+"can't be found. \n\n");
-              System.out.println("catched calvinHungry");
-              System.err.println("\n\n"+donutName+"can't be found. \n\n");
-              System.out.println("catched donut");
-              System.err.println("\n\n"+oatmealName+"can't be found. \n\n");
-              System.out.println("catched oatmeal");
-              System.err.println("\n\n"+sodaName+"can't be found. \n\n");
-              System.out.println("catched soda");
-              System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
-              System.out.println("catched avocado");
-              //System.err.println("\n\n"+areaInName+"can't be found. \n\n");
-              //System.out.println("catched areaInName");
-              e.printStackTrace();
-            }
-          }//end of get my image
 
-          public void paintComponent(Graphics g)
-          {
-            super.paintComponent(g);
-            g.drawImage(landingBackground,0,0,800,800,null);
-            g.drawImage(calvinHungry,120,200,420,600,null);
-            g.drawImage(avocado,avocadoX-75,avocadoY-75,this);
-            g.drawImage(donut,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
-            g.drawImage(soda,sodaX-75,sodaY-75,this);
-            g.drawImage(oatmeal,oatmealX-75,oatmealY-75,this);
-            //g.drawImage(areaIn,225,465,null);
-            System.out.println("paint donut");
-          }
-        }//end of landing page
-        //start mouth class panels
-        class MouthPanel extends JPanel//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
-        //   //also tied in with MouthQuiz to ask questions regarding the class
-        {
-          public int foodX;
-          public int foodY;
-          public MouthPanel()
-          {
-            System.out.println("moutha");
-            setBackground(Color.RED);//set background to yello
-          }
-        }
-        class MouthQuestions extends JPanel
-        {
-          public MouthQuestions()
-          {
-            System.out.println("mouthquiz");
-          }
-        }
-        // helping
-        // int x, y; //of the thing you're controlling
-        // int speed = 5; //how fast you want to move your ting
-        // BufferedImage img = ImageIO.read("mouthpic.png");
-        //
-        // //In the key method
-        //
-        // if(up) {
-        //   boolean collided = false;
-        //   for(int i = 0; i < speed; i++) {
-        //     int val = img.getRGB(x, y - i); //getRGB returns the color of the pixel, y - i because going up, & 0xffffff to get rid of first 8 bytes of color (unecessary right now)
-        //     if(val == 0) {
-        //       collided = true;
-        //     }
-        //   }
-        //   if(collided) y -= speed;
-        // }
-        //  }
+
+
+      public void mouseMoved(MouseEvent e){
+        //System.out.println("mouse MOVED WRORORKRKRKRKRKRKKKRKRKRKRKRKRKRKKRKRKRKRKRKRKRKRS");
       }
 
+      public void getMyImage()//gets image for use
+      {
+        try
+        {
+          landingBackground=ImageIO.read(new File(landingBackgroundString));
+          System.out.println("landingBackground");
+          calvinHungry=ImageIO.read(new File(calvinHungryName));
+          System.out.println("calvinHungryName");
+          donut=ImageIO.read(new File(donutName));
+          System.out.println("donutName");
+          oatmeal=ImageIO.read(new File(oatmealName));
+          System.out.println("oatmealName");
+          avocado=ImageIO.read(new File(avocadoName));
+          System.out.println("avocadoName");
+          soda=ImageIO.read(new File(sodaName));
+          System.out.println("sodaName");
+          //areaIn=ImageIO.read(new File(areaInName));//if user presses in
+          //System.out.println("areaIn");
+        }
+        catch(IOException e)
+        {
+          System.err.println("\n\n"+landingBackgroundString+"can't be found. \n\n");
+          System.out.println("catched landingBackground");
+          System.err.println("\n\n"+calvinHungryName+"can't be found. \n\n");
+          System.out.println("catched calvinHungry");
+          System.err.println("\n\n"+donutName+"can't be found. \n\n");
+          System.out.println("catched donut");
+          System.err.println("\n\n"+oatmealName+"can't be found. \n\n");
+          System.out.println("catched oatmeal");
+          System.err.println("\n\n"+sodaName+"can't be found. \n\n");
+          System.out.println("catched soda");
+          System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
+          System.out.println("catched avocado");
+          //System.err.println("\n\n"+areaInName+"can't be found. \n\n");
+          //System.out.println("catched areaInName");
+          e.printStackTrace();
+        }
+      }//end of get my image
 
-      /*
-      Why don't you just setLayout(null) on the parent panel and then, before adding the sub panel to parent , set it's position and dimensions using it's setBounds method. This way there is no need to use paintComponent for positioning the sub panel.
+      public void paintComponent(Graphics g)
+      {
+        super.paintComponent(g);
+        g.drawImage(landingBackground,0,0,800,800,null);
+        g.drawImage(calvinHungry,120,200,420,600,null);
+        g.drawImage(avocado,avocadoX-75,avocadoY-75,this);
+        g.drawImage(donut,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
+        g.drawImage(soda,sodaX-75,sodaY-75,this);
+        g.drawImage(oatmeal,oatmealX-75,oatmealY-75,this);
 
-      Is case you parent panel should have specific layout with other components and sub should overlay all that, look into JLayer(Java 7) / JXLayer(Java 6).
+          Font helvec = new Font ("Helvetica Neue", Font.BOLD, 40);//initializes font
+          g.setFont(helvec);//sets font int graphics
+          g.drawString("Calvin is "+ ,60,100);//sets the string that is displayed on the panel
+          Color purplo = new Color (194,24,91);
+          g.setColor(purplo);
+          Font chalkboard = new Font ("Chalkboard", Font.BOLD, 20);//initializes font
+          g.setFont(chalkboard);//sets font int graphics
+          g.drawString("Help Calvin restore his health after a whole day of playing with Hobbes!",20,200);//sets the string that is displayed on the panel
+          Color orango = new Color (255,23,68);
+          g.setColor(orango);
+          Font comic = new Font ("Comic Sans MS", Font.BOLD, 20);//initializes font
+          g.setFont(comic);//sets font int graphics
+          g.drawString("To start the game, please enter your name and press the Start Game button",20,500);
+        //g.drawImage(areaIn,225,465,null);
+        System.out.println("paint donut");
+      }
+    }//end of landing page
+    //start mouth class panels
+    class MouthPanel extends JPanel//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
+    //   //also tied in with MouthQuiz to ask questions regarding the class
+    {
+      public int foodX;
+      public int foodY;
+      public MouthPanel()
+      {
+        System.out.println("moutha");
+        setBackground(Color.RED);//set background to yello
+      }
+    }
+    class MouthQuestions extends JPanel
+    {
+      public MouthQuestions()
+      {
+        System.out.println("mouthquiz");
+      }
+    }
+    // helping
+    // int x, y; //of the thing you're controlling
+    // int speed = 5; //how fast you want to move your ting
+    // BufferedImage img = ImageIO.read("mouthpic.png");
+    //
+    // //In the key method
+    //
+    // if(up) {
+    //   boolean collided = false;
+    //   for(int i = 0; i < speed; i++) {
+    //     int val = img.getRGB(x, y - i); //getRGB returns the color of the pixel, y - i because going up, & 0xffffff to get rid of first 8 bytes of color (unecessary right now)
+    //     if(val == 0) {
+    //       collided = true;
+    //     }
+    //   }
+    //   if(collided) y -= speed;
+    // }
+    //  }
+  }
 
-      Third solution can be using JLayeredPane.
-      */
+
+  /*
+  Why don't you just setLayout(null) on the parent panel and then, before adding the sub panel to parent , set it's position and dimensions using it's setBounds method. This way there is no need to use paintComponent for positioning the sub panel.
+
+  Is case you parent panel should have specific layout with other components and sub should overlay all that, look into JLayer(Java 7) / JXLayer(Java 6).
+
+  Third solution can be using JLayeredPane.
+  */
