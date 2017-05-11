@@ -426,6 +426,9 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
   public Image landingBackground;
   public Image calvinHungry;
+  public Image calvinNormal;
+  public Image calvinTriggered;
+  public Image calvinHappy;
   public Image donut;
   public Image oatmeal;
   public Image soda;
@@ -441,6 +444,9 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
   public String landingBackgroundString;
   public String calvinHungryName;//name of the file name
+  public String calvinNormalName;
+  public String calvinTriggeredName;
+  public String calvinHappyName;
   public String donutName;//file name
   public String avocadoName;//file name
   public String sodaName;//file name
@@ -518,6 +524,9 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
     //find out what donutX is doing tbh
     landingBackgroundString="landing_back.png";
     calvinHungryName="calvin_hungry.png";//file name
+    calvinHappyName="calvin_happy.png";
+    calvinTriggeredName="calvin_triggered.png";
+    calvinNormalName="calvin_normal.png";
     donutName="donut.png";//file name
     avocadoName="avocado.png";//file name
     sodaName="soda.png";//file name
@@ -880,18 +889,30 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
         if(food.equals("donut"))
         {
           health = health-50;
+          fiber=0;
+          sugar =50;
+          protein =0;
         }
         else if(food.equals("oatmeal"))
         {
           health = health+ 100;
+          fiber =75;
+          sugar=10;
+          protein=50;
         }
         else if(food.equals("soda"))
         {
           health = health+ 50;
+          sugar = 100;
+          protein=0;
+          fiber=0;
         }
         else if(food.equals("avocado"))
         {
           health = health+50;
+          fiber=100;
+          protein=20;
+          sugar=10;
         }
       }
 
@@ -899,6 +920,10 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
       {
         super.paintComponent(g);
         g.drawImage(landingBackground,0,0,800,800,null);
+        if(health>40 && health<120)
+        {
+          g.drawImage()
+        }
         g.drawImage(calvinHungry,120,200,420,600,null);
         g.drawImage(avocado,avocadoX-75,avocadoY-75,this);
         g.drawImage(donut,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
