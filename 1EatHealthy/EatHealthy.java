@@ -41,330 +41,253 @@ Propmt user telling them that calvin will feel bad if you feed him the SAME FOOD
 
 
 */
-
-
-
-// import javax.swing.JFrame;	//import javax.swing.*;
-// import javax.swing.JPanel;
-//
-// //import java.awt.event.MouseEvent;
-//
-// import java.awt.Color;		//import java.awt.*;
-// import java.awt.Font;
-// import java.awt.Dimension;
-///////////////////////// import Classes needed for Layouts ////////////////////////
-// import java.awt.BorderLayout;
-// import java.awt.GridLayout;
-// import java.awt.CardLayout;
-// import java.awt.FlowLayout;
-// import javax.swing.JButton;
-// import javax.swing.JRadioButton;
-
-import javax.swing.JOptionPane;
-import javax.swing.JDialog;
-
-
-import java.lang.Object;
-import java.awt.Color;     //imports abstract window toolkit
-import java.awt.Graphics; //imports possible events of abstract window toolkit
-import java.awt.Image; //imports graphics components with swing
-import java.awt.Font; //imports fonts
-import java.awt.event.MouseListener; //imports package for mouse listener
-import java.awt.event.KeyListener; //imports packaga for any key listener
-import java.awt.event.MouseEvent; //imports package for any mouse events
-import java.awt.event.KeyEvent; //imports packsage for any key events;
-import javax.swing.JFrame; //iexpansion pack used for importing GUI JFrame
-import javax.swing.JPanel; //imports JPanel
-import javax.swing.JLabel; //imports JLabel
-import java.io.File; //imports file io
-import java.io.IOException; //imports for input out io exception
-import javax.imageio.ImageIO; //imports image io
-
-import java.util.ArrayList;
-
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-
-import java.awt.Dimension;
-import java.awt.Frame;
-import java.awt.Point;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
-import java.util.Scanner;
-
-import java.awt.event.MouseMotionListener;
-import java.awt.event.MouseEvent;
-
-
-import java.awt.Color;     //imports abstract window toolkit
-import java.awt.Graphics; //imports possible events of abstract window toolkit
-import java.awt.Image; //imports graphics components with swing
-import java.awt.Font;
-import java.awt.event.MouseListener;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.KeyEvent;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.BufferedWriter;
-import java.awt.Toolkit;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.JLabel;
-import javax.imageio.ImageIO;
-import java.io.File;
-import javax.swing.JFrame;	//import javax.swing.*;
-import javax.swing.JPanel;
-
-import java.awt.Color;     //imports abstract window toolkit
-import java.awt.Graphics; //imports possible events of abstract window toolkit
-import java.awt.Image; //imports graphics components with swing
-import java.awt.Font; //imports fonts
-import java.awt.event.MouseListener; //imports package for mouse listener
-import java.awt.event.KeyListener; //imports packaga for any key listener
-import java.awt.event.MouseEvent; //imports package for any mouse events
-import java.awt.event.KeyEvent; //imports packsage for any key events;
-import javax.swing.JFrame; //iexpansion pack used for importing GUI JFrame
-import javax.swing.JPanel; //imports JPanel
-import javax.swing.JLabel; //imports JLabel
-import java.io.File; //imports file io
-import java.io.IOException; //imports for input out io exception
-import javax.imageio.ImageIO; //imports image io
-
-
-
-import java.awt.event.MouseListener;	// or import java.awt.event.*;
-import java.awt.event.MouseEvent;
-import java.awt.Image; //imports graphics components with swing
-
-import java.awt.Color;		//import java.awt.*;
-import java.awt.Graphics;
-import java.awt.Font;
-import java.awt.Dimension;
 ///////////////////////// import Classes needed for Layouts ////////////////////////
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
 import java.awt.CardLayout;
-import java.awt.FlowLayout;
-import javax.swing.JButton;
-import javax.swing.JRadioButton;
-import java.awt.event.ActionListener;
+import java.awt.Color;     //imports abstract window toolkit
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-import javax.swing.JCheckBox;
-import javax.swing.ImageIcon;
-import java.io.BufferedWriter;
 import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyEvent; //imports packsage for any key events;
+import java.awt.event.KeyListener; //imports packaga for any key listener
+import java.awt.event.MouseEvent; //imports package for any mouse events
+import java.awt.event.MouseListener; //imports package for mouse listener
+import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.FlowLayout;
+import java.awt.Font; //imports fonts
+import java.awt.Frame;
+import java.awt.Graphics; //imports possible events of abstract window toolkit
+import java.awt.GridLayout;
+import java.awt.image.BufferedImage;
+import java.awt.Image; //imports graphics components with swing
+import java.awt.Point;
+import java.awt.Toolkit;
+import java.io.BufferedWriter;
+import java.io.File; //imports file io
+import java.io.FileWriter;
+import java.io.IOException; //imports for input out io exception
+import java.lang.Object;
+import java.util.ArrayList;
+import java.util.Scanner;
+import javax.imageio.ImageIO; //imports image io
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JDialog;
+import javax.swing.JFrame; //iexpansion pack used for importing GUI JFrame
+import javax.swing.JLabel; //imports JLabel
+import javax.swing.JOptionPane;
+import javax.swing.JPanel; //imports JPanel
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 public class EatHealthy extends JFrame//JFrame that holds all panels
 {
-  private Image image;//sets the image name
-  private PanelHolder pHolder;//panel holder
-  private CardLayout cards;//card layout
-  private FlowLayout flow;
-  private BorderLayout border;
-  private GridLayout grid;
-  public String name;
-  public boolean tfinput;
-  public boolean noName;//asks for name
-  public boolean isPressed;
-  public boolean gotoLanding;
-  public String input;
-  public JTextField enterName;
-  private LandingPage canvas;
-  public String food;
-  public int fiber;
-  public int protein;
-  public int sugar;
-  public int health;
-  public String healthName;
+private Image image;//sets the image name
+private PanelHolder pHolder;//panel holder
+private CardLayout cards;//card layout
+private FlowLayout flow;
+private BorderLayout border;
+private GridLayout grid;
+public String name;
+public boolean tfinput;
+public boolean noName;//asks for name
+public boolean isPressed;
+public boolean gotoLanding;
+public String input;
+public JTextField enterName;
+private LandingPage lancanvas;
+private MouthPanel mouthcanvas;
+public String food;
+public int fiber;
+public int protein;
+public int sugar;
+public int health;
+public String healthName;
 
-  private WelcomePanelHolder welcomeHold;
-  private LandingPage landingPan;//where the user is most of the time
-  // private HealthBarPanel healthyBar;//health bar panel in LandingPage
-  // //Mouth, Esophogous, Stomach, Duodenum, Small intestine, *Large intestine
-  private MouthPanel mouthProcess;
-  private MouthQuestions mouthQuiz;
-  // private EsophogousPanel esophogousProcess;
-  // private EsophogousQuestions esophogousQuiz;
-  // private StomachPanel stomachProcess;
-  // private StomachQuestions stomachQuiz;
-  // private SmallIntestinePanel smallIntestineProcess;
-  // private SmallIntestineQuestions smallintestineQuiz;
-  // private LargeIntestinePanel largeIntestineProcess;
-  // private LargeIntestineQuestions largeIntestineQuiz;
-  // private EndingPanel ending;
-  public static void main(String[] args)//main method of the eat healthy game and initialize the frame
+private WelcomePanelHolder welcomeHold;
+private LandingPage landingPan;//where the user is most of the time
+// private HealthBarPanel healthyBar;//health bar panel in LandingPage
+// //Mouth, Esophogous, Stomach, Duodenum, Small intestine, *Large intestine
+private MouthPanel mouthProcess;
+private MouthQuestions mouthQuiz;
+// private EsophogousPanel esophogousProcess;
+// private EsophogousQuestions esophogousQuiz;
+// private StomachPanel stomachProcess;
+// private StomachQuestions stomachQuiz;
+// private SmallIntestinePanel smallIntestineProcess;
+// private SmallIntestineQuestions smallintestineQuiz;
+// private LargeIntestinePanel largeIntestineProcess;
+// private LargeIntestineQuestions largeIntestineQuiz;
+// private EndingPanel ending;
+public static void main(String[] args)//main method of the eat healthy game and initialize the frame
+{
+  System.out.println("class EatHealthy main method");
+  EatHealthy eaty = new EatHealthy();
+}
+
+public EatHealthy()//initializes location, size, close operation, and sets up canvas for landing page as well as intitalize panels/layouts
+{
+  super("Eat Healthy!");//initlizes the parents class and names the Eat Healthy game
+  setSize(800, 800);		//sets the eat healthy frame size
+  setDefaultCloseOperation(DISPOSE_ON_CLOSE);//sets default close opertation
+  setLocation(0,0);//sets the "origin"
+  setResizable(false);//does not allow the frame to be resized
+  health=0;
+  food = "surya";
+  healthName="surya";
+  getContentPane();//sets content pane
+  lancanvas=new LandingPage();//sets canvas as LandingPage
+  mouthcanvas=new MouthPanel();
+  getContentPane().add(lancanvas);//gets content pane and adds canvas
+  getContentPane().add(mouthcanvas);
+
+  pHolder = new PanelHolder();//initliazes the panel holder that "holds" all the panels
+  cards = new CardLayout();//initilizes cards as CardLayout to be called
+  flow = new FlowLayout();//initliazes flow as FlowLayout to be called
+  border = new BorderLayout();//initliazes border as BorderLayout to be called
+  grid = new GridLayout();//initliazes grid as GridLayout to be called
+
+  pHolder.setLayout(cards);//sets the layout of the panel holder as cards to switch panels
+
+  welcomeHold = new WelcomePanelHolder();//initializes the WelcomePanelHolder
+  landingPan = new LandingPage();//initializes the WelcomePanelHolder
+  //healthyBar = new HealthyBarPanel();
+  mouthProcess = new MouthPanel();
+  mouthQuiz = new MouthQuestions();
+  //  esophogousProcess = new EsophogousPanel();
+  //  esophogousQuiz = new EsophogousQuestions();
+  //  stomachProcess = new StomachPanel();
+  //  stomachQuiz = new StomachQuestions();
+  //  smallIntestineProcess = new SmallIntestinePanel();
+  //  smallintestineQuiz = new SmallIntestineQuestions();
+  //  largeIntestineProcess = new LargeIntestinePanel();
+  //  largeIntestineQuiz = new LargeIntestineQuestions();
+  //  ending = new EndingPanel();
+
+
+  pHolder.add(welcomeHold, "WelcomeHolder");//adds the WelcomeHolder to the panel holder panel
+  pHolder.add(landingPan, "LandingPage");//adds the landing panel to the panel holder panel
+  //pHolder.add(healthyBar, "HealthyBarPanel");
+  pHolder.add(mouthProcess, "MouthPanel");
+  pHolder.add(mouthQuiz, "MouthQuestions");
+  // pHolder.add(esophogousProcess, "EsophogousPanel");
+  // pHolder.add(esophogousQuiz, "EsophogousQuestions");
+  // pHolder.add(stomachProcess, "StomachPanel");
+  // pHolder.add(stomachQuiz, "StomachQuestions");
+  // pHolder.add(smallIntestineProcess, "SmallIntestinePanel");
+  // pHolder.add(smallintestineQuiz, "SmallIntestineQuestions");
+  // pHolder.add(largeIntestineProcess, "LargeIntestinePanel");
+  // pHolder.add(largeIntestineQuiz, "LargeIntestineQuestions");
+  // pHolder.add(ending, "EndingPanel");
+  add(pHolder);//adds panel holder to the frame
+  setVisible(true);//sets the panel to be visible
+
+  //welcomePan.setBounds(0, 0, 800, 600);
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class PanelHolder extends JPanel//Panel Holder contains all the other panels in game. Background color and a debugging "checkpoint" are set
+{
+  public PanelHolder()
   {
-    System.out.println("class EatHealthy main method");
-    EatHealthy eaty = new EatHealthy();
+    setBackground(Color.GREEN);//sets the background of the panel to green
+    System.out.print("PanelHolder is reached");//debugging checkpoint
+
+  }                                //  Panel holder (Holds all the Panels,for the Card Layout)(essentially)
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class WelcomePanelHolder extends JPanel//Another panel holder that holds both the top panel and bottom panel of the welcome page for layout purposes
+{
+  public WelcomePanelHolder()//constructor that sets up the panel and makes border layout
+  {
+    System.out.println("WelcomePanelHolder reached");//Debugging checkpoint
+    name="";//sets the username to null
+    tfinput = false;//sets all variables to false
+    noName = false;//sets all variables to false
+    isPressed = false;//sets all variables to false
+    gotoLanding = false;//sets all variables to false
+    setLayout(new BorderLayout(5, 5)); //Use BorderLayout in main panel. Incorporate Card Layout for all the others
+    //Card Layout made( needs more pseudocode)
+    setBackground(Color.YELLOW);//sets the background color of the welcome panel holder to yellow
+    Font titleFont = new Font("Serif", Font.BOLD, 20); //Set Fonts
+    setFont(titleFont);
+    WelcomePage welcomePan = new WelcomePage(); //Instantiate the Label Panel for the first Label
+    InitializeGame initGame = new InitializeGame(); //Instantiate the Label Panel for the second Label that goes to the north
+    add(welcomePan, BorderLayout.CENTER);
+    add(initGame, BorderLayout.SOUTH);
+    //add(lp, BorderLayout.WEST);
+    //add(rp, BorderLayout.EAST);
   }
-
-  public EatHealthy()//initializes location, size, close operation, and sets up canvas for landing page as well as intitalize panels/layouts
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class WelcomePage extends JPanel//panel that holds text welcoming user, and other instructions to play game
+{
+  Image welcomeBackground = Toolkit.getDefaultToolkit().getImage("welcome.jpg");//getsImage from my computer using the get DefaultToolKit sets the background
+  public WelcomePage()//constructor that sets up the panel
   {
-    super("Eat Healthy!");//initlizes the parents class and names the Eat Healthy game
-    setSize(800, 800);		//sets the eat healthy frame size
-    setDefaultCloseOperation(DISPOSE_ON_CLOSE);//sets default close opertation
-    setLocation(0,0);//sets the "origin"
-    setResizable(false);//does not allow the frame to be resized
-    health=0;
-    food = "surya";
-    healthName="surya";
-    getContentPane();//sets content pane
-    canvas=new LandingPage();//sets canvas as LandingPage
-    getContentPane().add(canvas);//gets content pane and adds canvas
+    setLayout(flow);
+    setBackground(Color.YELLOW);
+    System.out.println("WelcomePage constructor");
+  }//end Constructor
 
-    pHolder = new PanelHolder();//initliazes the panel holder that "holds" all the panels
-    cards = new CardLayout();//initilizes cards as CardLayout to be called
-    flow = new FlowLayout();//initliazes flow as FlowLayout to be called
-    border = new BorderLayout();//initliazes border as BorderLayout to be called
-    grid = new GridLayout();//initliazes grid as GridLayout to be called
+  public void paintComponent(Graphics g)//paints the text and instructions for game
+  {                //graphics method header
+    super.paintComponent(g);                  // draw Images first, draws background
+    g.drawImage(welcomeBackground, 0,0,800,600,this);//this makes the image
+    //g.drawImage(back, 0,0,600,400,this);
+    Font helvec = new Font ("Helvetica Neue", Font.BOLD, 40);//initializes font
+    g.setFont(helvec);//sets font int graphics
+    g.drawString("Welcome to the Eat Healthy Game!",60,100);//sets the string that is displayed on the panel
+    Color purplo = new Color (194,24,91);
+    g.setColor(purplo);
+    Font chalkboard = new Font ("Chalkboard", Font.BOLD, 20);//initializes font
+    g.setFont(chalkboard);//sets font int graphics
+    g.drawString("Help Calvin restore his health after spending a fun filled afternoon of playing with Hobbes!",20,200);//sets the string that is displayed on the panel
+    Color orango = new Color (255,23,68);
+    g.setColor(orango);
+    Font comic = new Font ("Comic Sans MS", Font.BOLD, 20);//initializes font
+    g.setFont(comic);//sets font int graphics
+    g.drawString("To start the game, please enter your name and press the Start Game button",20,500);//sets the string that is displayed on the panel
 
-    pHolder.setLayout(cards);//sets the layout of the panel holder as cards to switch panels
-
-    welcomeHold = new WelcomePanelHolder();//initializes the WelcomePanelHolder
-    landingPan = new LandingPage();//initializes the WelcomePanelHolder
-    //healthyBar = new HealthyBarPanel();
-    mouthProcess = new MouthPanel();
-    mouthQuiz = new MouthQuestions();
-    //  esophogousProcess = new EsophogousPanel();
-    //  esophogousQuiz = new EsophogousQuestions();
-    //  stomachProcess = new StomachPanel();
-    //  stomachQuiz = new StomachQuestions();
-    //  smallIntestineProcess = new SmallIntestinePanel();
-    //  smallintestineQuiz = new SmallIntestineQuestions();
-    //  largeIntestineProcess = new LargeIntestinePanel();
-    //  largeIntestineQuiz = new LargeIntestineQuestions();
-    //  ending = new EndingPanel();
-
-
-    pHolder.add(welcomeHold, "WelcomeHolder");//adds the WelcomeHolder to the panel holder panel
-    pHolder.add(landingPan, "LandingPage");//adds the landing panel to the panel holder panel
-    //pHolder.add(healthyBar, "HealthyBarPanel");
-    pHolder.add(mouthProcess, "MouthPanel");
-    pHolder.add(mouthQuiz, "MouthQuestions");
-    // pHolder.add(esophogousProcess, "EsophogousPanel");
-    // pHolder.add(esophogousQuiz, "EsophogousQuestions");
-    // pHolder.add(stomachProcess, "StomachPanel");
-    // pHolder.add(stomachQuiz, "StomachQuestions");
-    // pHolder.add(smallIntestineProcess, "SmallIntestinePanel");
-    // pHolder.add(smallintestineQuiz, "SmallIntestineQuestions");
-    // pHolder.add(largeIntestineProcess, "LargeIntestinePanel");
-    // pHolder.add(largeIntestineQuiz, "LargeIntestineQuestions");
-    // pHolder.add(ending, "EndingPanel");
-    add(pHolder);//adds panel holder to the frame
-    setVisible(true);//sets the panel to be visible
-
-    //welcomePan.setBounds(0, 0, 800, 600);
-  }
-
-  class PanelHolder extends JPanel//Panel Holder contains all the other panels in game. Background color and a debugging "checkpoint" are set
-  {
-    public PanelHolder()
+    System.out.println("WelcomePage paint");
+    if(noName)
     {
-      setBackground(Color.GREEN);//sets the background of the panel to green
-      System.out.print("PanelHolder is reached");//debugging checkpoint
+      Font chalkboardbig = new Font ("Chalkboard", Font.BOLD, 50);//initializes font
+      g.setFont(chalkboardbig);
+      g.setColor(Color.RED);
+      System.out.println("Please enter yur name!");
+      g.drawString("Please enter your name!",100,400);
+      isPressed = false;
 
-    }                                //  Panel holder (Holds all the Panels,for the Card Layout)(essentially)
-  }
-
-  class WelcomePanelHolder extends JPanel//Another panel holder that holds both the top panel and bottom panel of the welcome page for layout purposes
-  {
-    public WelcomePanelHolder()//constructor that sets up the panel and makes border layout
-    {
-      System.out.println("WelcomePanelHolder reached");//Debugging checkpoint
-      name="";//sets the username to null
-      tfinput = false;//sets all variables to false
-      noName = false;//sets all variables to false
-      isPressed = false;//sets all variables to false
-      gotoLanding = false;//sets all variables to false
-      setLayout(new BorderLayout(5, 5)); //Use BorderLayout in main panel. Incorporate Card Layout for all the others
-      //Card Layout made( needs more pseudocode)
-      setBackground(Color.YELLOW);//sets the background color of the welcome panel holder to yellow
-      Font titleFont = new Font("Serif", Font.BOLD, 20); //Set Fonts
-      setFont(titleFont);
-      WelcomePage welcomePan = new WelcomePage(); //Instantiate the Label Panel for the first Label
-      InitializeGame initGame = new InitializeGame(); //Instantiate the Label Panel for the second Label that goes to the north
-      add(welcomePan, BorderLayout.CENTER);
-      add(initGame, BorderLayout.SOUTH);
-      //add(lp, BorderLayout.WEST);
-      //add(rp, BorderLayout.EAST);
-    }
-  }
-
-  class WelcomePage extends JPanel//panel that holds text welcoming user, and other instructions to play game
-  {
-    Image welcomeBackground = Toolkit.getDefaultToolkit().getImage("welcome.jpg");//getsImage from my computer using the get DefaultToolKit sets the background
-    public WelcomePage()//constructor that sets up the panel
-    {
-      setLayout(flow);
-      setBackground(Color.YELLOW);
-      System.out.println("WelcomePage constructor");
-    }//end Constructor
-
-    public void paintComponent(Graphics g)//paints the text and instructions for game
-    {                //graphics method header
-      super.paintComponent(g);                  // draw Images first, draws background
-      g.drawImage(welcomeBackground, 0,0,800,600,this);//this makes the image
-      //g.drawImage(back, 0,0,600,400,this);
-      Font helvec = new Font ("Helvetica Neue", Font.BOLD, 40);//initializes font
-      g.setFont(helvec);//sets font int graphics
-      g.drawString("Welcome to the Eat Healthy Game!",60,100);//sets the string that is displayed on the panel
-      Color purplo = new Color (194,24,91);
-      g.setColor(purplo);
-      Font chalkboard = new Font ("Chalkboard", Font.BOLD, 20);//initializes font
-      g.setFont(chalkboard);//sets font int graphics
-      g.drawString("Help Calvin restore his health after spending a fun filled afternoon of playing with Hobbes!",20,200);//sets the string that is displayed on the panel
-      Color orango = new Color (255,23,68);
-      g.setColor(orango);
-      Font comic = new Font ("Comic Sans MS", Font.BOLD, 20);//initializes font
-      g.setFont(comic);//sets font int graphics
-      g.drawString("To start the game, please enter your name and press the Start Game button",20,500);//sets the string that is displayed on the panel
-
-      System.out.println("WelcomePage paint");
-      if(noName)
+      if (enterName.getText() == null || enterName.getText().trim().isEmpty() || enterName.getText().equals("Enter Name"))//if else blocks to make sure user has entered name
       {
-        Font chalkboardbig = new Font ("Chalkboard", Font.BOLD, 50);//initializes font
-        g.setFont(chalkboardbig);
-        g.setColor(Color.RED);
-        System.out.println("Please enter yur name!");
-        g.drawString("Please enter your name!",100,400);
+        System.out.println("Welcome Panel is reset");//debuggin
         isPressed = false;
-
-        if (enterName.getText() == null || enterName.getText().trim().isEmpty() || enterName.getText().equals("Enter Name"))//if else blocks to make sure user has entered name
-        {
-          System.out.println("Welcome Panel is reset");//debuggin
-          isPressed = false;
-          noName = true;
-        }
-        else
-        {
-          gotoLanding = true;
-          repaint();
-          System.out.println("gotoLanding is true, go to Landing Page");
-        }//end of else
-      }//end of noName if
-      if (gotoLanding)
-      { //boolean for startPressed and hsPressed to trigger thecorresponding CardLayout. For testing we'll just use a String
-      cards.show(pHolder, "LandingPage");
-      System.out.println("Card Layout go to Landing Page");
-    }
-  }//end of paintComponent
+        noName = true;
+      }
+      else
+      {
+        gotoLanding = true;
+        repaint();
+        System.out.println("gotoLanding is true, go to Landing Page");
+      }//end of else
+    }//end of noName if
+    if (gotoLanding)
+    { //boolean for startPressed and hsPressed to trigger thecorresponding CardLayout. For testing we'll just use a String
+    cards.show(pHolder, "LandingPage");
+    System.out.println("Card Layout go to Landing Page");
+  }
+}//end of paintComponent
 }//end of welcomePage
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class InitializeGame extends JPanel//bottom panel of the welcome page
 //Uses JButton and JTextField to ask for name
 //uses flow layout and adds action listeners handlers different classes
@@ -387,7 +310,7 @@ class InitializeGame extends JPanel//bottom panel of the welcome page
     add(enterGameButton);//add the game button to the panel
   }
 }//end of InitializeGame
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class StartAction implements ActionListener//action listener class that holds action listener for both the JTextField and JButton in InitializeGame class
 {
   public void actionPerformed(ActionEvent e)//action performed method for both the button and the JTextField
@@ -428,34 +351,7 @@ class StartAction implements ActionListener//action listener class that holds ac
 }//end of start action class
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class LandingPage extends JPanel implements MouseMotionListener, MouseListener//Landing Page panel where user feeds calvin food for digestion. User's goal is to feed Calvin healthy food for him to become a healthier person.
 
@@ -1040,29 +936,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
         }//end of landing page
         //start mouth class panels
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
         class MouthPanel extends JPanel implements KeyListener//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
@@ -1084,19 +958,18 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public String sodaName;//file name
           public String oatmealName;//file name
 
+
           public int donutX, donutY, oatmealX, oatmealY, sodaX, sodaY, avocadoX, avocadoY;
 
 
           public MouthPanel()
           {
-            System.out.println("moutha");
             setBackground(Color.RED);//set background to yello
             mouthBackgroundName="mouth.png";
             donutName="donut.png";//file name
             avocadoName="avocado.png";//file name
             sodaName="soda.png";//file name
             oatmealName="oatmeal.png";//file name
-
             donutX = 50;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
             donutY = 350;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
             oatmealX = 50;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
@@ -1105,8 +978,14 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             sodaY = 350;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
             avocadoX = 50;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
             avocadoY = 350;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
-            addKeyListener(this);//adds KeyListener
 
+
+            setLayout(flow);//sets the layout to flow
+            //Card Layout made( needs more pseudocode)
+            setLocation(0,0);//sets panel origin
+
+            System.out.println("MouthPanel reached");
+            addKeyListener(this);//adds KeyListener
             run();
           }//end of mouthconstructor
 
@@ -1152,88 +1031,95 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
           }//end of get my image
 
-
-          public void keyTyped(KeyEvent e){}
-          public void keyPressed(KeyEvent e)
-          {
-            requestFocus();
-            System.out.println("HEllllllooooooooooooo");
-            int upcode = e.getKeyCode();//looks for shiftkey
-            if(upcode==KeyEvent.VK_W)//runs if shiftkey is pressed
+            public void keyPressed(KeyEvent e)
             {
-              System.out.println("W");
+              requestFocus();
+              int shiftkeycode = e.getKeyCode();//looks for shiftkey
+              if(e.getKeyCode() == KeyEvent.VK_SPACE) //runs if shiftkey is pressed
+              {
+                System.out.println("HEllllllooooooooooooo");
+              }
+
+              int upcode = e.getKeyCode();//looks for shiftkey
+              if(upcode==KeyEvent.VK_W)//runs if shiftkey is pressed
+              {
+                System.out.println("W");
+              }
             }
-          }
-          public void keyReleased(KeyEvent e){}
-          public void paintComponent(Graphics g)
-          {
-            super.paintComponent(g);
-            g.drawImage(mouthBackground,0,0,800,800,null);
+            public void keyTyped(KeyEvent e){}
+              public void keyReleased(KeyEvent e){}
 
-            if(food.equals("oatmeal"))
-            {
-              oatmealX = 40;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
-              oatmealY = 40;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
-              g.drawImage(oatmeal,20,400,oatmealX,oatmealY,this);
-              System.out.println("oatmealp");
-            }
-            if(food.equals("soda"))
-            {
-              sodaX = 40;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
-              sodaY = 40;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
-              g.drawImage(soda,20,400,sodaX,sodaY,this);
+                public void paintComponent(Graphics g)
+                {
+                  super.paintComponent(g);
+                  g.drawImage(mouthBackground,0,0,800,800,null);
 
-            }
-            if(food.equals("avocado"))
-            {
-              avocadoX = 40;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
-              avocadoY = 40;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
-              g.drawImage(avocado,20,400,avocadoX,avocadoY,this);
-            }
-            if(food.equals("donut"))
-            {
-              donutX = 40;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
-              donutY = 40;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
-              g.drawImage(donut,20,400,donutX,donutY,this);// IF THE DONUT IS SELECTED
+                  if(food.equals("oatmeal"))
+                  {
+                    oatmealX = 40;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+                    oatmealY = 40;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+                    g.drawImage(oatmeal,20,400,oatmealX,oatmealY,this);
+                    System.out.println("oatmealp");
+                  }
+                  if(food.equals("soda"))
+                  {
+                    sodaX = 40;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
+                    sodaY = 40;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+                    g.drawImage(soda,20,400,sodaX,sodaY,this);
 
-            }
-          }//end of paintcomponent
+                  }
+                  if(food.equals("avocado"))
+                  {
+                    avocadoX = 40;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+                    avocadoY = 40;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+                    g.drawImage(avocado,20,400,avocadoX,avocadoY,this);
+                  }
+                  if(food.equals("donut"))
+                  {
+                    donutX = 40;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
+                    donutY = 40;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+                    g.drawImage(donut,20,400,donutX,donutY,this);// IF THE DONUT IS SELECTED
 
-
-
-    }//end of mouth panel
-        class MouthQuestions extends JPanel
-        {
-          public MouthQuestions()
-          {
-            System.out.println("mouthquiz");
-          }
-        }
-        // helping
-        // int x, y; //of the thing you're controlling
-        // int speed = 5; //how fast you want to move your ting
-        // BufferedImage img = ImageIO.read("mouthpic.png");
-        //
-        // //In the key method
-        //
-        // if(up) {
-        //   boolean collided = false;
-        //   for(int i = 0; i < speed; i++) {
-        //     int val = img.getRGB(x, y - i); //getRGB returns the color of the pixel, y - i because going up, & 0xffffff to get rid of first 8 bytes of color (unecessary right now)
-        //     if(val == 0) {
-        //       collided = true;
-        //     }
-        //   }
-        //   if(collided) y -= speed;
-        // }
-        //  }
-      }
+                  }
+                }//end of paintcomponent
 
 
-      /*
-      Why don't you just setLayout(null) on the parent panel and then, before adding the sub panel to parent , set it's position and dimensions using it's setBounds method. This way there is no need to use paintComponent for positioning the sub panel.
 
-      Is case you parent panel should have specific layout with other components and sub should overlay all that, look into JLayer(Java 7) / JXLayer(Java 6).
+              }//end of mouth panel
 
-      Third solution can be using JLayeredPane.
-      */
+
+              class MouthQuestions extends JPanel
+              {
+                public MouthQuestions()
+                {
+                  System.out.println("mouthquiz");
+                }
+              }
+              // helping
+              // int x, y; //of the thing you're controlling
+              // int speed = 5; //how fast you want to move your ting
+              // BufferedImage img = ImageIO.read("mouthpic.png");
+              //
+              // //In the key method
+              //
+              // if(up) {
+              //   boolean collided = false;
+              //   for(int i = 0; i < speed; i++) {
+              //     int val = img.getRGB(x, y - i); //getRGB returns the color of the pixel, y - i because going up, & 0xffffff to get rid of first 8 bytes of color (unecessary right now)
+              //     if(val == 0) {
+              //       collided = true;
+              //     }
+              //   }
+              //   if(collided) y -= speed;
+              // }
+              //  }
+
+}
+
+            /*
+            Why don't you just setLayout(null) on the parent panel and then, before adding the sub panel to parent , set it's position and dimensions using it's setBounds method. This way there is no need to use paintComponent for positioning the sub panel.
+
+            Is case you parent panel should have specific layout with other components and sub should overlay all that, look into JLayer(Java 7) / JXLayer(Java 6).
+
+            Third solution can be using JLayeredPane.
+            */
