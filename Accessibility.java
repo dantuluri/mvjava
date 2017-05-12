@@ -1,7 +1,14 @@
-/*Surya Dantuluri
-Accessibility.java
-3/6/17
-
+/*
+ * Surya Dantuluri
+ * March 6, 2017
+ * Accessibility.java
+ * Simple program that increases text with pressing the up and down arrow and changes color if user presses on rectangle on screen
+ 
+ User can lighten or darken background color with pressing the up or down arrow
+ CLICK CLICK-> brightness goes up by 20 on red and blue ratios
+ 
+ User pressing key such as up and or down can increase or decrease text
+ UP UP--> increases text size by 20 text point
 */
 
 import java.awt.Color;

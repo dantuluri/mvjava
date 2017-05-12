@@ -1,26 +1,14 @@
 /*
-* Surya Dantuluri
-* March 3, 2017
-* AccessibilityRunner.java
-* Simple program that reisizes text and changes color with user input
-*
-* initializes all needed variables
-* press button
-* output trimmed equation, and form of line
-* output slope and y-intercept
-*
-*
-* Testing plan:
-* input: equation or characters and numbers
-*
-*y = -3x+2
-*output: this is in slope intercept form, slope: -3, y-intercept: 2
-*
-*Y = -3     x + 2
-output: this is in slope intercept form, slope:-3, y-intercept:2
-*
-*y-5 = 7(x  +1)
-*output: this is in point-slope form, slope:
+ * Surya Dantuluri
+ * March 6, 2017
+ * EquationAnalyst.java
+ * Simple program that increases text with pressing the up and down arrow and changes color if user presses on rectangle on screen
+ 
+ User can lighten or darken background color with pressing the up or down arrow
+ CLICK CLICK-> brightness goes up by 20 on red and blue ratios
+ 
+ User pressing key such as up and or down can increase or decrease text
+ UP UP--> increases text size by 20 text point
  */
 
 import java.awt.Color;

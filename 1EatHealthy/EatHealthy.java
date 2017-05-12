@@ -127,6 +127,23 @@ import java.io.File;
 import javax.swing.JFrame;	//import javax.swing.*;
 import javax.swing.JPanel;
 
+import java.awt.Color;     //imports abstract window toolkit
+import java.awt.Graphics; //imports possible events of abstract window toolkit
+import java.awt.Image; //imports graphics components with swing
+import java.awt.Font; //imports fonts
+import java.awt.event.MouseListener; //imports package for mouse listener
+import java.awt.event.KeyListener; //imports packaga for any key listener
+import java.awt.event.MouseEvent; //imports package for any mouse events
+import java.awt.event.KeyEvent; //imports packsage for any key events;
+import javax.swing.JFrame; //iexpansion pack used for importing GUI JFrame
+import javax.swing.JPanel; //imports JPanel
+import javax.swing.JLabel; //imports JLabel
+import java.io.File; //imports file io
+import java.io.IOException; //imports for input out io exception
+import javax.imageio.ImageIO; //imports image io
+
+
+
 import java.awt.event.MouseListener;	// or import java.awt.event.*;
 import java.awt.event.MouseEvent;
 import java.awt.Image; //imports graphics components with swing
@@ -409,6 +426,36 @@ class StartAction implements ActionListener//action listener class that holds ac
 
   }//end of action performed
 }//end of start action class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class LandingPage extends JPanel implements MouseMotionListener, MouseListener//Landing Page panel where user feeds calvin food for digestion. User's goal is to feed Calvin healthy food for him to become a healthier person.
 
@@ -961,12 +1008,12 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               g.drawImage(calvinHungry,120,200,420,600,null);
               healthName="feeling hungry!";
 
-                          Font helvec = new Font ("Helvetica Neue", Font.BOLD, 48);//initializes font
-                          g.setFont(helvec);//sets font int graphics
-                          Color hungry = new Color (192,57,43);
-                          g.setColor(hungry);
+              Font helvec = new Font ("Helvetica Neue", Font.BOLD, 48);//initializes font
+              g.setFont(helvec);//sets font int graphics
+              Color hungry = new Color (192,57,43);
+              g.setColor(hungry);
 
-                          g.drawString("Calvin is "+ healthName ,10,100);//sets the string that is displayed on the panel ADD THE HEALTHA ND IF ELSE STATEMENTS
+              g.drawString("Calvin is "+ healthName ,10,100);//sets the string that is displayed on the panel ADD THE HEALTHA ND IF ELSE STATEMENTS
             }
             g.drawImage(avocado,avocadoX-75,avocadoY-75,this);
             g.drawImage(donut,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
@@ -1018,7 +1065,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
 
 
-        class MouthPanel extends JPanel//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
+        class MouthPanel extends JPanel implements KeyListener//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
         //   //also tied in with MouthQuiz to ask questions regarding the class
         {
           public int foodX;
@@ -1058,6 +1105,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             sodaY = 350;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
             avocadoX = 50;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
             avocadoY = 350;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+            addKeyListener(this);//adds KeyListener
 
             run();
           }//end of mouthconstructor
@@ -1104,6 +1152,19 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
           }//end of get my image
 
+
+          public void keyTyped(KeyEvent e){}
+          public void keyPressed(KeyEvent e)
+          {
+            requestFocus();
+            System.out.println("HEllllllooooooooooooo");
+            int upcode = e.getKeyCode();//looks for shiftkey
+            if(upcode==KeyEvent.VK_W)//runs if shiftkey is pressed
+            {
+              System.out.println("W");
+            }
+          }
+          public void keyReleased(KeyEvent e){}
           public void paintComponent(Graphics g)
           {
             super.paintComponent(g);
@@ -1111,36 +1172,36 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
             if(food.equals("oatmeal"))
             {
-              oatmealX = 125;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
-              oatmealY = 125;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
-              g.drawImage(oatmeal,20,400,oatmealX-75,oatmealY-75,this);
+              oatmealX = 40;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+              oatmealY = 40;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+              g.drawImage(oatmeal,20,400,oatmealX,oatmealY,this);
               System.out.println("oatmealp");
             }
             if(food.equals("soda"))
             {
-              sodaX = 50;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
-              sodaY = 350;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
-              g.drawImage(soda,50,50,sodaX-75,sodaY-75,this);
+              sodaX = 40;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
+              sodaY = 40;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+              g.drawImage(soda,20,400,sodaX,sodaY,this);
 
             }
             if(food.equals("avocado"))
             {
-              avocadoX = 100;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
-              avocadoY = 350;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
-              g.drawImage(avocado,50,50,avocadoX-75,avocadoY-75,this);
+              avocadoX = 40;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+              avocadoY = 40;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+              g.drawImage(avocado,20,400,avocadoX,avocadoY,this);
             }
             if(food.equals("donut"))
             {
-              donutX = 50;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
-              donutY = 350;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
-              g.drawImage(donut,50,50,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
+              donutX = 40;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
+              donutY = 40;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+              g.drawImage(donut,20,400,donutX,donutY,this);// IF THE DONUT IS SELECTED
 
             }
-
-
           }//end of paintcomponent
 
-        }//end of mouth panel
+
+
+    }//end of mouth panel
         class MouthQuestions extends JPanel
         {
           public MouthQuestions()

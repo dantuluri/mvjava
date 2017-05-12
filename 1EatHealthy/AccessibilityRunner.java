@@ -73,8 +73,7 @@ class Accessibility extends JPanel implements MouseListener,KeyListener
 		g.drawString("darker", 115, 80);
 	}
 	
-	public void medicalPageContent(Graphics g){ } /*Assume this method is complete. */
-	
+	public void medicalPageContent(Graphics g){ }
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
@@ -90,6 +89,7 @@ class Accessibility extends JPanel implements MouseListener,KeyListener
 	public void keyPressed(KeyEvent e)		
 	{
 		int code = e.getKeyCode();
+        System.out.println(code);
 		
 		if(code == KeyEvent.VK_UP)
 		{
