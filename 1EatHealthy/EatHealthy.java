@@ -842,298 +842,337 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
 
 
-      public void mouseMoved(MouseEvent e){
-        //System.out.println("mouse MOVED WRORORKRKRKRKRKRKKKRKRKRKRKRKRKRKKRKRKRKRKRKRKRKRS");
-      }
+          public void mouseMoved(MouseEvent e){
+            //System.out.println("mouse MOVED WRORORKRKRKRKRKRKKKRKRKRKRKRKRKRKKRKRKRKRKRKRKRKRS");
+          }
 
-      public void getMyImage()//gets image for use
-      {
-        try
-        {
-          landingBackground=ImageIO.read(new File(landingBackgroundString));
-          System.out.println("landingBackground");
-          calvinHungry=ImageIO.read(new File(calvinHungryName));
-          System.out.println("calvinHungryName");
-          donut=ImageIO.read(new File(donutName));
-          System.out.println("donutName");
-          oatmeal=ImageIO.read(new File(oatmealName));
-          System.out.println("oatmealName");
-          avocado=ImageIO.read(new File(avocadoName));
-          System.out.println("avocadoName");
-          soda=ImageIO.read(new File(sodaName));
-          System.out.println("sodaName");
-          //areaIn=ImageIO.read(new File(areaInName));//if user presses in
-          //System.out.println("areaIn");
-        }
-        catch(IOException e)
-        {
-          System.err.println("\n\n"+landingBackgroundString+"can't be found. \n\n");
-          System.out.println("catched landingBackground");
-          System.err.println("\n\n"+calvinHungryName+"can't be found. \n\n");
-          System.out.println("catched calvinHungry");
-          System.err.println("\n\n"+donutName+"can't be found. \n\n");
-          System.out.println("catched donut");
-          System.err.println("\n\n"+oatmealName+"can't be found. \n\n");
-          System.out.println("catched oatmeal");
-          System.err.println("\n\n"+sodaName+"can't be found. \n\n");
-          System.out.println("catched soda");
-          System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
-          System.out.println("catched avocado");
-          //System.err.println("\n\n"+areaInName+"can't be found. \n\n");
-          //System.out.println("catched areaInName");
-          e.printStackTrace();
-        }
-      }//end of get my image
+          public void getMyImage()//gets image for use
+          {
+            try
+            {
+              landingBackground=ImageIO.read(new File(landingBackgroundString));
+              System.out.println("landingBackground");
+              calvinHungry=ImageIO.read(new File(calvinHungryName));
+              System.out.println("calvinHungryName");
+              donut=ImageIO.read(new File(donutName));
+              System.out.println("donutName");
+              oatmeal=ImageIO.read(new File(oatmealName));
+              System.out.println("oatmealName");
+              avocado=ImageIO.read(new File(avocadoName));
+              System.out.println("avocadoName");
+              soda=ImageIO.read(new File(sodaName));
+              System.out.println("sodaName");
+              //areaIn=ImageIO.read(new File(areaInName));//if user presses in
+              //System.out.println("areaIn");
+            }
+            catch(IOException e)
+            {
+              System.err.println("\n\n"+landingBackgroundString+"can't be found. \n\n");
+              System.out.println("catched landingBackground");
+              System.err.println("\n\n"+calvinHungryName+"can't be found. \n\n");
+              System.out.println("catched calvinHungry");
+              System.err.println("\n\n"+donutName+"can't be found. \n\n");
+              System.out.println("catched donut");
+              System.err.println("\n\n"+oatmealName+"can't be found. \n\n");
+              System.out.println("catched oatmeal");
+              System.err.println("\n\n"+sodaName+"can't be found. \n\n");
+              System.out.println("catched soda");
+              System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
+              System.out.println("catched avocado");
+              //System.err.println("\n\n"+areaInName+"can't be found. \n\n");
+              //System.out.println("catched areaInName");
+              e.printStackTrace();
+            }
+          }//end of get my image
 
-      public void getHealth()
-      {
-        if(food.equals("donut"))
-        {
-          health = health-50;
-          fiber=0;
-          sugar =50;
-          protein =0;
-        }
-        else if(food.equals("oatmeal"))
-        {
-          health = health+ 100;
-          fiber =75;
-          sugar=10;
-          protein=50;
-        }
-        else if(food.equals("soda"))
-        {
-          health = health+ 50;
-          sugar = 100;
-          protein=0;
-          fiber=0;
-        }
-        else if(food.equals("avocado"))
-        {
-          health = health+50;
-          fiber=100;
-          protein=20;
-          sugar=10;
-        }
-      }
+          public void getHealth()
+          {
+            if(food.equals("donut"))
+            {
+              health = health-50;
+              fiber=0;
+              sugar =50;
+              protein =0;
+            }
+            else if(food.equals("oatmeal"))
+            {
+              health = health+ 100;
+              fiber =75;
+              sugar=10;
+              protein=50;
+            }
+            else if(food.equals("soda"))
+            {
+              health = health+ 50;
+              sugar = 100;
+              protein=0;
+              fiber=0;
+            }
+            else if(food.equals("avocado"))
+            {
+              health = health+50;
+              fiber=100;
+              protein=20;
+              sugar=10;
+            }
+          }
 
-      public void paintComponent(Graphics g)
-      {
-        super.paintComponent(g);
-        g.drawImage(landingBackground,0,0,800,800,null);
-        if(health>40 && health<120)
-        {
-          g.drawImage(calvinNormal,120,200,420,600,null);
-          healthName = "feeling okay";
-        }
-        if(health<0)
-        {
-          g.drawImage(calvinTriggered,120,200,420,600,null);
-          healthName="feeling so bad that Calvin is angry";
-        }
-        if(health>121)
-        {
-          g.drawImage(calvinHappy,120,200,420,600,null);
-          healthName="feeling really good!";
-        }
-        if(health>=0 && health<40)
-        {
-        g.drawImage(calvinHungry,120,200,420,600,null);
-        healthName="feeling hungry!";
-        }
-        g.drawImage(avocado,avocadoX-75,avocadoY-75,this);
-        g.drawImage(donut,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
-        g.drawImage(soda,sodaX-75,sodaY-75,this);
-        g.drawImage(oatmeal,oatmealX-75,oatmealY-75,this);
+          public void paintComponent(Graphics g)
+          {
+            super.paintComponent(g);
+            g.drawImage(landingBackground,0,0,800,800,null);
+            if(health>40 && health<120)
+            {
+              g.drawImage(calvinNormal,120,200,420,600,null);
+              healthName = "feeling okay";
+              Font helvec = new Font ("Helvetica Neue", Font.BOLD, 48);//initializes font
+              g.setFont(helvec);//sets font int graphics
+              Color normal = new Color (39,174,96);
+              g.setColor(normal);
+
+              g.drawString("Calvin is "+ healthName ,10,100);//sets the string that is displayed on the panel ADD THE HEALTHA ND IF ELSE STATEMENTS
+
+            }
+            if(health<0)
+            {
+              g.drawImage(calvinTriggered,120,200,420,600,null);
+              healthName="feeling so bad that Calvin is angry";
+              Font helvec = new Font ("Helvetica Neue", Font.BOLD, 48);//initializes font
+              g.setFont(helvec);//sets font int graphics
+              Color angryio = new Color (243,156,18);
+              g.setColor(angryio);
+
+              g.drawString("Calvin is "+ healthName ,10,100);//sets the string that is displayed on the panel ADD THE HEALTHA ND IF ELSE STATEMENTS
+
+            }
+            if(health>121)
+            {
+              g.drawImage(calvinHappy,120,200,420,600,null);
+              healthName="feeling really good!";
+              Font helvec = new Font ("Helvetica Neue", Font.BOLD, 48);//initializes font
+              g.setFont(helvec);//sets font int graphics
+              Color happy = new Color (155,89,182);
+              g.setColor(happy);
+
+              g.drawString("Calvin is "+ healthName ,10,100);//sets the string that is displayed on the panel ADD THE HEALTHA ND IF ELSE STATEMENTS
+            }
+            if(health>=0 && health<40)
+            {
+              g.drawImage(calvinHungry,120,200,420,600,null);
+              healthName="feeling hungry!";
+
+                          Font helvec = new Font ("Helvetica Neue", Font.BOLD, 48);//initializes font
+                          g.setFont(helvec);//sets font int graphics
+                          Color hungry = new Color (192,57,43);
+                          g.setColor(hungry);
+
+                          g.drawString("Calvin is "+ healthName ,10,100);//sets the string that is displayed on the panel ADD THE HEALTHA ND IF ELSE STATEMENTS
+            }
+            g.drawImage(avocado,avocadoX-75,avocadoY-75,this);
+            g.drawImage(donut,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
+            g.drawImage(soda,sodaX-75,sodaY-75,this);
+            g.drawImage(oatmeal,oatmealX-75,oatmealY-75,this);
 
 
 
-          Font helvec = new Font ("Helvetica Neue", Font.BOLD, 48);//initializes font
-          g.setFont(helvec);//sets font int graphics
-          Color blueo = new Color (231,37,48);
-          g.setColor(blueo);
-
-          g.drawString("Calvin is "+ healthName ,10,100);//sets the string that is displayed on the panel ADD THE HEALTHA ND IF ELSE STATEMENTS
-          Font tahoma = new Font ("Tahoma", Font.BOLD, 28);//initializes font
-          g.setFont(tahoma);//sets font int graphic
-          Color maroon = new Color (212,193,145);
-          g.setColor(maroon);
-          g.drawString("Feed him some food or give him a drink!",20,150);
-          Font apple = new Font ("Apple Casual", Font.BOLD, 10);
-          g.setFont(apple);
-          g.setColor(Color.BLACK);
-          g.drawString("Drag the food/drinks to his mouth!",15,250);
-            Font dido = new Font ("Apple Casual", Font.BOLD, 15);
+            Font tahoma = new Font ("Tahoma", Font.BOLD, 28);//initializes font
+            g.setFont(tahoma);//sets font int graphic
+            Color maroon = new Color (212,193,145);
+            g.setColor(maroon);
+            g.drawString("Feed him some food or give him a drink!",20,150);
+            Font apple = new Font ("Apple Casual", Font.BOLD, 10);
+            g.setFont(apple);
+            g.setColor(Color.BLACK);
+            g.drawString("Drag the food/drinks to his mouth!",15,250);
+            Font dido = new Font ("Apple Casual", Font.BOLD, 14);
             g.setFont(dido);
             g.setColor(Color.BLUE);
-          g.drawString("Keep in mind that healthy food would give him more enegry and would help him heal better!",5,750);
+            g.drawString("Keep in mind that healthy food would give him more enegry and would help him heal better!",5,750);
 
+          }
+        }//end of landing page
+        //start mouth class panels
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        class MouthPanel extends JPanel//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
+        //   //also tied in with MouthQuiz to ask questions regarding the class
+        {
+          public int foodX;
+          public int foodY;
+
+          public Image mouthBackground;
+
+          public Image donut;
+          public Image oatmeal;
+          public Image soda;
+          public Image avocado;
+
+          public String mouthBackgroundName;
+          public String donutName;//file name
+          public String avocadoName;//file name
+          public String sodaName;//file name
+          public String oatmealName;//file name
+
+          public int donutX, donutY, oatmealX, oatmealY, sodaX, sodaY, avocadoX, avocadoY;
+
+
+          public MouthPanel()
+          {
+            System.out.println("moutha");
+            setBackground(Color.RED);//set background to yello
+            mouthBackgroundName="mouth.png";
+            donutName="donut.png";//file name
+            avocadoName="avocado.png";//file name
+            sodaName="soda.png";//file name
+            oatmealName="oatmeal.png";//file name
+
+            donutX = 50;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
+            donutY = 350;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+            oatmealX = 50;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+            oatmealY = 350;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+            sodaX = 50;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
+            sodaY = 350;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+            avocadoX = 50;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+            avocadoY = 350;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+
+            run();
+          }//end of mouthconstructor
+
+          public void run()
+          {
+            getMyImage();
+          }
+
+          public void getMyImage()//gets image for use
+          {
+            try
+            {
+              mouthBackground=ImageIO.read(new File(mouthBackgroundName));
+              System.out.println("mouthBackground");
+              donut=ImageIO.read(new File(donutName));
+              System.out.println("donutName");
+              oatmeal=ImageIO.read(new File(oatmealName));
+              System.out.println("oatmealName");
+              avocado=ImageIO.read(new File(avocadoName));
+              System.out.println("avocadoName");
+              soda=ImageIO.read(new File(sodaName));
+              System.out.println("sodaName");
+
+              //areaIn=ImageIO.read(new File(areaInName));//if user presses in
+              //System.out.println("areaIn");
+            }
+            catch(IOException e)
+            {
+              System.err.println("\n\n"+mouthBackgroundName+"can't be found. \n\n");
+              System.out.println("catched mouthBackground");
+              System.err.println("\n\n"+donutName+"can't be found. \n\n");
+              System.out.println("catched donut");
+              System.err.println("\n\n"+oatmealName+"can't be found. \n\n");
+              System.out.println("catched oatmeal");
+              System.err.println("\n\n"+sodaName+"can't be found. \n\n");
+              System.out.println("catched soda");
+              System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
+              System.out.println("catched avocado");
+
+              //System.err.println("\n\n"+areaInName+"can't be found. \n\n");
+              //System.out.println("catched areaInName");
+              e.printStackTrace();
+            }
+          }//end of get my image
+
+          public void paintComponent(Graphics g)
+          {
+            super.paintComponent(g);
+            g.drawImage(mouthBackground,0,0,800,800,null);
+
+            if(food.equals("oatmeal"))
+            {
+              oatmealX = 125;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+              oatmealY = 125;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+              g.drawImage(oatmeal,20,400,oatmealX-75,oatmealY-75,this);
+              System.out.println("oatmealp");
+            }
+            if(food.equals("soda"))
+            {
+              sodaX = 50;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
+              sodaY = 350;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+              g.drawImage(soda,50,50,sodaX-75,sodaY-75,this);
+
+            }
+            if(food.equals("avocado"))
+            {
+              avocadoX = 100;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+              avocadoY = 350;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+              g.drawImage(avocado,50,50,avocadoX-75,avocadoY-75,this);
+            }
+            if(food.equals("donut"))
+            {
+              donutX = 50;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
+              donutY = 350;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+              g.drawImage(donut,50,50,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
+
+            }
+
+
+          }//end of paintcomponent
+
+        }//end of mouth panel
+        class MouthQuestions extends JPanel
+        {
+          public MouthQuestions()
+          {
+            System.out.println("mouthquiz");
+          }
+        }
+        // helping
+        // int x, y; //of the thing you're controlling
+        // int speed = 5; //how fast you want to move your ting
+        // BufferedImage img = ImageIO.read("mouthpic.png");
+        //
+        // //In the key method
+        //
+        // if(up) {
+        //   boolean collided = false;
+        //   for(int i = 0; i < speed; i++) {
+        //     int val = img.getRGB(x, y - i); //getRGB returns the color of the pixel, y - i because going up, & 0xffffff to get rid of first 8 bytes of color (unecessary right now)
+        //     if(val == 0) {
+        //       collided = true;
+        //     }
+        //   }
+        //   if(collided) y -= speed;
+        // }
+        //  }
       }
-    }//end of landing page
-    //start mouth class panels
 
 
+      /*
+      Why don't you just setLayout(null) on the parent panel and then, before adding the sub panel to parent , set it's position and dimensions using it's setBounds method. This way there is no need to use paintComponent for positioning the sub panel.
 
+      Is case you parent panel should have specific layout with other components and sub should overlay all that, look into JLayer(Java 7) / JXLayer(Java 6).
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    class MouthPanel extends JPanel//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
-    //   //also tied in with MouthQuiz to ask questions regarding the class
-    {
-      public int foodX;
-      public int foodY;
-
-      public Image mouthBackground;
-
-      public Image donut;
-      public Image oatmeal;
-      public Image soda;
-      public Image avocado;
-
-      public String mouthBackgroundName;
-      public String donutName;//file name
-      public String avocadoName;//file name
-      public String sodaName;//file name
-      public String oatmealName;//file name
-
-      public int donutX, donutY, oatmealX, oatmealY, sodaX, sodaY, avocadoX, avocadoY;
-
-
-      public MouthPanel()
-      {
-        System.out.println("moutha");
-        setBackground(Color.RED);//set background to yello
-        mouthBackgroundName="mouth.png";
-        donutName="donut.png";//file name
-        avocadoName="avocado.png";//file name
-        sodaName="soda.png";//file name
-        oatmealName="oatmeal.png";//file name
-        run();
-      }//end of mouthconstructor
-
-      public void run()
-      {
-        getMyImage();
-      }
-
-      public void getMyImage()//gets image for use
-      {
-        try
-        {
-          mouthBackground=ImageIO.read(new File(mouthBackgroundName));
-          System.out.println("mouthBackground");
-          donut=ImageIO.read(new File(donutName));
-          System.out.println("donutName");
-          oatmeal=ImageIO.read(new File(oatmealName));
-          System.out.println("oatmealName");
-          avocado=ImageIO.read(new File(avocadoName));
-          System.out.println("avocadoName");
-          soda=ImageIO.read(new File(sodaName));
-          System.out.println("sodaName");
-
-          //areaIn=ImageIO.read(new File(areaInName));//if user presses in
-          //System.out.println("areaIn");
-        }
-        catch(IOException e)
-        {
-          System.err.println("\n\n"+mouthBackgroundName+"can't be found. \n\n");
-          System.out.println("catched mouthBackground");
-          System.err.println("\n\n"+donutName+"can't be found. \n\n");
-          System.out.println("catched donut");
-          System.err.println("\n\n"+oatmealName+"can't be found. \n\n");
-          System.out.println("catched oatmeal");
-          System.err.println("\n\n"+sodaName+"can't be found. \n\n");
-          System.out.println("catched soda");
-          System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
-          System.out.println("catched avocado");
-
-          //System.err.println("\n\n"+areaInName+"can't be found. \n\n");
-          //System.out.println("catched areaInName");
-          e.printStackTrace();
-        }
-      }//end of get my image
-
-      public void paintComponent(Graphics g)
-      {
-        super.paintComponent(g);
-        g.drawImage(mouthBackground,0,0,800,800,null);
-
-        if(food.equals("oatmeal"))
-        {
-          g.drawImage(oatmeal,oatmealX-75,oatmealY-75,this);
-
-        }
-        if(food.equals("soda"))
-        {
-          g.drawImage(soda,sodaX-75,sodaY-75,this);
-
-        }
-        if(food.equals("avocado"))
-        {
-          g.drawImage(avocado,avocadoX-75,avocadoY-75,this);
-        }
-        if(food.equals("donut"))
-        {
-          g.drawImage(donut,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
-
-        }
-
-
-      }//end of paintcomponent
-
-    }//end of mouth panel
-    class MouthQuestions extends JPanel
-    {
-      public MouthQuestions()
-      {
-        System.out.println("mouthquiz");
-      }
-    }
-    // helping
-    // int x, y; //of the thing you're controlling
-    // int speed = 5; //how fast you want to move your ting
-    // BufferedImage img = ImageIO.read("mouthpic.png");
-    //
-    // //In the key method
-    //
-    // if(up) {
-    //   boolean collided = false;
-    //   for(int i = 0; i < speed; i++) {
-    //     int val = img.getRGB(x, y - i); //getRGB returns the color of the pixel, y - i because going up, & 0xffffff to get rid of first 8 bytes of color (unecessary right now)
-    //     if(val == 0) {
-    //       collided = true;
-    //     }
-    //   }
-    //   if(collided) y -= speed;
-    // }
-    //  }
-  }
-
-
-  /*
-  Why don't you just setLayout(null) on the parent panel and then, before adding the sub panel to parent , set it's position and dimensions using it's setBounds method. This way there is no need to use paintComponent for positioning the sub panel.
-
-  Is case you parent panel should have specific layout with other components and sub should overlay all that, look into JLayer(Java 7) / JXLayer(Java 6).
-
-  Third solution can be using JLayeredPane.
-  */
+      Third solution can be using JLayeredPane.
+      */
