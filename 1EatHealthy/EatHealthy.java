@@ -959,6 +959,10 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           Color maroon = new Color (212,193,145);
           g.setColor(maroon);
           g.drawString("Feed him some food or give him a drink!",20,150);
+          Font apple = new Font ("Apple Casual", Font.BOLD, 10);
+          g.setFont(apple);
+          g.setColor(Color.BLACK);
+          g.drawString("Drag the food/drinks to his mouth!",15,250);
             Font dido = new Font ("Apple Casual", Font.BOLD, 15);
             g.setFont(dido);
             g.setColor(Color.BLUE);
@@ -967,17 +971,137 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
       }
     }//end of landing page
     //start mouth class panels
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     class MouthPanel extends JPanel//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
     //   //also tied in with MouthQuiz to ask questions regarding the class
     {
       public int foodX;
       public int foodY;
+
+      public Image mouthBackground;
+
+      public Image donut;
+      public Image oatmeal;
+      public Image soda;
+      public Image avocado;
+
+      public String mouthBackgroundName;
+      public String donutName;//file name
+      public String avocadoName;//file name
+      public String sodaName;//file name
+      public String oatmealName;//file name
+
+      public int donutX, donutY, oatmealX, oatmealY, sodaX, sodaY, avocadoX, avocadoY;
+
+
       public MouthPanel()
       {
         System.out.println("moutha");
         setBackground(Color.RED);//set background to yello
+        mouthBackgroundName="mouth.png";
+        donutName="donut.png";//file name
+        avocadoName="avocado.png";//file name
+        sodaName="soda.png";//file name
+        oatmealName="oatmeal.png";//file name
+        run();
+      }//end of mouthconstructor
+
+      public void run()
+      {
+        getMyImage();
       }
-    }
+
+      public void getMyImage()//gets image for use
+      {
+        try
+        {
+          mouthBackground=ImageIO.read(new File(mouthBackgroundName));
+          System.out.println("mouthBackground");
+          donut=ImageIO.read(new File(donutName));
+          System.out.println("donutName");
+          oatmeal=ImageIO.read(new File(oatmealName));
+          System.out.println("oatmealName");
+          avocado=ImageIO.read(new File(avocadoName));
+          System.out.println("avocadoName");
+          soda=ImageIO.read(new File(sodaName));
+          System.out.println("sodaName");
+
+          //areaIn=ImageIO.read(new File(areaInName));//if user presses in
+          //System.out.println("areaIn");
+        }
+        catch(IOException e)
+        {
+          System.err.println("\n\n"+mouthBackgroundName+"can't be found. \n\n");
+          System.out.println("catched mouthBackground");
+          System.err.println("\n\n"+donutName+"can't be found. \n\n");
+          System.out.println("catched donut");
+          System.err.println("\n\n"+oatmealName+"can't be found. \n\n");
+          System.out.println("catched oatmeal");
+          System.err.println("\n\n"+sodaName+"can't be found. \n\n");
+          System.out.println("catched soda");
+          System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
+          System.out.println("catched avocado");
+
+          //System.err.println("\n\n"+areaInName+"can't be found. \n\n");
+          //System.out.println("catched areaInName");
+          e.printStackTrace();
+        }
+      }//end of get my image
+
+      public void paintComponent(Graphics g)
+      {
+        super.paintComponent(g);
+        g.drawImage(mouthBackground,0,0,800,800,null);
+
+        if(food.equals("oatmeal"))
+        {
+          g.drawImage(oatmeal,oatmealX-75,oatmealY-75,this);
+
+        }
+        if(food.equals("soda"))
+        {
+          g.drawImage(soda,sodaX-75,sodaY-75,this);
+
+        }
+        if(food.equals("avocado"))
+        {
+          g.drawImage(avocado,avocadoX-75,avocadoY-75,this);
+        }
+        if(food.equals("donut"))
+        {
+          g.drawImage(donut,donutX-75,donutY-75,this);// IF THE DONUT IS SELECTED
+
+        }
+
+
+      }//end of paintcomponent
+
+    }//end of mouth panel
     class MouthQuestions extends JPanel
     {
       public MouthQuestions()
