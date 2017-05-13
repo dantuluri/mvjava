@@ -977,6 +977,10 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
         //   //also tied in with MouthQuiz to ask questions regarding the class
         {
 
+          private BufferedImage donutm;
+          private BufferedImage oatmealm;
+          private BufferedImage sodam;
+          private BufferedImage avocadom;
 
 
           public int foodX;
@@ -1003,11 +1007,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public MouthPanel()
           {
             setBackground(Color.RED);//set background to yello
-            mouthBackgroundName="mouth.png";
-            donutName="donut.png";//file name
-            avocadoName="avocado.png";//file name
-            sodaName="soda.png";//file name
-            oatmealName="oatmeal.png";//file name
+            mouthBackgroundName= ("mouth.png");
+            donutName= ("donut.png");//file name
+            avocadoName= ("avocado.png");//file name
+            sodaName= ("soda.png");//file name
+            oatmealName= ("oatmeal.png");//file name
             donutX = 20;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
             donutY = 400;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
             oatmealX = 20;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
@@ -1035,23 +1039,27 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             try
             {
 
-              File donutm = new File("donut.png");
-              File oatmealm = new File("oatmeal.png");
-              File sodam = new File("soda.png");
-              File avocadom = new File("avocado.png");
-
-              BufferedImage buffdonutm = ImageIO.read(donutm);
-              BufferedImage buffoatmealm = ImageIO.read(oatmealm);
-              BufferedImage buffsodam = ImageIO.read(sodam);
-              BufferedImage buffavocadom = ImageIO.read(avocadom);
 
 
+              // BufferedImage buffdonutm = ImageIO.read(new File(donutName));
+              // BufferedImage buffoatmealm = ImageIO.read(new File(oatmealName));
+              // BufferedImage buffsodam = ImageIO.read(new File(sodaName));
+              // BufferedImage buffavocadom = ImageIO.read(new File(avocadoName));
+              donutm = ImageIO.read(new File("donut.png"));
+              avocadom = ImageIO.read(new File("avocado.png"));
+              sodam = ImageIO.read(new File("soda.png"));
+              oatmealm = ImageIO.read(new File("oatmeal.png"));
 
+              //
+              // System.out.println(buffdonutm);
+              // System.out.println("this is buffdonutm");
+              // System.out.println(buffoatmealm);
+              // System.out.println("this is buffoatmealm");
+              // System.out.println(buffsodam);
+              // System.out.println("this is buffsodam");
+              // System.out.println(buffavocadom);
+              // System.out.println("this is buffavocadom");
 
-              System.out.println(buffdonutm);
-              System.out.println(buffoatmealm);
-              System.out.println(buffsodam);
-              System.out.println(buffavocadom);
 
               mouthBackground=ImageIO.read(new File(mouthBackgroundName));
               System.out.println("mouthBackground");
@@ -1150,32 +1158,49 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public void keyTyped(KeyEvent e){}
             public void keyReleased(KeyEvent e){}
 
-              public void paintComponent(Graphics g)
+              public void paintComponent()
               {
+                Graphics2D g = donutm.createGraphics();
                 super.paintComponent(g);
 
-                BufferedImage newImage = new BufferedImage(
-                in.getWidth(), in.getHeight(), BufferedImage.TYPE_INT_ARGB);
-
-                Graphics2D g = newImage.createGraphics();
-                g.drawImage(in, 0, 0, null);
-                g.dispose();
-                ///////////////////////////////////////
-                Graphics2D g2 = (Graphics2D) g;
-
-                BufferedImage imageBuffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
-                Graphics imageG2 = imageBuffer.createGraphics();
-
-                // do custom painting onto imageG2...
-
-                // save imageBuffer
-
-                g2.drawImage(imageBuffer, 0, 0, this);  // draw onto component
 
 
-                g.drawImage(buffdonutm, donutX, donutY, 50,50, this);
-                g.dispose();
-                g.drawImage(mouthBackground,0,0,800,800,this);
+//                 Graphics2D g2D = (Graphics2D) g;
+                 g.drawImage(mouthBackground,0,0,800,800,this);
+//
+//                 BufferedImage newDonutM = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
+//                 Graphics2D big = newDonutM.createGraphics();
+//                 big.setColor(Color.magenta);
+//                 big.fillRect(0, 0, 5, 5);
+//                 big.setColor(Color.black);
+//                 big.fillOval(0, 0, 5, 5);
+//
+//                 g2D.drawString("Graphics", 30, 100);
+//
+//
+// ///////////////////////////////////////////////////////
+//
+//
+//                 g2D.drawImage(newDonutM, 0, 0, null);
+//                 g.dispose();
+//                 ///////////////////////////////////////
+//                 // Graphics2D g2 = (Graphics2D) g;
+//                 //
+//                 // Graphics imageG2 = newDonutM.createGraphics();
+//
+//                 // do custom painting onto imageG2...
+//
+//                 // save imageBuffer
+//
+//                 //g2.drawImage(newDonutM, 0, 0, this);  // draw onto component
+//
+//
+//                 // g.drawImage(buffdonutm, donutX, donutY, 50,50, this);
+//                 // g.dispose();
+//
+//
+//                 //////////////////////////////////
+
 
                 if(food.equals("oatmeal"))
                 {
@@ -1203,6 +1228,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 g.setFont(aldo);
                 g.setColor(Color.ORANGE);
                 g.drawString("Press the screen once in order to move the food/drinks with the WASD controls",5,690);
+                g.dispose();
+
               }//end of paintcomponent
 
 

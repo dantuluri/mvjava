@@ -33,7 +33,7 @@ class DrawingCanvas extends JPanel {
     fontMetrics = getFontMetrics(font);
   }
 
-  public void paint(Graphics g) {
+  public void paintComponent(Graphics g) {
     Graphics2D g2D = (Graphics2D) g;
     int w = getSize().width;
     int h = getSize().height;
