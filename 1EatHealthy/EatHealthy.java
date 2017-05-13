@@ -1004,14 +1004,14 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             avocadoName="avocado.png";//file name
             sodaName="soda.png";//file name
             oatmealName="oatmeal.png";//file name
-            donutX = 50;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
-            donutY = 350;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
-            oatmealX = 50;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
-            oatmealY = 350;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
-            sodaX = 50;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
-            sodaY = 350;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
-            avocadoX = 50;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
-            avocadoY = 350;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+            donutX = 40;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
+            donutY = 40;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+            oatmealX = 40;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+            oatmealY = 40;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+            sodaX = 40;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
+            sodaY = 40;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+            avocadoX = 40;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+            avocadoY = 40;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
 
 
             setLayout(flow);//sets the layout to flow
@@ -1084,6 +1084,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 System.out.println("W");
                 if(food.equals("oatmeal"))
                 {
+                  requestFocus();
                   oatmealY = oatmealY+10;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
                   repaint();
 
@@ -1133,28 +1134,23 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
                   if(food.equals("oatmeal"))
                   {
-                    oatmealX = 40;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
-                    oatmealY = 40;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
                     g.drawImage(oatmeal,20,400,oatmealX,oatmealY,this);
                     System.out.println("oatmealp");
                   }
                   if(food.equals("soda"))
                   {
-                    sodaX = 40;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
-                    sodaY = 40;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+
                     g.drawImage(soda,20,400,sodaX,sodaY,this);
 
                   }
                   if(food.equals("avocado"))
                   {
-                    avocadoX = 40;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
-                    avocadoY = 40;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+
                     g.drawImage(avocado,20,400,avocadoX,avocadoY,this);
                   }
                   if(food.equals("donut"))
                   {
-                    donutX = 40;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
-                    donutY = 40;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+
                     g.drawImage(donut,20,400,donutX,donutY,this);// IF THE DONUT IS SELECTED
 
                   }
