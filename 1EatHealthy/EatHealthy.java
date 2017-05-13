@@ -979,14 +979,6 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
 
 
-
-
-          BufferedImage newdonutm = new BufferedImage(
-          buffdonutm.getWidth(), buffdonutm.getHeight(), BufferedImage.TYPE_INT_ARGB);
-
-          Graphics2D g = newdonutm.createGraphics();
-
-
           public int foodX;
           public int foodY;
 
@@ -1042,6 +1034,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           {
             try
             {
+
               File donutm = new File("donut.png");
               File oatmealm = new File("oatmeal.png");
               File sodam = new File("soda.png");
@@ -1051,6 +1044,9 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               BufferedImage buffoatmealm = ImageIO.read(oatmealm);
               BufferedImage buffsodam = ImageIO.read(sodam);
               BufferedImage buffavocadom = ImageIO.read(avocadom);
+
+
+
 
               System.out.println(buffdonutm);
               System.out.println(buffoatmealm);
@@ -1157,7 +1153,27 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               public void paintComponent(Graphics g)
               {
                 super.paintComponent(g);
-                g.drawImage(buffdonutm, 0, 0, null);
+
+                BufferedImage newImage = new BufferedImage(
+                in.getWidth(), in.getHeight(), BufferedImage.TYPE_INT_ARGB);
+
+                Graphics2D g = newImage.createGraphics();
+                g.drawImage(in, 0, 0, null);
+                g.dispose();
+                ///////////////////////////////////////
+                Graphics2D g2 = (Graphics2D) g;
+
+                BufferedImage imageBuffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
+                Graphics imageG2 = imageBuffer.createGraphics();
+
+                // do custom painting onto imageG2...
+
+                // save imageBuffer
+
+                g2.drawImage(imageBuffer, 0, 0, this);  // draw onto component
+
+
+                g.drawImage(buffdonutm, donutX, donutY, 50,50, this);
                 g.dispose();
                 g.drawImage(mouthBackground,0,0,800,800,this);
 
