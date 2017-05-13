@@ -92,6 +92,8 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.imageio.ImageIO;
+
 import java.awt.Graphics2D;
 
 // public class ColorPan extends JComponent {
@@ -976,11 +978,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
         class MouthPanel extends JPanel implements MouseListener, KeyListener//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
         //   //also tied in with MouthQuiz to ask questions regarding the class
         {
+          BufferedImage donutm;
+          BufferedImage sodam;
+          BufferedImage oatmealm;
+          BufferedImage avocadom;
 
-          private BufferedImage donutm;
-          private BufferedImage oatmealm;
-          private BufferedImage sodam;
-          private BufferedImage avocadom;
 
 
           public int foodX;
@@ -989,10 +991,10 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public Image mouthBackground;
           private boolean shiftkey;
 
-          public Image donut;
-          public Image oatmeal;
-          public Image soda;
-          public Image avocado;
+          // public Image donut;
+          // public Image oatmeal;
+          // public Image soda;
+          // public Image avocado;
 
           public String mouthBackgroundName;
           public String donutName;//file name
@@ -1038,9 +1040,56 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           {
             try
             {
+////////
+if()
+File donut = new File(donutName);
+donutm = ImageIO.read(donut);
+donutwidth = donutm.getWidth();
+donutheight = donutm.getHeight();
+
+File donut = new File(donutName);
+donutm = ImageIO.read(donut);
+donutwidth = donutm.getWidth();
+donutheight = donutm.getHeight();
+
+File donut = new File(donutName);
+donutm = ImageIO.read(donut);
+donutwidth = donutm.getWidth();
+donutheight = donutm.getHeight();
+
+File donut = new File(donutName);
+donutm = ImageIO.read(donut);
+donutwidth = donutm.getWidth();
+donutheight = donutm.getHeight();
 
 
+if(food.equals("oatmeal"))
+{
+  requestFocus();
+  oatmealY = oatmealY+10;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+  repaint();
 
+}
+if(food.equals("soda"))
+{
+  sodaY = sodaY+10;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+  repaint();
+
+}
+if(food.equals("avocado"))
+{
+  avocadoY = avocadoY+10;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+  repaint();
+
+}
+if(food.equals("donut"))
+{
+  donutY = donutY+10;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+  repaint();
+}
+
+
+////////
               // BufferedImage buffdonutm = ImageIO.read(new File(donutName));
               // BufferedImage buffoatmealm = ImageIO.read(new File(oatmealName));
               // BufferedImage buffsodam = ImageIO.read(new File(sodaName));
@@ -1049,17 +1098,6 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               avocadom = ImageIO.read(new File("avocado.png"));
               sodam = ImageIO.read(new File("soda.png"));
               oatmealm = ImageIO.read(new File("oatmeal.png"));
-
-              //
-              // System.out.println(buffdonutm);
-              // System.out.println("this is buffdonutm");
-              // System.out.println(buffoatmealm);
-              // System.out.println("this is buffoatmealm");
-              // System.out.println(buffsodam);
-              // System.out.println("this is buffsodam");
-              // System.out.println(buffavocadom);
-              // System.out.println("this is buffavocadom");
-
 
               mouthBackground=ImageIO.read(new File(mouthBackgroundName));
               System.out.println("mouthBackground");
@@ -1160,46 +1198,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
               public void paintComponent(Graphics g)
               {
-                donutm.createGraphics();
                 super.paintComponent(g);
-
-
-
-//                 Graphics2D g2D = (Graphics2D) g;
                  g.drawImage(mouthBackground,0,0,800,800,this);
-//
-//                 BufferedImage newDonutM = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
-//                 Graphics2D big = newDonutM.createGraphics();
-//                 big.setColor(Color.magenta);
-//                 big.fillRect(0, 0, 5, 5);
-//                 big.setColor(Color.black);
-//                 big.fillOval(0, 0, 5, 5);
-//
-//                 g2D.drawString("Graphics", 30, 100);
-//
-//
-// ///////////////////////////////////////////////////////
-//
-//
-//                 g2D.drawImage(newDonutM, 0, 0, null);
-//                 g.dispose();
-//                 ///////////////////////////////////////
-//                 // Graphics2D g2 = (Graphics2D) g;
-//                 //
-//                 // Graphics imageG2 = newDonutM.createGraphics();
-//
-//                 // do custom painting onto imageG2...
-//
-//                 // save imageBuffer
-//
-//                 //g2.drawImage(newDonutM, 0, 0, this);  // draw onto component
-//
-//
-//                 // g.drawImage(buffdonutm, donutX, donutY, 50,50, this);
-//                 // g.dispose();
-//
-//
-//                 //////////////////////////////////
 
 
                 if(food.equals("oatmeal"))
