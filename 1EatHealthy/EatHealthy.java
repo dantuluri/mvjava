@@ -1158,9 +1158,9 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public void keyTyped(KeyEvent e){}
             public void keyReleased(KeyEvent e){}
 
-              public void paintComponent()
+              public void paintComponent(Graphics g)
               {
-                Graphics2D g = donutm.createGraphics();
+                donutm.createGraphics();
                 super.paintComponent(g);
 
 
