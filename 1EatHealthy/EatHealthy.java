@@ -976,24 +976,16 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
         class MouthPanel extends JPanel implements MouseListener, KeyListener//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
         //   //also tied in with MouthQuiz to ask questions regarding the class
         {
-          public File donutm = new File("donut.png");
-          public File oatmealm = new File("oatmeal.png");
-          public File sodam = new File("soda.png");
-          public File avocadom = new File("avocado.png");
-          public BufferedImage buffdonutm = new BufferedImage(240, 240, BufferedImage.TYPE_INT_ARGB);
 
-          BufferedImage buffdonutm = ImageIO.read(donutm);
-          BufferedImage buffoatmealm = ImageIO.read(oatmealm);
-          BufferedImage buffsodam = ImageIO.read(sodam);
-          BufferedImage buffavocadom = ImageIO.read(avocadom);
+
+
 
 
           BufferedImage newdonutm = new BufferedImage(
           buffdonutm.getWidth(), buffdonutm.getHeight(), BufferedImage.TYPE_INT_ARGB);
 
           Graphics2D g = newdonutm.createGraphics();
-          g.drawImage(buffdonutm, 0, 0, null);
-          g.dispose();
+
 
           public int foodX;
           public int foodY;
@@ -1050,16 +1042,31 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           {
             try
             {
+              File donutm = new File("donut.png");
+              File oatmealm = new File("oatmeal.png");
+              File sodam = new File("soda.png");
+              File avocadom = new File("avocado.png");
+
+              BufferedImage buffdonutm = ImageIO.read(donutm);
+              BufferedImage buffoatmealm = ImageIO.read(oatmealm);
+              BufferedImage buffsodam = ImageIO.read(sodam);
+              BufferedImage buffavocadom = ImageIO.read(avocadom);
+
+              System.out.println(buffdonutm);
+              System.out.println(buffoatmealm);
+              System.out.println(buffsodam);
+              System.out.println(buffavocadom);
+
               mouthBackground=ImageIO.read(new File(mouthBackgroundName));
               System.out.println("mouthBackground");
-              donut=ImageIO.read(new File(donutName));
-              System.out.println("donutName");
-              oatmeal=ImageIO.read(new File(oatmealName));
-              System.out.println("oatmealName");
-              avocado=ImageIO.read(new File(avocadoName));
-              System.out.println("avocadoName");
-              soda=ImageIO.read(new File(sodaName));
-              System.out.println("sodaName");
+              // donut=ImageIO.read(new File(donutName));
+              // System.out.println("donutName");
+              // oatmeal=ImageIO.read(new File(oatmealName));
+              // System.out.println("oatmealName");
+              // avocado=ImageIO.read(new File(avocadoName));
+              // System.out.println("avocadoName");
+              // soda=ImageIO.read(new File(sodaName));
+              // System.out.println("sodaName");
 
               //areaIn=ImageIO.read(new File(areaInName));//if user presses in
               //System.out.println("areaIn");
@@ -1068,14 +1075,14 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             {
               System.err.println("\n\n"+mouthBackgroundName+"can't be found. \n\n");
               System.out.println("catched mouthBackground");
-              System.err.println("\n\n"+donutName+"can't be found. \n\n");
-              System.out.println("catched donut");
-              System.err.println("\n\n"+oatmealName+"can't be found. \n\n");
-              System.out.println("catched oatmeal");
-              System.err.println("\n\n"+sodaName+"can't be found. \n\n");
-              System.out.println("catched soda");
-              System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
-              System.out.println("catched avocado");
+              // System.err.println("\n\n"+donutName+"can't be found. \n\n");
+              // System.out.println("catched donut");
+              // System.err.println("\n\n"+oatmealName+"can't be found. \n\n");
+              // System.out.println("catched oatmeal");
+              // System.err.println("\n\n"+sodaName+"can't be found. \n\n");
+              // System.out.println("catched soda");
+              // System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
+              // System.out.println("catched avocado");
 
               //System.err.println("\n\n"+areaInName+"can't be found. \n\n");
               //System.out.println("catched areaInName");
@@ -1150,6 +1157,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               public void paintComponent(Graphics g)
               {
                 super.paintComponent(g);
+                g.drawImage(buffdonutm, 0, 0, null);
+                g.dispose();
                 g.drawImage(mouthBackground,0,0,800,800,this);
 
                 if(food.equals("oatmeal"))
