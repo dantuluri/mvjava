@@ -119,6 +119,7 @@ public class GardenGrows//instantiates gardengrows class
             if(shiftkeycode==KeyEvent.VK_SHIFT)//runs if shiftkey is pressed
             {
                 shiftkey=true;//sets up boolean as true if shiftkey is pressed or not
+                System.out.println("the shift key");
             }
             int number5code = e.getKeyCode();
             if(shiftkey && number5code==KeyEvent.VK_5)//if keycode is set up then paints in paintcomponent

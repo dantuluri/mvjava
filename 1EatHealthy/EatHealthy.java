@@ -87,6 +87,39 @@ import javax.swing.JPanel; //imports JPanel
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+
+// public class ColorPan extends JComponent {
+//   public void paint(Graphics g) {
+//     int width = getSize().width;
+//     int height = getSize().height;
+//     int[] data = new int[width * height];
+//     int i = 0;
+//     for (int y = 0; y < height; y++) {
+//       int red = (y * 255) / (height - 1);
+//       for (int x = 0; x < width; x++) {
+//         int green = (x * 255) / (width - 1);
+//         int blue = 128;
+//         data[i++] = (red << 16) | (green << 8) | blue;
+//       }
+//     }
+//     BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+//     image.setRGB(0, 0, width, height, data, 0, width);
+//     g.drawImage(image, 0, 0, this);
+//   }
+//
+//   public static void main(String[] args) {
+//     JFrame frame = new JFrame("ColorPan");
+//     frame.getContentPane().add(new ColorPan());
+//     frame.setSize(300, 300);
+//     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//     frame.setVisible(true);
+//   }
+// }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 public class EatHealthy extends JFrame//JFrame that holds all panels
@@ -939,13 +972,14 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-        class MouthPanel extends JPanel implements KeyListener//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
+        class MouthPanel extends JPanel implements MouseListener, KeyListener//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
         //   //also tied in with MouthQuiz to ask questions regarding the class
         {
           public int foodX;
           public int foodY;
 
           public Image mouthBackground;
+          private boolean shiftkey;
 
           public Image donut;
           public Image oatmeal;
@@ -985,14 +1019,12 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             setLocation(0,0);//sets panel origin
 
             System.out.println("MouthPanel reached");
+            addMouseListener(this);
             addKeyListener(this);//adds KeyListener
-            run();
+            getMyImage();
           }//end of mouthconstructor
 
-          public void run()
-          {
-            getMyImage();
-          }
+
 
           public void getMyImage()//gets image for use
           {
@@ -1031,28 +1063,73 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
           }//end of get my image
 
+          public void mousePressed(MouseEvent e)		//every time user clicks method is run
+                  {
+                      requestFocus();//requests focus for mouse
+                      repaint();//calls paintcomponent
+                  }
+                  public void mouseClicked(MouseEvent e){} //mouse is clicked
+                  public void mouseReleased(MouseEvent e){} //mouse is released
+                  public void mouseEntered(MouseEvent e){} //mouse is entered
+                  public void mouseExited(MouseEvent e){} //mouse exits
+
+
             public void keyPressed(KeyEvent e)
             {
               requestFocus();
-              int shiftkeycode = e.getKeyCode();//looks for shiftkey
-              if(e.getKeyCode() == KeyEvent.VK_SPACE) //runs if shiftkey is pressed
-              {
-                System.out.println("HEllllllooooooooooooo");
-              }
 
               int upcode = e.getKeyCode();//looks for shiftkey
               if(upcode==KeyEvent.VK_W)//runs if shiftkey is pressed
               {
                 System.out.println("W");
+                if(food.equals("oatmeal"))
+                {
+                  oatmealY = oatmealY+10;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+                  repaint();
+
+                }
+                if(food.equals("soda"))
+                {
+                  sodaY = sodaY+10;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+                  repaint();
+
+                }
+                if(food.equals("avocado"))
+                {
+                  avocadoY = avocadoY+10;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+                  repaint();
+
+                }
+                if(food.equals("donut"))
+                {
+                  donutY = donutY+10;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+                  repaint();
+                }
+              }
+              int downcode = e.getKeyCode();
+              if(downcode==KeyEvent.VK_S)
+              {
+                System.out.println("S");
+              }
+              int leftcode = e.getKeyCode();
+              if(leftcode==KeyEvent.VK_A)
+              {
+                System.out.println("A");
+              }
+              int rightcode = e.getKeyCode();
+              if(rightcode==KeyEvent.VK_D)
+              {
+                System.out.println("D");
               }
             }
+
             public void keyTyped(KeyEvent e){}
               public void keyReleased(KeyEvent e){}
 
                 public void paintComponent(Graphics g)
                 {
                   super.paintComponent(g);
-                  g.drawImage(mouthBackground,0,0,800,800,null);
+                  g.drawImage(mouthBackground,0,0,800,800,this);
 
                   if(food.equals("oatmeal"))
                   {
@@ -1081,6 +1158,10 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                     g.drawImage(donut,20,400,donutX,donutY,this);// IF THE DONUT IS SELECTED
 
                   }
+                  Font aldo = new Font ("Apple Casual", Font.BOLD, 8);
+                  g.setFont(aldo);
+                  g.setColor(Color.ORANGE);
+                  g.drawString("Press the screen once in order to move the food/drinks with the WASD controls",5,690);
                 }//end of paintcomponent
 
 
