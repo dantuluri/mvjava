@@ -991,6 +991,12 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public Image mouthBackground;
           private boolean shiftkey;
 
+          public int[] speedUp;
+          public int[] speedDown;
+
+
+
+
           // public Image donut;
           // public Image oatmeal;
           // public Image soda;
@@ -1022,6 +1028,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             sodaY = 400;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
             avocadoX = 20;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
             avocadoY = 400;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+            speedUp = new int[6];
+            speedDown =new int[6];
 
 
             setLayout(flow);//sets the layout to flow
@@ -1171,16 +1179,34 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
             public void velocity(String position, Boolean pressed, Boolean released)
             {
+              //W
               if(position.equals("W") && pressed)
               {
+                int ui=0;
+                int di=0;
                 slow="W";
-                for(double speed = 1; speed < 33; speed=speed*2)
+
+                for(double speed = 1; speed=speed; speed=speed*2)//generates speed Up array
+                {
+                  speedUp[ui]=speed;
+                  ui++;
+                }
+                for(double slowdown = speed; slowdown>=0; slowdown=slowdown/2)
+                {
+                  speedDown[di]=slowdown;
+                  di++;
+                }
+
                 {
                   if(food.equals("oatmeal"))
                   {
                     try
                     {
                       oatmealY=oatmealY+speed;
+                      if(speed>33)
+                      {
+                        speed=33;
+                      }
                       Thread.sleep(300);
                     }
                     catch(InterruptedException ex)
@@ -1286,12 +1312,12 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 }//end of for
 
               }//end of if
-
+///////////////////////AAAAAAAAAAA
               //A
 
-              if(position.equals("W") && pressed)
+              if(position.equals("A") && pressed)
               {
-                slow="W";
+                slow="A";
                 for(double speed = 1; speed < 33; speed=speed*2)
                 {
                   if(food.equals("oatmeal"))
@@ -1405,7 +1431,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
               }//end of if
 
-              // for A on top and S on the bottom
+          /////////////////////////////SSSSS////////    // for A on top and S on the bottom
 
 
             }//end of velocity
