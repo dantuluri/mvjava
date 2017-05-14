@@ -1449,7 +1449,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 velocity(false,true);
               }
 
-              donutX = donutX+subby;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+              donutY = donutY-subby;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
               repaint();
             }
           }
@@ -1464,7 +1464,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 subby=0;
                 velocity(false,true);
               }
-              oatmealX = oatmealX-subby;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+              oatmealX = oatmealX+subby;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
 
             }
@@ -1499,7 +1499,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 velocity(false,true);
               }
 
-              donutX = donutX-subby;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+              donutX = donutX-subby;////donut-(600 to 750 ,75 to 225) ORIGINAL POS it is subtracted since although 32 pixels its going down
               repaint();
             }
 
@@ -1516,6 +1516,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 velocity(false,true);
               }
               oatmealY = oatmealY+subby;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+              return oatmealY;//call me on my cell phone
               repaint();
 
             }
