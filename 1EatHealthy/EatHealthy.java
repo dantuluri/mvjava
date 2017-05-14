@@ -420,7 +420,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
   public boolean keyClear;
 
-  public int donutX, donutY, oatmealX, oatmealY, sodaX, sodaY, avocadoX, avocadoY;
+  public public donutX, donutY, oatmealX, oatmealY, sodaX, sodaY, avocadoX, avocadoY;
 
   public String landingBackgroundString;
   public String calvinHungryName;//name of the file name
@@ -1041,93 +1041,59 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             try
             {
 ////////
-if()
-File donut = new File(donutName);
-donutm = ImageIO.read(donut);
-donutwidth = donutm.getWidth();
-donutheight = donutm.getHeight();
-
-File donut = new File(donutName);
-donutm = ImageIO.read(donut);
-donutwidth = donutm.getWidth();
-donutheight = donutm.getHeight();
-
-File donut = new File(donutName);
-donutm = ImageIO.read(donut);
-donutwidth = donutm.getWidth();
-donutheight = donutm.getHeight();
-
-File donut = new File(donutName);
-donutm = ImageIO.read(donut);
-donutwidth = donutm.getWidth();
-donutheight = donutm.getHeight();
-
 
 if(food.equals("oatmeal"))
 {
-  requestFocus();
-  oatmealY = oatmealY+10;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+  File oatmeal = new File(oatmealName);
+  oatmealm = ImageIO.read(oatmeal);
+  oatmealwidth = oatmealm.getWidth();
+  oatmealwidth = oatmealm.getHeight();
+
   repaint();
 
 }
 if(food.equals("soda"))
 {
-  sodaY = sodaY+10;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+  File soda = new File(sodaName);
+  sodam = ImageIO.read(soda);
+  sodawidth = sodam.getWidth();
+  sodawidth = sodam.getHeight();
   repaint();
 
 }
 if(food.equals("avocado"))
 {
-  avocadoY = avocadoY+10;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+  File avocado = new File(avocadoName);
+  avocadom = ImageIO.read(avocado);
+  avocadowidth = avocadom.getWidth();
+  avocadoheight = avocadom.getHeight();
+
   repaint();
 
 }
 if(food.equals("donut"))
 {
-  donutY = donutY+10;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+  File donut = new File(donutName);
+  donutm = ImageIO.read(donut);
+  donutwidth = donutm.getWidth();
+  donutheight = donutm.getHeight();
   repaint();
 }
-
-
-////////
-              // BufferedImage buffdonutm = ImageIO.read(new File(donutName));
-              // BufferedImage buffoatmealm = ImageIO.read(new File(oatmealName));
-              // BufferedImage buffsodam = ImageIO.read(new File(sodaName));
-              // BufferedImage buffavocadom = ImageIO.read(new File(avocadoName));
-              donutm = ImageIO.read(new File("donut.png"));
-              avocadom = ImageIO.read(new File("avocado.png"));
-              sodam = ImageIO.read(new File("soda.png"));
-              oatmealm = ImageIO.read(new File("oatmeal.png"));
-
-              mouthBackground=ImageIO.read(new File(mouthBackgroundName));
-              System.out.println("mouthBackground");
-              // donut=ImageIO.read(new File(donutName));
-              // System.out.println("donutName");
-              // oatmeal=ImageIO.read(new File(oatmealName));
-              // System.out.println("oatmealName");
-              // avocado=ImageIO.read(new File(avocadoName));
-              // System.out.println("avocadoName");
-              // soda=ImageIO.read(new File(sodaName));
-              // System.out.println("sodaName");
-
-              //areaIn=ImageIO.read(new File(areaInName));//if user presses in
-              //System.out.println("areaIn");
             }
             catch(IOException e)
             {
               System.err.println("\n\n"+mouthBackgroundName+"can't be found. \n\n");
               System.out.println("catched mouthBackground");
-              // System.err.println("\n\n"+donutName+"can't be found. \n\n");
-              // System.out.println("catched donut");
-              // System.err.println("\n\n"+oatmealName+"can't be found. \n\n");
-              // System.out.println("catched oatmeal");
-              // System.err.println("\n\n"+sodaName+"can't be found. \n\n");
-              // System.out.println("catched soda");
-              // System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
-              // System.out.println("catched avocado");
-
-              //System.err.println("\n\n"+areaInName+"can't be found. \n\n");
-              //System.out.println("catched areaInName");
+              System.err.println("\n\n"+donutName+"can't be found. \n\n");
+              System.out.println("catched donut");
+              System.err.println("\n\n"+oatmealName+"can't be found. \n\n");
+              System.out.println("catched oatmeal");
+              System.err.println("\n\n"+sodaName+"can't be found. \n\n");
+              System.out.println("catched soda");
+              System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
+              System.out.println("catched avocado");
+              System.err.println("\n\n"+areaInName+"can't be found. \n\n");
+              System.out.println("catched areaInName");
               e.printStackTrace();
             }
           }//end of get my image
@@ -1194,7 +1160,45 @@ if(food.equals("donut"))
           }
 
           public void keyTyped(KeyEvent e){}
-            public void keyReleased(KeyEvent e){}
+            public void keyReleased(KeyEvent e)
+            {
+              int downcode = e.getKeyCode();
+              if(downcode==KeyEvent.VK_S)
+              {
+                System.out.println("S");
+              }
+            }
+
+            public void velocity(String position, Boolean isHeld)
+            {
+             if(position.equals("W") && isHeld)
+             {
+               for(double speed = 0.3; speed < 24; i*2)
+               {
+                 if(food.equals("oatmeal"))
+                 {
+                  oatmealX+speed;
+                 }
+                 if(food.equals("soda"))
+                 {
+
+                   g.drawImage(soda,sodaX,sodaY,40,40,this);
+
+                 }
+                 if(food.equals("avocado"))
+                 {
+
+                   g.drawImage(avocado,avocadoX,avocadoY,40,40,this);
+                 }
+                 if(food.equals("donut"))
+                 {
+
+                   g.drawImage(donut,donutX,donutY,40,40,this);// IF THE DONUT IS SELECTED
+
+                 }
+             }
+
+            }
 
               public void paintComponent(Graphics g)
               {

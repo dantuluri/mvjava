@@ -66,9 +66,9 @@ class Pixel {
    public Pixel() {
       try {
          File donut = new File(donutName);
-         buffdonut = ImageIO.read(donut);
-         width = image.getWidth();
-         height = image.getHeight();
+         donutm = ImageIO.read(donut);
+         width = donutm.getWidth();
+         height = donutm.getHeight();
 
          int count = 0;
 

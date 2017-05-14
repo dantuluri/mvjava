@@ -142,7 +142,14 @@ public class GardenGrows//instantiates gardengrows class
         //clearcode = e.getKeyCode();
         
         public void keyTyped(KeyEvent e){}//keytyped method
-        public void keyReleased(KeyEvent e){}//key released event
+        public void keyReleased(KeyEvent e){
+            int downcode = e.getKeyCode();
+            if(downcode==KeyEvent.VK_S)
+            {
+                System.out.println("RELEASSSSSSSSSSSSSSSSSSSSSSEDEJARELEASSSSSSSSSSSSSSSSSSSSSSEDEJA");
+            }
+
+        }//key released event
         
         public void paintComponent(Graphics g)//paint component to draw things
         {
