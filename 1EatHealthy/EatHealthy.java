@@ -1151,30 +1151,44 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             int upcode = e.getKeyCode();//looks for shiftkey
             if(upcode==KeyEvent.VK_W)//runs if shiftkey is pressed
             {
+              repaint();
               whatKey="W";
               System.out.println("keyEvent W whatKeyW");
-              wup(0);
+              wup(98);
+              repaint();
             }
             int downcode = e.getKeyCode();
             if(downcode==KeyEvent.VK_S)
             {
+              repaint();
+
               whatKey="S";
               System.out.println("keyEvent S whatKeyS");
-              sup(0);
+              sup(98);
+              repaint();
+
             }
             int leftcode = e.getKeyCode();
             if(leftcode==KeyEvent.VK_A)
             {
+              repaint();
+
               whatKey="A";
               System.out.println("keyEvent A whatKeyA");
-              aup(0);
+              aup(98);
+              repaint();
+
             }
             int rightcode = e.getKeyCode();
             if(rightcode==KeyEvent.VK_D)
             {
+              repaint();
+
               whatKey="D";
               System.out.println("keyEvent D whatKeyD");
-              dup(0);
+              dup(98);
+              repaint();
+
             }
           }//end of pressed
           ////////////////////////////////////////////////////////
@@ -1184,13 +1198,22 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             System.out.println("W");
             if(food.equals("oatmeal"))
             {
+              if(addy==98)
+              {
+                addy=0;
+                velocity(true,false);
+              }
               oatmealY = oatmealY-addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
 
             }
             if(food.equals("soda"))
             {
-
+              if(addy==98)
+              {
+                addy=0;
+                velocity(true,false);
+              }
 
               sodaY = sodaY-addy;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
               repaint();
@@ -1198,7 +1221,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("avocado"))
             {
-
+              if(addy==98)
+              {
+                addy=0;
+                velocity(true,false);
+              }
 
               avocadoY = avocadoY-addy;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
               repaint();
@@ -1206,7 +1233,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("donut"))
             {
-
+              if(addy==98)
+              {
+                addy=0;
+                velocity(true,false);
+              }
 
               donutY = donutY-addy;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
               repaint();
@@ -1219,14 +1250,22 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             System.out.println("A");
             if(food.equals("oatmeal"))
             {
-
+              if(addy==98)
+              {
+                addy=0;
+                velocity(true,false);
+              }
               oatmealX = oatmealX-addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
 
             }
             if(food.equals("soda"))
             {
-
+              if(addy==98)
+              {
+                addy=0;
+                velocity(true,false);
+              }
 
               sodaX = sodaX-addy;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
               repaint();
@@ -1235,14 +1274,22 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             if(food.equals("avocado"))
             {
 
-
+              if(addy==98)
+              {
+                addy=0;
+                velocity(true,false);
+              }
               avocadoX = avocadoX-addy;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
               repaint();
 
             }
             if(food.equals("donut"))
             {
-
+              if(addy==98)
+              {
+                addy=0;
+                velocity(true,false);
+              }
 
               donutX = donutX-addy;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
               repaint();
@@ -1254,7 +1301,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             System.out.println("S");
             if(food.equals("oatmeal"))
             {
-
+              if(addy==98)
+              {
+                addy=0;
+                velocity(true,false);
+              }
               oatmealY = oatmealY+addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
 
@@ -1262,7 +1313,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             if(food.equals("soda"))
             {
 
-
+              if(addy==98)
+              {
+                addy=0;
+                velocity(true,false);
+              }
               sodaY = sodaY+addy;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
               repaint();
 
@@ -1270,7 +1325,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             if(food.equals("avocado"))
             {
 
-
+              if(addy==98)
+              {
+                addy=0;
+                velocity(true,false);
+              }
               avocadoY = avocadoY+addy;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
               repaint();
 
@@ -1278,7 +1337,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             if(food.equals("donut"))
             {
 
-
+              if(addy==98)
+              {
+                addy=0;
+                velocity(true,false);
+              }
               donutY = donutY+addy;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
               repaint();
             }
@@ -1289,14 +1352,22 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             System.out.println("D");
             if(food.equals("oatmeal"))
             {
-
+              if(addy==98)
+              {
+                addy=0;
+                velocity(true,false);
+              }
               oatmealX = oatmealX+addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
 
             }
             if(food.equals("soda"))
             {
-
+              if(addy==98)
+              {
+                addy=0;
+                velocity(true,false);
+              }
 
               sodaX = sodaX+addy;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
               repaint();
@@ -1304,7 +1375,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("avocado"))
             {
-
+              if(addy==98)
+              {
+                addy=0;
+                velocity(true,false);
+              }
 
               avocadoX = avocadoX+addy;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
               repaint();
@@ -1312,7 +1387,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("donut"))
             {
-
+              if(addy==98)
+              {
+                addy=0;
+                velocity(true,false);
+              }
 
               donutX = donutX+addy;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
               repaint();
@@ -1324,14 +1403,22 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             System.out.println("WSlow");
             if(food.equals("oatmeal"))
             {
-
+              if(subby==99)
+              {
+                subby=0;
+                velocity(false,true);
+              }
               oatmealX = oatmealX+subby;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
 
             }
             if(food.equals("soda"))
             {
-
+              if(subby==99)
+              {
+                subby=0;
+                velocity(false,true);
+              }
 
               sodaX = sodaX+subby;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
               repaint();
@@ -1340,14 +1427,22 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             if(food.equals("avocado"))
             {
 
-
+              if(subby==99)
+              {
+                subby=0;
+                velocity(false,true);
+              }
               avocadoX = avocadoX+subby;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
               repaint();
 
             }
             if(food.equals("donut"))
             {
-
+              if(subby==99)
+              {
+                subby=0;
+                velocity(false,true);
+              }
 
               donutX = donutX+subby;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
               repaint();
@@ -1359,20 +1454,33 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             System.out.println("A");
             if(food.equals("oatmeal"))
             {
+              if(subby==99)
+              {
+                subby=0;
+                velocity(false,true);
+              }
               oatmealX = oatmealX-subby;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
 
             }
             if(food.equals("soda"))
             {
-
+              if(subby==99)
+              {
+                subby=0;
+                velocity(false,true);
+              }
               sodaX = sodaX-subby;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
               repaint();
 
             }
             if(food.equals("avocado"))
             {
-
+              if(subby==99)
+              {
+                subby=0;
+                velocity(false,true);
+              }
 
               avocadoX = avocadoX-subby;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
               repaint();
@@ -1380,6 +1488,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("donut"))
             {
+              if(subby==99)
+              {
+                subby=0;
+                velocity(false,true);
+              }
 
               donutX = donutX-subby;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
               repaint();
@@ -1392,14 +1505,22 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             System.out.println("S");
             if(food.equals("oatmeal"))
             {
-
+              if(subby==99)
+              {
+                subby=0;
+                velocity(false,true);
+              }
               oatmealY = oatmealY+subby;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
 
             }
             if(food.equals("soda"))
             {
-
+              if(subby==99)
+              {
+                subby=0;
+                velocity(false,true);
+              }
 
               sodaY = sodaY+subby;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
               repaint();
@@ -1407,7 +1528,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("avocado"))
             {
-
+              if(subby==99)
+              {
+                subby=0;
+                velocity(false,true);
+              }
 
               avocadoY = avocadoY+subby;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
               repaint();
@@ -1415,7 +1540,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("donut"))
             {
-
+              if(subby==99)
+              {
+                subby=0;
+                velocity(false,true);
+              }
               donutY = donutY+subby;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
               repaint();
             }
@@ -1426,14 +1555,22 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             System.out.println("D");
             if(food.equals("oatmeal"))
             {
-
+              if(subby==99)
+              {
+                subby=0;
+                velocity(false,true);
+              }
               oatmealX = oatmealX+subby;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
 
             }
             if(food.equals("soda"))
             {
-
+              if(subby==99)
+              {
+                subby=0;
+                velocity(false,true);
+              }
 
               sodaX = sodaX+subby;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
               repaint();
@@ -1441,7 +1578,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("avocado"))
             {
-
+              if(subby==99)
+              {
+                subby=0;
+                velocity(false,true);
+              }
 
               avocadoX = avocadoX+subby;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
               repaint();
@@ -1449,7 +1590,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("donut"))
             {
-
+              if(subby==99)
+              {
+                subby=0;
+                velocity(false,true);
+              }
 
               donutX = donutX+subby;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
               repaint();
@@ -1464,29 +1609,45 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               int dupcode = e.getKeyCode();//looks for shiftkey
               if(dupcode==KeyEvent.VK_W)//runs if shiftkey is pressed
               {
+                repaint();
+
                 whatKey="W";
 
-                wdow(0);
+                wdow(99);
+                repaint();
+
               }
               int ddowncode = e.getKeyCode();
               if(ddowncode==KeyEvent.VK_S)
               {
+                repaint();
+
                 whatKey="S";
 
-                adow(0);
+                adow(99);
+                repaint();
+
               }
               int dleftcode = e.getKeyCode();
               if(dleftcode==KeyEvent.VK_A)
               {
+                repaint();
+
                 whatKey="A";
 
-                sdow(0);
+                sdow(99);
+                repaint();
+
               }
               int drightcode = e.getKeyCode();
               if(drightcode==KeyEvent.VK_D)
               {
+                repaint();
+
                 whatKey="D";
-                ddow(0);
+                ddow(99);
+                repaint();
+
               }
             }
 
@@ -1499,13 +1660,14 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               for(int speed = 1; speed<33; speed=speed*2)//generates speed Up array
               {
                 System.out.println("speedUp:  "+ui);
-
+                repaint();
                 speedUp[ui]=speed;
                 ui++;
               }
               for(int slowdown = 32; slowdown>0; slowdown=slowdown/2)
               {
                 System.out.println("speedDown: "+di);
+                repaint();
                 speedDown[di]=slowdown;
                 di++;
               }
@@ -1515,8 +1677,9 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               {
                 for(i=0; i<6; i++)
                 {
-                  // try
-                  // {
+                  repaint();
+                  try
+                  {
                     addvelo=speedUp[i];   //1,3
                     System.out.println("this is the addvelo: "+addvelo);
                     if(whatKey.equals("W"))
@@ -1524,7 +1687,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                       System.out.println("Wup");
 
                       wup(addvelo);
-                      // Thread.sleep(300);
+                       Thread.sleep(300);
                       repaint();
 
                     }
@@ -1534,7 +1697,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                       System.out.println("Aup");
 
                       aup(addvelo);
-                      // Thread.sleep(300);
+                      Thread.sleep(300);
                       repaint();
 
                     }
@@ -1543,7 +1706,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                       System.out.println("Sup");
 
                       sup(addvelo);
-                      // Thread.sleep(300);
+                       Thread.sleep(300);
                       repaint();
 
                     }
@@ -1551,14 +1714,14 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                     {
                       System.out.println("Dup");
                       dup(addvelo);
-                      // Thread.sleep(300);
+                      Thread.sleep(300);
                       repaint();
                     }
-                  //}
-                  // catch(InterruptedException ex)
-                  // {
-                  //   System.out.println("catch some fish!");
-                  // }
+                  }
+                  catch(InterruptedException ex)
+                  {
+                    System.out.println("catch some fish!");
+                  }
                 }
               }
               int subvelo = 0;
@@ -1568,44 +1731,45 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 for(i=0;i<7; i++)
                 System.out.println("thi is i: "+i);
                 {
-                  // try
-                  // {
+                  repaint();
+                  try
+                  {
                     subvelo=subvelo-speedDown[i];
                     System.out.println("this is the subvelo "+ subvelo);
                     if(whatKey.equals("W"))
                     {
                       System.out.println("Wdown");
                       wdow(subvelo);
-                      // Thread.sleep(200);
+                      Thread.sleep(200);
                       repaint();
                     }
                     if(whatKey.equals("A"))
                     {
                       System.out.println("Adow");
                       adow(subvelo);
-                      // Thread.sleep(200);
+                      Thread.sleep(200);
                       repaint();
                     }
                     if(whatKey.equals("S"))
                     {
                       System.out.println("Sdow");
                       sdow(subvelo);
-                      // Thread.sleep(200);
+                      Thread.sleep(200);
                       repaint();
                     }
                     if(whatKey.equals("D"))
                     {
                       System.out.println("Ddow");
                       ddow(subvelo);
-                      // Thread.sleep(200);
+                      Thread.sleep(200);
                       repaint();
 
                     }
-                  //}
-                  // catch(InterruptedException ex)
-                  // {
-                  //   System.out.println("catch some fish!");
-                  // }
+                  }
+                  catch(InterruptedException ex)
+                  {
+                    System.out.println("catch some fish!");
+                  }
                 }
               }
               ///////end
