@@ -1666,21 +1666,19 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               {
                 System.out.println("speedUp:  "+ui);
                 speedUp[ui]=speed;
-                addvelo=speed;
                 repaint();
                 if(pressed)
                 {
                     repaint();
                     try
                     {
-              //1,3
                       System.out.println("this is the addvelo: "+addvelo);
                       if(whatKey.equals("W"))
                       {
                         System.out.println("Wup");
 
                         wup(addvelo);
-                         Thread.sleep(300);
+                         Thread.sleep(50);
                         repaint();
 
                       }
@@ -1690,7 +1688,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                         System.out.println("Aup");
 
                         aup(addvelo);
-                        Thread.sleep(300);
+                        Thread.sleep(50);
                         repaint();
 
                       }
@@ -1699,7 +1697,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                         System.out.println("Sup");
 
                         sup(addvelo);
-                         Thread.sleep(300);
+                         Thread.sleep(50);
                         repaint();
 
                       }
@@ -1707,7 +1705,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                       {
                         System.out.println("Dup");
                         dup(addvelo);
-                        Thread.sleep(300);
+                        Thread.sleep(50);
                         repaint();
                       }
                     }
@@ -1762,7 +1760,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                     }
 
                 }
-                
+
 
                 ui++;
               }
