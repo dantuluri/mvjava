@@ -985,7 +985,14 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
 
           public int oatmealwidth;
-          public int oatmealheig;
+          public int oatmealheight;
+          public int sodawidth;
+            public int sodaheight;
+          public int donutheight;
+          public int donutwidth;
+          public int avocadowidth;
+          public int avocadoheight;
+
 
           public String slow;
 
@@ -1049,7 +1056,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public void run()
           {
             getMyImage();
-            velocity();
+            velocity(false,false);
           }
 
 
@@ -1126,54 +1133,94 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public void mouseExited(MouseEvent e){} //mouse exits
 
 
-          public void keyPressed(KeyEvent e, int addy)
+          public void keyPressed(KeyEvent e)
           {
             requestFocus();
 
             int upcode = e.getKeyCode();//looks for shiftkey
             if(upcode==KeyEvent.VK_W)//runs if shiftkey is pressed
             {
-              System.out.println("W");
-              if(food.equals("oatmeal"))
-              {
-                requestFocus();
-                oatmealY = oatmealY-addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
-                repaint();
-
-              }
-              if(food.equals("soda"))
-              {
-                sodaY = sodaY-addy;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
-                repaint();
-
-              }
-              if(food.equals("avocado"))
-              {
-                avocadoY = avocadoY-addy;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
-                repaint();
-
-              }
-              if(food.equals("donut"))
-              {
-                donutY = donutY-addy;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
-                repaint();
-              }
+            wup();
             }
             int downcode = e.getKeyCode();
-            if(downcode==KeyEvent.VK_S)
+            if(downcode==KeyEvent.VK_A)
             {
               System.out.println("S");
             }
             int leftcode = e.getKeyCode();
             if(leftcode==KeyEvent.VK_A)
             {
-              System.out.println("A");
-            }
+            aup();
+          }
             int rightcode = e.getKeyCode();
+            {
+              
+            }
             if(rightcode==KeyEvent.VK_D)
             {
               System.out.println("D");
             }
+          }//end of pressed
+
+          public void wup(int addy)
+          {
+            System.out.println("W");
+            if(food.equals("oatmeal"))
+            {
+              requestFocus();
+              oatmealY = oatmealY-addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+              repaint();
+
+            }
+            if(food.equals("soda"))
+            {
+              sodaY = sodaY-addy;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+              repaint();
+
+            }
+            if(food.equals("avocado"))
+            {
+              avocadoY = avocadoY-addy;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+              repaint();
+
+            }
+            if(food.equals("donut"))
+            {
+              donutY = donutY-addy;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+              repaint();
+            }
+          }
+
+          public void aup(int addy)
+          {
+
+          }//end of aup
+
+          public void sup(int addy)
+          {
+
+          }
+
+          public void dup(int addy)
+          {
+
+          }
+//down
+          public void wdow(int subby)
+          {
+
+          }
+          public void adow(int subby)
+          {
+
+          }
+          public void sdow(int subby)
+          {
+
+          }
+          public void ddow(int subby)
+          {
+
           }
 
           public void keyTyped(KeyEvent e){}
