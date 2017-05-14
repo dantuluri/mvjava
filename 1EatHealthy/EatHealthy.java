@@ -983,6 +983,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           BufferedImage oatmealm;
           BufferedImage avocadom;
 
+          public String whatKey;
 
           public int oatmealwidth;
           public int oatmealheight;
@@ -1041,6 +1042,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             avocadoY = 400;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
             speedUp = new int[6];
             speedDown =new int[6];
+            whatKey="";
 
 
             setLayout(flow);//sets the layout to flow
@@ -1116,8 +1118,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               System.out.println("catched soda");
               System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
               System.out.println("catched avocado");
-              System.err.println("\n\n"+areaInName+"can't be found. \n\n");
-              System.out.println("catched areaInName");
+
               e.printStackTrace();
             }
           }//end of get my image
@@ -1136,25 +1137,30 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public void keyPressed(KeyEvent e)
           {
             requestFocus();
-
+            velocity(true,false);
             int upcode = e.getKeyCode();//looks for shiftkey
             if(upcode==KeyEvent.VK_W)//runs if shiftkey is pressed
             {
-            wup();
+              whatKey="W";
+            wup(0);
             }
             int downcode = e.getKeyCode();
             if(downcode==KeyEvent.VK_S)
             {
-            sup();
+              whatKey="S";
+            sup(0);
             }
             int leftcode = e.getKeyCode();
             if(leftcode==KeyEvent.VK_A)
             {
-            aup();
+              whatKey="A";
+            aup(0);
             }
             int rightcode = e.getKeyCode();
+            if(rightcode==KeyEvent.VK_D)
             {
-            dup();
+              whatKey="D";
+            dup(0);
             }
           }//end of pressed
           ////////////////////////////////////////////////////////
@@ -1442,38 +1448,36 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           }
 
           public void keyTyped(KeyEvent e){}
-            public void keyReleased(KeyEvent e, int subby)
+            public void keyReleased(KeyEvent e)
             {
-              int upcode = e.getKeyCode();//looks for shiftkey
-              if(upcode==KeyEvent.VK_W)//runs if shiftkey is pressed
+              requestFocus();
+              velocity(false,true);
+              int dupcode = e.getKeyCode();//looks for shiftkey
+              if(dupcode==KeyEvent.VK_W)//runs if shiftkey is pressed
               {
-                System.out.println("W");
-                velocity(false,true);
-                if(food.equals("oatmeal"))
-                {
-                  requestFocus();
-                  oatmealY = oatmealY-subby;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
-                  repaint();
+                whatKey="W";
 
-                }
-                if(food.equals("soda"))
-                {
-                  sodaY = sodaY-subby;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
-                  repaint();
+              wdow(0);
+              }
+              int ddowncode = e.getKeyCode();
+              if(ddowncode==KeyEvent.VK_S)
+              {
+                whatKey="S";
 
-                }
-                if(food.equals("avocado"))
-                {
-                  avocadoY = avocadoY-subby;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
-                  repaint();
+              adow(0);
+              }
+              int dleftcode = e.getKeyCode();
+              if(dleftcode==KeyEvent.VK_A)
+              {
+                whatKey="A";
 
-                }
-                if(food.equals("donut"))
-                {
-                  donutY = donutY-subby;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
-                  repaint();
-                }
-                //end of W
+              sdow(0);
+              }
+              int drightcode = e.getKeyCode();
+              if(drightcode==KeyEvent.VK_D)
+              {
+                whatKey="D";
+              ddow(0);
               }
             }
 
@@ -1481,14 +1485,18 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             {
                 int ui=0;
                 int di=0;
+                int i = 0;
 //array generation
-                for(double speed = 1; speed<33; speed=speed*2)//generates speed Up array
+                for(int speed = 1; speed<33; speed=speed*2)//generates speed Up array
                 {
+                  System.out.println("SPEEEDY DOWNDY  "+ui);
+
                   speedUp[ui]=speed;
                   ui++;
                 }
-                for(double slowdown = speedUp[6]; slowdown>=0; slowdown=slowdown/2)
+                for(int slowdown = 32; slowdown>=0; slowdown=slowdown/2)
                 {
+                  System.out.println("SPEEEDY DOWNDY  "+di);
                   speedDown[di]=slowdown;
                   di++;
                 }
@@ -1500,8 +1508,26 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   try
                   {
                     addvelo=addvelo+speedUp[i];
-                    keyPressed(addvelo);
-                    Thread.sleep(300);
+                    if(whatKey.equals("W"))
+                    {
+                      wup(addvelo);
+                      Thread.sleep(300);
+                    }
+                    if(whatKey.equals("A"))
+                    {
+                      aup(addvelo);
+                      Thread.sleep(300);
+                    }
+                    if(whatKey.equals("S"))
+                    {
+                      sup(addvelo);
+                      Thread.sleep(300);
+                    }
+                    if(whatKey.equals("D"))
+                    {
+                      dup(addvelo);
+                      Thread.sleep(300);
+                    }
                   }
                   catch(InterruptedException ex)
                   {
@@ -1515,7 +1541,22 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   try
                   {
                     subvelo=subvelo+speedDown[i];
-                    keyReleased(subvelo);
+                    if(whatKey.equals("W"))
+                    {
+                      wdow(subvelo);
+                    }
+                    if(whatKey.equals("A"))
+                    {
+                      adow(subvelo);
+                    }
+                    if(whatKey.equals("S"))
+                    {
+                      sdow(subvelo);
+                    }
+                    if(whatKey.equals("D"))
+                    {
+                      ddow(subvelo);
+                    }
                     Thread.sleep(200);
                   }
                   catch(InterruptedException ex)
@@ -1536,24 +1577,30 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
                 if(food.equals("oatmeal"))
                 {
-                  g.drawImage(oatmeal,oatmealX,oatmealY,40,40,this);
+                  g.drawImage(oatmealm,oatmealX,oatmealY,40,40,this);
+                  repaint();
                   System.out.println("oatmealp");
                 }
                 if(food.equals("soda"))
                 {
 
-                  g.drawImage(soda,sodaX,sodaY,40,40,this);
+                  g.drawImage(sodam,sodaX,sodaY,40,40,this);
+                  repaint();
 
                 }
                 if(food.equals("avocado"))
                 {
 
-                  g.drawImage(avocado,avocadoX,avocadoY,40,40,this);
+                  g.drawImage(avocadom,avocadoX,avocadoY,40,40,this);
+                  repaint();
+
                 }
                 if(food.equals("donut"))
                 {
 
-                  g.drawImage(donut,donutX,donutY,40,40,this);// IF THE DONUT IS SELECTED
+                  g.drawImage(donutm,donutX,donutY,40,40,this);// IF THE DONUT IS SELECTED
+                  repaint();
+
 
                 }
                 Font aldo = new Font ("Apple Casual", Font.BOLD, 8);
