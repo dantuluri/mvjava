@@ -1143,24 +1143,21 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             wup();
             }
             int downcode = e.getKeyCode();
-            if(downcode==KeyEvent.VK_A)
+            if(downcode==KeyEvent.VK_S)
             {
-              System.out.println("S");
+            sup();
             }
             int leftcode = e.getKeyCode();
             if(leftcode==KeyEvent.VK_A)
             {
             aup();
-          }
+            }
             int rightcode = e.getKeyCode();
             {
-              
-            }
-            if(rightcode==KeyEvent.VK_D)
-            {
-              System.out.println("D");
+            dup();
             }
           }//end of pressed
+          ////////////////////////////////////////////////////////
 
           public void wup(int addy)
           {
@@ -1174,53 +1171,274 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("soda"))
             {
+              requestFocus();
+
               sodaY = sodaY-addy;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
               repaint();
 
             }
             if(food.equals("avocado"))
             {
+              requestFocus();
+
               avocadoY = avocadoY-addy;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
               repaint();
 
             }
             if(food.equals("donut"))
             {
+              requestFocus();
+
               donutY = donutY-addy;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
               repaint();
             }
           }
+          ////////////////////////////////////////////////////////
 
           public void aup(int addy)
           {
+            System.out.println("A");
+            if(food.equals("oatmeal"))
+            {
+              requestFocus();
+              oatmealX = oatmealX-addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+              repaint();
 
+            }
+            if(food.equals("soda"))
+            {
+              requestFocus();
+
+              sodaX = sodaX-addy;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+              repaint();
+
+            }
+            if(food.equals("avocado"))
+            {
+              requestFocus();
+
+              avocadoX = avocadoX-addy;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+              repaint();
+
+            }
+            if(food.equals("donut"))
+            {
+              requestFocus();
+
+              donutX = donutX-addy;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+              repaint();
+            }
           }//end of aup
-
+////////////////////////////////////////////////////////
           public void sup(int addy)
           {
+            System.out.println("S");
+            if(food.equals("oatmeal"))
+            {
+              requestFocus();
+              oatmealY = oatmealY+addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+              repaint();
 
+            }
+            if(food.equals("soda"))
+            {
+              requestFocus();
+
+              sodaY = sodaY+addy;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+              repaint();
+
+            }
+            if(food.equals("avocado"))
+            {
+              requestFocus();
+
+              avocadoY = avocadoY+addy;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+              repaint();
+
+            }
+            if(food.equals("donut"))
+            {
+              requestFocus();
+
+              donutY = donutY+addy;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+              repaint();
+            }
           }
-
+/////////////////////////////////////////////////////
           public void dup(int addy)
           {
+            System.out.println("D");
+            if(food.equals("oatmeal"))
+            {
+              requestFocus();
+              oatmealX = oatmealX+addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+              repaint();
 
+            }
+            if(food.equals("soda"))
+            {
+              requestFocus();
+
+              sodaX = sodaX+addy;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+              repaint();
+
+            }
+            if(food.equals("avocado"))
+            {
+              requestFocus();
+
+              avocadoX = avocadoX+addy;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+              repaint();
+
+            }
+            if(food.equals("donut"))
+            {
+              requestFocus();
+
+              donutX = donutX+addy;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+              repaint();
+            }
           }
 //down
           public void wdow(int subby)
           {
+            System.out.println("WSlow");
+            if(food.equals("oatmeal"))
+            {
+              requestFocus();
+              oatmealX = oatmealX+subby;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+              repaint();
 
+            }
+            if(food.equals("soda"))
+            {
+              requestFocus();
+
+              sodaX = sodaX+subby;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+              repaint();
+
+            }
+            if(food.equals("avocado"))
+            {
+              requestFocus();
+
+              avocadoX = avocadoX+subby;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+              repaint();
+
+            }
+            if(food.equals("donut"))
+            {
+              requestFocus();
+
+              donutX = donutX+subby;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+              repaint();
+            }
           }
+          /////////////////////////////////////////////////////////////////down A
           public void adow(int subby)
           {
+            System.out.println("A");
+            if(food.equals("oatmeal"))
+            {
+              requestFocus();
+              oatmealX = oatmealX-subby;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+              repaint();
+
+            }
+            if(food.equals("soda"))
+            {
+              requestFocus();
+
+              sodaX = sodaX-subby;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+              repaint();
+
+            }
+            if(food.equals("avocado"))
+            {
+              requestFocus();
+
+              avocadoX = avocadoX-subby;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+              repaint();
+
+            }
+            if(food.equals("donut"))
+            {
+              requestFocus();
+
+              donutX = donutX-subby;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+              repaint();
+            }
 
           }
+          //////////////////////////////////////////////////////////////////////////////sdown
           public void sdow(int subby)
           {
+            System.out.println("S");
+            if(food.equals("oatmeal"))
+            {
+              requestFocus();
+              oatmealY = oatmealY+subby;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+              repaint();
 
+            }
+            if(food.equals("soda"))
+            {
+              requestFocus();
+
+              sodaY = sodaY+subby;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+              repaint();
+
+            }
+            if(food.equals("avocado"))
+            {
+              requestFocus();
+
+              avocadoY = avocadoY+subby;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+              repaint();
+
+            }
+            if(food.equals("donut"))
+            {
+              requestFocus();
+
+              donutY = donutY+subby;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+              repaint();
+            }
           }
+          //////////////////////////////////////////////////////////////////////////////ddown
           public void ddow(int subby)
           {
+            System.out.println("D");
+            if(food.equals("oatmeal"))
+            {
+              requestFocus();
+              oatmealX = oatmealX+subby;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+              repaint();
 
+            }
+            if(food.equals("soda"))
+            {
+              requestFocus();
+
+              sodaX = sodaX+subby;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+              repaint();
+
+            }
+            if(food.equals("avocado"))
+            {
+              requestFocus();
+
+              avocadoX = avocadoX+subby;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+              repaint();
+
+            }
+            if(food.equals("donut"))
+            {
+              requestFocus();
+
+              donutX = donutX+subby;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+              repaint();
+            }
           }
 
           public void keyTyped(KeyEvent e){}
