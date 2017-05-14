@@ -1105,6 +1105,10 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 donutheight = donutm.getHeight();
                 repaint();
               }
+
+              mouthBackground=ImageIO.read(new File(mouthBackgroundName));
+              System.out.println("mouthBackground");
+
             }
             catch(IOException e)
             {
@@ -1489,14 +1493,14 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 //array generation
                 for(int speed = 1; speed<33; speed=speed*2)//generates speed Up array
                 {
-                  System.out.println("SPEEEDY DOWNDY  "+ui);
+                  System.out.println("speedUp:  "+ui);
 
                   speedUp[ui]=speed;
                   ui++;
                 }
-                for(int slowdown = 32; slowdown>=0; slowdown=slowdown/2)
+                for(int slowdown = 32; slowdown>0; slowdown=slowdown/2)
                 {
-                  System.out.println("SPEEEDY DOWNDY  "+di);
+                  System.out.println("speedDown: "+di);
                   speedDown[di]=slowdown;
                   di++;
                 }
@@ -1504,10 +1508,12 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 int addvelo = 0;
                 if(pressed)
                 {
-                  for(i=0; i<7; i++)
+                  for(i=0; i<6; i++)
+                  {
                   try
                   {
                     addvelo=addvelo+speedUp[i];
+                    System.out.println("this is the addvelo: "+addvelo);
                     if(whatKey.equals("W"))
                     {
                       wup(addvelo);
@@ -1534,36 +1540,45 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                     System.out.println("catch some fish!");
                   }
                 }
+                }
                 int subvelo = 0;
                 if(released)
                 {
+                  i=0;
                   for(i=0;i<7; i++)
+                  System.out.println("thi is i: "+i);
+                  {
                   try
                   {
-                    subvelo=subvelo+speedDown[i];
+                    subvelo=subvelo-speedDown[i];
+                    System.out.println("this is the subvelo "+ subvelo);
                     if(whatKey.equals("W"))
                     {
                       wdow(subvelo);
+                      Thread.sleep(200);
                     }
                     if(whatKey.equals("A"))
                     {
                       adow(subvelo);
+                      Thread.sleep(200);
                     }
                     if(whatKey.equals("S"))
                     {
                       sdow(subvelo);
+                      Thread.sleep(200);
                     }
                     if(whatKey.equals("D"))
                     {
                       ddow(subvelo);
+                      Thread.sleep(200);
                     }
-                    Thread.sleep(200);
                   }
                   catch(InterruptedException ex)
                   {
                     System.out.println("catch some fish!");
                   }
                 }
+              }
 ///////end
 
 
@@ -1578,7 +1593,6 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 if(food.equals("oatmeal"))
                 {
                   g.drawImage(oatmealm,oatmealX,oatmealY,40,40,this);
-                  repaint();
                   System.out.println("oatmealp");
                 }
                 if(food.equals("soda"))
