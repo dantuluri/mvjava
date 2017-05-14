@@ -1168,7 +1168,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           }
 
           public void keyTyped(KeyEvent e){}
-            public void keyReleased(KeyEvent e)
+            public void keyReleased(KeyEvent e, int subby)
             {
               int downcode = e.getKeyCode();
               if(downcode==KeyEvent.VK_S)
@@ -1180,12 +1180,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             public void velocity(String position, Boolean pressed, Boolean released)
             {
               //W
-              if(position.equals("W") && pressed)
-              {
+
                 int ui=0;
                 int di=0;
                 slow="W";
-
+//array generation
                 for(double speed = 1; speed<33; speed=speed*2)//generates speed Up array
                 {
                   speedUp[ui]=speed;
@@ -1197,7 +1196,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   di++;
                 }
 //start velocity
-                int addvelo;
+                int addvelo = 0;
                 if(pressed)
                 {
                   for(i=0; i<7; i++)
@@ -1212,242 +1211,22 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                     System.out.println("catch some fish!");
                   }
                 }
-
-
-                  if(food.equals("oatmeal"))
-                  {
-                    try
-                    {
-                      oatmealY=oatmealY+speed;
-                      if(speed>33)
-                      {
-                        speed=33;
-                      }
-                      Thread.sleep(300);
-                    }
-                    catch(InterruptedException ex)
-                    {
-                      System.out.println("catch some fish!");
-                    }
-                  }
-                  if(food.equals("soda"))
-                  {
-                    try
-                    {
-                      sodaY=sodaY+speed;
-                      Thread.sleep(300);
-                    }
-                    catch(InterruptedException ex)
-                    {
-                      System.out.println("catch some fish!");
-                    }
-
-                  }
-                  if(food.equals("avocado"))
-                  {
-                    try
-                    {
-                      avocadoY=avocadoY+speed;
-                      Thread.sleep(300);
-                    }
-                    catch(InterruptedException ex)
-                    {
-                      System.out.println("catch some fish!");
-                    }
-                  }
-                  if(food.equals("donut"))
-                  {
-                    try
-                    {
-                      donutY=donutY+speed;
-                      Thread.sleep(300);
-                    }
-                    catch(InterruptedException ex)
-                    {
-                      System.out.println("catch some fish!");
-                    }
-                  }
-
-                }//end of for
-
-              }//if W
-              if(slow.equals("W") && released)
-              {
-                for(double slowdown = speed; slowdown>=0; slowdown=slowdown/2)
+                int subvelo = 0;
+                if(released)
                 {
-                  if(food.equals("oatmeal"))
+                  for(i=0;i<7; i++)
+                  try
                   {
-                    try
-                    {
-                      oatmealY=oatmealY+slowdown;
-                      Thread.sleep(150);
-                    }
-                    catch(InterruptedException ex)
-                    {
-                      System.out.println("catch some fish!");
-                    }
+                    subvelo=subvelo+speedDown[i];
+                    keyReleased(subvelo);
+                    Thread.sleep(200);
                   }
-                  if(food.equals("soda"))
+                  catch(InterruptedException ex)
                   {
-                    try
-                    {
-                      sodaY=sodaY+slowdown;
-                      Thread.sleep(150);
-                    }
-                    catch(InterruptedException ex)
-                    {
-                      System.out.println("catch some fish!");
-                    }
-
+                    System.out.println("catch some fish!");
                   }
-                  if(food.equals("avocado"))
-                  {
-                    try
-                    {
-                      avocadoY=avocadoY+slowdown;
-                      Thread.sleep(150);
-                    }
-                    catch(InterruptedException ex)
-                    {
-                      System.out.println("catch some fish!");
-                    }
-                  }
-                  if(food.equals("donut"))
-                  {
-                    try
-                    {
-                      donutY=donutY+slowdown;
-                      Thread.sleep(150);
-                    }
-                    catch(InterruptedException ex)
-                    {
-                      System.out.println("catch some fish!");
-                    }
-                  }
-
-                }//end of for
-
-              }//end of if
-///////////////////////AAAAAAAAAAA
-              //A
-
-              if(position.equals("A") && pressed)
-              {
-                slow="A";
-                for(double speed = 1; speed < 33; speed=speed*2)
-                {
-                  if(food.equals("oatmeal"))
-                  {
-                    try
-                    {
-                      oatmealY=oatmealY+speed;
-                      Thread.sleep(300);
-                    }
-                    catch(InterruptedException ex)
-                    {
-                      System.out.println("catch some fish!");
-                    }
-                  }
-                  if(food.equals("soda"))
-                  {
-                    try
-                    {
-                      sodaY=sodaY+speed;
-                      Thread.sleep(300);
-                    }
-                    catch(InterruptedException ex)
-                    {
-                      System.out.println("catch some fish!");
-                    }
-
-                  }
-                  if(food.equals("avocado"))
-                  {
-                    try
-                    {
-                      avocadoY=avocadoY+speed;
-                      Thread.sleep(300);
-                    }
-                    catch(InterruptedException ex)
-                    {
-                      System.out.println("catch some fish!");
-                    }
-                  }
-                  if(food.equals("donut"))
-                  {
-                    try
-                    {
-                      donutY=donutY+speed;
-                      Thread.sleep(300);
-                    }
-                    catch(InterruptedException ex)
-                    {
-                      System.out.println("catch some fish!");
-                    }
-                  }
-
-                }//end of for
-
-              }//if W
-              if(slow.equals("W") && released)
-              {
-                for(double slowdown = speed; slowdown>=0; slowdown=slowdown/2)
-                {
-                  if(food.equals("oatmeal"))
-                  {
-                    try
-                    {
-                      oatmealY=oatmealY+slowdown;
-                      Thread.sleep(150);
-                    }
-                    catch(InterruptedException ex)
-                    {
-                      System.out.println("catch some fish!");
-                    }
-                  }
-                  if(food.equals("soda"))
-                  {
-                    try
-                    {
-                      sodaY=sodaY+slowdown;
-                      Thread.sleep(150);
-                    }
-                    catch(InterruptedException ex)
-                    {
-                      System.out.println("catch some fish!");
-                    }
-
-                  }
-                  if(food.equals("avocado"))
-                  {
-                    try
-                    {
-                      avocadoY=avocadoY+slowdown;
-                      Thread.sleep(150);
-                    }
-                    catch(InterruptedException ex)
-                    {
-                      System.out.println("catch some fish!");
-                    }
-                  }
-                  if(food.equals("donut"))
-                  {
-                    try
-                    {
-                      donutY=donutY+slowdown;
-                      Thread.sleep(150);
-                    }
-                    catch(InterruptedException ex)
-                    {
-                      System.out.println("catch some fish!");
-                    }
-                  }
-
-                }//end of for
-
-              }//end of if
-
-          /////////////////////////////SSSSS////////    // for A on top and S on the bottom
+                }
+///////end
 
 
             }//end of velocity
