@@ -59,16 +59,16 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 class Pixel {
-   BufferedImage buffdonut;
+   BufferedImage image;
    int width;
    int height;
 
    public Pixel() {
       try {
-         File donut = new File(donutName);
-         donutm = ImageIO.read(donut);
-         width = donutm.getWidth();
-         height = donutm.getHeight();
+         File input = new File("blackandwhite.jpg");
+         image = ImageIO.read(input);
+         width = image.getWidth();
+         height = image.getHeight();
 
          int count = 0;
 

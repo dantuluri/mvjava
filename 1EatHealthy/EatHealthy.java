@@ -1064,47 +1064,40 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
           public void getMyImage()//gets image for use
           {
+            System.out.println("cGOGOOGOOGOGcGOGOOGOOGOGcGOGOOGOOGOGcGOGOOGOOGOGsuryas");
             try
             {
-              ////////
+              System.out.println("i tried to get metMyImageio suryas");
 
-              if(food.equals("oatmeal"))
-              {
                 File oatmeal = new File(oatmealName);
-                oatmealm = ImageIO.read(oatmeal);
+                BufferedImage oatmealm = ImageIO.read(oatmeal);
+                System.out.println("buffered oatmealsm");
                 oatmealwidth = oatmealm.getWidth();
                 oatmealheight = oatmealm.getHeight();
 
-                repaint();
 
-              }
-              if(food.equals("soda"))
-              {
                 File soda = new File(sodaName);
-                sodam = ImageIO.read(soda);
+                BufferedImage sodam = ImageIO.read(soda);
+                System.out.println("buffered sodams");
                 sodawidth = sodam.getWidth();
                 sodaheight = sodam.getHeight();
-                repaint();
 
-              }
-              if(food.equals("avocado"))
-              {
+
                 File avocado = new File(avocadoName);
-                avocadom = ImageIO.read(avocado);
+                BufferedImage avocadom = ImageIO.read(avocado);
+                System.out.println("buffered avocadoms");
                 avocadowidth = avocadom.getWidth();
                 avocadoheight = avocadom.getHeight();
 
-                repaint();
 
-              }
-              if(food.equals("donut"))
-              {
+
+
                 File donut = new File(donutName);
-                donutm = ImageIO.read(donut);
+                BufferedImage donutm = ImageIO.read(donut);
+                System.out.println("buffered donutm");
                 donutwidth = donutm.getWidth();
                 donutheight = donutm.getHeight();
-                repaint();
-              }
+              
 
               mouthBackground=ImageIO.read(new File(mouthBackgroundName));
               System.out.println("mouthBackground");
