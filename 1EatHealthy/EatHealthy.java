@@ -983,7 +983,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           BufferedImage oatmealm;
           BufferedImage avocadom;
 
-
+          public String slow;
 
           public int foodX;
           public int foodY;
@@ -1040,45 +1040,45 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           {
             try
             {
-////////
+              ////////
 
-if(food.equals("oatmeal"))
-{
-  File oatmeal = new File(oatmealName);
-  oatmealm = ImageIO.read(oatmeal);
-  oatmealwidth = oatmealm.getWidth();
-  oatmealwidth = oatmealm.getHeight();
+              if(food.equals("oatmeal"))
+              {
+                File oatmeal = new File(oatmealName);
+                oatmealm = ImageIO.read(oatmeal);
+                oatmealwidth = oatmealm.getWidth();
+                oatmealwidth = oatmealm.getHeight();
 
-  repaint();
+                repaint();
 
-}
-if(food.equals("soda"))
-{
-  File soda = new File(sodaName);
-  sodam = ImageIO.read(soda);
-  sodawidth = sodam.getWidth();
-  sodawidth = sodam.getHeight();
-  repaint();
+              }
+              if(food.equals("soda"))
+              {
+                File soda = new File(sodaName);
+                sodam = ImageIO.read(soda);
+                sodawidth = sodam.getWidth();
+                sodawidth = sodam.getHeight();
+                repaint();
 
-}
-if(food.equals("avocado"))
-{
-  File avocado = new File(avocadoName);
-  avocadom = ImageIO.read(avocado);
-  avocadowidth = avocadom.getWidth();
-  avocadoheight = avocadom.getHeight();
+              }
+              if(food.equals("avocado"))
+              {
+                File avocado = new File(avocadoName);
+                avocadom = ImageIO.read(avocado);
+                avocadowidth = avocadom.getWidth();
+                avocadoheight = avocadom.getHeight();
 
-  repaint();
+                repaint();
 
-}
-if(food.equals("donut"))
-{
-  File donut = new File(donutName);
-  donutm = ImageIO.read(donut);
-  donutwidth = donutm.getWidth();
-  donutheight = donutm.getHeight();
-  repaint();
-}
+              }
+              if(food.equals("donut"))
+              {
+                File donut = new File(donutName);
+                donutm = ImageIO.read(donut);
+                donutwidth = donutm.getWidth();
+                donutheight = donutm.getHeight();
+                repaint();
+              }
             }
             catch(IOException e)
             {
@@ -1169,41 +1169,251 @@ if(food.equals("donut"))
               }
             }
 
-            public void velocity(String position, Boolean isHeld)
+            public void velocity(String position, Boolean pressed, Boolean released)
             {
-             if(position.equals("W") && isHeld)
-             {
-               for(double speed = 0.3; speed < 24; i*2)
-               {
-                 if(food.equals("oatmeal"))
-                 {
-                  oatmealX+speed;
-                 }
-                 if(food.equals("soda"))
-                 {
+              if(position.equals("W") && pressed)
+              {
+                slow="W";
+                for(double speed = 1; speed < 33; speed=speed*2)
+                {
+                  if(food.equals("oatmeal"))
+                  {
+                    try
+                    {
+                      oatmealY=oatmealY+speed;
+                      Thread.sleep(300);
+                    }
+                    catch(InterruptedException ex)
+                    {
+                      System.out.println("catch some fish!");
+                    }
+                  }
+                  if(food.equals("soda"))
+                  {
+                    try
+                    {
+                      sodaY=sodaY+speed;
+                      Thread.sleep(300);
+                    }
+                    catch(InterruptedException ex)
+                    {
+                      System.out.println("catch some fish!");
+                    }
 
-                   g.drawImage(soda,sodaX,sodaY,40,40,this);
+                  }
+                  if(food.equals("avocado"))
+                  {
+                    try
+                    {
+                      avocadoY=avocadoY+speed;
+                      Thread.sleep(300);
+                    }
+                    catch(InterruptedException ex)
+                    {
+                      System.out.println("catch some fish!");
+                    }
+                  }
+                  if(food.equals("donut"))
+                  {
+                    try
+                    {
+                      donutY=donutY+speed;
+                      Thread.sleep(300);
+                    }
+                    catch(InterruptedException ex)
+                    {
+                      System.out.println("catch some fish!");
+                    }
+                  }
 
-                 }
-                 if(food.equals("avocado"))
-                 {
+                }//end of for
 
-                   g.drawImage(avocado,avocadoX,avocadoY,40,40,this);
-                 }
-                 if(food.equals("donut"))
-                 {
+              }//if W
+              if(slow.equals("W") && released)
+              {
+                for(double slowdown = speed; slowdown>=0; slowdown=slowdown/2)
+                {
+                  if(food.equals("oatmeal"))
+                  {
+                    try
+                    {
+                      oatmealY=oatmealY+slowdown;
+                      Thread.sleep(150);
+                    }
+                    catch(InterruptedException ex)
+                    {
+                      System.out.println("catch some fish!");
+                    }
+                  }
+                  if(food.equals("soda"))
+                  {
+                    try
+                    {
+                      sodaY=sodaY+slowdown;
+                      Thread.sleep(150);
+                    }
+                    catch(InterruptedException ex)
+                    {
+                      System.out.println("catch some fish!");
+                    }
 
-                   g.drawImage(donut,donutX,donutY,40,40,this);// IF THE DONUT IS SELECTED
+                  }
+                  if(food.equals("avocado"))
+                  {
+                    try
+                    {
+                      avocadoY=avocadoY+slowdown;
+                      Thread.sleep(150);
+                    }
+                    catch(InterruptedException ex)
+                    {
+                      System.out.println("catch some fish!");
+                    }
+                  }
+                  if(food.equals("donut"))
+                  {
+                    try
+                    {
+                      donutY=donutY+slowdown;
+                      Thread.sleep(150);
+                    }
+                    catch(InterruptedException ex)
+                    {
+                      System.out.println("catch some fish!");
+                    }
+                  }
 
-                 }
-             }
+                }//end of for
 
-            }
+              }//end of if
+
+              //A
+
+              if(position.equals("W") && pressed)
+              {
+                slow="W";
+                for(double speed = 1; speed < 33; speed=speed*2)
+                {
+                  if(food.equals("oatmeal"))
+                  {
+                    try
+                    {
+                      oatmealY=oatmealY+speed;
+                      Thread.sleep(300);
+                    }
+                    catch(InterruptedException ex)
+                    {
+                      System.out.println("catch some fish!");
+                    }
+                  }
+                  if(food.equals("soda"))
+                  {
+                    try
+                    {
+                      sodaY=sodaY+speed;
+                      Thread.sleep(300);
+                    }
+                    catch(InterruptedException ex)
+                    {
+                      System.out.println("catch some fish!");
+                    }
+
+                  }
+                  if(food.equals("avocado"))
+                  {
+                    try
+                    {
+                      avocadoY=avocadoY+speed;
+                      Thread.sleep(300);
+                    }
+                    catch(InterruptedException ex)
+                    {
+                      System.out.println("catch some fish!");
+                    }
+                  }
+                  if(food.equals("donut"))
+                  {
+                    try
+                    {
+                      donutY=donutY+speed;
+                      Thread.sleep(300);
+                    }
+                    catch(InterruptedException ex)
+                    {
+                      System.out.println("catch some fish!");
+                    }
+                  }
+
+                }//end of for
+
+              }//if W
+              if(slow.equals("W") && released)
+              {
+                for(double slowdown = speed; slowdown>=0; slowdown=slowdown/2)
+                {
+                  if(food.equals("oatmeal"))
+                  {
+                    try
+                    {
+                      oatmealY=oatmealY+slowdown;
+                      Thread.sleep(150);
+                    }
+                    catch(InterruptedException ex)
+                    {
+                      System.out.println("catch some fish!");
+                    }
+                  }
+                  if(food.equals("soda"))
+                  {
+                    try
+                    {
+                      sodaY=sodaY+slowdown;
+                      Thread.sleep(150);
+                    }
+                    catch(InterruptedException ex)
+                    {
+                      System.out.println("catch some fish!");
+                    }
+
+                  }
+                  if(food.equals("avocado"))
+                  {
+                    try
+                    {
+                      avocadoY=avocadoY+slowdown;
+                      Thread.sleep(150);
+                    }
+                    catch(InterruptedException ex)
+                    {
+                      System.out.println("catch some fish!");
+                    }
+                  }
+                  if(food.equals("donut"))
+                  {
+                    try
+                    {
+                      donutY=donutY+slowdown;
+                      Thread.sleep(150);
+                    }
+                    catch(InterruptedException ex)
+                    {
+                      System.out.println("catch some fish!");
+                    }
+                  }
+
+                }//end of for
+
+              }//end of if
+
+              // for A on top and S on the bottom
+
+
+            }//end of velocity
 
               public void paintComponent(Graphics g)
               {
                 super.paintComponent(g);
-                 g.drawImage(mouthBackground,0,0,800,800,this);
+                g.drawImage(mouthBackground,0,0,800,800,this);
 
 
                 if(food.equals("oatmeal"))
