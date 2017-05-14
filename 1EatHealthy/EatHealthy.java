@@ -1205,8 +1205,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             {
               if(addy==98)
               {
-                addy=0;
-                velocity(true,false);
+                addy=0;//makes sure not to mess up where the image is going to be moved too
+                velocity(true,false);//since the key has been pressed
               }
               oatmealY = oatmealY-addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
@@ -1217,7 +1217,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               if(addy==98)
               {
                 addy=0;
-                velocity(true,false);
+                velocity(true,false);//ask velocity to return the addy value
               }
 
               sodaY = sodaY-addy;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
@@ -1402,7 +1402,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               repaint();
             }
           }
-          //down
+          //down//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
           public void wdow(int subby)
           {
             System.out.println("WSlow");
@@ -1413,7 +1413,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 subby=0;
                 velocity(false,true);
               }
-              oatmealX = oatmealX+subby;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+              oatmealY = oatmealY-subby;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
 
             }
@@ -1425,7 +1425,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 velocity(false,true);
               }
 
-              sodaX = sodaX+subby;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+              sodaY = sodaY-subby;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
               repaint();
 
             }
@@ -1437,7 +1437,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 subby=0;
                 velocity(false,true);
               }
-              avocadoX = avocadoX+subby;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+              avocadoY = avocadoY-subby;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
               repaint();
 
             }
