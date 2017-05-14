@@ -978,17 +978,17 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
         class MouthPanel extends JPanel implements MouseListener, KeyListener//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
         //   //also tied in with MouthQuiz to ask questions regarding the class
         {
-          BufferedImage donutm;
-          BufferedImage sodam;
-          BufferedImage oatmealm;
-          BufferedImage avocadom;
+          // private BufferedImage donutm;
+          // private BufferedImage sodam;
+          // private BufferedImage oatmealm;
+          // private BufferedImage avocadom;
 
           public String whatKey;
 
           public int oatmealwidth;
           public int oatmealheight;
           public int sodawidth;
-            public int sodaheight;
+          public int sodaheight;
           public int donutheight;
           public int donutwidth;
           public int avocadowidth;
@@ -1009,10 +1009,10 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
 
 
-          // public Image donut;
-          // public Image oatmeal;
-          // public Image soda;
-          // public Image avocado;
+          public Image donut;
+          public Image oatmeal;
+          public Image soda;
+          public Image avocado;
 
           public String mouthBackgroundName;
           public String donutName;//file name
@@ -1040,10 +1040,15 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             sodaY = 400;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
             avocadoX = 20;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
             avocadoY = 400;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
-            speedUp = new int[6];
-            speedDown =new int[6];
+            speedUp = new int[6999999];
+            speedDown =new int[69099898];
             whatKey="";
 
+//             BufferedImage off_Image =
+//   new BufferedImage(100, 50,
+//                     BufferedImage.TYPE_INT_ARGB);
+//
+// Graphics2D g2 = off_Image.createGraphics();
 
             setLayout(flow);//sets the layout to flow
             //Card Layout made( needs more pseudocode)
@@ -1064,43 +1069,51 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
           public void getMyImage()//gets image for use
           {
-            System.out.println("cGOGOOGOOGOGcGOGOOGOOGOGcGOGOOGOOGOGcGOGOOGOOGOGsuryas");
             try
             {
-              System.out.println("i tried to get metMyImageio suryas");
-
-                File oatmeal = new File(oatmealName);
-                BufferedImage oatmealm = ImageIO.read(oatmeal);
-                System.out.println("buffered oatmealsm");
-                oatmealwidth = oatmealm.getWidth();
-                oatmealheight = oatmealm.getHeight();
-
-
-                File soda = new File(sodaName);
-                BufferedImage sodam = ImageIO.read(soda);
-                System.out.println("buffered sodams");
-                sodawidth = sodam.getWidth();
-                sodaheight = sodam.getHeight();
-
-
-                File avocado = new File(avocadoName);
-                BufferedImage avocadom = ImageIO.read(avocado);
-                System.out.println("buffered avocadoms");
-                avocadowidth = avocadom.getWidth();
-                avocadoheight = avocadom.getHeight();
-
-
-
-
-                File donut = new File(donutName);
-                BufferedImage donutm = ImageIO.read(donut);
-                System.out.println("buffered donutm");
-                donutwidth = donutm.getWidth();
-                donutheight = donutm.getHeight();
-              
+              // Image i = javax.swing.ImageIcon("myimage.gif").getImage();
 
               mouthBackground=ImageIO.read(new File(mouthBackgroundName));
               System.out.println("mouthBackground");
+              System.out.println("i tried to get metMyImageio suryas");
+
+
+              // File oatmeal = new File(oatmealName);
+              // BufferedImage oatmealm = ImageIO.read(oatmeal);
+                oatmeal = ImageIO.read(new File(oatmealName));
+              System.out.println("buffered oatmealsm");
+              // oatmealwidth = oatmealm.getWidth();
+              // oatmealheight = oatmealm.getHeight();
+
+
+              // File soda = new File(sodaName);
+              // BufferedImage sodam = ImageIO.read(soda);
+                soda = ImageIO.read(new File(sodaName));
+              System.out.println("buffered sodams");
+              // sodawidth = sodam.getWidth();
+              // sodaheight = sodam.getHeight();
+
+
+              // File avocado = new File(avocadoName);
+              // BufferedImage avocadom = ImageIO.read(avocado);
+                avocado = ImageIO.read(new File(avocadoName));
+              System.out.println("buffered avocadoms");
+              // avocadowidth = avocadom.getWidth();
+              // avocadoheight = avocadom.getHeight();
+
+
+
+
+              // File donut = new File(donutName);
+              // BufferedImage donutm = ImageIO.read(donut);
+              // BufferedImage donutm = ImageIO.read(getClass().getResource("donut.png"));
+  donut = ImageIO.read(new File(donutName));
+              System.out.println("buffered donutm");
+              // donutwidth = donutm.getWidth();
+              // donutheight = donutm.getHeight();
+
+
+
 
             }
             catch(IOException e)
@@ -1139,25 +1152,29 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             if(upcode==KeyEvent.VK_W)//runs if shiftkey is pressed
             {
               whatKey="W";
-            wup(0);
+              System.out.println("keyEvent W whatKeyW");
+              wup(0);
             }
             int downcode = e.getKeyCode();
             if(downcode==KeyEvent.VK_S)
             {
               whatKey="S";
-            sup(0);
+              System.out.println("keyEvent S whatKeyS");
+              sup(0);
             }
             int leftcode = e.getKeyCode();
             if(leftcode==KeyEvent.VK_A)
             {
               whatKey="A";
-            aup(0);
+              System.out.println("keyEvent A whatKeyA");
+              aup(0);
             }
             int rightcode = e.getKeyCode();
             if(rightcode==KeyEvent.VK_D)
             {
               whatKey="D";
-            dup(0);
+              System.out.println("keyEvent D whatKeyD");
+              dup(0);
             }
           }//end of pressed
           ////////////////////////////////////////////////////////
@@ -1167,14 +1184,13 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             System.out.println("W");
             if(food.equals("oatmeal"))
             {
-              requestFocus();
               oatmealY = oatmealY-addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
 
             }
             if(food.equals("soda"))
             {
-              requestFocus();
+
 
               sodaY = sodaY-addy;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
               repaint();
@@ -1182,7 +1198,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("avocado"))
             {
-              requestFocus();
+
 
               avocadoY = avocadoY-addy;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
               repaint();
@@ -1190,7 +1206,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("donut"))
             {
-              requestFocus();
+
 
               donutY = donutY-addy;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
               repaint();
@@ -1203,14 +1219,14 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             System.out.println("A");
             if(food.equals("oatmeal"))
             {
-              requestFocus();
+
               oatmealX = oatmealX-addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
 
             }
             if(food.equals("soda"))
             {
-              requestFocus();
+
 
               sodaX = sodaX-addy;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
               repaint();
@@ -1218,7 +1234,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("avocado"))
             {
-              requestFocus();
+
 
               avocadoX = avocadoX-addy;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
               repaint();
@@ -1226,26 +1242,26 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("donut"))
             {
-              requestFocus();
+
 
               donutX = donutX-addy;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
               repaint();
             }
           }//end of aup
-////////////////////////////////////////////////////////
+          ////////////////////////////////////////////////////////
           public void sup(int addy)
           {
             System.out.println("S");
             if(food.equals("oatmeal"))
             {
-              requestFocus();
+
               oatmealY = oatmealY+addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
 
             }
             if(food.equals("soda"))
             {
-              requestFocus();
+
 
               sodaY = sodaY+addy;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
               repaint();
@@ -1253,7 +1269,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("avocado"))
             {
-              requestFocus();
+
 
               avocadoY = avocadoY+addy;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
               repaint();
@@ -1261,26 +1277,26 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("donut"))
             {
-              requestFocus();
+
 
               donutY = donutY+addy;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
               repaint();
             }
           }
-/////////////////////////////////////////////////////
+          /////////////////////////////////////////////////////
           public void dup(int addy)
           {
             System.out.println("D");
             if(food.equals("oatmeal"))
             {
-              requestFocus();
+
               oatmealX = oatmealX+addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
 
             }
             if(food.equals("soda"))
             {
-              requestFocus();
+
 
               sodaX = sodaX+addy;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
               repaint();
@@ -1288,7 +1304,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("avocado"))
             {
-              requestFocus();
+
 
               avocadoX = avocadoX+addy;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
               repaint();
@@ -1296,26 +1312,26 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("donut"))
             {
-              requestFocus();
+
 
               donutX = donutX+addy;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
               repaint();
             }
           }
-//down
+          //down
           public void wdow(int subby)
           {
             System.out.println("WSlow");
             if(food.equals("oatmeal"))
             {
-              requestFocus();
+
               oatmealX = oatmealX+subby;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
 
             }
             if(food.equals("soda"))
             {
-              requestFocus();
+
 
               sodaX = sodaX+subby;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
               repaint();
@@ -1323,7 +1339,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("avocado"))
             {
-              requestFocus();
+
 
               avocadoX = avocadoX+subby;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
               repaint();
@@ -1331,7 +1347,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("donut"))
             {
-              requestFocus();
+
 
               donutX = donutX+subby;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
               repaint();
@@ -1343,14 +1359,12 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             System.out.println("A");
             if(food.equals("oatmeal"))
             {
-              requestFocus();
               oatmealX = oatmealX-subby;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
 
             }
             if(food.equals("soda"))
             {
-              requestFocus();
 
               sodaX = sodaX-subby;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
               repaint();
@@ -1358,7 +1372,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("avocado"))
             {
-              requestFocus();
+
 
               avocadoX = avocadoX-subby;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
               repaint();
@@ -1366,7 +1380,6 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("donut"))
             {
-              requestFocus();
 
               donutX = donutX-subby;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
               repaint();
@@ -1379,14 +1392,14 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             System.out.println("S");
             if(food.equals("oatmeal"))
             {
-              requestFocus();
+
               oatmealY = oatmealY+subby;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
 
             }
             if(food.equals("soda"))
             {
-              requestFocus();
+
 
               sodaY = sodaY+subby;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
               repaint();
@@ -1394,7 +1407,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("avocado"))
             {
-              requestFocus();
+
 
               avocadoY = avocadoY+subby;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
               repaint();
@@ -1402,7 +1415,6 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("donut"))
             {
-              requestFocus();
 
               donutY = donutY+subby;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
               repaint();
@@ -1414,14 +1426,14 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             System.out.println("D");
             if(food.equals("oatmeal"))
             {
-              requestFocus();
+
               oatmealX = oatmealX+subby;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
 
             }
             if(food.equals("soda"))
             {
-              requestFocus();
+
 
               sodaX = sodaX+subby;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
               repaint();
@@ -1429,7 +1441,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("avocado"))
             {
-              requestFocus();
+
 
               avocadoX = avocadoX+subby;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
               repaint();
@@ -1437,7 +1449,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             if(food.equals("donut"))
             {
-              requestFocus();
+
 
               donutX = donutX+subby;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
               repaint();
@@ -1447,224 +1459,243 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public void keyTyped(KeyEvent e){}
             public void keyReleased(KeyEvent e)
             {
-              requestFocus();
+
               velocity(false,true);
               int dupcode = e.getKeyCode();//looks for shiftkey
               if(dupcode==KeyEvent.VK_W)//runs if shiftkey is pressed
               {
                 whatKey="W";
 
-              wdow(0);
+                wdow(0);
               }
               int ddowncode = e.getKeyCode();
               if(ddowncode==KeyEvent.VK_S)
               {
                 whatKey="S";
 
-              adow(0);
+                adow(0);
               }
               int dleftcode = e.getKeyCode();
               if(dleftcode==KeyEvent.VK_A)
               {
                 whatKey="A";
 
-              sdow(0);
+                sdow(0);
               }
               int drightcode = e.getKeyCode();
               if(drightcode==KeyEvent.VK_D)
               {
                 whatKey="D";
-              ddow(0);
+                ddow(0);
               }
             }
 
             public void velocity(boolean pressed, boolean released)
             {
-                int ui=0;
-                int di=0;
-                int i = 0;
-//array generation
-                for(int speed = 1; speed<33; speed=speed*2)//generates speed Up array
-                {
-                  System.out.println("speedUp:  "+ui);
+              int ui=0;
+              int di=0;
+              int i = 0;
+              //array generation
+              for(int speed = 1; speed<33; speed=speed*2)//generates speed Up array
+              {
+                System.out.println("speedUp:  "+ui);
 
-                  speedUp[ui]=speed;
-                  ui++;
-                }
-                for(int slowdown = 32; slowdown>0; slowdown=slowdown/2)
+                speedUp[ui]=speed;
+                ui++;
+              }
+              for(int slowdown = 32; slowdown>0; slowdown=slowdown/2)
+              {
+                System.out.println("speedDown: "+di);
+                speedDown[di]=slowdown;
+                di++;
+              }
+              //start velocity
+              int addvelo = 0;
+              if(pressed)
+              {
+                for(i=0; i<6; i++)
                 {
-                  System.out.println("speedDown: "+di);
-                  speedDown[di]=slowdown;
-                  di++;
-                }
-//start velocity
-                int addvelo = 0;
-                if(pressed)
-                {
-                  for(i=0; i<6; i++)
-                  {
-                  try
-                  {
-                    addvelo=addvelo+speedUp[i];
+                  // try
+                  // {
+                    addvelo=speedUp[i];   //1,3
                     System.out.println("this is the addvelo: "+addvelo);
                     if(whatKey.equals("W"))
                     {
+                      System.out.println("Wup");
+
                       wup(addvelo);
-                      Thread.sleep(300);
+                      // Thread.sleep(300);
+                      repaint();
+
                     }
+
                     if(whatKey.equals("A"))
                     {
+                      System.out.println("Aup");
+
                       aup(addvelo);
-                      Thread.sleep(300);
+                      // Thread.sleep(300);
+                      repaint();
+
                     }
                     if(whatKey.equals("S"))
                     {
+                      System.out.println("Sup");
+
                       sup(addvelo);
-                      Thread.sleep(300);
+                      // Thread.sleep(300);
+                      repaint();
+
                     }
                     if(whatKey.equals("D"))
                     {
+                      System.out.println("Dup");
                       dup(addvelo);
-                      Thread.sleep(300);
+                      // Thread.sleep(300);
+                      repaint();
                     }
-                  }
-                  catch(InterruptedException ex)
-                  {
-                    System.out.println("catch some fish!");
-                  }
+                  //}
+                  // catch(InterruptedException ex)
+                  // {
+                  //   System.out.println("catch some fish!");
+                  // }
                 }
-                }
-                int subvelo = 0;
-                if(released)
+              }
+              int subvelo = 0;
+              if(released)
+              {
+                i=0;
+                for(i=0;i<7; i++)
+                System.out.println("thi is i: "+i);
                 {
-                  i=0;
-                  for(i=0;i<7; i++)
-                  System.out.println("thi is i: "+i);
-                  {
-                  try
-                  {
+                  // try
+                  // {
                     subvelo=subvelo-speedDown[i];
                     System.out.println("this is the subvelo "+ subvelo);
                     if(whatKey.equals("W"))
                     {
+                      System.out.println("Wdown");
                       wdow(subvelo);
-                      Thread.sleep(200);
+                      // Thread.sleep(200);
+                      repaint();
                     }
                     if(whatKey.equals("A"))
                     {
+                      System.out.println("Adow");
                       adow(subvelo);
-                      Thread.sleep(200);
+                      // Thread.sleep(200);
+                      repaint();
                     }
                     if(whatKey.equals("S"))
                     {
+                      System.out.println("Sdow");
                       sdow(subvelo);
-                      Thread.sleep(200);
+                      // Thread.sleep(200);
+                      repaint();
                     }
                     if(whatKey.equals("D"))
                     {
+                      System.out.println("Ddow");
                       ddow(subvelo);
-                      Thread.sleep(200);
+                      // Thread.sleep(200);
+                      repaint();
+
                     }
-                  }
-                  catch(InterruptedException ex)
-                  {
-                    System.out.println("catch some fish!");
-                  }
+                  //}
+                  // catch(InterruptedException ex)
+                  // {
+                  //   System.out.println("catch some fish!");
+                  // }
                 }
               }
-///////end
+              ///////end
 
 
             }//end of velocity
 
-              public void paintComponent(Graphics g)
-              {
-                super.paintComponent(g);
-                g.drawImage(mouthBackground,0,0,800,800,this);
-
-
-                if(food.equals("oatmeal"))
-                {
-                  g.drawImage(oatmealm,oatmealX,oatmealY,40,40,this);
-                  System.out.println("oatmealp");
-                }
-                if(food.equals("soda"))
-                {
-
-                  g.drawImage(sodam,sodaX,sodaY,40,40,this);
-                  repaint();
-
-                }
-                if(food.equals("avocado"))
-                {
-
-                  g.drawImage(avocadom,avocadoX,avocadoY,40,40,this);
-                  repaint();
-
-                }
-                if(food.equals("donut"))
-                {
-
-                  g.drawImage(donutm,donutX,donutY,40,40,this);// IF THE DONUT IS SELECTED
-                  repaint();
-
-
-                }
-                Font aldo = new Font ("Apple Casual", Font.BOLD, 8);
-                g.setFont(aldo);
-                g.setColor(Color.ORANGE);
-                g.drawString("Press the screen once in order to move the food/drinks with the WASD controls",5,690);
-                g.dispose();
-
-              }//end of paintcomponent
-
-
-
-            }//end of mouth panel
-
-
-            class MouthQuestions extends JPanel
+            public void paintComponent(Graphics g)
             {
-              public MouthQuestions()
+              super.paintComponent(g);
+              //Graphics2D g = donutm.createGraphics();    // Get a Graphics2D object
+              g.drawImage(mouthBackground,0,0,800,800,this);
+
+              if(food.equals("oatmeal"))
               {
-                System.out.println("mouthquiz");
+                g.drawImage(oatmeal,oatmealX,oatmealY,40,40,this);
               }
+              if(food.equals("soda"))
+              {
+
+                g.drawImage(soda,sodaX,sodaY,40,40,this);
+                repaint();
+
+              }
+              if(food.equals("avocado"))
+              {
+                g.drawImage(avocado,avocadoX,avocadoY,40,40,this);
+              repaint();
+
             }
-            // helping
-            // int x, y; //of the thing you're controlling
-            // int speed = 5; //how fast you want to move your ting
-            // BufferedImage img = ImageIO.read("mouthpic.png");
-            //
-            // //In the key method
-            //
-            // if(up) {
-            //   boolean collided = false;
-            //   for(int i = 0; i < speed; i++) {
-            //     int val = img.getRGB(x, y - i); //getRGB returns the color of the pixel, y - i because going up, & 0xffffff to get rid of first 8 bytes of color (unecessary right now)
-            //     if(val == 0) {
-            //       collided = true;
-            //     }
-            //   }
-            //   if(collided) y -= speed;
-            // }
-            //  }
+            if(food.equals("donut"))
+            {
+              g.drawImage(donut,donutX,donutY,40,40,this);// IF THE DONUT IS SELECTED
+              repaint();
+            }
+            Font aldo = new Font ("Apple Casual", Font.BOLD, 8);
+            g.setFont(aldo);
+            g.setColor(Color.ORANGE);
+            g.drawString("Press the screen once in order to move the food/drinks with the WASD controls",5,690);
+            g.dispose();
 
+          }//end of paintcomponent
+
+
+
+        }//end of mouth panel
+
+
+        class MouthQuestions extends JPanel
+        {
+          public MouthQuestions()
+          {
+            System.out.println("mouthquiz");
           }
+        }
+        // helping
+        // int x, y; //of the thing you're controlling
+        // int speed = 5; //how fast you want to move your ting
+        // BufferedImage img = ImageIO.read("mouthpic.png");
+        //
+        // //In the key method
+        //
+        // if(up) {
+        //   boolean collided = false;
+        //   for(int i = 0; i < speed; i++) {
+        //     int val = img.getRGB(x, y - i); //getRGB returns the color of the pixel, y - i because going up, & 0xffffff to get rid of first 8 bytes of color (unecessary right now)
+        //     if(val == 0) {
+        //       collided = true;
+        //     }
+        //   }
+        //   if(collided) y -= speed;
+        // }
+        //  }
 
-          /*
-          Why don't you just setLayout(null) on the parent panel and then, before adding the sub panel to parent , set it's position and dimensions using it's setBounds method. This way there is no need to use paintComponent for positioning the sub panel.
+      }
 
-          Is case you parent panel should have specific layout with other components and sub should overlay all that, look into JLayer(Java 7) / JXLayer(Java 6).
+      /*
+      Why don't you just setLayout(null) on the parent panel and then, before adding the sub panel to parent , set it's position and dimensions using it's setBounds method. This way there is no need to use paintComponent for positioning the sub panel.
 
-          Third solution can be using JLayeredPane.
-          */
+      Is case you parent panel should have specific layout with other components and sub should overlay all that, look into JLayer(Java 7) / JXLayer(Java 6).
 
-          //
-          // BufferedImage in = ImageIO.read(img);
-          //
-          // BufferedImage newImage = new BufferedImage(
-          //     in.getWidth(), in.getHeight(), BufferedImage.TYPE_INT_ARGB);
-          //
-          // Graphics2D g = newImage.createGraphics();
-          // g.drawImage(in, 0, 0, null);
-          // g.dispose();
+      Third solution can be using JLayeredPane.
+      */
+
+      //
+      // BufferedImage in = ImageIO.read(img);
+      //
+      // BufferedImage newImage = new BufferedImage(
+      //     in.getWidth(), in.getHeight(), BufferedImage.TYPE_INT_ARGB);
+      //
+      // Graphics2D g = newImage.createGraphics();
+      // g.drawImage(in, 0, 0, null);
+      // g.dispose();

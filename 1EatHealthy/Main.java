@@ -1,71 +1,92 @@
-
-/* w w  w .ja v  a2s  . c o  m*/
-import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Point;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Color;     //imports abstract window toolkit
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyEvent; //imports packsage for any key events;
+import java.awt.event.KeyListener; //imports packaga for any key listener
+import java.awt.event.MouseEvent; //imports package for any mouse events
+import java.awt.event.MouseListener; //imports package for mouse listener
+import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.FlowLayout;
+import java.awt.Font; //imports fonts
+import java.awt.Frame;
+import java.awt.Graphics; //imports possible events of abstract window toolkit
+import java.awt.GridLayout;
+import java.awt.image.BufferedImage;
+import java.awt.Image; //imports graphics components with swing
+import java.awt.Point;
+import java.awt.Toolkit;
+import java.io.BufferedWriter;
+import java.io.File; //imports file io
+import java.io.FileWriter;
+import java.io.IOException; //imports for input out io exception
+import java.lang.Object;
+import java.util.ArrayList;
+import java.util.Scanner;
+import javax.imageio.ImageIO; //imports image io
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JDialog;
+import javax.swing.JFrame; //iexpansion pack used for importing GUI JFrame
+import javax.swing.JLabel; //imports JLabel
+import javax.swing.JOptionPane;
+import javax.swing.JPanel; //imports JPanel
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
+import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.imageio.ImageIO;
+
+import java.awt.Graphics2D;
+
 
 public class Main {
+  public static void main(String[] argv) throws Exception {
+    Main mainy = new Main();
+    mainy.velocity();
 
-  public static void main(String[] args) {
-    JFrame aWindow = new JFrame();
-    aWindow.setBounds(200, 200, 200, 200);
-    aWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-    Container content = aWindow.getContentPane();
-    content.add(new MouseMotionEvents());
-    aWindow.setVisible(true);
-  }
 }
 
-class MouseMotionEvents extends JPanel implements MouseListener,
-    MouseMotionListener {
-  Point p;
 
-  public MouseMotionEvents() {
-    addMouseListener(this);
-    addMouseMotionListener(this);
-  }
+    public void velocity()
+    {
+      // try{
+        Image  img = new ImageIcon("test.png").getImage();
 
-  public void mouseClicked(MouseEvent me) {
-  }
+        BufferedImage bufferedImage = new BufferedImage(img.getWidth(null), img.getHeight(null),
+            BufferedImage.TYPE_INT_RGB);
 
-  public void mouseEntered(MouseEvent me) {
-  }
+        Graphics g = bufferedImage.createGraphics();
+        g.drawImage(img, 0, 0, null);
+        // g.dispose();
+        //
+        // ImageIO.write(bufferedImage, "png", new File("a.png"));
 
-  public void mouseExited(MouseEvent me) {
-  }
-
-  public void mousePressed(MouseEvent me) {
-    p = me.getPoint();
-    repaint();
-  }
-
-  public void mouseReleased(MouseEvent me) {
-    p = null;
-    repaint();
-  }
-
-  public void mouseDragged(MouseEvent me) {
-    p = me.getPoint();
-    repaint();
-  }
-
-  public void mouseMoved(MouseEvent me) {
-  }
-
-  public void paint(Graphics g) {
-    if (p != null) {
-      Dimension d = getSize();
-      int xc = d.width / 2;
-      int yc = d.height / 2;
-      g.drawLine(xc, yc, p.x, p.y);
+      // catch(IOException e)
+      // {
+      // System.out.println("catch some!");
+      // }
     }
+
+
   }
-}
