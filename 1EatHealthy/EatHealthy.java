@@ -1006,6 +1006,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public int[] speedUp;
           public int[] speedDown;
 
+          public int addvelo;
+          public int subvelo;
 
 
 
@@ -1043,6 +1045,9 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             speedUp = new int[6999999];
             speedDown =new int[69099898];
             whatKey="";
+
+            addvelo=0;
+            subvelo=0;
 
 //             BufferedImage off_Image =
 //   new BufferedImage(100, 50,
@@ -1660,8 +1665,105 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               for(int speed = 1; speed<33; speed=speed*2)//generates speed Up array
               {
                 System.out.println("speedUp:  "+ui);
-                repaint();
                 speedUp[ui]=speed;
+                addvelo=speed;
+                repaint();
+                if(pressed)
+                {
+                    repaint();
+                    try
+                    {
+              //1,3
+                      System.out.println("this is the addvelo: "+addvelo);
+                      if(whatKey.equals("W"))
+                      {
+                        System.out.println("Wup");
+
+                        wup(addvelo);
+                         Thread.sleep(300);
+                        repaint();
+
+                      }
+
+                      if(whatKey.equals("A"))
+                      {
+                        System.out.println("Aup");
+
+                        aup(addvelo);
+                        Thread.sleep(300);
+                        repaint();
+
+                      }
+                      if(whatKey.equals("S"))
+                      {
+                        System.out.println("Sup");
+
+                        sup(addvelo);
+                         Thread.sleep(300);
+                        repaint();
+
+                      }
+                      if(whatKey.equals("D"))
+                      {
+                        System.out.println("Dup");
+                        dup(addvelo);
+                        Thread.sleep(300);
+                        repaint();
+                      }
+                    }
+                    catch(InterruptedException ex)
+                    {
+                      System.out.println("catch some fish!");
+                    }
+
+                }
+                if(released)
+                {
+                  i=0;
+
+                    repaint();
+                    try
+                    {
+                      subvelo=subvelo-speedDown[i];
+                      System.out.println("this is the subvelo "+ subvelo);
+                      if(whatKey.equals("W"))
+                      {
+                        System.out.println("Wdown");
+                        wdow(subvelo);
+                        Thread.sleep(200);
+                        repaint();
+                      }
+                      if(whatKey.equals("A"))
+                      {
+                        System.out.println("Adow");
+                        adow(subvelo);
+                        Thread.sleep(200);
+                        repaint();
+                      }
+                      if(whatKey.equals("S"))
+                      {
+                        System.out.println("Sdow");
+                        sdow(subvelo);
+                        Thread.sleep(200);
+                        repaint();
+                      }
+                      if(whatKey.equals("D"))
+                      {
+                        System.out.println("Ddow");
+                        ddow(subvelo);
+                        Thread.sleep(200);
+                        repaint();
+
+                      }
+                    }
+                    catch(InterruptedException ex)
+                    {
+                      System.out.println("catch some fish!");
+                    }
+
+                }
+                
+
                 ui++;
               }
               for(int slowdown = 32; slowdown>0; slowdown=slowdown/2)
@@ -1669,109 +1771,106 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 System.out.println("speedDown: "+di);
                 repaint();
                 speedDown[di]=slowdown;
+                subvelo=slowdown;
+                if(pressed)
+                {
+                    repaint();
+                    try
+                    {
+              //1,3
+                      System.out.println("this is the addvelo: "+addvelo);
+                      if(whatKey.equals("W"))
+                      {
+                        System.out.println("Wup");
+
+                        wup(addvelo);
+                         Thread.sleep(300);
+                        repaint();
+
+                      }
+
+                      if(whatKey.equals("A"))
+                      {
+                        System.out.println("Aup");
+
+                        aup(addvelo);
+                        Thread.sleep(300);
+                        repaint();
+
+                      }
+                      if(whatKey.equals("S"))
+                      {
+                        System.out.println("Sup");
+
+                        sup(addvelo);
+                         Thread.sleep(300);
+                        repaint();
+
+                      }
+                      if(whatKey.equals("D"))
+                      {
+                        System.out.println("Dup");
+                        dup(addvelo);
+                        Thread.sleep(300);
+                        repaint();
+                      }
+                    }
+                    catch(InterruptedException ex)
+                    {
+                      System.out.println("catch some fish!");
+                    }
+
+                }
+                if(released)
+                {
+                  i=0;
+
+                    repaint();
+                    try
+                    {
+                      subvelo=subvelo-speedDown[i];
+                      System.out.println("this is the subvelo "+ subvelo);
+                      if(whatKey.equals("W"))
+                      {
+                        System.out.println("Wdown");
+                        wdow(subvelo);
+                        Thread.sleep(200);
+                        repaint();
+                      }
+                      if(whatKey.equals("A"))
+                      {
+                        System.out.println("Adow");
+                        adow(subvelo);
+                        Thread.sleep(200);
+                        repaint();
+                      }
+                      if(whatKey.equals("S"))
+                      {
+                        System.out.println("Sdow");
+                        sdow(subvelo);
+                        Thread.sleep(200);
+                        repaint();
+                      }
+                      if(whatKey.equals("D"))
+                      {
+                        System.out.println("Ddow");
+                        ddow(subvelo);
+                        Thread.sleep(200);
+                        repaint();
+
+                      }
+                    }
+                    catch(InterruptedException ex)
+                    {
+                      System.out.println("catch some fish!");
+                    }
+
+                }
+
                 di++;
               }
               //start velocity
-              int addvelo = 0;
-              if(pressed)
-              {
-                for(i=0; i<6; i++)
-                {
-                  repaint();
-                  try
-                  {
-                    addvelo=speedUp[i];   //1,3
-                    System.out.println("this is the addvelo: "+addvelo);
-                    if(whatKey.equals("W"))
-                    {
-                      System.out.println("Wup");
 
-                      wup(addvelo);
-                       Thread.sleep(300);
-                      repaint();
-
-                    }
-
-                    if(whatKey.equals("A"))
-                    {
-                      System.out.println("Aup");
-
-                      aup(addvelo);
-                      Thread.sleep(300);
-                      repaint();
-
-                    }
-                    if(whatKey.equals("S"))
-                    {
-                      System.out.println("Sup");
-
-                      sup(addvelo);
-                       Thread.sleep(300);
-                      repaint();
-
-                    }
-                    if(whatKey.equals("D"))
-                    {
-                      System.out.println("Dup");
-                      dup(addvelo);
-                      Thread.sleep(300);
-                      repaint();
-                    }
-                  }
-                  catch(InterruptedException ex)
-                  {
-                    System.out.println("catch some fish!");
-                  }
-                }
-              }
-              int subvelo = 0;
-              if(released)
-              {
-                i=0;
-                for(i=0;i<7; i++)
-                System.out.println("thi is i: "+i);
-                {
-                  repaint();
-                  try
-                  {
-                    subvelo=subvelo-speedDown[i];
-                    System.out.println("this is the subvelo "+ subvelo);
-                    if(whatKey.equals("W"))
-                    {
-                      System.out.println("Wdown");
-                      wdow(subvelo);
-                      Thread.sleep(200);
-                      repaint();
-                    }
-                    if(whatKey.equals("A"))
-                    {
-                      System.out.println("Adow");
-                      adow(subvelo);
-                      Thread.sleep(200);
-                      repaint();
-                    }
-                    if(whatKey.equals("S"))
-                    {
-                      System.out.println("Sdow");
-                      sdow(subvelo);
-                      Thread.sleep(200);
-                      repaint();
-                    }
-                    if(whatKey.equals("D"))
-                    {
-                      System.out.println("Ddow");
-                      ddow(subvelo);
-                      Thread.sleep(200);
-                      repaint();
-
-                    }
-                  }
-                  catch(InterruptedException ex)
-                  {
-                    System.out.println("catch some fish!");
-                  }
-                }
-              }
               ///////end
 
 
