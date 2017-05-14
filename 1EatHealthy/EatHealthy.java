@@ -1117,7 +1117,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public void mouseExited(MouseEvent e){} //mouse exits
 
 
-          public void keyPressed(KeyEvent e)
+          public void keyPressed(KeyEvent e, int addy)
           {
             requestFocus();
 
@@ -1186,18 +1186,34 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 int di=0;
                 slow="W";
 
-                for(double speed = 1; speed=speed; speed=speed*2)//generates speed Up array
+                for(double speed = 1; speed<33; speed=speed*2)//generates speed Up array
                 {
                   speedUp[ui]=speed;
                   ui++;
                 }
-                for(double slowdown = speed; slowdown>=0; slowdown=slowdown/2)
+                for(double slowdown = speedUp[6]; slowdown>=0; slowdown=slowdown/2)
                 {
                   speedDown[di]=slowdown;
                   di++;
                 }
-
+//start velocity
+                int addvelo;
+                if(pressed)
                 {
+                  for(i=0; i<7; i++)
+                  try
+                  {
+                    addvelo=addvelo+speedUp[i];
+                    keyPressed(addvelo);
+                    Thread.sleep(300);
+                  }
+                  catch(InterruptedException ex)
+                  {
+                    System.out.println("catch some fish!");
+                  }
+                }
+
+
                   if(food.equals("oatmeal"))
                   {
                     try
