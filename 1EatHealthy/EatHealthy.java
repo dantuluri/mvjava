@@ -1586,7 +1586,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               repaint();
             }
           }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
           public void keyTyped(KeyEvent e){}
             public void keyReleased(KeyEvent e)
             {
@@ -1596,9 +1596,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               if(dupcode==KeyEvent.VK_W)//runs if shiftkey is pressed
               {
                 repaint();
-
                 whatKey="W";
-
                 wdow(99);
                 repaint();
 
@@ -1610,7 +1608,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
                 whatKey="S";
 
-                adow(99);
+                sdow(99);
                 repaint();
 
               }
@@ -1621,7 +1619,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
                 whatKey="A";
 
-                sdow(99);
+                adow(99);
                 repaint();
 
               }
@@ -1643,8 +1641,19 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               int di=0;
               int i = 0;
               //array generation
-              for(int speed = 1; speed<33; speed=speed*2)//generates speed Up array
+
+
+              int speedUp[] = new int [6];
+              for (int a = 0; a < array.length; a++)
               {
+                  speedUp[a] = (int)(Math.pow(2,a));
+
+                  System.out.println(Arrays.toString(array));
+                }
+
+              int speedDownp[] = new int[6];
+//array generation done
+
                 System.out.println("speedUp:  "+ui);
                 speedUp[ui]=speed;
                 repaint();
