@@ -1742,7 +1742,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                       if(whatKey.equals("S"))
                       {
                         System.out.println("Sdow");
-                        sdow(subvelo);
+                        oatmealY = sdow(subvelo);
                         Thread.sleep(200);
                         repaint();
                       }
