@@ -1440,7 +1440,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 subby=0;
                 velocity(false,true);
               }
-              oatmealX = oatmealX+subby;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+              oatmealX = oatmealX-subby;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
 
             }
@@ -1514,7 +1514,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               if(subby==99)
               {
                 subby=0;
-                velocity(false,true);
+                velocity(false,true);//waits for return from velocity
               }
 
               avocadoY = avocadoY+subby;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
