@@ -1346,7 +1346,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             {
               if(addy==98)
               {
-                addy=0;
+                addy=0;//meaning incoming is keyPressed
                 velocity(true,false);
               }
 
