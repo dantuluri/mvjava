@@ -1643,15 +1643,55 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               //array generation
 
 
-              int speedUp[] = new int [6];
-              for (int a = 0; a < array.length; a++)
-              {
-                  speedUp[a] = (int)(Math.pow(2,a));
+              int array[] = new int [6];
+              for (int a = 0; a < array.length; a++){
+
+
+                  array[a] = (int)(Math.pow(2,a));
 
                   System.out.println(Arrays.toString(array));
-                }
+              }
+      System.out.println("speedDOwn");
 
-              int speedDownp[] = new int[6];
+
+
+              int speedDown[] = new int[7];
+              for(int b = 6; b>-1; b--)
+              {
+                int likey;
+                if(b==6)//36
+                {
+                  likey=b*6;
+                }
+                if(b==5)//16
+                {
+                  likey=b+11;
+                }
+                if(b==4)//8
+                {
+                  likey=b*4;
+                }
+                if(b==3)//4
+                {
+                  likey=b+1;
+                }
+                if(b==2)//2
+                {
+                  likey=2;
+                }
+                if(b==1)
+                {
+                  likey=1;
+                }
+                if(b==0)
+                {
+                  likey=0;
+                }
+                speedDown[b] = likey;
+                System.out.println("good");
+                System.out.println(Arrays.toString(speedDown));
+              }
+          }//ed
 //array generation done
 
                 System.out.println("speedUp:  "+ui);

@@ -56,6 +56,10 @@ import java.awt.Graphics2D;
 
 public class ArrayQuestion1 {
     public static void main(String[] args) {
+
+
+
+      //////////////??/////START
         int array[] = new int [6];
         for (int a = 0; a < array.length; a++){
 
@@ -64,5 +68,21 @@ public class ArrayQuestion1 {
 
             System.out.println(Arrays.toString(array));
         }
-    }
+System.out.println("speedDOwn");
+
+
+
+        int speedDown[] = new int[7];
+        for(int b = 5; b>-1; b--)
+        {
+
+          speedDown[b] = (int)(Math.pow(2,(5-b)));
+          System.out.println("good");
+          System.out.println(Arrays.toString(speedDown));
+        }
+
+
+
+        ///eneddnddndndneed END
+    }//ed
 }
