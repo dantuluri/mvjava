@@ -60,6 +60,9 @@ public class ArrayQuestion1 {
 
 
       //////////////??/////START
+      System.out.println("speedUp");
+
+
         int array[] = new int [6];
         for (int a = 0; a < array.length; a++){
 
@@ -77,7 +80,6 @@ System.out.println("speedDOwn");
         {
 
           speedDown[b] = (int)(Math.pow(2,(5-b)));
-          System.out.println("good");
           System.out.println(Arrays.toString(speedDown));
         }
 

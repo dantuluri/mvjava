@@ -1642,57 +1642,32 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               int i = 0;
               //array generation
 
-
-              int array[] = new int [6];
-              for (int a = 0; a < array.length; a++){
-
-
-                  array[a] = (int)(Math.pow(2,a));
-
-                  System.out.println(Arrays.toString(array));
-              }
-      System.out.println("speedDOwn");
+              /////////////??/////START
+              System.out.println("speedUp");
 
 
+                int array[] = new int [6];
+                for (int a = 0; a < array.length; a++){
 
-              int speedDown[] = new int[7];
-              for(int b = 6; b>-1; b--)
-              {
-                int likey;
-                if(b==6)//36
-                {
-                  likey=b*6;
+
+                    array[a] = (int)(Math.pow(2,a));
+
+                    System.out.println(Arrays.toString(array));
                 }
-                if(b==5)//16
+        System.out.println("speedDOwn");
+
+
+
+                int speedDown[] = new int[7];
+                for(int b = 5; b>-1; b--)
                 {
-                  likey=b+11;
+
+                  speedDown[b] = (int)(Math.pow(2,(5-b)));
+                  System.out.println(Arrays.toString(speedDown));
                 }
-                if(b==4)//8
-                {
-                  likey=b*4;
-                }
-                if(b==3)//4
-                {
-                  likey=b+1;
-                }
-                if(b==2)//2
-                {
-                  likey=2;
-                }
-                if(b==1)
-                {
-                  likey=1;
-                }
-                if(b==0)
-                {
-                  likey=0;
-                }
-                speedDown[b] = likey;
-                System.out.println("good");
-                System.out.println(Arrays.toString(speedDown));
-              }
-          }//ed
-//array generation done
+
+
+              //array generation done
 
                 System.out.println("speedUp:  "+ui);
                 speedUp[ui]=speed;
