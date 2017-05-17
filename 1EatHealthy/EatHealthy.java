@@ -112,19 +112,11 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
   public String healthName;
   private WelcomePanelHolder welcomeHold;
   private LandingPage landingPan;//where the user is most of the time
-  // private HealthBarPanel healthyBar;//health bar panel in LandingPage
-  // //Mouth, Esophogous, Stomach, Duodenum, Small intestine, *Large intestine
-  private DigestivePanel mouthProcess;
-  private DigestionQuestions mouthQuiz;
-  // private EsophogousPanel esophogousProcess;
-  // private EsophogousQuestions esophogousQuiz;
-  // private StomachPanel stomachProcess;
-  // private StomachQuestions stomachQuiz;
-  // private SmallIntestinePanel smallIntestineProcess;
-  // private SmallIntestineQuestions smallintestineQuiz;
-  // private LargeIntestinePanel largeIntestineProcess;
-  // private LargeIntestineQuestions largeIntestineQuiz;
-  // private EndingPanel ending;
+
+  private DigestivePanel digestion;
+  private DigestionQuestions digestQuiz;
+
+  private EndingPanel ending;
   public static void main(String[] args)//main method of the eat healthy game and initialize the frame
   {
     System.out.println("class EatHealthy main method");
@@ -142,9 +134,9 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
     healthName="surya";
     getContentPane();//sets content pane
     lancanvas=new LandingPage();//sets canvas as LandingPage
-    mouthcanvas=new MouthPanel();
+    digestcanvas=new DigestivePanel();
     getContentPane().add(lancanvas);//gets content pane and adds canvas
-    getContentPane().add(mouthcanvas);
+    getContentPane().add(digestcanvas);
     pHolder = new PanelHolder();//initliazes the panel holder that "holds" all the panels
     cards = new CardLayout();//initilizes cards as CardLayout to be called
     flow = new FlowLayout();//initliazes flow as FlowLayout to be called
@@ -153,18 +145,10 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
     pHolder.setLayout(cards);//sets the layout of the panel holder as cards to switch panels
     welcomeHold = new WelcomePanelHolder();//initializes the WelcomePanelHolder
     landingPan = new LandingPage();//initializes the WelcomePanelHolder
-    //healthyBar = new HealthyBarPanel();
-    mouthProcess = new MouthPanel();
-    mouthQuiz = new MouthQuestions();
-    esophogousProcess = new EsophogousPanel();
-    esophogousQuiz = new EsophogousQuestions();
-    stomachProcess = new StomachPanel();
-    stomachQuiz = new StomachQuestions();
-    smallIntestineProcess = new SmallIntestinePanel();
-    smallintestineQuiz = new SmallIntestineQuestions();
-    largeIntestineProcess = new LargeIntestinePanel();
-    largeIntestineQuiz = new LargeIntestineQuestions();
-    ending = new EndingPanel();s
+    digestion = new DigestivePanel();
+    digestQuiz = new DigestionQuestions();
+    ending = new EndingPanel();
+
     pHolder.add(welcomeHold, "WelcomeHolder");//adds the WelcomeHolder to the panel holder panel
     pHolder.add(landingPan, "LandingPage");//adds the landing panel to the panel holder panel
     //pHolder.add(healthyBar, "HealthyBarPanel");
@@ -832,43 +816,88 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           }
         }//end of landing page
         //start mouth class panels
-        class MouthPanel extends JPanel implements MouseListener, KeyListener//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        class DigestivePanel extends JPanel implements MouseListener, KeyListener//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
         //   //also tied in with MouthQuiz to ask questions regarding the class
         {
-          // private BufferedImage donutm;
-          // private BufferedImage sodam;
-          // private BufferedImage oatmealm;
-          // private BufferedImage avocadom;
-          public String keychange;
-          public String whatKey;
+
           public int oatmealwidth;
           public int oatmealheight;
+
           public int sodawidth;
           public int sodaheight;
+
           public int donutheight;
           public int donutwidth;
+
           public int avocadowidth;
           public int avocadoheight;
-          public String slow;
-          public int foodX;
-          public int foodY;
-          public Image mouthBackground;
-          private boolean shiftkey;
-          public boolean wout;
+
+
+
+
           public int addy;
           public int subby;
-          public boolean goAway;
+
+          
+          public Image mouthBackground;
           public Image donut;
           public Image oatmeal;
           public Image soda;
           public Image avocado;
+
           public String mouthBackgroundName;
           public String donutName;//file name
           public String avocadoName;//file name
           public String sodaName;//file name
           public String oatmealName;//file name
           public int donutX, donutY, oatmealX, oatmealY, sodaX, sodaY, avocadoX, avocadoY;
-          public Digestive()
+          public DigestivePanel()
           {
             setBackground(Color.RED);//set background to yello
             mouthBackgroundName= ("mouth.png");
@@ -876,27 +905,28 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             avocadoName= ("avocado.png");//file name
             sodaName= ("soda.png");//file name
             oatmealName= ("oatmeal.png");//file name
-            donutX = 20;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
-            donutY = 400;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
-            oatmealX = 20;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
-            oatmealY = 400;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
-            sodaX = 20;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
-            sodaY = 400;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
-            avocadoX = 20;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
-            avocadoY = 400;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+            if(mouth)
+            {
+              donutX = 20;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
+              donutY = 400;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+              oatmealX = 20;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+              oatmealY = 400;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+              sodaX = 20;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
+              sodaY = 400;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+              avocadoX = 20;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+              avocadoY = 400;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+            }
+
+
             whatKey="";
             goAway=false;
             addy=0;
             subby=0;
-            //             BufferedImage off_Image =
-            //   new BufferedImage(100, 50,
-            //                     BufferedImage.TYPE_INT_ARGB);
-            //
-            // Graphics2D g2 = off_Image.createGraphics();
+
             setLayout(flow);//sets the layout to flow
             //Card Layout made( needs more pseudocode)
             setLocation(0,0);//sets panel origin
-            System.out.println("MouthPanel reached");
+            System.out.println("DigestivePanel reached");
             addMouseListener(this);
             addKeyListener(this);//adds KeyListener
             run();
@@ -970,29 +1000,26 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             keychange=""+e;
             System.out.println("keyP");
             requestFocus();
-            int upcode = e.getKeyCode();//looks for shiftkey
-            if(upcode==KeyEvent.VK_W)//runs if shiftkey is pressed
+            int codey = e.getKeyCode();//looks for shiftkey
+            if(codey==KeyEvent.VK_W)//runs if shiftkey is pressed
             {
               whatKey="W";
               System.out.println("whatKey W in keyPressed");
               velocity(true,false);
             }
-            int downcode = e.getKeyCode();
-            if(downcode==KeyEvent.VK_S)
+            if(codey==KeyEvent.VK_S)
             {
               whatKey="S";
               System.out.println("whatKey S in keyPressed");
               velocity(true,false);
             }
-            int leftcode = e.getKeyCode();
-            if(leftcode==KeyEvent.VK_A)
+            if(codey==KeyEvent.VK_A)
             {
               whatKey="A";
               System.out.println("whatKey A in keyPressed");
               velocity(true,false);
             }
-            int rightcode = e.getKeyCode();
-            if(rightcode==KeyEvent.VK_D)
+            if(codey==KeyEvent.VK_D)
             {
               whatKey="D";
               System.out.println("whatKey D in keyPressed");
@@ -1000,8 +1027,13 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
           }//end of pressed
 
-              while(released && whatKey.equals("D"));////////check chcekc check
-            }//end of velocity
+          public void mouseReleased(MouseEvent e)
+          {
+
+          } //mouse is released
+
+
+
             public void paintComponent(Graphics g)
             {
               super.paintComponent(g);
@@ -1099,6 +1131,15 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             {
             }
           }//end of mouth panel
+
+
+
+
+
+
+
+
+
           class MouthQuestions extends JPanel implements ActionListener
           {
             private String inFileName, line, fullQuestion, fullTextFile,qNumber, choiceA, choiceB, choiceC, choiceD, fullQuestion2;

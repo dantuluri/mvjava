@@ -531,7 +531,7 @@ class largeIntestinePanel extends JPanel implements MouseListener, KeyListener//
     if(food.equals("soda"))
     {
 
-      sodaX = sodaX-subby;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+      sodaX = sodaX-subbylargeIntesti-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
       do
       {
         sodaX = sodaX-32;
