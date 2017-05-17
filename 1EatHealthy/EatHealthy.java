@@ -207,7 +207,7 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
     //  smallintestineQuiz = new SmallIntestineQuestions();
     //  largeIntestineProcess = new LargeIntestinePanel();
     //  largeIntestineQuiz = new LargeIntestineQuestions();
-    //  ending = new EndingPanel();
+    //  ending = new EndingPanel();s
 
 
     pHolder.add(welcomeHold, "WelcomeHolder");//adds the WelcomeHolder to the panel holder panel
