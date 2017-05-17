@@ -1191,7 +1191,6 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             System.out.println("W");
             switch(food) {
               case "oatmeal":
-
               oatmealY = oatmealY-addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
               break;
@@ -1200,20 +1199,10 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               repaint();
               break;
               case "avocado":
-              if(addy==98)
-              {
-                addy=0;
-                velocity(true,false);
-              }
               avocadoY = avocadoY-addy;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
               repaint();
               break;
               case "donut":
-              if(addy==98)
-              {
-                addy=0;
-                velocity(true,false);
-              }
               donutY = donutY-addy;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
               repaint();
               break;
@@ -1226,38 +1215,18 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             System.out.println("A");
             switch(food) {
               case "oatmeal":
-              if(addy==98)
-              {
-                addy=0;
-                velocity(true,false);
-              }
               oatmealX = oatmealX-addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
               break;
               case "soda":
-              if(addy==98)
-              {
-                addy=0;
-                velocity(true,false);
-              }
               sodaX = sodaX-addy;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
               repaint();
               break;
               case "avocado":
-              if(addy==98)
-              {
-                addy=0;
-                velocity(true,false);
-              }
               avocadoX = avocadoX-addy;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
               repaint();
               break;
               case "donut":
-              if(addy==98)
-              {
-                addy=0;
-                velocity(true,false);
-              }
               donutX = donutX-addy;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
               repaint();
               break;
@@ -1269,29 +1238,14 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             System.out.println("S");
             switch(food) {
               case "oatmeal":
-              if(addy==98)
-              {
-                addy=0;
-                velocity(true,false);
-              }
               oatmealY = oatmealY+addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
               break;
               case "soda":
-              if(addy==98)
-              {
-                addy=0;
-                velocity(true,false);
-              }
               sodaY = sodaY+addy;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
               repaint();
               break;
               case "avocado":
-              if(addy==98)
-              {
-                addy=0;
-                velocity(true,false);
-              }
               avocadoY = avocadoY+addy;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
               repaint();
               break;
