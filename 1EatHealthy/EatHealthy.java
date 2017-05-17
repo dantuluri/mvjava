@@ -44,6 +44,7 @@ Propmt user telling them that calvin will feel bad if you feed him the SAME FOOD
 ///////////////////////// import Classes needed for Layouts ////////////////////////
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.awt.Color;     //imports abstract window toolkit
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -978,7 +979,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-        class MouthPanel extends JPanel implements MouseListener, KeyListener//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
+        class MouthPanel extends JPanel implements MouseListener, KeyListener, ImageObserver//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
         //   //also tied in with MouthQuiz to ask questions regarding the class
         {
           // private BufferedImage donutm;
@@ -1028,8 +1029,13 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public int donutX, donutY, oatmealX, oatmealY, sodaX, sodaY, avocadoX, avocadoY;
 
 
-          public MouthPanel()
+          public MouthPanel(Image donut, Image oatmeal, Image avocado, Image soda)
           {
+            this.donut=donut;
+            this.oatmeal=oatmeal;
+            this.avocado=avocado;
+            this.soda=soda;
+
             setBackground(Color.RED);//set background to yello
             mouthBackgroundName= ("mouth.png");
             donutName= ("donut.png");//file name
@@ -1196,15 +1202,20 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             System.out.println("wup, addy: "+addy);
             switch(food) {
               case "oatmeal":
+              System.out.println("\n\noriginal oatmealY: "+oatmealY);
               oatmealY = oatmealY-addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
-              do
+              repaint();
+              System.out.println("new OatMeal "+oatmealY);
+
+              if(addy==32)
               {
-                System.out.println("original oatmealY: "+oatmealY);
-                oatmealY = oatmealY-32;
-                System.out.println("new OatMeal "+oatmealY);
-                repaint();
+                for(int i=0; i>-1; i++)
+                {
+                  oatmealY = oatmealY-32;
+                  System.out.println("32 oatmealY: "+oatmealY);
+                }
+
               }
-              while(addy>31 && addy<33);
               repaint();
               break;
               case "soda":
@@ -1662,23 +1673,30 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               if(dupcode==KeyEvent.VK_W)//runs if shiftkey is pressed
               {
                 whatKey="W";
+                velocity(false,true);
+
               }
               int ddowncode = e.getKeyCode();
               if(ddowncode==KeyEvent.VK_S)
               {
                 whatKey="S";
+                velocity(false,true);
+
               }
               int dleftcode = e.getKeyCode();
               if(dleftcode==KeyEvent.VK_A)
               {
                 whatKey="A";
+                velocity(false,true);
+
               }
               int drightcode = e.getKeyCode();
               if(drightcode==KeyEvent.VK_D)
               {
                 whatKey="D";
+                velocity(false,true);
+
               }
-              velocity(false,true);
             }//end of released
 
             public void velocity(boolean pressed, boolean released)
@@ -1712,6 +1730,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 {
                   try
                   {
+                    if(released) break;
                     wup(speedUp[i]);
                     Thread.sleep(100);
                   }
@@ -1731,6 +1750,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 {
                   try
                   {
+                    if(released) break;
                     aup(speedUp[i]);
                     Thread.sleep(100);
                   }
@@ -1870,18 +1890,18 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 //Click anywhere on the screen to being after clicking OK to this message!
           if(food.equals("oatmeal"))
           {
-            g.drawImage(oatmeal,oatmealX,oatmealY,40,40,this);
+            g.drawImage(oatmeal,oatmealX,oatmealY,40,40,ImageObserver observer);
           }
           if(food.equals("soda"))
           {
 
-            g.drawImage(soda,sodaX,sodaY,40,40,this);
+            g.drawImage(soda,sodaX,sodaY,40,40,ImageObserver observer);
             repaint();
 
           }
           if(food.equals("avocado"))
           {
-            g.drawImage(avocado,avocadoX,avocadoY,40,40,this);
+            g.drawImage(avocado,avocadoX,avocadoY,40,40,ImageObserver observer);
             repaint();
 
           }
