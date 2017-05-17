@@ -981,7 +981,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-        class MouthPanel extends JPanel implements MouseListener, KeyListener, Observer//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
+        class MouthPanel extends JPanel implements MouseListener, KeyListener//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
         //   //also tied in with MouthQuiz to ask questions regarding the class
         {
           // private BufferedImage donutm;
@@ -1161,6 +1161,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
           public void keyPressed(KeyEvent e)
           {
+            System.out.println(e);
+
             System.out.println("keyP");
             requestFocus();
             int upcode = e.getKeyCode();//looks for shiftkey
@@ -1221,6 +1223,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   if(oatmealY<1)
                   {
                     oatmealY=0;
+                    break;
                   }
                   if(oatmealY>799)
                   {
@@ -1683,9 +1686,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public void keyTyped(KeyEvent e){}
             public void keyReleased(KeyEvent e)
             {
-
-              requestFocus();
-
+System.out.println(e);
               int dupcode = e.getKeyCode();//looks for shiftkey
               if(dupcode==KeyEvent.VK_W)//runs if shiftkey is pressed
               {
@@ -1916,19 +1917,19 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           {
 
             g.drawImage(soda,sodaX,sodaY,40,40,this);
-            repaint();
+            //repaint();
 
           }
           if(food.equals("avocado"))
           {
             g.drawImage(avocado,avocadoX,avocadoY,40,40,this);
-            repaint();
+            //repaint();
 
           }
           if(food.equals("donut"))
           {
             g.drawImage(donut,donutX,donutY,40,40,this);// IF THE DONUT IS SELECTED
-            repaint();
+            //repaint();
           }
           Font aldo = new Font ("Apple Casual", Font.BOLD, 8);
           g.setFont(aldo);
