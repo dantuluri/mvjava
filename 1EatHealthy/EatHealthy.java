@@ -1142,6 +1142,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public void mousePressed(MouseEvent e)		//every time user clicks method is run
           {
             requestFocus();//requests focus for mouse
+            System.out.println("start click");
             repaint();//calls paintcomponent
           }
           public void mouseClicked(MouseEvent e){} //mouse is clicked
@@ -1152,12 +1153,13 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
           public void keyPressed(KeyEvent e)
           {
+            System.out.println("keyP");
             requestFocus();
             int upcode = e.getKeyCode();//looks for shiftkey
             if(upcode==KeyEvent.VK_W)//runs if shiftkey is pressed
             {
               whatKey="W";
-              System.out.println("keyEvent W whatKeyW");
+              System.out.println("whatKey W in keyPressed");
               velocity(true,false);
 
             }
@@ -1165,7 +1167,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             if(downcode==KeyEvent.VK_S)
             {
               whatKey="S";
-              System.out.println("keyEvent S whatKeyS");
+              System.out.println("whatKey S in keyPressed");
               velocity(true,false);
 
             }
@@ -1173,7 +1175,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             if(leftcode==KeyEvent.VK_A)
             {
               whatKey="A";
-              System.out.println("keyEvent A whatKeyA");
+              System.out.println("whatKey A in keyPressed");
               velocity(true,false);
 
             }
@@ -1182,7 +1184,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             {
 
               whatKey="D";
-              System.out.println("keyEvent D whatKeyD");
+              System.out.println("whatKey D in keyPressed");
               velocity(true,false);
 
             }
@@ -1191,13 +1193,15 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
           public void wup(int addy)
           {
-            System.out.println("W");
+            System.out.println("wup, addy: "+addy);
             switch(food) {
               case "oatmeal":
               oatmealY = oatmealY-addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               do
               {
+                System.out.println("original oatmealY: "+oatmealY);
                 oatmealY = oatmealY-32;
+                System.out.println("new OatMeal "+oatmealY);
                 repaint();
               }
               while(addy>31 && addy<33);
@@ -1242,13 +1246,14 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
           public void aup(int addy)
           {
-            System.out.println("A");
+            System.out.println("AUP,addy: "+addy);
             switch(food) {
               case "oatmeal":
               oatmealX = oatmealX-addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               do
               {
                 oatmealX = oatmealX-32;
+                System.out.println("aup oatmeal: "+oatmealX);
                 repaint();
               }
               while(addy>31 && addy<33);
@@ -1297,6 +1302,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             switch(food) {
               case "oatmeal":
               oatmealY = oatmealY+addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+              System.out.println("sup oatmeal: "+oatmealY);
               do
               {
                 oatmealY = oatmealY+32;
@@ -1348,6 +1354,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             if(food.equals("oatmeal"))
             {
               oatmealX = oatmealX+addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+              System.out.println("dup oatmeal: "+oatmealX);
               do
               {
                 oatmealX = oatmealX+32;
@@ -1409,6 +1416,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               do
               {
                 oatmealY = oatmealY-32;
+                System.out.println("wdow oatmeal: "+oatmealY);
+
                 repaint();
               }
               while(addy>31 && addy<33);
@@ -1464,6 +1473,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             if(food.equals("oatmeal"))
             {
               oatmealX = oatmealX-subby;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+              System.out.println("adow oatmeal: "+oatmealX);
+
               do
               {
                 oatmealX = oatmealX-32;
@@ -1525,6 +1536,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             {
 
               oatmealY = oatmealY+subby;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+              System.out.println("sdow oatmeal: "+oatmealY);
               do
               {
                 oatmealY = oatmealY+32;
@@ -1587,6 +1599,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             {
 
               oatmealX = oatmealX+subby;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+              System.out.println("dup oatmeal: "+oatmealX);
               do
               {
                 oatmealX = oatmealX+32;
@@ -1700,7 +1713,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   try
                   {
                     wup(speedUp[i]);
-                    Thread.sleep(10);
+                    Thread.sleep(100);
                   }
                   catch(InterruptedException ex)
                   {
@@ -1719,7 +1732,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   try
                   {
                     aup(speedUp[i]);
-                    Thread.sleep(10);
+                    Thread.sleep(100);
                   }
                   catch(InterruptedException ex)
                   {
@@ -1738,7 +1751,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   try
                   {
                     sup(speedUp[i]);
-                    Thread.sleep(10);
+                    Thread.sleep(100);
                   }
                   catch(InterruptedException ex)
                   {
@@ -1757,7 +1770,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   try
                   {
                     dup(speedUp[i]);
-                    Thread.sleep(10);
+                    Thread.sleep(100);
                   }
                   catch(InterruptedException ex)
                   {
@@ -1777,7 +1790,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   try
                   {
                     wup(speedDown[i]);
-                    Thread.sleep(5);
+                    Thread.sleep(50);
                   }
                   catch(InterruptedException ex)
                   {
@@ -1796,7 +1809,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   try
                   {
                     aup(speedDown[i]);
-                    Thread.sleep(5);
+                    Thread.sleep(50);
                   }
                   catch(InterruptedException ex)
                   {
@@ -1815,7 +1828,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   try
                   {
                     sup(speedDown[i]);
-                    Thread.sleep(5);
+                    Thread.sleep(50);
                   }
                   catch(InterruptedException ex)
                   {
@@ -1834,7 +1847,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   try
                   {
                     dup(speedDown[i]);
-                    Thread.sleep(5);
+                    Thread.sleep(50);
                   }
                   catch(InterruptedException ex)
                   {
@@ -1852,8 +1865,9 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           super.paintComponent(g);
           //Graphics2D g = donutm.createGraphics();    // Get a Graphics2D object
           g.drawImage(mouthBackground,0,0,800,800,this);
-          JOptionPane.showMessageDialog(mouthProcess, "Instructions", "Click anywhere on the screen to being after clicking OK to this message!", JOptionPane.INFORMATION_MESSAGE);
+          // JOptionPane.showMessageDialog (null, "Instructions", "Click anywhere on the screen to being after clicking OK to this message!", JOptionPane.INFORMATION_MESSAGE);
 
+//Click anywhere on the screen to being after clicking OK to this message!
           if(food.equals("oatmeal"))
           {
             g.drawImage(oatmeal,oatmealX,oatmealY,40,40,this);
