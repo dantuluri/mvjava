@@ -1008,8 +1008,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
 
 
-          public int addvelo;
-          public int subvelo;
+          public int addy;
+          public int subby;
 
           public boolean goAway;
 
@@ -1047,8 +1047,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
             whatKey="";
             goAway=false;
-            addvelo=0;
-            subvelo=0;
+            addy=0;
+            subby=0;
 
             //             BufferedImage off_Image =
             //   new BufferedImage(100, 50,
@@ -1200,7 +1200,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 oatmealY = oatmealY-32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
               repaint();
               break;
               case "soda":
@@ -1210,7 +1210,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 sodaY = sodaY-32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
               break;
               case "avocado":
@@ -1220,7 +1221,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 avocadoY = avocadoY-32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
               break;
               case "donut":
@@ -1230,7 +1232,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 donutY = donutY-32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
               break;
             }
@@ -1248,17 +1251,19 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 oatmealX = oatmealX-32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
               break;
               case "soda":
               sodaX = sodaX-addy;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
               do
               {
-                sodaX = sodax-32;
+                sodaX = sodaX-32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
               break;
               case "avocado":
@@ -1268,7 +1273,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 avocadoX = avocadoX-32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
               break;
               case "donut":
@@ -1278,7 +1284,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 donutX = donutX-32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
               break;
             }
@@ -1295,7 +1302,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 oatmealY = oatmealY+32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
               break;
               case "soda":
@@ -1305,7 +1313,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 sodaY = sodaY+32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
               break;
               case "avocado":
@@ -1315,7 +1324,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 avocadoY = avocadoY+32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
               break;
               case "donut":
@@ -1325,7 +1335,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 donutY = donutY+32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
               break;
             }
@@ -1342,7 +1353,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 oatmealX = oatmealX+32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
 
             }
@@ -1354,7 +1366,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 sodaX = sodaX+32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
 
             }
@@ -1366,7 +1379,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 avocadoX = avocadoX+32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
 
             }
@@ -1379,7 +1393,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 donutX = donutX+32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
             }
           }
@@ -1396,7 +1411,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 oatmealY = oatmealY-32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
 
             }
@@ -1409,7 +1425,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 sodaY = sodaY-32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
 
             }
@@ -1422,7 +1439,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 avocadoY = avocadoY-32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
 
             }
@@ -1434,7 +1452,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 donutY = donutY-32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
             }
           }
@@ -1450,7 +1469,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 oatmealX = oatmealX-32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
 
             }
@@ -1463,7 +1483,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 sodaX = sodaX-32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
 
             }
@@ -1476,7 +1497,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 avocadoX = avocadoX-32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
 
             }
@@ -1489,7 +1511,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 donutX = donutX-32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
             }
 
@@ -1507,7 +1530,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 oatmealY = oatmealY+32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
 
             }
@@ -1520,7 +1544,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 sodaY = sodaY+32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
 
 
@@ -1534,7 +1559,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 avocadoY = avocadoY+32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
 
             }
@@ -1547,7 +1573,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 donutY = donutY+32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
             }
 
@@ -1565,7 +1592,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 oatmealX = oatmealX+32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
 
             }
@@ -1579,7 +1607,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 sodaX = sodaX+32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
 
             }
@@ -1592,7 +1621,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 avocadoX = avocadoX+32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
 
             }
@@ -1606,7 +1636,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 donutX = donutX+32;
                 repaint();
               }
-              while(addy=32);
+              while(addy>31 && addy<33);
+
               repaint();
             }
           }
