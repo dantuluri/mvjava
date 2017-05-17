@@ -1139,7 +1139,6 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public void mousePressed(MouseEvent e)		//every time user clicks method is run
           {
             requestFocus();//requests focus for mouse
-            goAway=true;
             repaint();//calls paintcomponent
           }
           public void mouseClicked(MouseEvent e){} //mouse is clicked
@@ -1151,47 +1150,37 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public void keyPressed(KeyEvent e)
           {
             requestFocus();
-            velocity(true,false);
             int upcode = e.getKeyCode();//looks for shiftkey
             if(upcode==KeyEvent.VK_W)//runs if shiftkey is pressed
             {
-              repaint();
               whatKey="W";
               System.out.println("keyEvent W whatKeyW");
-              wup(98);
-              repaint();
+              velocity(true,false);
+
             }
             int downcode = e.getKeyCode();
             if(downcode==KeyEvent.VK_S)
             {
-              repaint();
-
               whatKey="S";
               System.out.println("keyEvent S whatKeyS");
-              sup(98);
-              repaint();
+              velocity(true,false);
 
             }
             int leftcode = e.getKeyCode();
             if(leftcode==KeyEvent.VK_A)
             {
-              repaint();
-
               whatKey="A";
               System.out.println("keyEvent A whatKeyA");
-              aup(98);
-              repaint();
+              velocity(true,false);
 
             }
             int rightcode = e.getKeyCode();
             if(rightcode==KeyEvent.VK_D)
             {
-              repaint();
 
               whatKey="D";
               System.out.println("keyEvent D whatKeyD");
-              dup(98);
-              repaint();
+              velocity(true,false);
 
             }
           }//end of pressed
@@ -1202,20 +1191,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             System.out.println("W");
             switch(food) {
               case "oatmeal":
-              if(addy==98)
-              {
-                addy=0;//makes sure not to mess up where the image is going to be moved too
-                velocity(true,false);//since the key has been pressed
-              }
+
               oatmealY = oatmealY-addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
               break;
               case "soda":
-              if(addy==98)
-              {
-                addy=0;
-                velocity(true,false);//ask velocity to return the addy value
-              }
               sodaY = sodaY-addy;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
               repaint();
               break;
@@ -1589,50 +1569,28 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public void keyTyped(KeyEvent e){}
             public void keyReleased(KeyEvent e)
             {
-
-              velocity(false,true);
               int dupcode = e.getKeyCode();//looks for shiftkey
               if(dupcode==KeyEvent.VK_W)//runs if shiftkey is pressed
               {
-                repaint();
                 whatKey="W";
-                wdow(99);
-                repaint();
-
               }
               int ddowncode = e.getKeyCode();
               if(ddowncode==KeyEvent.VK_S)
               {
-                repaint();
-
                 whatKey="S";
-
-                sdow(99);
-                repaint();
-
               }
               int dleftcode = e.getKeyCode();
               if(dleftcode==KeyEvent.VK_A)
               {
-                repaint();
-
                 whatKey="A";
-
-                adow(99);
-                repaint();
-
               }
               int drightcode = e.getKeyCode();
               if(drightcode==KeyEvent.VK_D)
               {
-                repaint();
-
                 whatKey="D";
-                ddow(99);
-                repaint();
-
               }
-            }
+              velocity(false,true);
+            }//end of released
 
             public void velocity(boolean pressed, boolean released)
             {
