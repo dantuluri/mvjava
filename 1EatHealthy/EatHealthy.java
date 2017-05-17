@@ -1008,7 +1008,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public int addvelo;
           public int subvelo;
 
-
+          public boolean goAway;
 
           public Image donut;
           public Image oatmeal;
@@ -1043,7 +1043,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             avocadoY = 400;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
 
             whatKey="";
-
+            goAway=false;
             addvelo=0;
             subvelo=0;
 
@@ -1139,6 +1139,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public void mousePressed(MouseEvent e)		//every time user clicks method is run
           {
             requestFocus();//requests focus for mouse
+            goAway=true;
             repaint();//calls paintcomponent
           }
           public void mouseClicked(MouseEvent e){} //mouse is clicked
@@ -1665,7 +1666,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   try
                   {
                     wup(speedUp[i]);
-                    Thread.sleep(100);
+                    Thread.sleep(10);
                   }
                   catch(InterruptedException ex)
                   {
@@ -1673,7 +1674,6 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   }
                 }
                 wup(32);
-                repaint();
               }
               while(pressed && whatKey.equals("W"));
 
@@ -1685,7 +1685,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   try
                   {
                     aup(speedUp[i]);
-                    Thread.sleep(100);
+                    Thread.sleep(10);
                   }
                   catch(InterruptedException ex)
                   {
@@ -1693,7 +1693,6 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   }
                 }
                 aup(32);
-                repaint();
               }
               while(pressed && whatKey.equals("A"));
 
@@ -1705,7 +1704,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   try
                   {
                     sup(speedUp[i]);
-                    Thread.sleep(100);
+                    Thread.sleep(10);
                   }
                   catch(InterruptedException ex)
                   {
@@ -1713,7 +1712,6 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   }
                 }
                 sup(32);
-                repaint();
               }
               while(pressed && whatKey.equals("S"));
 
@@ -1725,7 +1723,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   try
                   {
                     dup(speedUp[i]);
-                    Thread.sleep(100);
+                    Thread.sleep(10);
                   }
                   catch(InterruptedException ex)
                   {
@@ -1733,170 +1731,85 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   }
                 }
                 dup(32);
-                repaint();
               }
               while(pressed && whatKey.equals("D"));
-
-
-
-
-            }
-            if(released)
-            {
-              i=0;
-
-              repaint();
-              try
+////pressed////pressed/pressed/pressed/pressed/pressed/pressed
+//32,16,8,4,2,1,0
+              do
               {
-                subvelo=subvelo-speedDown[i];
-                System.out.println("this is the subvelo "+ subvelo);
-                if(whatKey.equals("W"))
+                System.out.println("WUP");
+                for(int i=0; i<7; i++)
                 {
-                  System.out.println("Wdown");
-                  wdow(subvelo);
-                  Thread.sleep(200);
-                  repaint();
+                  try
+                  {
+                    wup(speedDown[i]);
+                    Thread.sleep(5);
+                  }
+                  catch(InterruptedException ex)
+                  {
+                    System.out.println("catch some fish!");
+                  }
                 }
-                if(whatKey.equals("A"))
-                {
-                  System.out.println("Adow");
-                  adow(subvelo);
-                  Thread.sleep(200);
-                  repaint();
-                }
-                if(whatKey.equals("S"))
-                {
-                  System.out.println("Sdow");
-                  oatmealY = sdow(subvelo);
-                  Thread.sleep(200);
-                  repaint();
-                }
-                if(whatKey.equals("D"))
-                {
-                  System.out.println("Ddow");
-                  ddow(subvelo);
-                  Thread.sleep(200);
-                  repaint();
-
-                }
+                wup(0);
               }
-              catch(InterruptedException ex)
+              while(released && whatKey.equals("W"));////////check chcekc check
+
+              do
               {
-                System.out.println("catch some fish!");
+                System.out.println("AUP");
+                for(int i=0; i<7; i++)
+                {
+                  try
+                  {
+                    aup(speedDown[i]);
+                    Thread.sleep(5);
+                  }
+                  catch(InterruptedException ex)
+                  {
+                    System.out.println("catch some fish!");
+                  }
+                }
+                aup(0);
               }
+              while(released && whatKey.equals("A"));////////check chcekc check
 
-            }
-
-
-            ui++;
-          }
-          for(int slowdown = 32; slowdown>0; slowdown=slowdown/2)
-          {
-            System.out.println("speedDown: "+di);
-            repaint();
-            speedDown[di]=slowdown;
-            subvelo=slowdown;
-            if(pressed)
-            {
-              repaint();
-              try
+              do
               {
-                //1,3
-                System.out.println("this is the addvelo: "+addvelo);
-                if(whatKey.equals("W"))
+                System.out.println("SUP");
+                for(int i=0; i<7; i++)
                 {
-                  System.out.println("Wup");
-
-                  wup(addvelo);
-                  Thread.sleep(300);
-                  repaint();
-
+                  try
+                  {
+                    sup(speedDown[i]);
+                    Thread.sleep(5);
+                  }
+                  catch(InterruptedException ex)
+                  {
+                    System.out.println("catch some fish!");
+                  }
                 }
-
-                if(whatKey.equals("A"))
-                {
-                  System.out.println("Aup");
-
-                  aup(addvelo);
-                  Thread.sleep(300);
-                  repaint();
-
-                }
-                if(whatKey.equals("S"))
-                {
-                  System.out.println("Sup");
-
-                  sup(addvelo);
-                  Thread.sleep(300);
-                  repaint();
-
-                }
-                if(whatKey.equals("D"))
-                {
-                  System.out.println("Dup");
-                  dup(addvelo);
-                  Thread.sleep(300);
-                  repaint();
-                }
+                sup(0);
               }
-              catch(InterruptedException ex)
+              while(released && whatKey.equals("S"));////////check chcekc check
+
+              do
               {
-                System.out.println("catch some fish!");
+                System.out.println("DUP");
+                for(int i=0; i<7; i++)
+                {
+                  try
+                  {
+                    dup(speedDown[i]);
+                    Thread.sleep(5);
+                  }
+                  catch(InterruptedException ex)
+                  {
+                    System.out.println("catch some fish!");
+                  }
+                }
+                dup(0);
               }
-
-            }
-            if(released)
-            {
-              i=0;
-
-              repaint();
-              try
-              {
-                subvelo=subvelo-speedDown[i];
-                System.out.println("this is the subvelo "+ subvelo);
-                if(whatKey.equals("W"))
-                {
-                  System.out.println("Wdown");
-                  wdow(subvelo);
-                  Thread.sleep(200);
-                  repaint();
-                }
-                if(whatKey.equals("A"))
-                {
-                  System.out.println("Adow");
-                  adow(subvelo);
-                  Thread.sleep(200);
-                  repaint();
-                }
-                if(whatKey.equals("S"))
-                {
-                  System.out.println("Sdow");
-                  sdow(subvelo);
-                  Thread.sleep(200);
-                  repaint();
-                }
-                if(whatKey.equals("D"))
-                {
-                  System.out.println("Ddow");
-                  ddow(subvelo);
-                  Thread.sleep(200);
-                  repaint();
-
-                }
-              }
-              catch(InterruptedException ex)
-              {
-                System.out.println("catch some fish!");
-              }
-
-            }
-
-            di++;
-          }
-          //start velocity
-
-          ///////end
-
+              while(released && whatKey.equals("D"));////////check chcekc check
 
         }//end of velocity
 
@@ -1905,6 +1818,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           super.paintComponent(g);
           //Graphics2D g = donutm.createGraphics();    // Get a Graphics2D object
           g.drawImage(mouthBackground,0,0,800,800,this);
+          JOptionPane.showMessageDialog(mouthProcess, "Instructions", "Click anywhere on the screen to being after clicking OK to this message!", JOptionPane.INFORMATION_MESSAGE);
 
           if(food.equals("oatmeal"))
           {
@@ -1932,7 +1846,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           g.setFont(aldo);
           g.setColor(Color.ORANGE);
           g.drawString("Press the screen once in order to move the food/drinks with the WASD controls",5,690);
-          g.dispose();
+          //g.dispose();
 
         }//end of paintcomponent
 
