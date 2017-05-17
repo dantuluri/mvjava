@@ -42,6 +42,7 @@ public class GardenGrows//instantiates gardengrows class
 	private boolean shiftkey;
 	private boolean clicked;
 	private boolean watered;
+    public boolean wout;
 	private int clearcode;
 	private boolean mouseWater;
 	private boolean mouseFlower;
@@ -120,6 +121,10 @@ public class GardenGrows//instantiates gardengrows class
             {
                 shiftkey=true;//sets up boolean as true if shiftkey is pressed or not
                 System.out.println("the shift key");
+                if(wout)
+                {
+                    System.out.println("keykeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedkeyReleasedReleased");
+                }
             }
             int number5code = e.getKeyCode();
             if(shiftkey && number5code==KeyEvent.VK_5)//if keycode is set up then paints in paintcomponent
@@ -146,6 +151,7 @@ public class GardenGrows//instantiates gardengrows class
             int downcode = e.getKeyCode();
             if(downcode==KeyEvent.VK_S)
             {
+                wout=true;
                 System.out.println("RELEASSSSSSSSSSSSSSSSSSSSSSEDEJARELEASSSSSSSSSSSSSSSSSSSSSSEDEJA");
             }
 

@@ -44,6 +44,8 @@ Propmt user telling them that calvin will feel bad if you feed him the SAME FOOD
 ///////////////////////// import Classes needed for Layouts ////////////////////////
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.util.Observable;
+import java.util.Observer;
 import java.awt.Component;
 import java.awt.Color;     //imports abstract window toolkit
 import java.awt.Dimension;
@@ -979,13 +981,16 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-        class MouthPanel extends JPanel implements MouseListener, KeyListener, ImageObserver//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
+        class MouthPanel extends JPanel implements MouseListener, KeyListener, Observer//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
         //   //also tied in with MouthQuiz to ask questions regarding the class
         {
           // private BufferedImage donutm;
           // private BufferedImage sodam;
           // private BufferedImage oatmealm;
           // private BufferedImage avocadom;
+
+          public String keychange;
+
 
           public String whatKey;
 
@@ -1007,7 +1012,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public Image mouthBackground;
           private boolean shiftkey;
 
-
+          public boolean wout;
 
           public int addy;
           public int subby;
@@ -1029,12 +1034,9 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public int donutX, donutY, oatmealX, oatmealY, sodaX, sodaY, avocadoX, avocadoY;
 
 
-          public MouthPanel(Image donut, Image oatmeal, Image avocado, Image soda)
+          public MouthPanel()
           {
-            this.donut=donut;
-            this.oatmeal=oatmeal;
-            this.avocado=avocado;
-            this.soda=soda;
+
 
             setBackground(Color.RED);//set background to yello
             mouthBackgroundName= ("mouth.png");
@@ -1196,6 +1198,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
           }//end of pressed
           ////////////////////////////////////////////////////////
+          ////////////////////////////////////////////////////////
+          ////////////////////////////////////////////////////////
+          ////////////////////////////////////////////////////////
+          ////////////////////////////////////////////////////////
+          ////////////////////////////////////////////////////////
 
           public void wup(int addy)
           {
@@ -1206,12 +1213,19 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               oatmealY = oatmealY-addy;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
               repaint();
               System.out.println("new OatMeal "+oatmealY);
-
               if(addy==32)
               {
                 for(int i=0; i>-1; i++)
                 {
                   oatmealY = oatmealY-32;
+                  if(oatmealY<1)
+                  {
+                    oatmealY=0;
+                  }
+                  if(oatmealY>799)
+                  {
+                    oatmealY=799;
+                  }
                   System.out.println("32 oatmealY: "+oatmealY);
                 }
 
@@ -1669,9 +1683,13 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public void keyTyped(KeyEvent e){}
             public void keyReleased(KeyEvent e)
             {
+
+              requestFocus();
+
               int dupcode = e.getKeyCode();//looks for shiftkey
               if(dupcode==KeyEvent.VK_W)//runs if shiftkey is pressed
               {
+                System.out.println("W HAS BEEN RELEASED KEY");
                 whatKey="W";
                 velocity(false,true);
 
@@ -1770,6 +1788,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 {
                   try
                   {
+                    if(released) break;
                     sup(speedUp[i]);
                     Thread.sleep(100);
                   }
@@ -1789,6 +1808,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 {
                   try
                   {
+                    if(released);
                     dup(speedUp[i]);
                     Thread.sleep(100);
                   }
@@ -1800,16 +1820,16 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 dup(32);
               }
               while(pressed && whatKey.equals("D"));
-////pressed////pressed/pressed/pressed/pressed/pressed/pressed
+////lifted////presslifteded/pressed/pressed/pressed/pressed/pressed
 //32,16,8,4,2,1,0
               do
               {
-                System.out.println("WUP");
+                System.out.println("WDOW");
                 for(int i=0; i<7; i++)
                 {
                   try
                   {
-                    wup(speedDown[i]);
+                    wdow(speedDown[i]);
                     Thread.sleep(50);
                   }
                   catch(InterruptedException ex)
@@ -1817,7 +1837,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                     System.out.println("catch some fish!");
                   }
                 }
-                wup(0);
+                wdow(0);
               }
               while(released && whatKey.equals("W"));////////check chcekc check
 
@@ -1828,7 +1848,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 {
                   try
                   {
-                    aup(speedDown[i]);
+                    adow(speedDown[i]);
                     Thread.sleep(50);
                   }
                   catch(InterruptedException ex)
@@ -1836,7 +1856,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                     System.out.println("catch some fish!");
                   }
                 }
-                aup(0);
+                adow(0);
               }
               while(released && whatKey.equals("A"));////////check chcekc check
 
@@ -1847,7 +1867,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 {
                   try
                   {
-                    sup(speedDown[i]);
+                    sdow(speedDown[i]);
                     Thread.sleep(50);
                   }
                   catch(InterruptedException ex)
@@ -1855,7 +1875,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                     System.out.println("catch some fish!");
                   }
                 }
-                sup(0);
+                sdow(0);
               }
               while(released && whatKey.equals("S"));////////check chcekc check
 
@@ -1866,7 +1886,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 {
                   try
                   {
-                    dup(speedDown[i]);
+                    ddow(speedDown[i]);
                     Thread.sleep(50);
                   }
                   catch(InterruptedException ex)
@@ -1874,7 +1894,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                     System.out.println("catch some fish!");
                   }
                 }
-                dup(0);
+                ddow(0);
               }
               while(released && whatKey.equals("D"));////////check chcekc check
 
@@ -1890,18 +1910,18 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 //Click anywhere on the screen to being after clicking OK to this message!
           if(food.equals("oatmeal"))
           {
-            g.drawImage(oatmeal,oatmealX,oatmealY,40,40,ImageObserver observer);
+            g.drawImage(oatmeal,oatmealX,oatmealY,40,40,this);
           }
           if(food.equals("soda"))
           {
 
-            g.drawImage(soda,sodaX,sodaY,40,40,ImageObserver observer);
+            g.drawImage(soda,sodaX,sodaY,40,40,this);
             repaint();
 
           }
           if(food.equals("avocado"))
           {
-            g.drawImage(avocado,avocadoX,avocadoY,40,40,ImageObserver observer);
+            g.drawImage(avocado,avocadoX,avocadoY,40,40,this);
             repaint();
 
           }
