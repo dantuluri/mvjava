@@ -174,6 +174,7 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
   {
     System.out.println("class EatHealthy main method");
     EatHealthy eaty = new EatHealthy();
+
   }
 
   public EatHealthy()//initializes location, size, close operation, and sets up canvas for landing page as well as intitalize panels/layouts
@@ -232,7 +233,7 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
     // pHolder.add(ending, "EndingPanel");
     add(pHolder);//adds panel holder to the frame
     setVisible(true);//sets the panel to be visible
-
+    mouthProcess.start();
     //welcomePan.setBounds(0, 0, 800, 600);
   }
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -981,10 +982,408 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-        class MouthPanel extends JPanel implements MouseListener, KeyListener//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
+        class MouthPanel extends JPanel implements MouseListener, KeyListener, Runnable//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
         //   //also tied in with MouthQuiz to ask questions regarding the class
         {
-      
+          // private BufferedImage donutm;
+          // private BufferedImage sodam;
+          // private BufferedImage oatmealm;
+          // private BufferedImage avocadom;
+
+          public String keychange;
+
+
+          public String whatKey;
+
+          public int oatmealwidth;
+          public int oatmealheight;
+          public int sodawidth;
+          public int sodaheight;
+          public int donutheight;
+          public int donutwidth;
+          public int avocadowidth;
+          public int avocadoheight;
+
+          private boolean running = false;
+          private Thread thread;
+
+          private BufferedImage image= new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+
+          public String slow;
+
+          public int foodX;
+          public int foodY;
+
+          public Image mouthBackground;
+          private boolean shiftkey;
+
+          public boolean wout;
+
+          public int addy;
+          public int subby;
+
+          public boolean goAway;
+
+          public Image donut;
+          public Image oatmeal;
+          public Image soda;
+          public Image avocado;
+
+          public String mouthBackgroundName;
+          public String donutName;//file name
+          public String avocadoName;//file name
+          public String sodaName;//file name
+          public String oatmealName;//file name
+
+
+          public int donutX, donutY, oatmealX, oatmealY, sodaX, sodaY, avocadoX, avocadoY;
+
+
+          public MouthPanel()
+          {
+
+
+            setBackground(Color.RED);//set background to yello
+            mouthBackgroundName= ("mouth.png");
+            donutName= ("donut.png");//file name
+            avocadoName= ("avocado.png");//file name
+            sodaName= ("soda.png");//file name
+            oatmealName= ("oatmeal.png");//file name
+            donutX = 20;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
+            donutY = 400;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+            oatmealX = 20;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+            oatmealY = 400;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+            sodaX = 20;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
+            sodaY = 400;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+            avocadoX = 20;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+            avocadoY = 400;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+
+            whatKey="";
+            goAway=false;
+            addy=0;
+            subby=0;
+
+            //             BufferedImage off_Image =
+            //   new BufferedImage(100, 50,
+            //                     BufferedImage.TYPE_INT_ARGB);
+            //
+            // Graphics2D g2 = off_Image.createGraphics();
+
+            setLayout(flow);//sets the layout to flow
+            //Card Layout made( needs more pseudocode)
+            setLocation(0,0);//sets panel origin
+
+            System.out.println("MouthPanel reached");
+            addMouseListener(this);
+            addKeyListener(this);//adds KeyListener
+            run();
+          }//end of mouthconstructor
+
+
+          public void init()
+          {
+            BufferedImageLoader loader = new BufferedImageLoader();
+
+            System.out.println("**************");
+            System.out.println("File names:");
+            File file = new File(".");
+            for(String fileNames : file.list()) System.out.println(fileNames);
+            System.out.println("**************");
+
+            System.out.println("Trying to load image...");
+
+            try{
+                spriteSheet = loader.loadImage("donut.png");
+            }catch(IOException e){
+            }
+            System.out.println("Image loaded!");
+
+            SpriteSheet ss = new SpriteSheet(spriteSheet);
+            player = ss.grabImage(1,1,32,32);
+
+          }
+          private synchronized void start()
+          {
+            if(running)
+            return;
+
+            running = true;
+            thread = new Thread(this);
+            thread.start();
+          }
+
+          private synchronized void stop()
+          {
+            if(!running)
+            return;
+            running = false;
+            try
+            {
+              thread.join();
+            }
+            catch(InterruptedException e)
+            {
+              e.printStackTrace();
+            }
+            System.exit(1);
+          }
+
+
+          public void run()//timer
+          {
+            init();
+            long lastTime = System.nanoTime();
+            final double amountOfTicks = 60.0;
+            double ns = 1000000000 / amountOfTicks;
+            double delta = 0;
+            int updates  = 0;
+            int frames = 0;
+            long timer = System.currentTimeMillis();
+            while(running)
+            {
+              long now = System.nanoTime();
+              delta += (now - lastTime) / ns;
+              lastTime = now;
+              if(delta>=1)
+              {
+                tick();
+                updates++;
+                delta--;
+              }
+              render();
+              frames++;
+
+              if(System.currentTimeMillis()-timer>1000)
+              {
+                timer +=1000;
+                System.out.println(updates+"Ticks, " +frames);
+                updates = 0;
+                frames = 0;
+              }
+            }
+            stop();
+            getMyImage();
+          }
+
+
+          private void tick()
+          {
+
+          }
+
+          private void render()
+          {
+            BufferStrategy bs = this.getBufferStrategy();
+
+            if(bs==null)
+            {
+              createBufferStrategy(3);
+              return;
+            }
+            Graphics g  = bs.getDrawGraphics();
+            //////draw here
+            g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+            //////
+            g.dispose();
+            bs.show();
+          }
+
+          public void getMyImage()//gets image for use
+          {
+            try
+            {
+              // Image i = javax.swing.ImageIcon("myimage.gif").getImage();
+
+              mouthBackground=ImageIO.read(new File(mouthBackgroundName));
+              System.out.println("mouthBackground");
+              System.out.println("i tried to get metMyImageio suryas");
+
+
+              // File oatmeal = new File(oatmealName);
+              // BufferedImage oatmealm = ImageIO.read(oatmeal);
+              oatmeal = ImageIO.read(new File(oatmealName));
+              System.out.println("buffered oatmealsm");
+              // oatmealwidth = oatmealm.getWidth();
+              // oatmealheight = oatmealm.getHeight();
+
+
+              // File soda = new File(sodaName);
+              // BufferedImage sodam = ImageIO.read(soda);
+              soda = ImageIO.read(new File(sodaName));
+              System.out.println("buffered sodams");
+              // sodawidth = sodam.getWidth();
+              // sodaheight = sodam.getHeight();
+
+
+              // File avocado = new File(avocadoName);
+              // BufferedImage avocadom = ImageIO.read(avocado);
+              avocado = ImageIO.read(new File(avocadoName));
+              System.out.println("buffered avocadoms");
+              // avocadowidth = avocadom.getWidth();
+              // avocadoheight = avocadom.getHeight();
+
+
+
+
+              // File donut = new File(donutName);
+              // BufferedImage donutm = ImageIO.read(donut);
+              // BufferedImage donutm = ImageIO.read(getClass().getResource("donut.png"));
+              donut = ImageIO.read(new File(donutName));
+              System.out.println("buffered donutm");
+              // donutwidth = donutm.getWidth();
+              // donutheight = donutm.getHeight();
+
+
+
+
+            }
+            catch(IOException e)
+            {
+              System.err.println("\n\n"+mouthBackgroundName+"can't be found. \n\n");
+              System.out.println("catched mouthBackground");
+              System.err.println("\n\n"+donutName+"can't be found. \n\n");
+              System.out.println("catched donut");
+              System.err.println("\n\n"+oatmealName+"can't be found. \n\n");
+              System.out.println("catched oatmeal");
+              System.err.println("\n\n"+sodaName+"can't be found. \n\n");
+              System.out.println("catched soda");
+              System.err.println("\n\n"+avocadoName+"can't be found. \n\n");
+              System.out.println("catched avocado");
+
+              e.printStackTrace();
+            }
+          }//end of get my image
+
+          public void mousePressed(MouseEvent e)		//every time user clicks method is run
+          {
+            requestFocus();//requests focus for mouse
+            System.out.println("start click");
+            repaint();//calls paintcomponent
+          }
+          public void mouseClicked(MouseEvent e){} //mouse is clicked
+          public void mouseReleased(MouseEvent e){} //mouse is released
+          public void mouseEntered(MouseEvent e){} //mouse is entered
+          public void mouseExited(MouseEvent e){} //mouse exits
+
+
+          public void keyPressed(KeyEvent e)
+          {
+            keychange=""+e;
+
+            System.out.println("keyP");
+            requestFocus();
+            int upcode = e.getKeyCode();//looks for shiftkey
+            if(upcode==KeyEvent.VK_W)//runs if shiftkey is pressed
+            {
+              whatKey="W";
+              System.out.println("whatKey W in keyPressed");
+
+            }
+            int downcode = e.getKeyCode();
+            if(downcode==KeyEvent.VK_S)
+            {
+              whatKey="S";
+              System.out.println("whatKey S in keyPressed");
+
+            }
+            int leftcode = e.getKeyCode();
+            if(leftcode==KeyEvent.VK_A)
+            {
+              whatKey="A";
+              System.out.println("whatKey A in keyPressed");
+
+            }
+            int rightcode = e.getKeyCode();
+            if(rightcode==KeyEvent.VK_D)
+            {
+
+              whatKey="D";
+              System.out.println("whatKey D in keyPressed");
+
+            }
+          }//end of pressed
+          ////////////////////////////////////////////////////////
+          ////////////////////////////////////////////////////////
+          ////////////////////////////////////////////////////////
+          ////////////////////////////////////////////////////////
+          ////////////////////////////////////////////////////////
+          ////////////////////////////////////////////////////////
+
+          //////////////////////////////////////////////////////////////////////////
+          public void keyTyped(KeyEvent e){}
+            public void keyReleased(KeyEvent e)
+            {
+              keychange=""+e;
+              int dupcode = e.getKeyCode();//looks for shiftkey
+              if(dupcode==KeyEvent.VK_W)//runs if shiftkey is pressed
+              {
+                System.out.println("W HAS BEEN RELEASED KEY");
+                whatKey="W";
+
+              }
+              int ddowncode = e.getKeyCode();
+              if(ddowncode==KeyEvent.VK_S)
+              {
+                whatKey="S";
+
+              }
+              int dleftcode = e.getKeyCode();
+              if(dleftcode==KeyEvent.VK_A)
+              {
+                whatKey="A";
+
+              }
+              int drightcode = e.getKeyCode();
+              if(drightcode==KeyEvent.VK_D)
+              {
+                whatKey="D";
+
+              }
+            }//end of released
+
+
+
+
+        public void paintComponent(Graphics g)
+        {
+          super.paintComponent(g);
+          //Graphics2D g = donutm.createGraphics();    // Get a Graphics2D object
+          g.drawImage(mouthBackground,0,0,800,800,this);
+          // JOptionPane.showMessageDialog (null, "Instructions", "Click anywhere on the screen to being after clicking OK to this message!", JOptionPane.INFORMATION_MESSAGE);
+
+//Click anywhere on the screen to being after clicking OK to this message!
+          if(food.equals("oatmeal"))
+          {
+            g.drawImage(oatmeal,oatmealX,oatmealY,40,40,this);
+          }
+          if(food.equals("soda"))
+          {
+
+            g.drawImage(soda,sodaX,sodaY,40,40,this);
+            //repaint();
+
+          }
+          if(food.equals("avocado"))
+          {
+            g.drawImage(avocado,avocadoX,avocadoY,40,40,this);
+            //repaint();
+
+          }
+          if(food.equals("donut"))
+          {
+            g.drawImage(donut,donutX,donutY,40,40,this);// IF THE DONUT IS SELECTED
+            //repaint();
+          }
+          Font aldo = new Font ("Apple Casual", Font.BOLD, 8);
+          g.setFont(aldo);
+          g.setColor(Color.ORANGE);
+          g.drawString("Press the screen once in order to move the food/drinks with the WASD controls",5,690);
+          //g.dispose();
+
+        }//end of paintcomponent
+
+
+
       }//end of mouth panel
 
 
