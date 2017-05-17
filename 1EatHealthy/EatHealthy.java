@@ -47,6 +47,18 @@ import java.awt.CardLayout;
 import java.util.Observable;
 import java.util.Observer;
 import java.awt.Component;
+
+
+
+
+
+
+
+
+
+
+
+
 import java.awt.Color;     //imports abstract window toolkit
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -93,12 +105,34 @@ import javax.swing.SwingUtilities;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
-
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.imageio.ImageIO;
-
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
+import java.awt.Canvas;
+import java.awt.Dimension;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import java.awt.Graphics2D;
+import java.awt.Color;
+import java.awt.DisplayMode;
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
+import java.awt.Canvas;
+import java.awt.Dimension;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.awt.image.BufferStrategy;
+
 
 
 
@@ -220,7 +254,7 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
     pHolder.add(welcomeHold, "WelcomeHolder");//adds the WelcomeHolder to the panel holder panel
     pHolder.add(landingPan, "LandingPage");//adds the landing panel to the panel holder panel
     //pHolder.add(healthyBar, "HealthyBarPanel");
-    pHolder.add(mouthProcess, "MouthPanel");
+    pHolder.add(mouthcanvas, "MouthPanel");
     pHolder.add(mouthQuiz, "MouthQuestions");
     // pHolder.add(esophogousProcess, "EsophogousPanel");
     // pHolder.add(esophogousQuiz, "EsophogousQuestions");
@@ -1008,6 +1042,9 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           private Thread thread;
 
           private BufferedImage image= new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+          private BufferedImage spriteSheet = null;
+
+          private Player p;
 
           public String slow;
 
@@ -1083,24 +1120,24 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public void init()
           {
             BufferedImageLoader loader = new BufferedImageLoader();
-
+            String fileName = "donut.png";
             System.out.println("**************");
             System.out.println("File names:");
-            File file = new File(".");
-            for(String fileNames : file.list()) System.out.println(fileNames);
+            File file = new File("donut.png");
+            for(String fileName : file.list()) System.out.println(fileName);
             System.out.println("**************");
 
             System.out.println("Trying to load image...");
 
+
             try{
-                spriteSheet = loader.loadImage("donut.png");
+              donut = ImageIO.read(new File("donut.png"));
             }catch(IOException e){
             }
             System.out.println("Image loaded!");
 
-            SpriteSheet ss = new SpriteSheet(spriteSheet);
-            player = ss.grabImage(1,1,32,32);
-
+            p = new Player(200,200,this)
+;
           }
           private synchronized void start()
           {
@@ -1114,15 +1151,13 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
           private synchronized void stop()
           {
-            if(!running)
+            if (!running)
             return;
+
             running = false;
-            try
-            {
+            try {
               thread.join();
-            }
-            catch(InterruptedException e)
-            {
+            } catch (InterruptedException e) {
               e.printStackTrace();
             }
             System.exit(1);
@@ -1131,21 +1166,18 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
           public void run()//timer
           {
-            init();
             long lastTime = System.nanoTime();
             final double amountOfTicks = 60.0;
-            double ns = 1000000000 / amountOfTicks;
+            double  ns = 1000000000 / amountOfTicks;
             double delta = 0;
-            int updates  = 0;
+            int updates = 0;
             int frames = 0;
             long timer = System.currentTimeMillis();
-            while(running)
-            {
+            while(running){
               long now = System.nanoTime();
               delta += (now - lastTime) / ns;
               lastTime = now;
-              if(delta>=1)
-              {
+              if(delta >= 1){
                 tick();
                 updates++;
                 delta--;
@@ -1153,28 +1185,28 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               render();
               frames++;
 
-              if(System.currentTimeMillis()-timer>1000)
-              {
-                timer +=1000;
-                System.out.println(updates+"Ticks, " +frames);
+              if(System.currentTimeMillis() - timer > 1000){
+                timer += 1000;
+                System.out.println(updates + " Ticks, Fps " + frames);
                 updates = 0;
                 frames = 0;
               }
+
+
+
             }
             stop();
-            getMyImage();
           }
 
 
           private void tick()
           {
-
+            p.tick();
           }
 
           private void render()
           {
-            BufferStrategy bs = this.getBufferStrategy();
-
+            BufferStrategy bs = getBufferStrategy();
             if(bs==null)
             {
               createBufferStrategy(3);
@@ -1183,9 +1215,15 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             Graphics g  = bs.getDrawGraphics();
             //////draw here
             g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+            p.render(g);
             //////
             g.dispose();
             bs.show();
+          }
+
+          public BufferedImage getSpriteSheet()
+          {
+            return spriteSheet;
           }
 
           public void getMyImage()//gets image for use
@@ -1344,91 +1382,91 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
 
 
-        public void paintComponent(Graphics g)
-        {
-          super.paintComponent(g);
-          //Graphics2D g = donutm.createGraphics();    // Get a Graphics2D object
-          g.drawImage(mouthBackground,0,0,800,800,this);
-          // JOptionPane.showMessageDialog (null, "Instructions", "Click anywhere on the screen to being after clicking OK to this message!", JOptionPane.INFORMATION_MESSAGE);
+            public void paintComponent(Graphics g)
+            {
+              super.paintComponent(g);
+              //Graphics2D g = donutm.createGraphics();    // Get a Graphics2D object
+              g.drawImage(mouthBackground,0,0,800,800,this);
+              // JOptionPane.showMessageDialog (null, "Instructions", "Click anywhere on the screen to being after clicking OK to this message!", JOptionPane.INFORMATION_MESSAGE);
 
-//Click anywhere on the screen to being after clicking OK to this message!
-          if(food.equals("oatmeal"))
+              //Click anywhere on the screen to being after clicking OK to this message!
+              if(food.equals("oatmeal"))
+              {
+                g.drawImage(oatmeal,oatmealX,oatmealY,40,40,this);
+              }
+              if(food.equals("soda"))
+              {
+
+                g.drawImage(soda,sodaX,sodaY,40,40,this);
+                //repaint();
+
+              }
+              if(food.equals("avocado"))
+              {
+                g.drawImage(avocado,avocadoX,avocadoY,40,40,this);
+                //repaint();
+
+              }
+              if(food.equals("donut"))
+              {
+                g.drawImage(donut,donutX,donutY,40,40,this);// IF THE DONUT IS SELECTED
+                //repaint();
+              }
+              Font aldo = new Font ("Apple Casual", Font.BOLD, 8);
+              g.setFont(aldo);
+              g.setColor(Color.ORANGE);
+              g.drawString("Press the screen once in order to move the food/drinks with the WASD controls",5,690);
+              //g.dispose();
+
+            }//end of paintcomponent
+
+
+
+          }//end of mouth panel
+
+
+          class MouthQuestions extends JPanel
           {
-            g.drawImage(oatmeal,oatmealX,oatmealY,40,40,this);
+            public MouthQuestions()
+            {
+              System.out.println("mouthquiz");
+            }
           }
-          if(food.equals("soda"))
-          {
+          // helping
+          // int x, y; //of the thing you're controlling
+          // int speed = 5; //how fast you want to move your ting
+          // BufferedImage img = ImageIO.read("mouthpic.png");
+          //
+          // //In the key method
+          //
+          // if(up) {
+          //   boolean collided = false;
+          //   for(int i = 0; i < speed; i++) {
+          //     int val = img.getRGB(x, y - i); //getRGB returns the color of the pixel, y - i because going up, & 0xffffff to get rid of first 8 bytes of color (unecessary right now)
+          //     if(val == 0) {
+          //       collided = true;
+          //     }
+          //   }
+          //   if(collided) y -= speed;
+          // }
+          //  }
 
-            g.drawImage(soda,sodaX,sodaY,40,40,this);
-            //repaint();
-
-          }
-          if(food.equals("avocado"))
-          {
-            g.drawImage(avocado,avocadoX,avocadoY,40,40,this);
-            //repaint();
-
-          }
-          if(food.equals("donut"))
-          {
-            g.drawImage(donut,donutX,donutY,40,40,this);// IF THE DONUT IS SELECTED
-            //repaint();
-          }
-          Font aldo = new Font ("Apple Casual", Font.BOLD, 8);
-          g.setFont(aldo);
-          g.setColor(Color.ORANGE);
-          g.drawString("Press the screen once in order to move the food/drinks with the WASD controls",5,690);
-          //g.dispose();
-
-        }//end of paintcomponent
-
-
-
-      }//end of mouth panel
-
-
-      class MouthQuestions extends JPanel
-      {
-        public MouthQuestions()
-        {
-          System.out.println("mouthquiz");
         }
-      }
-      // helping
-      // int x, y; //of the thing you're controlling
-      // int speed = 5; //how fast you want to move your ting
-      // BufferedImage img = ImageIO.read("mouthpic.png");
-      //
-      // //In the key method
-      //
-      // if(up) {
-      //   boolean collided = false;
-      //   for(int i = 0; i < speed; i++) {
-      //     int val = img.getRGB(x, y - i); //getRGB returns the color of the pixel, y - i because going up, & 0xffffff to get rid of first 8 bytes of color (unecessary right now)
-      //     if(val == 0) {
-      //       collided = true;
-      //     }
-      //   }
-      //   if(collided) y -= speed;
-      // }
-      //  }
 
-    }
+        /*
+        Why don't you just setLayout(null) on the parent panel and then, before adding the sub panel to parent , set it's position and dimensions using it's setBounds method. This way there is no need to use paintComponent for positioning the sub panel.
 
-    /*
-    Why don't you just setLayout(null) on the parent panel and then, before adding the sub panel to parent , set it's position and dimensions using it's setBounds method. This way there is no need to use paintComponent for positioning the sub panel.
+        Is case you parent panel should have specific layout with other components and sub should overlay all that, look into JLayer(Java 7) / JXLayer(Java 6).
 
-    Is case you parent panel should have specific layout with other components and sub should overlay all that, look into JLayer(Java 7) / JXLayer(Java 6).
+        Third solution can be using JLayeredPane.
+        */
 
-    Third solution can be using JLayeredPane.
-    */
-
-    //
-    // BufferedImage in = ImageIO.read(img);
-    //
-    // BufferedImage newImage = new BufferedImage(
-    //     in.getWidth(), in.getHeight(), BufferedImage.TYPE_INT_ARGB);
-    //
-    // Graphics2D g = newImage.createGraphics();
-    // g.drawImage(in, 0, 0, null);
-    // g.dispose();
+        //
+        // BufferedImage in = ImageIO.read(img);
+        //
+        // BufferedImage newImage = new BufferedImage(
+        //     in.getWidth(), in.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        //
+        // Graphics2D g = newImage.createGraphics();
+        // g.drawImage(in, 0, 0, null);
+        // g.dispose();
