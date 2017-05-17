@@ -268,6 +268,7 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
     add(pHolder);//adds panel holder to the frame
     setVisible(true);//sets the panel to be visible
     mouthProcess.start();
+    mouthProcess.p = new Player(800,800,this);
     //welcomePan.setBounds(0, 0, 800, 600);
   }
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1041,15 +1042,17 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           private boolean running = false;
           private Thread thread;
 
+          private Player p;
           private BufferedImage image= new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
           private BufferedImage spriteSheet = null;
 
-          private Player p;
 
           public String slow;
 
           public int foodX;
           public int foodY;
+
+          public boolean playera;
 
           public Image mouthBackground;
           private boolean shiftkey;
@@ -1120,11 +1123,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public void init()
           {
             BufferedImageLoader loader = new BufferedImageLoader();
-            String fileName = "donut.png";
+            // String fileName = "donut.png";
             System.out.println("**************");
             System.out.println("File names:");
             File file = new File("donut.png");
-            for(String fileName : file.list()) System.out.println(fileName);
+            for( String fileName : file.list()) System.out.println(fileName);
             System.out.println("**************");
 
             System.out.println("Trying to load image...");
@@ -1136,8 +1139,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
             System.out.println("Image loaded!");
 
-            p = new Player(200,200,this)
-;
+            playera=true;
           }
           private synchronized void start()
           {
