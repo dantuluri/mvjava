@@ -103,7 +103,6 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
   public String input;
   public JTextField enterName;
   private LandingPage lancanvas;
-  private MouthPanel mouthcanvas;
   public String food;
   public int fiber;
   public int protein;
@@ -113,7 +112,8 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
   private WelcomePanelHolder welcomeHold;
   private LandingPage landingPan;//where the user is most of the time
 
-  private DigestivePanel digestion;
+
+  private DigestivePanel digestcanvas;
   private DigestionQuestions digestQuiz;
 
   private EndingPanel ending;
@@ -145,23 +145,16 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
     pHolder.setLayout(cards);//sets the layout of the panel holder as cards to switch panels
     welcomeHold = new WelcomePanelHolder();//initializes the WelcomePanelHolder
     landingPan = new LandingPage();//initializes the WelcomePanelHolder
-    digestion = new DigestivePanel();
+    digestcanvas = new DigestivePanel();
     digestQuiz = new DigestionQuestions();
     ending = new EndingPanel();
 
     pHolder.add(welcomeHold, "WelcomeHolder");//adds the WelcomeHolder to the panel holder panel
     pHolder.add(landingPan, "LandingPage");//adds the landing panel to the panel holder panel
     //pHolder.add(healthyBar, "HealthyBarPanel");
-    pHolder.add(mouthProcess, "MouthPanel");
-    pHolder.add(mouthQuiz, "MouthQuestions");
-    pHolder.add(esophogousProcess, "EsophogousPanel");
-    pHolder.add(esophogousQuiz, "EsophogousQuestions");
-    pHolder.add(stomachProcess, "StomachPanel");
-    pHolder.add(stomachQuiz, "StomachQuestions");
-    pHolder.add(smallIntestineProcess, "SmallIntestinePanel");
-    pHolder.add(smallintestineQuiz, "SmallIntestineQuestions");
-    pHolder.add(largeIntestineProcess, "LargeIntestinePanel");
-    pHolder.add(largeIntestineQuiz, "LargeIntestineQuestions");
+    pHolder.add(digestcanvas, "Digestion");
+    pHolder.add(digestQuiz, "DigestionQuestions");
+
     pHolder.add(ending, "EndingPanel");
     add(pHolder);//adds panel holder to the frame
     setVisible(true);//sets the panel to be visible
@@ -898,14 +891,19 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public Image mouthBackground;
           public Image esophogousBackground;
           public Image stomachBackground;
-          public Image smallintestineBackground;
+          public Image smallIntestineBackground;
           public Image largeIntestineBackground;
           public Image donut;
           public Image oatmeal;
           public Image soda;
           public Image avocado;
 
+
           public String mouthBackgroundName;
+          public String esophogousBackgroundName;
+          public String stomachBackgroundName;
+          public String smallIntestineBackgroundName;
+          public String largeIntestineBackgroundName;
           public String donutName;//file name
           public String avocadoName;//file name
           public String sodaName;//file name
@@ -925,7 +923,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             sodaY=0;
             avocadoX=0;
             avocadoY=0;
-            inMouth=0;
+            inMouth=false;
             doneMouth=false;
              inEsophogous=false;
              doneEsophogous=false;
@@ -956,8 +954,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             mouthBackgroundName= ("mouth.png");
             esophogousBackgroundName= ("esophogous.png");
             stomachBackgroundName= ("stomach.png");
-            smallintestineBackgroundName= ("smallintestine.png");
-            largeintestineBackgroundName= ("largeintestine.png");
+            smallIntestineBackgroundName= ("smallintestine.png");
+            largeIntestineBackgroundName= ("largeintestine.png");
             donutName= ("donut.png");//file name
             avocadoName= ("avocado.png");//file name
             sodaName= ("soda.png");//file name
@@ -1011,14 +1009,18 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
               mouthBackground=ImageIO.read(new File(mouthBackgroundName));
               System.out.println("mouthBackground");
-              System.out.println("i tried to get metMyImageio suryas");
 
               esophogousBackground=ImageIO.read(new File(esophogousBackgroundName));
-              System.out.println("mouthBackground");
-              System.out.println("i tried to get metMyImageio suryas");
+              System.out.println("esophogousBackground");
 
-              oatmeal = ImageIO.read(new File(oatmealName));
-              System.out.println("buffered oatmealsm");
+              stomachBackground = ImageIO.read(new File(stomachBackgroundName));
+              System.out.println("stomachBackground");
+
+              smallIntestineBackground = ImageIO.read(new File(smallIntestineBackgroundName));
+              System.out.println("smallIntestineBackground");
+
+              largeIntestineBackground = ImageIO.read(new File(largeIntestineBackgroundName));
+              System.out.println("largeIntestineBackground");
 
               soda = ImageIO.read(new File(sodaName));
               System.out.println("buffered sodams");
@@ -1028,8 +1030,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
               donut = ImageIO.read(new File(donutName));
               System.out.println("buffered donutm");
-              donutwidth = donutm.getWidth();
-              donutheight = donutm.getHeight();
+              donutwidth = donut.getWidth();
+              donutheight = donut.getHeight();
             }
             catch(IOException e)
             {
@@ -1056,8 +1058,10 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public void mouseReleased(MouseEvent e){} //mouse is released
           public void mouseEntered(MouseEvent e){} //mouse is entered
           public void mouseExited(MouseEvent e){} //mouse exits
+
           public void keyPressed(KeyEvent e)
           {
+            System.out.println(e);
             keychange=""+e;
             System.out.println("keyP");
             requestFocus();
@@ -1066,31 +1070,31 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             {
               whatKey="W";
               System.out.println("whatKey W in keyPressed");
-              velocity(true,false);
+              for(i=0;i<100;i++)
+              {
+                System.out.print(i);
+              }
             }
             if(codey==KeyEvent.VK_S)
             {
               whatKey="S";
               System.out.println("whatKey S in keyPressed");
-              velocity(true,false);
             }
             if(codey==KeyEvent.VK_A)
             {
               whatKey="A";
               System.out.println("whatKey A in keyPressed");
-              velocity(true,false);
             }
             if(codey==KeyEvent.VK_D)
             {
               whatKey="D";
               System.out.println("whatKey D in keyPressed");
-              velocity(true,false);
             }
           }//end of pressed
-
-          public void mouseReleased(MouseEvent e)
+          public void keyTyped(KeyEvent e){}
+          public void keyReleased(KeyEvent e)
           {
-
+            System.out.println(e);
           } //mouse is released
 
 
@@ -1137,76 +1141,16 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               // JOptionPane.showMessageDialog (null, "Instructions", "Click anywhere on the screen to being after clicking OK to this message!", JOptionPane.INFORMATION_MESSAGE);
               //Click anywhere on the screen to being after clicking OK to this message!
 
-              if(oatmealY>700&&oatmealY<750&&oatmealX>600&&oatmealX<650)
-              {
-                super.paint(g);
-                g.drawImage(esophogousProcess,0,0,800,800,this);
-                esophogousProcessBool = true;
-              }
-              if(sodaY>700&&sodaY<750&&sodaX>600&&sodaX<650)
-              {
-                super.paint(g);
-                g.drawImage(esophogousProcess,0,0,800,800,this);
-                esophogousProcessBool = true;
-              }
-              if(donutY>700&&donutY<750&&donutX>600&&donutX<650)
-              {
-                super.paint(g);
-                g.drawImage(esophogousProcess,0,0,800,800,this);
-                esophogousProcessBool = true;
-              }
-              if(avocadoY>700&&avocadoY<750&&avocadoX>600&&avocadoX<650)
-              {
-                super.paint(g);
-                g.drawImage(esophogousProcess,0,0,800,800,this);
-                esophogousProcessBool = true;
-              }
-              if(stomachProcessBool)
-              {
-                g.drawImage(esophogousProcess,0,0,800,800,this);
-                reset X,Y;
-              }
-              if(smallIntestineProcessBool)
-              {
-                g.drawImage(smallIntestineProcess,0,0,800,800,this);
-                reset X,Y;
-              }
-              if(smallIntestineProcessBool)
-              {
-                g.drawImage(smallIntestineProcess,0,0,800,800,this);
-                reset X,Y;
-              }
+
+
+
+
               Font aldo = new Font ("Apple Casual", Font.BOLD, 8);
               g.setFont(aldo);
               g.setColor(Color.ORANGE);
               g.drawString("Press the screen once in order to move the food/drinks with the WASD controls",5,690);
-              //g.dispose();
             }//end of paintcomponent
-            public void importTextFiles()										//method for try catch blocks to find the tutorial.txt text file
-            {
-              File inFile = new File(inFileName);
-              try
-              {
-                input = new Scanner(inFile);
-              }
-              catch (FileNotFoundException e)
-              {
-                System.out.println("Error. Cannot Find/Open File " + inFileName );
-                System.exit(1);
-              }
-            }
-            public void getWords()										//method from reading input from the tutorial.txt file so we c an print the stuff from the tutorial.txt file on to the JTextArea
-            {
-              while(input.hasNext())
-              {
-                line = input.nextLine();
-                fullTutorial = fullTutorial + "\n" + line;			//creating a string to add to the textArea
-              }
-              backgroundInfo.setText(fullTutorial);					//setting the text to what is in the tutorial.txt file
-            }
-            public void adjustmentValueChanged(AdjustmentEvent e)
-            {
-            }
+
           }//end of mouth panel
 
 
@@ -1217,373 +1161,328 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
 
 
-          class MouthQuestions extends JPanel implements ActionListener
+          class DigestionQuestions extends JPanel implements ActionListener
           {
-            private String inFileName, line, fullQuestion, fullTextFile,qNumber, choiceA, choiceB, choiceC, choiceD, fullQuestion2;
-            private Scanner input;
-            private String[]QuizQs;
-            private int randomQuestion,x1,x2, x3;
-            private boolean ca1, ca2, ca3, ca4, sp, a1select, a2select, a3select, a4select, correct, wrong;
-            private JButton submit, next2;
-            private ButtonGroup answers;
-            private JRadioButton a1, a2, a3, a4;
-            private JTextArea question, foodCountDisplay;
-            private Font f, smallf, mediumf;
-            private UnlockTraitsPanel utp;
-            public MouthQuestions()
+            public DigestionQuestions()
             {
-              setLayout(null);
-              setBackground(mainBlue);
-              question = new JTextArea();
-              question.setLineWrap(true);
-              question.setSize(530, 70);
-              question.setLocation(30, 50);
-              question.setFont(smallf);
-              question.setBackground(mainBlue);
-              add(question);
-              foodCountDisplay = new JTextArea();
-              foodCountDisplay.setLineWrap(true);
-              foodCountDisplay.setSize(100, 100);
-              foodCountDisplay.setLocation(500, 0);
-              foodCountDisplay.setFont(smallf);
-              foodCountDisplay.setOpaque(false);
-              //foodCountDisplay.setBackground(mainBlue);
-              add(foodCountDisplay);
-              submit = new JButton("Submit");
-              submit.setFont(mediumf);
-              submit.setText("Submit");
-              submit.setSize(100, 50);
-              submit.setLocation(300,500);
-              submit.addActionListener(this);
-              add(submit);
-              next2 = new JButton("Next");
-              next2.setFont(mediumf);
-              next2.setText("Next");
-              next2.setSize(100, 50);
-              next2.setLocation(400,500);
-              next2.addActionListener(this);
-              add(next2);
-              answers = new ButtonGroup();			//adding a buttongroup
-              a1 = new JRadioButton();
-              a2 = new JRadioButton();
-              a3 = new JRadioButton();
-              a4 = new JRadioButton();
-              answers.add(a1);						//adding buttons to a buttongroup
-              answers.add(a2);
-              answers.add(a3);
-              answers.add(a4);
-              a1.addActionListener(this);				//setting all attributes to the buttons
-              a2.addActionListener(this);
-              a3.addActionListener(this);
-              a4.addActionListener(this);
-              a1.setSize(600,40);
-              a2.setSize(600,40);
-              a3.setSize(600,40);
-              a4.setSize(600,40);
-              a1.setLocation(30, 130);
-              a2.setLocation(30, 230);
-              a3.setLocation(30, 330);
-              a4.setLocation(30, 430);
-              a1.setFont(smallf);
-              a2.setFont(smallf);
-              a3.setFont(smallf);
-              a4.setFont(smallf);
-              a1.setBackground(mainBlue);
-              a2.setBackground(mainBlue);
-              a3.setBackground(mainBlue);
-              a4.setBackground(mainBlue);
-              add(a1);
-              add(a2);
-              add(a3);
-              add(a4);
-              ca1 = false;								//initializing all booleans as false/ they are eventually true when the buttons are clicked
-              ca2 = false;
-              ca3 = false;
-              ca4 = false;
-              sp = false;
-              a1select = false;
-              a2select = false;
-              a3select = false;
-              a4select = false;
-              correct = false;
-              wrong = false;
-              inFileName = "QuizQuestions.txt";
-              line = "";
-              fullQuestion = "";
-              QuizQs = new String[30];
-              randomQuestion = (int)((Math.random()*29)+1);		//randomizing an integer when the user clicks submit in the question
-              getTextFile();
-              getText();
-              setVariables();
-              setQuestion();
-              displayRadioButtons();
+              System.out.println("Digestion Questions");
             }
-            public void getTextFile() 								//method is just for making sure that the textFile for the quiz questions can be found
-            {
-              File inFile = new File(inFileName);
-              try
-              {
-                input = new Scanner(inFile);
-              }
-              catch (FileNotFoundException e)
-              {
-                System.out.println("Error. Cannot Find/Open File " + inFileName );
-                System.exit(1);
-              }
-            }
-            public void getText()									//method from reading input from the tutorial.txt file so we c an print the stuff from the tutorial.txt file on to the JTextArea
-            {
-              while(input.hasNext())
-              {
-                line = input.nextLine();
-                fullTextFile = fullTextFile + "\n" + line;		//creating a string to add to the textArea
-              }
-              for(x1=0;x1<29;x1++)
-              {
-                fullQuestion = fullTextFile.substring(0, fullTextFile.indexOf("---")+3)	;		//this separates the big string that is the textFile of quiz questions into individual questions
-                fullTextFile = fullTextFile.substring(fullQuestion.length()+4);					//resets the big string of the text file as the text file minus the string that was just read
-                QuizQs[x1] = fullQuestion;														//adds question to a value on the array
-              }
-              //System.out.print(fullQuestion);					//setting the text to what is in the tutorial.txt file
-            }
-            public void setVariables()								//this method is only fully excecuted if the random number generated is the loop integer value
-            {														/*when the random integer value has arrived then it separates the text file into choices ABCD to
-              to set the text to the radiobuttons*/
-              for (x3 = 0; x3<29 ; x3++)
-              {
-                fullQuestion2 = QuizQs[x3];
-                if(fullQuestion2.equals(""))
-                {
-                  fullQuestion2 = QuizQs[x3 +1];
-                }
-                if (x3 == randomQuestion)
-                {
-                  qNumber = fullQuestion2.substring((fullQuestion2.indexOf(">") +1), (fullQuestion2.indexOf("<")));
-                  fullQuestion2 = fullQuestion2.substring(qNumber.length() + 3);
-                  choiceA = fullQuestion2.substring(fullQuestion2.indexOf("a)")+2, fullQuestion2.indexOf("b)"));
-                  fullQuestion2 = fullQuestion2.substring(choiceA.length()+2);
-                  choiceB = fullQuestion2.substring(fullQuestion2.indexOf("b)")+2, fullQuestion2.indexOf("c)"));
-                  fullQuestion2 = fullQuestion2.substring(choiceB.length()+2);//choiceB = fullQuestion.substring(beginIndex, endIndex)
-                  choiceC = fullQuestion2.substring(fullQuestion2.indexOf("c)")+2, fullQuestion2.indexOf("d)"));
-                  fullQuestion2 = fullQuestion2.substring(choiceC.length() +2);//choiceB = fullQuestion2.substring(beginIndex, endIndex)
-                  choiceD = fullQuestion2.substring(fullQuestion2.indexOf("d)")+2, fullQuestion2.indexOf("---"));
-                  fullQuestion2 = fullQuestion2.substring(choiceD.length()+4);//choiceB = fullQuestion.substring(beginIndex, endIndex)
-                  QuizQs[x3] = "";
-                  if (choiceA.indexOf("!") == 0) 	//this if else block is to determine which one of the answers is correct, in the text file the correct answer has an ! in the front
-                  {								// boolean for each answer choice is set as true w respective correct answers
-                    //System.out.print(choiceA);
-                    ca1 = true;
-                    choiceA = choiceA.substring(1);
-                  }
-                  else if (choiceB.indexOf("!") == 0)
-                  {
-                    //System.out.print(choiceB);
-                    ca2 = true;
-                    choiceB = choiceB.substring(1);
-                  }
-                  else if (choiceC.indexOf("!") == 0)
-                  {
-                    //System.out.print(choiceC);
-                    ca3 = true;
-                    choiceC = choiceC.substring(1);
-                  }
-                  else if (choiceD.indexOf("!") == 0)
-                  {
-                    //System.out.print(choiceD);
-                    ca4 = true;
-                    choiceD = choiceD.substring(1);
-                  }
-                }
-              }
-            }
-            public void setQuestion()
-            {
-              question.setText(qNumber);
-            }
-            public void displayRadioButtons()
-            {
-              a1.setFont(smallf);
-              a2.setFont(smallf);
-              a3.setFont(smallf);
-              a4.setFont(smallf);
-              a1.setText(choiceA);
-              a2.setText(choiceB);
-              a3.setText(choiceC);
-              a4.setText(choiceD);
-            }
-            public void actionPerformed(ActionEvent e){
-              if(a1.isSelected())					//if else block for if a radiobutton is selected, respecitve booleans are set as true and others are set as false
-              {
-                a1select = true;
-                a2select = false;
-                a3select = false;
-                a4select = false;
-              }
-              else if(a2.isSelected())
-              {
-                a2select = true;
-                a1select = false;
-                a3select = false;
-                a4select = false;
-              }
-              else if(a3.isSelected())
-              {
-                a3select = true;
-                a1select = false;
-                a2select = false;
-                a4select = false;
-              }
-              else if(a4.isSelected())
-              {
-                a4select = true;
-                a1select = false;
-                a2select = false;
-                a3select = false;
-              }
-              String command = e.getActionCommand();
-              if(command.equals("Submit"))			//tells the computer to go to changeQuestions when submit is pressed
-              {
-                sp = true;
-                changeQuestions();
-              }
-              else if(command.equals("Next"))//&& correctCount >=6 )
-              {
-                System.out.print("/n + haha" + individual2);
-                tntPanel2.getCards().show(tntPanel2, "Show Dog");
-              }
-            }
-            public void changeQuestions()					//method that changes the text of the radiobuttons if the user answers correctly
-            {
-              //System.out.println();
-              if(sp == true &&  a1select == true && ca1 == true)
-              {
-                sp = false;
-                a1select = false;
-                ca1 = false;
-                correct = true;
-              }
-              else if(sp == true &&  a2select == true && ca2 == true)
-              {
-                correct = true;
-                sp = false;
-                a2select = false;
-                ca2 = false;
-              }
-              else if(sp == true &&  a3select == true && ca3 == true)
-              {
-                correct = true;
-                sp = false;
-                a3select = false;
-                ca3 = false;
-              }
-              else if(sp == true &&  a4select == true && ca4 == true)
-              {
-                correct = true;
-                sp = false;
-                a4select = false;
-                ca4 = false;
-              }
-              else
-              {
-                correct = false;
-                wrong = true;
-              }
-              if (correct == true)
-              {
-                randomQuestion = (int)((Math.random()*29)+1);	//randomizes integer for the next question
-                getTextFile();
-                setVariables();
-                setQuestion();
-                displayRadioButtons();
-                correctCount++;
-                foodCount = foodCount + 3;
-                foodCountDisplay.setText("food Count \n" + foodCount);
-                getter();
-                //System.out.println("correct");
-              }
-              else if (wrong == true)
-              {
-                foodCount = foodCount - 1;
-                foodCountDisplay.setText("food Count \n" + foodCount);
-                //System.out.println("wrong");
-              }
-            }
-          }//end of mouth questions
-        }
-        public class EndingPanel extends JPanel
-        {
-          public EndingPanel()//constructor that sets up the panel and makes border layout
-          {
-            isPressed = false;//sets all variables to false
-            gotoLanding = false;//sets all variables to false
-            setLayout(new BorderLayout(5, 5)); //Use BorderLayout in main panel. Incorporate Card Layout for all the others
-            //Card Layout made( needs more pseudocode)
-            setBackground(Color.YELLOW);//sets the background color of the welcome panel holder to yellow
-            Font titleFont = new Font("Serif", Font.BOLD, 20); //Set Fonts
-            setFont(titleFont);
-            WelcomePage welcomePan = new WelcomePage(); //Instantiate the Label Panel for the first Label
-            InitializeGame initGame = new InitializeGame(); //Instantiate the Label Panel for the second Label that goes to the north
-            add(welcomePan, BorderLayout.CENTER);
-            add(initGame, BorderLayout.SOUTH);
-            //add(lp, BorderLayout.WEST);
-            //add(rp, BorderLayout.EAST);
           }
-        }
-        class EndingPage extends JPanel//panel that holds text welcoming user, and other instructions to play game
-        {
-          Image endingbackground = Toolkit.getDefaultToolkit().getImage("ending.jpg");//getsImage from my computer using the get DefaultToolKit sets the background
-          public WelcomePage()//constructor that sets up the panel
+
+          class EndingPanel extends JPanel implements ActionListener
           {
-            setLayout(flow);
-            setBackground(Color.YELLOW);
-            System.out.println("ending constructor");
-          }//end Constructor
-          public void paintComponent(Graphics g)//paints the text and instructions for game
-          {                //graphics method header
-            super.paintComponent(g);                  // draw Images first, draws background
-            g.drawImage(welcomeBackground, 0,0,800,600,this);//this makes the image
-            //g.drawImage(back, 0,0,600,400,this);
-            Font helvec = new Font ("Helvetica Neue", Font.BOLD, 40);//initializes font
-            g.setFont(helvec);//sets font int graphics
-            g.drawString("Welcome to the Eat Healthy Game!",60,100);//sets the string that is displayed on the panel
-            Color purplo = new Color (194,24,91);
-            g.setColor(purplo);
-            Font chalkboard = new Font ("Chalkboard", Font.BOLD, 20);//initializes font
-            g.setFont(chalkboard);//sets font int graphics
-            g.drawString("Help Calvin restore his health after spending a fun filled afternoon of playing with Hobbes!",20,200);//sets the string that is displayed on the panel
-            Color orango = new Color (255,23,68);
-            g.setColor(orango);
-            Font comic = new Font ("Comic Sans MS", Font.BOLD, 20);//initializes font
-            g.setFont(comic);//sets font int graphics
-            g.drawString("To start the game, please enter your name and press the Start Game button",20,500);//sets the string that is displayed on the panel
-            System.out.println("WelcomePage paint");
-            if(noName)
+            public EndingPanel()
             {
-              Font chalkboardbig = new Font ("Chalkboard", Font.BOLD, 50);//initializes font
-              g.setFont(chalkboardbig);
-              g.setColor(Color.RED);
-              System.out.println("Please enter yur name!");
-              g.drawString("Please enter your name!",100,400);
-              isPressed = false;
-              if (enterName.getText() == null || enterName.getText().trim().isEmpty() || enterName.getText().equals("Enter Name"))//if else blocks to make sure user has entered name
-              {
-                System.out.println("Welcome Panel is reset");//debuggin
-                isPressed = false;
-                noName = true;
-              }
-              else
-              {
-                gotoLanding = true;
-                repaint();
-                System.out.println("gotoLanding is true, go to Landing Page");
-              }//end of else
-            }//end of noName if
-            if (gotoLanding)
-            { //boolean for startPressed and hsPressed to trigger thecorresponding CardLayout. For testing we'll just use a String
-            cards.show(pHolder, "LandingPage");
-            System.out.println("Card Layout go to Landing Page");
+              System.out.println("Ending Panel");
+            }
           }
-        }//end of paintComponent
-      }//end of welcomePage
-    }
-  }
+          // private String inFileName, line, fullQuestion //fullTextFile,qNumber, choiceA, choiceB, choiceC, choiceD, //fullQuestion2;
+          //   private Scanner input;
+          //   private String[]QuizQs;
+          //   private int randomQuestion,x1,x2, x3;
+          //   private boolean ca1, ca2, ca3, ca4, sp, a1select, a2select, a3select, a4select, correct, wrong;
+          //   private JButton submit, next2;
+          //   private ButtonGroup answers;
+          //   private JRadioButton a1, a2, a3, a4;
+          //   private JTextArea question, foodCountDisplay;
+          //   private Font f, smallf, mediumf;
+          //   private UnlockTraitsPanel utp;
+          //   public MouthQuestions()
+          //   {
+          //     setLayout(null);
+          //     setBackground(mainBlue);
+          //     question = new JTextArea();
+          //     question.setLineWrap(true);
+          //     question.setSize(530, 70);
+          //     question.setLocation(30, 50);
+          //     question.setFont(smallf);
+          //     question.setBackground(mainBlue);
+          //     add(question);
+          //     foodCountDisplay = new JTextArea();
+          //     foodCountDisplay.setLineWrap(true);
+          //     foodCountDisplay.setSize(100, 100);
+          //     foodCountDisplay.setLocation(500, 0);
+          //     foodCountDisplay.setFont(smallf);
+          //     foodCountDisplay.setOpaque(false);
+          //     //foodCountDisplay.setBackground(mainBlue);
+          //     add(foodCountDisplay);
+          //     submit = new JButton("Submit");
+          //     submit.setFont(mediumf);
+          //     submit.setText("Submit");
+          //     submit.setSize(100, 50);
+          //     submit.setLocation(300,500);
+          //     submit.addActionListener(this);
+          //     add(submit);
+          //     next2 = new JButton("Next");
+          //     next2.setFont(mediumf);
+          //     next2.setText("Next");
+          //     next2.setSize(100, 50);
+          //     next2.setLocation(400,500);
+          //     next2.addActionListener(this);
+          //     add(next2);
+          //     answers = new ButtonGroup();			//adding a buttongroup
+          //     a1 = new JRadioButton();
+          //     a2 = new JRadioButton();
+          //     a3 = new JRadioButton();
+          //     a4 = new JRadioButton();
+          //     answers.add(a1);						//adding buttons to a buttongroup
+          //     answers.add(a2);
+          //     answers.add(a3);
+          //     answers.add(a4);
+          //     a1.addActionListener(this);				//setting all attributes to the buttons
+          //     a2.addActionListener(this);
+          //     a3.addActionListener(this);
+          //     a4.addActionListener(this);
+          //     a1.setSize(600,40);
+          //     a2.setSize(600,40);
+          //     a3.setSize(600,40);
+          //     a4.setSize(600,40);
+          //     a1.setLocation(30, 130);
+          //     a2.setLocation(30, 230);
+          //     a3.setLocation(30, 330);
+          //     a4.setLocation(30, 430);
+          //     a1.setFont(smallf);
+          //     a2.setFont(smallf);
+          //     a3.setFont(smallf);
+          //     a4.setFont(smallf);
+          //     a1.setBackground(mainBlue);
+          //     a2.setBackground(mainBlue);
+          //     a3.setBackground(mainBlue);
+          //     a4.setBackground(mainBlue);
+          //     add(a1);
+          //     add(a2);
+          //     add(a3);
+          //     add(a4);
+          //     ca1 = false;								//initializing all booleans as false/ they are eventually true when the buttons are clicked
+          //     ca2 = false;
+          //     ca3 = false;
+          //     ca4 = false;
+          //     sp = false;
+          //     a1select = false;
+          //     a2select = false;
+          //     a3select = false;
+          //     a4select = false;
+          //     correct = false;
+          //     wrong = false;
+          //     inFileName = "QuizQuestions.txt";
+          //     line = "";
+          //     fullQuestion = "";
+          //     QuizQs = new String[30];
+          //     randomQuestion = (int)((Math.random()*29)+1);		//randomizing an integer when the user clicks submit in the question
+          //     getTextFile();
+          //     getText();
+          //     setVariables();
+          //     setQuestion();
+          //     displayRadioButtons();
+          //   }
+          //   public void getTextFile() 								//method is just for making sure that the textFile for the quiz questions can be found
+          //   {
+          //     File inFile = new File(inFileName);
+          //     try
+          //     {
+          //       input = new Scanner(inFile);
+          //     }
+          //     catch (FileNotFoundException e)
+          //     {
+          //       System.out.println("Error. Cannot Find/Open File " + inFileName );
+          //       System.exit(1);
+          //     }
+          //   }
+          //   public void getText()									//method from reading input from the tutorial.txt file so we c an print the stuff from the tutorial.txt file on to the JTextArea
+          //   {
+          //     while(input.hasNext())
+          //     {
+          //       line = input.nextLine();
+          //       fullTextFile = fullTextFile + "\n" + line;		//creating a string to add to the textArea
+          //     }
+          //     for(x1=0;x1<29;x1++)
+          //     {
+          //       fullQuestion = fullTextFile.substring(0, fullTextFile.indexOf("---")+3)	;		//this separates the big string that is the textFile of quiz questions into individual questions
+          //       fullTextFile = fullTextFile.substring(fullQuestion.length()+4);					//resets the big string of the text file as the text file minus the string that was just read
+          //       QuizQs[x1] = fullQuestion;														//adds question to a value on the array
+          //     }
+          //     //System.out.print(fullQuestion);					//setting the text to what is in the tutorial.txt file
+          //   }
+          //   public void setVariables()								//this method is only fully excecuted if the random number generated is the loop integer value
+          //   {														/*when the random integer value has arrived then it separates the text file into choices ABCD to
+          //     to set the text to the radiobuttons*/
+          //     for (x3 = 0; x3<29 ; x3++)
+          //     {
+          //       fullQuestion2 = QuizQs[x3];
+          //       if(fullQuestion2.equals(""))
+          //       {
+          //         fullQuestion2 = QuizQs[x3 +1];
+          //       }
+          //       if (x3 == randomQuestion)
+          //       {
+          //         qNumber = fullQuestion2.substring((fullQuestion2.indexOf(">") +1), (fullQuestion2.indexOf("<")));
+          //         fullQuestion2 = fullQuestion2.substring(qNumber.length() + 3);
+          //         choiceA = fullQuestion2.substring(fullQuestion2.indexOf("a)")+2, fullQuestion2.indexOf("b)"));
+          //         fullQuestion2 = fullQuestion2.substring(choiceA.length()+2);
+          //         choiceB = fullQuestion2.substring(fullQuestion2.indexOf("b)")+2, fullQuestion2.indexOf("c)"));
+          //         fullQuestion2 = fullQuestion2.substring(choiceB.length()+2);//choiceB = fullQuestion.substring(beginIndex, endIndex)
+          //         choiceC = fullQuestion2.substring(fullQuestion2.indexOf("c)")+2, fullQuestion2.indexOf("d)"));
+          //         fullQuestion2 = fullQuestion2.substring(choiceC.length() +2);//choiceB = fullQuestion2.substring(beginIndex, endIndex)
+          //         choiceD = fullQuestion2.substring(fullQuestion2.indexOf("d)")+2, fullQuestion2.indexOf("---"));
+          //         fullQuestion2 = fullQuestion2.substring(choiceD.length()+4);//choiceB = fullQuestion.substring(beginIndex, endIndex)
+          //         QuizQs[x3] = "";
+          //         if (choiceA.indexOf("!") == 0) 	//this if else block is to determine which one of the answers is correct, in the text file the correct answer has an ! in the front
+          //         {								// boolean for each answer choice is set as true w respective correct answers
+          //           //System.out.print(choiceA);
+          //           ca1 = true;
+          //           choiceA = choiceA.substring(1);
+          //         }
+          //         else if (choiceB.indexOf("!") == 0)
+          //         {
+          //           //System.out.print(choiceB);
+          //           ca2 = true;
+          //           choiceB = choiceB.substring(1);
+          //         }
+          //         else if (choiceC.indexOf("!") == 0)
+          //         {
+          //           //System.out.print(choiceC);
+          //           ca3 = true;
+          //           choiceC = choiceC.substring(1);
+          //         }
+          //         else if (choiceD.indexOf("!") == 0)
+          //         {
+          //           //System.out.print(choiceD);
+          //           ca4 = true;
+          //           choiceD = choiceD.substring(1);
+          //         }
+          //       }
+          //     }
+          //   }
+          //   public void setQuestion()
+          //   {
+          //     question.setText(qNumber);
+          //   }
+          //   public void displayRadioButtons()
+          //   {
+          //     a1.setFont(smallf);
+          //     a2.setFont(smallf);
+          //     a3.setFont(smallf);
+          //     a4.setFont(smallf);
+          //     a1.setText(choiceA);
+          //     a2.setText(choiceB);
+          //     a3.setText(choiceC);
+          //     a4.setText(choiceD);
+          //   }
+          //   public void actionPerformed(ActionEvent e){
+          //     if(a1.isSelected())					//if else block for if a radiobutton is selected, respecitve booleans are set as true and others are set as false
+          //     {
+          //       a1select = true;
+          //       a2select = false;
+          //       a3select = false;
+          //       a4select = false;
+          //     }
+          //     else if(a2.isSelected())
+          //     {
+          //       a2select = true;
+          //       a1select = false;
+          //       a3select = false;
+          //       a4select = false;
+          //     }
+          //     else if(a3.isSelected())
+          //     {
+          //       a3select = true;
+          //       a1select = false;
+          //       a2select = false;
+          //       a4select = false;
+          //     }
+          //     else if(a4.isSelected())
+          //     {
+          //       a4select = true;
+          //       a1select = false;
+          //       a2select = false;
+          //       a3select = false;
+          //     }
+          //     String command = e.getActionCommand();
+          //     if(command.equals("Submit"))			//tells the computer to go to changeQuestions when submit is pressed
+          //     {
+          //       sp = true;
+          //       changeQuestions();
+          //     }
+          //     else if(command.equals("Next"))//&& correctCount >=6 )
+          //     {
+          //       System.out.print("/n + haha" + individual2);
+          //       tntPanel2.getCards().show(tntPanel2, "Show Dog");
+          //     }
+          //   }
+          //   public void changeQuestions()					//method that changes the text of the radiobuttons if the user answers correctly
+          //   {
+          //     //System.out.println();
+          //     if(sp == true &&  a1select == true && ca1 == true)
+          //     {
+          //       sp = false;
+          //       a1select = false;
+          //       ca1 = false;
+          //       correct = true;
+          //     }
+          //     else if(sp == true &&  a2select == true && ca2 == true)
+          //     {
+          //       correct = true;
+          //       sp = false;
+          //       a2select = false;
+          //       ca2 = false;
+          //     }
+          //     else if(sp == true &&  a3select == true && ca3 == true)
+          //     {
+          //       correct = true;
+          //       sp = false;
+          //       a3select = false;
+          //       ca3 = false;
+          //     }
+          //     else if(sp == true &&  a4select == true && ca4 == true)
+          //     {
+          //       correct = true;
+          //       sp = false;
+          //       a4select = false;
+          //       ca4 = false;
+          //     }
+          //     else
+          //     {
+          //       correct = false;
+          //       wrong = true;
+          //     }
+          //     if (correct == true)
+          //     {
+          //       randomQuestion = (int)((Math.random()*29)+1);	//randomizes integer for the next question
+          //       getTextFile();
+          //       setVariables();
+          //       setQuestion();
+          //       displayRadioButtons();
+          //       correctCount++;
+          //       foodCount = foodCount + 3;
+          //       foodCountDisplay.setText("food Count \n" + foodCount);
+          //       getter();
+          //       //System.out.println("correct");
+          //     }
+          //     else if (wrong == true)
+          //     {
+          //       foodCount = foodCount - 1;
+          //       foodCountDisplay.setText("food Count \n" + foodCount);
+          //       //System.out.println("wrong");
+          //     }
+          //   }
+          // }//end of mouth questions
+
+        // public class EndingPanel extends JPanel
+        // {
+        //   public EndingPanel()//constructor that sets up the panel and makes border layout
+        //   {
+        //     isPressed = false;//sets all variables to false
+        //     gotoLanding = false;//sets all variables to false
+        //     setLayout(new BorderLayout(5, 5)); //Use BorderLayout in main panel. Incorporate Card Layout for all the others
+        //     //Card Layout made( needs more pseudocode)
+        //     setBackground(Color.YELLOW);//sets the background color of the welcome panel holder to yellow
+        //     Font titleFont = new Font("Serif", Font.BOLD, 20); //Set Fonts
+        //     setFont(titleFont);
+        //     WelcomePage welcomePan = new WelcomePage(); //Instantiate the Label Panel for the first Label
+        //     InitializeGame initGame = new InitializeGame(); //Instantiate the Label Panel for the second Label that goes to the north
+        //     add(welcomePan, BorderLayout.CENTER);
+        //     add(initGame, BorderLayout.SOUTH);
+        //     //add(lp, BorderLayout.WEST);
+        //     //add(rp, BorderLayout.EAST);
+        //   }
+        // }
