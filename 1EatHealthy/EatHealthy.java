@@ -152,7 +152,7 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
     pHolder.add(welcomeHold, "WelcomeHolder");//adds the WelcomeHolder to the panel holder panel
     pHolder.add(landingPan, "LandingPage");//adds the landing panel to the panel holder panel
     //pHolder.add(healthyBar, "HealthyBarPanel");
-    pHolder.add(digestcanvas, "Digestion");
+    pHolder.add(digestcanvas, "DigestivePanel");
     pHolder.add(digestQuiz, "DigestionQuestions");
 
     pHolder.add(ending, "EndingPanel");
@@ -588,14 +588,13 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               System.out.println("donutonX: "+donutX+"donutonY: "+donutY);
               if(donutX>225 && donutX<425 && donutY>465 && donutY<565)
               {
-                // food = "donut";
-                // cards.show(pHolder, "MouthPanel");
+
                 String inputValue = JOptionPane.showInputDialog("Type in CONTINUE or CANCEL depending on if you intended to feed Calvin a donut");
                 if(inputValue.equals("CONTINUE")||inputValue.equals("continue"))
                 {
                   food = "donut";
                   System.out.println("INPUT VALUE WORKS AVOCADO MOUTH PANEL MOVE");
-                  cards.show(pHolder, "MouthPanel");
+                  cards.show(pHolder, "DigestivePanel");
                 }
                 else if(inputValue.equals("CANCEL") || inputValue.equals("NO") || inputValue.equals("cancel"))
                 {
@@ -617,7 +616,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 {
                   food = "oatmeal";
                   System.out.println("INPUT VALUE WORKS AVOCADO MOUTH PANEL MOVE");
-                  cards.show(pHolder, "MouthPanel");
+                  cards.show(pHolder, "DigestivePanel");
                 }
                 else if(inputValue.equals("CANCEL") || inputValue.equals("NO") || inputValue.equals("cancel"))
                 {
@@ -639,7 +638,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 {
                   food = "soda";
                   System.out.println("INPUT VALUE WORKS AVOCADO MOUTH PANEL MOVE");
-                  cards.show(pHolder, "MouthPanel");
+                  cards.show(pHolder, "DigestivePanel");
                 }
                 else if(inputValue.equals("CANCEL") || inputValue.equals("NO"))
                 {
@@ -661,7 +660,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 {
                   food = "avocado";
                   System.out.println("INPUT VALUE WORKS AVOCADO MOUTH PANEL MOVE");
-                  cards.show(pHolder, "MouthPanel");
+                  cards.show(pHolder, "DigestivePanel");
                 }
                 else if(inputValue.equals("CANCEL") || inputValue.equals("NO"))
                 {
@@ -898,6 +897,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public Image soda;
           public Image avocado;
 
+          public String whatKey;
+          public String keychange;
 
           public String mouthBackgroundName;
           public String esophogousBackgroundName;
@@ -972,7 +973,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           }//end of mouthconstructor
           public void run()
           {
-            for(i=0; digestiveSystem.length; i++)
+            for(int i=0; i<5; i++)
             {
               if(i==0)
               {
@@ -1030,8 +1031,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
               donut = ImageIO.read(new File(donutName));
               System.out.println("buffered donutm");
-              donutwidth = donut.getWidth();
-              donutheight = donut.getHeight();
+
             }
             catch(IOException e)
             {
@@ -1070,7 +1070,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             {
               whatKey="W";
               System.out.println("whatKey W in keyPressed");
-              for(i=0;i<100;i++)
+              for(int i=0;i<100;i++)
               {
                 System.out.print(i);
               }
@@ -1161,7 +1161,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
 
 
-          class DigestionQuestions extends JPanel implements ActionListener
+          class DigestionQuestions extends JPanel
           {
             public DigestionQuestions()
             {
@@ -1169,13 +1169,14 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
           }
 
-          class EndingPanel extends JPanel implements ActionListener
+          class EndingPanel extends JPanel
           {
             public EndingPanel()
             {
               System.out.println("Ending Panel");
             }
           }
+        }
           // private String inFileName, line, fullQuestion //fullTextFile,qNumber, choiceA, choiceB, choiceC, choiceD, //fullQuestion2;
           //   private Scanner input;
           //   private String[]QuizQs;
