@@ -33,8 +33,10 @@ Propmt user telling them that calvin will feel bad if you feed him the SAME FOOD
 */
 ///////////////////////// import Classes needed for Layouts ////////////////////////
 import java.awt.BorderLayout;
+import javax.swing.ButtonGroup;
 import java.awt.CardLayout;
 import java.util.Observable;
+import javax.swing.JTextArea;
 import java.util.Observer;
 import java.awt.Component;
 import java.awt.Color;     //imports abstract window toolkit
@@ -68,6 +70,7 @@ import java.io.IOException; //imports for input out io exception
 import java.lang.Object;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.FileNotFoundException;
 import javax.imageio.ImageIO; //imports image io
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -1350,7 +1353,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                     checkMouth1=true;
                     System.out.println("checkMouth1");
                   }
-                  if(oatmealX>233&&avocadoX<420&&avocadoY>390&&avocadoY<443)
+                  if(avocadoX>233&&avocadoX<420&&avocadoY>390&&avocadoY<443)
                   {
                     checkMouth2=true;
                     System.out.println("checkMouth2");
@@ -1376,7 +1379,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                     checkMouth1=true;
                     System.out.println("checkMouth1");
                   }
-                  if(oatmealX>233&&donutX<420&&donutY>390&&donutY<443)
+                  if(donutX>233&&donutX<420&&donutY>390&&donutY<443)
                   {
                     checkMouth2=true;
                     System.out.println("checkMouth2");
@@ -1428,16 +1431,49 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
 
 
-          class DigestionQuestions extends JPanel
+          class DigestionQuestions extends JPanel implements ActionListener
           {
+            private String inFileName, line, fullQuestion, fullTextFile,qNumber, choiceA, choiceB, choiceC, choiceD, fullQuestion2;
+  			private Scanner input;
+  			private String[]QuizQs;
+  			private int randomQuestion,x1,x2, x3;
+  			private boolean ca1, ca2, ca3, ca4, sp, a1select, a2select, a3select, a4select, correct, wrong;
+  			private JButton submit, next2;
+  			private ButtonGroup answers;
+  			private JRadioButton a1, a2, a3, a4;
+  			private JTextArea question, treatCountDisplay;
+
+      public Font neue = new Font ("Helvetica Neue", Font.BOLD, 15);//initializes font
+			// private UnlockTraitsPanel utp;
+
             public DigestionQuestions()
             {
               System.out.println("Digestion Questions");
               setLayout(flow);
               setBackground(Color.ORANGE);
+              question = new JTextArea();
+              				question.setLineWrap(true);
+              				question.setSize(530, 70);
+              				question.setLocation(30, 50);
+              				question.setFont(neue);
+              				question.setBackground(Color.GREEN);
+
+              				add(question);
+
+              				treatCountDisplay = new JTextArea();
+              				treatCountDisplay.setLineWrap(true);
+              				treatCountDisplay.setSize(100, 100);
+              				treatCountDisplay.setLocation(500, 0);
+              				treatCountDisplay.setFont(neue);
+              				treatCountDisplay.setOpaque(false);
+
+              				//treatCountDisplay.setBackground(mainBlue);
+
+              				add(treatCountDisplay);
+
 
               submit = new JButton("Submit");
-              submit.setFont(mediumf);
+              submit.setFont(neue);
               submit.setText("Submit");
               submit.setSize(100, 50);
               submit.setLocation(300,500);
@@ -1446,7 +1482,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               add(submit);
 
               next2 = new JButton("Next");
-              next2.setFont(mediumf);
+              next2.setFont(neue);
               next2.setText("Next");
               next2.setSize(100, 50);
               next2.setLocation(400,500);
@@ -1476,31 +1512,290 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               a4.setSize(600,40);
               //set font
 
-              Font helvec = new Font ("Helvetica Neue", Font.BOLD, 40);//initializes font
-              g.setFont(helvec);//sets font int graphics
-              g.drawString("Welcome to the Eat Healthy Game!",60,100);//sets the string that is displayed on the panel
-              Color purplo = new Color (194,24,91);
-              g.setColor(purplo);
+              a1.setFont(neue);
+              a2.setFont(neue);
+              a3.setFont(neue);
+              a4.setFont(neue);
 
-              
-              a1.setBackground(mainBlue);
-              a2.setBackground(mainBlue);
-              a3.setBackground(mainBlue);
-              a4.setBackground(mainBlue);
+
+              a1.setBackground(Color.BLUE);
+              a2.setBackground(Color.BLUE);
+              a3.setBackground(Color.BLUE);
+              a4.setBackground(Color.BLUE);
 
 
               add(a1);
               add(a2);
               add(a3);
               add(a4);
+
+              ca1 = false;								//initializing all booleans as false/ they are eventually true when the buttons are clicked
+              ca2 = false;
+              ca3 = false;
+              ca4 = false;
+              sp = false;
+              a1select = false;
+              a2select = false;
+              a3select = false;
+              a4select = false;
+
+              correct = false;
+              wrong = false;
+
+              inFileName = "QuizQuestions.txt";
+              line = "";
+              fullQuestion = "";
+              QuizQs = new String[30];
+
+
+              randomQuestion = (int)((Math.random()*29)+1);		//randomizing an integer when the user clicks submit in the question
+              getTextFile();
+              getText();
+              setVariables();
+              setQuestion();
+              displayRadioButtons();
+            }//end of contructor
+
+            public void getTextFile() 								//method is just for making sure that the textFile for the quiz questions can be found
+            {
+              File inFile = new File(inFileName);
+              try
+              {
+                input = new Scanner(inFile);
+
+              }
+              catch (FileNotFoundException e)
+              {
+                System.out.println("Error. Cannot Find/Open File " + inFileName );
+                System.exit(1);
+
+              }
             }
 
+            public void getText()									//method from reading input from the tutorial.txt file so we c an print the stuff from the tutorial.txt file on to the JTextArea
+            {
+
+              while(input.hasNext())
+              {
+                line = input.nextLine();
+
+                fullTextFile = fullTextFile + "\n" + line;		//creating a string to add to the textArea
+              }
+
+              for(x1=0;x1<29;x1++)
+              {
+
+                fullQuestion = fullTextFile.substring(0, fullTextFile.indexOf("---")+3)	;		//this separates the big string that is the textFile of quiz questions into individual questions
+                fullTextFile = fullTextFile.substring(fullQuestion.length()+4);					//resets the big string of the text file as the text file minus the string that was just read
+                QuizQs[x1] = fullQuestion;														//adds question to a value on the array
+              }
+              //System.out.print(fullQuestion);					//setting the text to what is in the tutorial.txt file
+            }//end of get text()
+
+            public void setVariables()								//this method is only fully excecuted if the random number generated is the loop integer value
+            {														/*when the random integer value has arrived then it separates the text file into choices ABCD to
+                                          to set the text to the radiobuttons*/
+
+
+              for (x3 = 0; x3<29 ; x3++)
+              {
+                fullQuestion2 = QuizQs[x3];
+                if(fullQuestion2.equals(""))
+                {
+                  fullQuestion2 = QuizQs[x3 +1];
+                }
+                if (x3 == randomQuestion)
+                {
+                  qNumber = fullQuestion2.substring((fullQuestion2.indexOf(">") +1), (fullQuestion2.indexOf("<")));
+                  fullQuestion2 = fullQuestion2.substring(qNumber.length() + 3);
+
+
+                  choiceA = fullQuestion2.substring(fullQuestion2.indexOf("a)")+2, fullQuestion2.indexOf("b)"));
+                  fullQuestion2 = fullQuestion2.substring(choiceA.length()+2);
+
+
+                  choiceB = fullQuestion2.substring(fullQuestion2.indexOf("b)")+2, fullQuestion2.indexOf("c)"));
+                  fullQuestion2 = fullQuestion2.substring(choiceB.length()+2);//choiceB = fullQuestion.substring(beginIndex, endIndex)
+
+                  choiceC = fullQuestion2.substring(fullQuestion2.indexOf("c)")+2, fullQuestion2.indexOf("d)"));
+                  fullQuestion2 = fullQuestion2.substring(choiceC.length() +2);//choiceB = fullQuestion2.substring(beginIndex, endIndex)
+
+
+                  choiceD = fullQuestion2.substring(fullQuestion2.indexOf("d)")+2, fullQuestion2.indexOf("---"));
+                  fullQuestion2 = fullQuestion2.substring(choiceD.length()+4);//choiceB = fullQuestion.substring(beginIndex, endIndex)
+
+                  QuizQs[x3] = "";
+                  if (choiceA.indexOf("!") == 0) 	//this if else block is to determine which one of the answers is correct, in the text file the correct answer has an ! in the front
+                  {								// boolean for each answer choice is set as true w respective correct answers
+                  //System.out.print(choiceA);
+                  ca1 = true;
+                  choiceA = choiceA.substring(1);
+                  }
+
+                  else if (choiceB.indexOf("!") == 0)
+                  {
+                  //System.out.print(choiceB);
+                  ca2 = true;
+                  choiceB = choiceB.substring(1);
+                  }
+
+                  else if (choiceC.indexOf("!") == 0)
+                  {
+                  //System.out.print(choiceC);
+                  ca3 = true;
+                  choiceC = choiceC.substring(1);
+                  }
+
+                  else if (choiceD.indexOf("!") == 0)
+                  {
+                  //System.out.print(choiceD);
+                  ca4 = true;
+                  choiceD = choiceD.substring(1);
+
+                  }
+
+                }
+
+              }
+            }//end of set variables
+
+            public void setQuestion()
+            {
+              question.setText(qNumber);
+
+            }
+            public void displayRadioButtons()
+            {
+              a1.setFont(neue);
+              a2.setFont(neue);
+              a3.setFont(neue);
+              a4.setFont(neue);
+
+              a1.setText(choiceA);
+              a2.setText(choiceB);
+              a3.setText(choiceC);
+              a4.setText(choiceD);
+
+
+            }//end of display radio buttons
+
+            public void actionPerformed(ActionEvent e){
+
+            				if(a1.isSelected())					//if else block for if a radiobutton is selected, respecitve booleans are set as true and others are set as false
+            				{
+            					a1select = true;
+            					a2select = false;
+            					a3select = false;
+            					a4select = false;
+            				}
+
+
+            				else if(a2.isSelected())
+            				{
+            					a2select = true;
+            					a1select = false;
+            					a3select = false;
+            					a4select = false;
+            				}
+
+            				else if(a3.isSelected())
+            				{
+            					a3select = true;
+            					a1select = false;
+            					a2select = false;
+            					a4select = false;
+
+            				}
+            				else if(a4.isSelected())
+            				{
+            					a4select = true;
+            					a1select = false;
+            					a2select = false;
+            					a3select = false;
+
+            				}
+            				String command = e.getActionCommand();
+            				if(command.equals("Submit"))			//tells the computer to go to changeQuestions when submit is pressed
+            				{
+            					sp = true;
+            					changeQuestions();
+
+            				}
+            				else if(command.equals("Next"))//&& correctCount >=6 )
+            				{
+                      if(correct==true)
+                      {
+                        cards.show(pHolder, "DigestivePanel");
+                      }
+
+            				}
 
 
 
 
+            			}
+            			public void changeQuestions()					//method that changes the text of the radiobuttons if the user answers correctly
+            			{
 
-          }
+            				//System.out.println();
+            				if(sp == true &&  a1select == true && ca1 == true)
+            				{
+
+            					sp = false;
+            					a1select = false;
+            					ca1 = false;
+            					correct = true;
+            				}
+            				else if(sp == true &&  a2select == true && ca2 == true)
+            				{
+
+            					correct = true;
+            					sp = false;
+            					a2select = false;
+            					ca2 = false;
+            				}
+            				else if(sp == true &&  a3select == true && ca3 == true)
+            				{
+
+            					correct = true;
+            					sp = false;
+            					a3select = false;
+            					ca3 = false;
+            				}
+            				else if(sp == true &&  a4select == true && ca4 == true)
+            				{
+
+            					correct = true;
+            					sp = false;
+            					a4select = false;
+            					ca4 = false;
+            				}
+            				else
+            				{
+            					correct = false;
+            					wrong = true;
+            				}
+
+            				if (correct == true)
+            				{
+            					randomQuestion = (int)((Math.random()*29)+1);	//randomizes integer for the next question
+
+            					cards.show(pHolder,"DigestivePanel");
+            					//System.out.println("correct");
+            				}
+            				else if (wrong == true)
+            				{
+            					cards.show(pHolder,"DigestionQuestions");
+            					//System.out.println("wrong");
+
+            				}
+
+
+
+            			}
+
+
+          }//end of DigestivePanel
 
           class EndingPanel extends JPanel
           {
