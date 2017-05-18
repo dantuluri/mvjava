@@ -865,6 +865,18 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
         class DigestivePanel extends JPanel implements MouseListener, KeyListener//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
         //   //also tied in with MouthQuiz to ask questions regarding the class
         {
+          public boolean inMouth;
+          public boolean doneMouth;
+          public boolean inEsophogous;
+          public boolean doneEsophogous;
+          public boolean inStomach;
+          public boolean doneStomach;
+          public boolean inSmallIntestine;
+          public boolean doneSmallIntestine;
+          public boolean inLargeIntestine;
+          public boolean doneLargeIntestine;
+          public boolean facts;
+          public boolean allClear;
 
           public int oatmealwidth;
           public int oatmealheight;
@@ -879,13 +891,15 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public int avocadoheight;
 
 
-
-
           public int addy;
           public int subby;
 
-          
+
           public Image mouthBackground;
+          public Image esophogousBackground;
+          public Image stomachBackground;
+          public Image smallintestineBackground;
+          public Image largeIntestineBackground;
           public Image donut;
           public Image oatmeal;
           public Image soda;
@@ -897,32 +911,59 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public String sodaName;//file name
           public String oatmealName;//file name
           public int donutX, donutY, oatmealX, oatmealY, sodaX, sodaY, avocadoX, avocadoY;
+
+          public String[] digestiveSystem;
+
+
           public DigestivePanel()
           {
+            donutX=0;
+            donutY=0;
+            oatmealX=0;
+            oatmealY=0;
+            sodaX=0;
+            sodaY=0;
+            avocadoX=0;
+            avocadoY=0;
+            inMouth=0;
+            doneMouth=false;
+             inEsophogous=false;
+             doneEsophogous=false;
+             inStomach=false;
+             doneStomach=false;
+             inSmallIntestine=false;
+             doneSmallIntestine=false;
+             inLargeIntestine=false;
+             doneLargeIntestine=false;
+             facts=false;
+          oatmealwidth=0;
+            oatmealheight=0;
+
+            sodawidth=0;
+          sodaheight=0;
+
+          donutheight=0;
+             donutwidth=0;
+
+            avocadowidth=0;
+            avocadoheight=0;
+
+
+            addy=0;
+            subby=0;
+             allClear=false;
             setBackground(Color.RED);//set background to yello
             mouthBackgroundName= ("mouth.png");
+            esophogousBackgroundName= ("esophogous.png");
+            stomachBackgroundName= ("stomach.png");
+            smallintestineBackgroundName= ("smallintestine.png");
+            largeintestineBackgroundName= ("largeintestine.png");
             donutName= ("donut.png");//file name
             avocadoName= ("avocado.png");//file name
             sodaName= ("soda.png");//file name
             oatmealName= ("oatmeal.png");//file name
-            if(mouth)
-            {
-              donutX = 20;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
-              donutY = 400;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
-              oatmealX = 20;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
-              oatmealY = 400;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
-              sodaX = 20;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
-              sodaY = 400;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
-              avocadoX = 20;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
-              avocadoY = 400;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
-            }
-
-
+            digestiveSystem = new String[5];
             whatKey="";
-            goAway=false;
-            addy=0;
-            subby=0;
-
             setLayout(flow);//sets the layout to flow
             //Card Layout made( needs more pseudocode)
             setLocation(0,0);//sets panel origin
@@ -933,42 +974,62 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           }//end of mouthconstructor
           public void run()
           {
+            for(i=0; digestiveSystem.length; i++)
+            {
+              if(i==0)
+              {
+                inMouth=true;
+                repaint();
+              }
+              if(i==1&&doneMouth)
+              {
+                inEsophogous=true;
+                repaint();
+              }
+              if(i==2&&doneEsophogous)
+              {
+                inStomach=true;
+                repaint();
+              }
+              if(i==3&&doneStomach)
+              {
+                inSmallIntestine=true;
+                repaint();
+              }
+              if(i==4&&doneSmallIntestine)
+              {
+                inLargeIntestine=true;
+                repaint();
+              }
+            }//end of for
             getMyImage();
-            velocity(false,false);
           }
           public void getMyImage()//gets image for use
           {
             try
             {
-              // Image i = javax.swing.ImageIcon("myimage.gif").getImage();
+
               mouthBackground=ImageIO.read(new File(mouthBackgroundName));
               System.out.println("mouthBackground");
               System.out.println("i tried to get metMyImageio suryas");
-              // File oatmeal = new File(oatmealName);
-              // BufferedImage oatmealm = ImageIO.read(oatmeal);
+
+              esophogousBackground=ImageIO.read(new File(esophogousBackgroundName));
+              System.out.println("mouthBackground");
+              System.out.println("i tried to get metMyImageio suryas");
+
               oatmeal = ImageIO.read(new File(oatmealName));
               System.out.println("buffered oatmealsm");
-              // oatmealwidth = oatmealm.getWidth();
-              // oatmealheight = oatmealm.getHeight();
-              // File soda = new File(sodaName);
-              // BufferedImage sodam = ImageIO.read(soda);
+
               soda = ImageIO.read(new File(sodaName));
               System.out.println("buffered sodams");
-              // sodawidth = sodam.getWidth();
-              // sodaheight = sodam.getHeight();
-              // File avocado = new File(avocadoName);
-              // BufferedImage avocadom = ImageIO.read(avocado);
+
               avocado = ImageIO.read(new File(avocadoName));
               System.out.println("buffered avocadoms");
-              // avocadowidth = avocadom.getWidth();
-              // avocadoheight = avocadom.getHeight();
-              // File donut = new File(donutName);
-              // BufferedImage donutm = ImageIO.read(donut);
-              // BufferedImage donutm = ImageIO.read(getClass().getResource("donut.png"));
+
               donut = ImageIO.read(new File(donutName));
               System.out.println("buffered donutm");
-              // donutwidth = donutm.getWidth();
-              // donutheight = donutm.getHeight();
+              donutwidth = donutm.getWidth();
+              donutheight = donutm.getHeight();
             }
             catch(IOException e)
             {
@@ -1037,29 +1098,45 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             public void paintComponent(Graphics g)
             {
               super.paintComponent(g);
-              //Graphics2D g = donutm.createGraphics();    // Get a Graphics2D object
-              g.drawImage(mouthBackground,0,0,800,800,this);
+
+              if(inMouth)
+              {
+                g.drawImage(mouthBackground,0,0,800,800,this);
+                donutX = 20;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
+                donutY = 400;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+                oatmealX = 20;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+                oatmealY = 400;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+                sodaX = 20;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
+                sodaY = 400;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+                avocadoX = 20;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+                avocadoY = 400;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+
+                if(food.equals("oatmeal"))
+                {
+                  g.drawImage(oatmeal,oatmealX,oatmealY,40,40,this);
+                }
+                if(food.equals("soda"))
+                {
+                  g.drawImage(soda,sodaX,sodaY,40,40,this);
+                  //repaint();
+                }
+                if(food.equals("avocado"))
+                {
+                  g.drawImage(avocado,avocadoX,avocadoY,40,40,this);
+                  //repaint();
+                }
+                if(food.equals("donut"))
+                {
+                  g.drawImage(donut,donutX,donutY,40,40,this);// IF THE DONUT IS SELECTED
+                  //repaint();
+                }
+
+              }
+
+
               // JOptionPane.showMessageDialog (null, "Instructions", "Click anywhere on the screen to being after clicking OK to this message!", JOptionPane.INFORMATION_MESSAGE);
               //Click anywhere on the screen to being after clicking OK to this message!
-              if(food.equals("oatmeal"))
-              {
-                g.drawImage(oatmeal,oatmealX,oatmealY,40,40,this);
-              }
-              if(food.equals("soda"))
-              {
-                g.drawImage(soda,sodaX,sodaY,40,40,this);
-                //repaint();
-              }
-              if(food.equals("avocado"))
-              {
-                g.drawImage(avocado,avocadoX,avocadoY,40,40,this);
-                //repaint();
-              }
-              if(food.equals("donut"))
-              {
-                g.drawImage(donut,donutX,donutY,40,40,this);// IF THE DONUT IS SELECTED
-                //repaint();
-              }
+
               if(oatmealY>700&&oatmealY<750&&oatmealX>600&&oatmealX<650)
               {
                 super.paint(g);
