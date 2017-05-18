@@ -1608,7 +1608,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   //esopho
                   if(food.equals("oatmeal"))
                   {
-                    System.out.println("oatmeal eso");
+                    System.out.println("oatmeal sto");
                     System.out.println("imageX: "+ oatmealX + ", imageY: "+oatmealY);
                     if(oatmealX>300&&oatmealX<396&&oatmealY>170&&oatmealY<262)
                     {
@@ -1641,7 +1641,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   }
                   if(food.equals("soda"))
                   {
-                    System.out.println("soda mOUTH");
+                    System.out.println("soda sto");
                     System.out.println("imageX: "+ sodaX + ", imageY: "+sodaY);
                     if(sodaX>300&&sodaX<396&&sodaY>170&&sodaY<262)
                     {
@@ -1675,7 +1675,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   }
                   if(food.equals("avocado"))
                   {
-                    System.out.println("avocado mOUTH");
+                    System.out.println("avocado sto");
                     System.out.println("imageX: "+ avocadoX + ", imageY: "+avocadoY);
                     if(avocadoX>300&&avocadoX<396&&avocadoY>170&&avocadoY<262)
                     {
