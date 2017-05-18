@@ -870,6 +870,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public boolean allClear;
           public boolean alreadyInit;
           public boolean esoInit;
+          public boolean stoInit;
           public boolean checkMouth1;
           public boolean checkMouth2;
           public boolean checkMouth3;
@@ -1573,6 +1574,176 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 }
               }//end of esopho
 
+              if(doneEsophogous)
+              {
+                for(int i=0; i<2; i++)
+                {
+                  System.out.println("doneEsophogous is true then Questions");
+                  cards.show(pHolder, "DigestionQuestions");
+                  doneEsophogous=false;
+                  System.out.println("this is done mouth in donemouthif" + doneMouth);
+                  inStomach=true;
+                }
+
+                if(inStomach)
+                {
+                  doneMouth=false;
+                  checkMouth1=false;
+                  checkMouth2=false;
+                  checkMouth3=false;
+                  System.out.println("esophogous");
+                  g.drawImage(stomachBackground,0,0,800,800,null);
+                  if(stoInit)
+                  {
+                    donutX = 20;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
+                    donutY = 420;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+                    oatmealX = 20;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+                    oatmealY = 420;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+                    sodaX = 20;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
+                    sodaY = 420;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+                    avocadoX = 20;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+                    avocadoY = 420;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+                    stoInit=false;
+                  }
+                  //esopho
+                  if(food.equals("oatmeal"))
+                  {
+                    System.out.println("oatmeal eso");
+                    System.out.println("imageX: "+ oatmealX + ", imageY: "+oatmealY);
+                    if(oatmealX>300&&oatmealX<396&&oatmealY>170&&oatmealY<262)
+                    {
+                      checkMouth1=true;
+                      System.out.println("checkMouth1");
+                    }
+                    if(oatmealX>328&&oatmealX<420&&oatmealY>429&&oatmealY<508)
+                    {
+                      checkMouth2=true;
+                      System.out.println("checkMouth2");
+                    }
+                    if(oatmealX>337&&oatmealX<420&&oatmealY>720&&oatmealY<769)
+                    {
+                      checkMouth3=true;
+                      System.out.println("checkMouth3");
+                    }
+                    if(checkMouth1&&checkMouth2&&checkMouth3)
+                    {
+                      doneEsophogous=true;
+                    }
+                    if(oatmealX<140)
+                    {
+                      oatmealX=140;
+                    }
+                    if(oatmealX>543)
+                    {
+                      oatmealX=543;
+                    }
+                    g.drawImage(oatmeal,oatmealX,oatmealY,40,40,this);
+                  }
+                  if(food.equals("soda"))
+                  {
+                    System.out.println("soda mOUTH");
+                    System.out.println("imageX: "+ sodaX + ", imageY: "+sodaY);
+                    if(sodaX>300&&sodaX<396&&sodaY>170&&sodaY<262)
+                    {
+                      checkMouth1=true;
+                      System.out.println("checkMouth1");
+                    }
+                    if(sodaX>328&&sodaX<420&&sodaY>429&&sodaY<508)
+                    {
+                      checkMouth2=true;
+                      System.out.println("checkMouth2");
+                    }
+                    if(sodaX>337&&sodaX<420&&sodaY>720&&sodaY<769)
+                    {
+                      checkMouth3=true;
+                      System.out.println("checkMouth3");
+                    }
+                    if(checkMouth1&&checkMouth2&&checkMouth3)
+                    {
+                      doneEsophogous=true;
+                    }
+                    if(sodaX<140)
+                    {
+                      sodaX=140;
+                    }
+                    if(sodaX>543)
+                    {
+                      sodaX=543;
+                    }
+                    g.drawImage(soda,sodaX,sodaY,40,40,this);
+
+                  }
+                  if(food.equals("avocado"))
+                  {
+                    System.out.println("avocado mOUTH");
+                    System.out.println("imageX: "+ avocadoX + ", imageY: "+avocadoY);
+                    if(avocadoX>300&&avocadoX<396&&avocadoY>170&&avocadoY<262)
+                    {
+                      checkMouth1=true;
+                      System.out.println("checkMouth1");
+                    }
+                    if(avocadoX>328&&avocadoX<420&&avocadoY>429&&avocadoY<508)
+                    {
+                      checkMouth2=true;
+                      System.out.println("checkMouth2");
+                    }
+                    if(avocadoX>337&&avocadoX<420&&avocadoY>720&&avocadoY<769)
+                    {
+                      checkMouth3=true;
+                      System.out.println("checkMouth3");
+                    }
+                    if(checkMouth1&&checkMouth2&&checkMouth3)
+                    {
+                      doneEsophogous=true;
+                    }
+                    if(avocadoX<140)
+                    {
+                      avocadoX=140;
+                    }
+                    if(avocadoX>543)
+                    {
+                      avocadoX=543;
+                    }
+                    g.drawImage(avocado,avocadoX,avocadoY,40,40,this);
+
+                  }
+                  if(food.equals("donut"))
+                  {
+                    System.out.println("donut mOUTH");
+                    System.out.println("imageX: "+ donutX + ", imageY: "+donutY);
+                    if(donutX>300&&donutX<396&&donutY>170&&donutY<262)
+                    {
+                      checkMouth1=true;
+                      System.out.println("checkMouth1");
+                    }
+                    if(donutX>328&&donutX<420&&donutY>429&&donutY<508)
+                    {
+                      checkMouth2=true;
+                      System.out.println("checkMouth2");
+                    }
+                    if(donutX>337&&donutX<420&&donutY>720&&donutY<769)
+                    {
+                      checkMouth3=true;
+                      System.out.println("checkMouth3");
+                    }
+                    if(checkMouth1&&checkMouth2&&checkMouth3)
+                    {
+                      doneEsophogous=true;
+                    }
+                    if(donutX<140)
+                    {
+                      donutX=140;
+                    }
+                    if(donutX>543)
+                    {
+                      donutX=543;
+                    }
+                    g.drawImage(donut,donutX,donutY,40,40,this);
+                  }
+                }//end of esopho
+
+              }
+              /////dont touch
               Font aldo = new Font ("Apple Casual", Font.BOLD, 8);
               g.setFont(aldo);
               g.setColor(Color.ORANGE);
