@@ -1412,13 +1412,16 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   cards.show(pHolder, "DigestionQuestions");
                   doneMouth=false;
                   System.out.println("this is done mouth in donemouthif" + doneMouth);
-                  inEsophogous=true;  
+                  inEsophogous=true;
                 }
 
               }
               if(inEsophogous)
               {
                 doneMouth=false;
+                checkMouth1=false;
+                checkMouth2=false;
+                checkMouth3=false;
                 System.out.println("esophogous");
                 g.drawImage(esophogousBackground,0,0,800,800,null);
                 if(esoInit)
