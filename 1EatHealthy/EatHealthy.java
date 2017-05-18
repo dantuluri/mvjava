@@ -1426,13 +1426,13 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 g.drawImage(esophogousBackground,0,0,800,800,null);
                 if(esoInit)
                 {
-                  donutX = 400;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
+                  donutX = 390;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
                   donutY = 20;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
-                  oatmealX = 400;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+                  oatmealX = 390;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
                   oatmealY = 20;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
-                  sodaX = 400;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
+                  sodaX = 390;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
                   sodaY = 20;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
-                  avocadoX = 400;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+                  avocadoX = 390;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
                   avocadoY = 20;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
                   esoInit=false;
                 }
@@ -1459,6 +1459,14 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   if(checkMouth1&&checkMouth2&&checkMouth3)
                   {
                     doneMouth=true;
+                  }
+                  if(oatmealX<140)
+                  {
+                    oatmealX=140;
+                  }
+                  if(oatmealX>543)
+                  {
+                    oatmealX=543;
                   }
                   g.drawImage(oatmeal,oatmealX,oatmealY,40,40,this);
                 }
@@ -1538,10 +1546,6 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   g.drawImage(donut,donutX,donutY,40,40,this);
                 }
               }//end of ifmouth
-
-
-              // JOptionPane.showMessageDialog (null, "Instructions", "Click anywhere on the screen to being after clicking OK to this message!", JOptionPane.INFORMATION_MESSAGE);
-              //Click anywhere on the screen to being after clicking OK to this message!
 
               Font aldo = new Font ("Apple Casual", Font.BOLD, 8);
               g.setFont(aldo);
@@ -1921,7 +1925,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 String inputValue = JOptionPane.showInputDialog("You have gotten the question wrong. Think more logically about the question. Answer the question on paper and get it reviewed by your science teacher. Type in ok to continue" );
                 if(inputValue.equals("ok"))
                 {
-                  cards.show(pHolder, "DigestivePanel");
+                  cards.show(pHolder, "DigestionQuestions");
                 }
                 else if(inputValue.equals("CANCEL") || inputValue.equals("NO") || inputValue.equals("cancel"))
                 {

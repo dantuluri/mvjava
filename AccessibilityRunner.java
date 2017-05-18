@@ -1,15 +1,8 @@
-/*
- * Surya Dantuluri
- * March 6, 2017
- * EquationAnalyst.java
- * Simple program that increases text with pressing the up and down arrow and changes color if user presses on rectangle on screen
- 
- User can lighten or darken background color with pressing the up or down arrow
- CLICK CLICK-> brightness goes up by 20 on red and blue ratios
- 
- User pressing key such as up and or down can increase or decrease text
- UP UP--> increases text size by 20 text point
- */
+/*Surya Dantuluri
+Accessibility.java
+3/6/17
+This program uses GUI and Key and Mouse events so that the user can change the background color and the font size of the page in real time.
+*/
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -33,7 +26,7 @@ public class AccessibilityRunner extends JFrame
 		{
 			AccessibilityRunner ar = new AccessibilityRunner();
 		}
-
+		
 		public AccessibilityRunner()
 		{
 			JFrame frame = new JFrame("Accessibility");
@@ -44,7 +37,7 @@ public class AccessibilityRunner extends JFrame
 			setSize(1000, 800);
 			setLocation(0, 0);
 			setResizable(false);
-			setVisible(true);
+			setVisible(true);        
 		}
 }
 
@@ -55,21 +48,21 @@ class Accessibility extends JPanel implements MouseListener,KeyListener
 	private int x;
 	private int y;
 	private boolean check1;
-
+	
 	public Accessibility()
 	{
 		x = 100;
 		y=13;
-
+		
 		check1 = false;
-
+		
 		backgroundColor = new Color(x, x, x);
 		fontSize = y;
-
+		
 		addMouseListener(this);
         addKeyListener(this);
 	}
-
+	
 	public void drawRectanglesWithLabels(Graphics g)
 	{
 		g.setColor(Color.RED);
@@ -79,63 +72,63 @@ class Accessibility extends JPanel implements MouseListener,KeyListener
 		g.drawString("brighter", 15, 80);
 		g.drawString("darker", 115, 80);
 	}
-
-	public void medicalPageContent(Graphics g){ } /*Assume this method is complete. */
-
+	
+	public void medicalPageContent(Graphics g){ }
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
 		setBackground(backgroundColor);
-
+		
 		g.setColor(Color.BLACK);
 		Font f = new Font("Serif", Font.PLAIN, fontSize);
-
+		
 		g.setFont(f);
 		drawRectanglesWithLabels(g);
 	}
-
-	public void keyPressed(KeyEvent e)
+	
+	public void keyPressed(KeyEvent e)		
 	{
 		int code = e.getKeyCode();
-
+        System.out.println(code);
+		
 		if(code == KeyEvent.VK_UP)
 		{
 			if(y+5 <= 80)
-			{
+			{	
 				y += 5;
 				fontSize = y;
 				repaint();
 			}
 		}
-
+		
 		if(code == KeyEvent.VK_DOWN)
 		{
 			if(y-5 >= 8)
-			{
+			{	
 				y -= 5;
 				fontSize = y;
 				repaint();
 			}
 		}
 	}
-
+	
 	public void keyTyped (KeyEvent e){}
 	public void keyReleased (KeyEvent e){}
-
+	
 	public void mousePressed(MouseEvent e)
 	{
 		requestFocusInWindow();
 	}
-
+	
 	public void mouseClicked(MouseEvent e)
 	{
 		int a = e.getX();
 		int b = e.getY();
-
+		
 		if((b <= 30 && b >= 10) && (a >= 10 && a <= 110))
 		{
 			if(x+3 <= 255)
-			{
+			{	
 				x += 3;
 				backgroundColor = new Color(x, x, x);
 				repaint();
@@ -144,13 +137,13 @@ class Accessibility extends JPanel implements MouseListener,KeyListener
 		if((b <= 30 && b >= 10) && (a >= 115 && a <= 215))
 		{
 			if(x-3 >= 34)
-			{
+			{	
 				x -= 3;
 				backgroundColor = new Color(x, x, x);
 				repaint();
 			}
 		}
-
+		
 	}
 
 	public void mouseReleased(MouseEvent e){}
