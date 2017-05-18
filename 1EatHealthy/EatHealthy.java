@@ -1245,26 +1245,34 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             public void paintComponent(Graphics g)
             {
               super.paintComponent(g);
-               int enzymeX1 = (int )(Math.random() * 383 + 230);
-               int enzymeY1 = (int )(Math.random() * 439 + 396);
-               int enzymeX2 = (int )(Math.random() * 383 + 230);
-               int enzymeY2 = (int )(Math.random() * 439 + 396);
-               int enzymeX3 = (int )(Math.random() * 383 + 230);
-               int enzymeY3 = (int )(Math.random() * 439 + 396);
-               int enzymeX4 = (int )(Math.random() * 383 + 230);
-               int enzymeY4 = (int )(Math.random() * 439 + 396);
-               int enzymeX5 = (int )(Math.random() * 383 + 230);
-               int enzymeY5 = (int )(Math.random() * 439 + 396);
-               int enzymeX6 = (int )(Math.random() * 383 + 230);
-               int enzymeY6 = (int )(Math.random() * 439 + 396);
-               int enzymeX7 = (int )(Math.random() * 383 + 230);
-               int enzymeY7 = (int )(Math.random() * 439 + 396);
+               int enzymeX1 = (int )(Math.random() * 190 + 230);
+               int enzymeY1 = (int )(Math.random() * 53 + 390);
+               int enzymeX2 = (int )(Math.random() * 190 + 230);
+               int enzymeY2 = (int )(Math.random() * 53 + 390);
+               int enzymeX3 = (int )(Math.random() * 190 + 230);
+               int enzymeY3 = (int )(Math.random() * 53 + 390);
+               int enzymeX4 = (int )(Math.random() * 190 + 230);
+               int enzymeY4 = (int )(Math.random() * 53 + 390);
+               int enzymeX5 = (int )(Math.random() * 190 + 230);
+               int enzymeY5 = (int )(Math.random() * 53 + 390);
+               int enzymeX6 = (int )(Math.random() * 190 + 230);
+               int enzymeY6 = (int )(Math.random() * 53 + 390);
+               int enzymeX7 = (int )(Math.random() * 190 + 230);
+               int enzymeY7 = (int )(Math.random() * 53 + 390);
 
               if(inMouth)
               {
                 System.out.println("It IS IN THE MOTUHaisdjoaijd[asodjsoapidjasoidjasoidjsadadas]");
                 g.drawImage(mouthBackground,0,0,800,800,this);
                 g.drawImage(amylase,enzymeX1,enzymeY1,15,22,this);
+                g.drawImage(amylase,enzymeX2,enzymeY2,15,22,this);
+                g.drawImage(amylase,enzymeX3,enzymeY3,15,22,this);
+                g.drawImage(amylase,enzymeX4,enzymeY4,15,22,this);
+                g.drawImage(amylase,enzymeX5,enzymeY5,15,22,this);
+                g.drawImage(amylase,enzymeX6,enzymeY6,15,22,this);
+                g.drawImage(amylase,enzymeX7,enzymeY7,15,22,this);
+
+
                 if(alreadyInit)
                 {
                   donutX = 20;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
@@ -1286,6 +1294,22 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   if(oatmealX>94&&oatmealX<139&&oatmealY>354&&oatmealY<431)
                   {
                     checkMouth1=true;
+                    System.out.println("checkMouth1");
+                  }
+                  if(oatmealX>233&&oatmealX<420&&oatmealY>390&&oatmealY<443)
+                  {
+                    checkMouth2=true;
+                    System.out.println("checkMouth2");
+                  }
+                  if(oatmealX>519&&oatmealX<591&&oatmealY>729&&oatmealY<774)
+                  {
+                    checkMouth3=true;
+                    System.out.println("checkMouth3");
+                  }
+                  if(checkMouth1&&checkMouth2&&checkMouth3)
+                  {
+                    doneMouth=true;
+                    inEsophogous=true;
                   }
                   g.drawImage(oatmeal,oatmealX,oatmealY,40,40,this);
                 }
@@ -1305,6 +1329,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   //repaint();
                 }
 
+              }//end of ifmouth
+
+              if(inEsophogous)
+              {
+                
               }
 
 
