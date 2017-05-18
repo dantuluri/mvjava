@@ -1314,7 +1314,6 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   if(checkMouth1&&checkMouth2&&checkMouth3)
                   {
                     doneMouth=true;
-                    inEsophogous=true;
                   }
                   g.drawImage(oatmeal,oatmealX,oatmealY,40,40,this);
                 }
@@ -1340,7 +1339,6 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   if(checkMouth1&&checkMouth2&&checkMouth3)
                   {
                     doneMouth=true;
-                    inEsophogous=true;
                   }
                   g.drawImage(soda,sodaX,sodaY,40,40,this);
                 }
@@ -1366,7 +1364,6 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   if(checkMouth1&&checkMouth2&&checkMouth3)
                   {
                     doneMouth=true;
-                    inEsophogous=true;
                   }
                   g.drawImage(avocado,avocadoX,avocadoY,40,40,this);
                 }
@@ -1392,7 +1389,6 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   if(checkMouth1&&checkMouth2&&checkMouth3)
                   {
                     doneMouth=true;
-                    inEsophogous=true;
                   }
                   g.drawImage(donut,donutX,donutY,40,40,this);
                 }
@@ -1401,9 +1397,6 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               if(doneMouth)
               {
                 cards.show(pHolder, "DigestionQuestions");
-                inEsophogous=true;
-                doneMouth=false;
-                repaint();
               }
               if(inEsophogous)
               {
@@ -1437,7 +1430,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
 
 
-          class DigestionQuestions extends JPanel implements ActionListener
+          public class DigestionQuestions extends JPanel implements ActionListener
           {
             private String inFileName, line, fullQuestion, fullTextFile,qNumber, choiceA, choiceB, choiceC, choiceD, fullQuestion2;
             private Scanner input;
@@ -1487,14 +1480,14 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
               add(submit);
 
-              next2 = new JButton("Next");
-              next2.setFont(neue);
-              next2.setText("Next");
-              next2.setSize(100, 50);
-              next2.setLocation(400,500);
-              next2.addActionListener(this);
-
-              add(next2);
+              // next2 = new JButton("Next");
+              // next2.setFont(neue);
+              // next2.setText("Next");
+              // next2.setSize(100, 50);
+              // next2.setLocation(400,500);
+              // next2.addActionListener(this);
+              //
+              // add(next2);
 
               answers = new ButtonGroup();			//adding a buttongroup
               a1 = new JRadioButton();
@@ -1725,21 +1718,13 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
               }
               String command = e.getActionCommand();
-              if(command.equals("Submit"))			//tells the computer to go to changeQuestions when submit is pressed
+              if(command.equals("Next"))			//tells the computer to go to changeQuestions when submit is pressed
               {
                 sp = true;
                 changeQuestions();
+                System.out.println("Subtmitted");
 
               }
-              else if(command.equals("Next"))//&& correctCount >=6 )
-              {
-                if(correct==true)
-                {
-                  cards.show(pHolder, "DigestivePanel");
-                }
-
-              }
-
 
 
 
@@ -1789,14 +1774,15 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               if (correct == true)
               {
                 randomQuestion = (int)((Math.random()*29)+1);	//randomizes integer for the next question
-
+                inEsophogous=true;
                 cards.show(pHolder,"DigestivePanel");
                 //System.out.println("correct");
               }
               else if (wrong == true)
               {
-                cards.show(pHolder,"DigestionQuestions");
-                //System.out.println("wrong");
+                //cards.show(pHolder,"DigestionQuestions");
+                System.out.println("wrong");
+                //add a pop up
 
               }
 
