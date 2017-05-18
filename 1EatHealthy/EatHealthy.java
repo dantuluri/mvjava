@@ -840,20 +840,6 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         class DigestivePanel extends JPanel implements MouseListener, KeyListener//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
         //   //also tied in with MouthQuiz to ask questions regarding the class
         {
@@ -878,6 +864,9 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public boolean facts;
           public boolean allClear;
           public boolean alreadyInit;
+          public boolean checkMouth1;
+          public boolean checkMouth2;
+          public boolean checkMouth3;
 
           public int oatmealwidth;
           public int oatmealheight;
@@ -1067,6 +1056,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           {
             requestFocus();//requests focus for mouse
             System.out.println("start click");
+            System.out.println("X: " + e.getX() + ", Y: "+ e.getY());
             repaint();//calls paintcomponent
           }
           public void mouseClicked(MouseEvent e){} //mouse is clicked
@@ -1272,6 +1262,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 if(food.equals("oatmeal"))
                 {
                   System.out.println("oatmeal mOUTH");
+                  System.out.println("imageX: "+ oatmealX + ", imageY: "+oatmealY);
+                  if(oatmealX>94&&oatmealX<139&&oatmealY>354&&oatmealY<431)
+                  {
+                    checkMouth1=true;
+                  }
                   g.drawImage(oatmeal,oatmealX,oatmealY,40,40,this);
                 }
                 if(food.equals("soda"))
