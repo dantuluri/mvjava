@@ -1551,7 +1551,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               QuizQs = new String[30];
 
 
-              randomQuestion = (int)((Math.random()*29)+1);		//randomizing an integer when the user clicks submit in the question
+              randomQuestion = (int)((Math.random()*11)+1);		//randomizing an integer when the user clicks submit in the question
               getTextFile();
               getText();
               setVariables();
@@ -1585,7 +1585,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 fullTextFile = fullTextFile + "\n" + line;		//creating a string to add to the textArea
               }
 
-              for(x1=0;x1<29;x1++)
+              for(x1=0;x1<11;x1++)
               {
 
                 fullQuestion = fullTextFile.substring(0, fullTextFile.indexOf("---")+3)	;		//this separates the big string that is the textFile of quiz questions into individual questions
@@ -1600,7 +1600,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               to set the text to the radiobuttons*/
 
 
-              for (x3 = 0; x3<29 ; x3++)
+              for (x3 = 0; x3<11 ; x3++)
               {
                 fullQuestion2 = QuizQs[x3];
                 if(fullQuestion2.equals(""))
@@ -1773,7 +1773,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
               if (correct == true)
               {
-                randomQuestion = (int)((Math.random()*29)+1);	//randomizes integer for the next question
+                randomQuestion = (int)((Math.random()*11)+1);	//randomizes integer for the next question
                 inEsophogous=true;
                 cards.show(pHolder,"DigestivePanel");
                 //System.out.println("correct");
@@ -1783,6 +1783,20 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 //cards.show(pHolder,"DigestionQuestions");
                 System.out.println("wrong");
                 //add a pop up
+
+                String ninputValue = JOptionPane.showInputDialog("You have gotten the question wrong. Think more logically about the question." );------------------------------>>>>>add a hint dependingon text. make the go dam questions
+                if(inputValue.equals("CONTINUE")||inputValue.equals("continue"))
+                {
+                  food = "donut";
+                  System.out.println("INPUT VALUE WORKS AVOCADO MOUTH PANEL MOVE");
+                  cards.show(pHolder, "DigestivePanel");
+                }
+                else if(inputValue.equals("CANCEL") || inputValue.equals("NO") || inputValue.equals("cancel"))
+                {
+                  System.out.println("CANCEL INPUT VALUE");
+                  cards.show(pHolder, "LandingPage");
+                  repaint();
+                }
 
               }
 
