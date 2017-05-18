@@ -1,2 +1,0 @@
-HighScores.txt - Displays user's names and battles fought.
-null-1 battle(s)null-1 battle(s)
