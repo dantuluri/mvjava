@@ -1079,32 +1079,80 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
              System.out.println("iam D");
              if(food.equals("oatmeal"))
              {
-               oatmealX = oatmealX+10;
+               oatmealX = oatmealX+15;
              }
              if(food.equals("soda"))
              {
-               sodaX = sodaX+10;
+               sodaX = sodaX+15;
              }
              if(food.equals("avocado"))
              {
-               avocadoX = avocadoX+10;
+               avocadoX = avocadoX+15;
              }
              if(food.equals("donut"))
              {
-            donutX = donutX+10;
+            donutX = donutX+15;
              }
              repaint();
            }
           if (keys[A]) {
             System.out.println("iam A");
+            if(food.equals("oatmeal"))
+            {
+              oatmealX = oatmealX-15;
+            }
+            if(food.equals("soda"))
+            {
+              sodaX = sodaX-15;
+            }
+            if(food.equals("avocado"))
+            {
+              avocadoX = avocadoX-15;
+            }
+            if(food.equals("donut"))
+            {
+           donutX = donutX-15;
+            }
             repaint();
            }
           if (keys[W]) {
             System.out.println("iam W");
+            if(food.equals("oatmeal"))
+            {
+              oatmealY = oatmealY-15;
+            }
+            if(food.equals("soda"))
+            {
+              sodaY = sodaY-15;
+            }
+            if(food.equals("avocado"))
+            {
+              avocadoY = avocadoY-15;
+            }
+            if(food.equals("donut"))
+            {
+           donutY = donutY-15;
+            }
             repaint();
            }
           if (keys[S]) {
             System.out.println("iam S");
+            if(food.equals("oatmeal"))
+            {
+              oatmealY = oatmealY+15;
+            }
+            if(food.equals("soda"))
+            {
+              sodaY = sodaY+15;
+            }
+            if(food.equals("avocado"))
+            {
+              avocadoY = avocadoY+15;
+            }
+            if(food.equals("donut"))
+            {
+           donutY = donutY+15;
+            }
             repaint();
            }
 
