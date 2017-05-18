@@ -877,6 +877,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public boolean doneLargeIntestine;
           public boolean facts;
           public boolean allClear;
+          public boolean alreadyInit;
 
           public int oatmealwidth;
           public int oatmealheight;
@@ -956,7 +957,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             avocadowidth=0;
             avocadoheight=0;
 
-
+            alreadyInit=true;
             addy=0;
             subby=0;
              allClear=false;
@@ -1043,6 +1044,9 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               donut = ImageIO.read(new File(donutName));
               System.out.println("buffered donutm");
 
+              oatmeal = ImageIO.read(new File(oatmealName));
+              System.out.println("buffered oatmeal");
+
             }
             catch(IOException e)
             {
@@ -1073,6 +1077,22 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
            if (keys[D]) {
              System.out.println("iam D");
+             if(food.equals("oatmeal"))
+             {
+               oatmealX = oatmealX+10;
+             }
+             if(food.equals("soda"))
+             {
+               sodaX = sodaX+10;
+             }
+             if(food.equals("avocado"))
+             {
+               avocadoX = avocadoX+10;
+             }
+             if(food.equals("donut"))
+             {
+            donutX = donutX+10;
+             }
              repaint();
            }
           if (keys[A]) {
@@ -1185,18 +1205,25 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
               if(inMouth)
               {
+                System.out.println("It IS IN THE MOTUHaisdjoaijd[asodjsoapidjasoidjasoidjsadadas]");
                 g.drawImage(mouthBackground,0,0,800,800,this);
-                donutX = 20;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
-                donutY = 400;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
-                oatmealX = 20;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
-                oatmealY = 400;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
-                sodaX = 20;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
-                sodaY = 400;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
-                avocadoX = 20;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
-                avocadoY = 400;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+                if(alreadyInit)
+                {
+                  donutX = 20;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
+                  donutY = 400;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+                  oatmealX = 20;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+                  oatmealY = 400;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+                  sodaX = 20;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
+                  sodaY = 400;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+                  avocadoX = 20;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+                  avocadoY = 400;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+                  alreadyInit=false;
+                }
+
 
                 if(food.equals("oatmeal"))
                 {
+                  System.out.println("oatmeal mOUTH");
                   g.drawImage(oatmeal,oatmealX,oatmealY,40,40,this);
                 }
                 if(food.equals("soda"))
