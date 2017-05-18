@@ -1327,7 +1327,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                     checkMouth1=true;
                     System.out.println("checkMouth1");
                   }
-                  if(oatmealX>233&&sodaX<420&&sodaY>390&&sodaY<443)
+                  if(sodaX>233&&sodaX<420&&sodaY>390&&sodaY<443)
                   {
                     checkMouth2=true;
                     System.out.println("checkMouth2");
@@ -1401,6 +1401,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
               if(inEsophogous)
               {
+                cards.show(pHolder, "DigestionQuestions");
                 g.drawImage(esophogousBackground,0,0,800,800,this);
                 if(esoInit)
                 {
