@@ -1406,11 +1406,15 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               }//end of ifmouth
               if(doneMouth)
               {
-                System.out.println("doneMouth is true then Questions");
-                cards.show(pHolder, "DigestionQuestions");
-                doneMouth=false;
-                System.out.println("this is done mouth in donemouthif" + doneMouth);
-                inEsophogous=true;
+                for(int i=0; i<2; i++)
+                {
+                  System.out.println("doneMouth is true then Questions");
+                  cards.show(pHolder, "DigestionQuestions");
+                  doneMouth=false;
+                  System.out.println("this is done mouth in donemouthif" + doneMouth);
+                  inEsophogous=true;  
+                }
+
               }
               if(inEsophogous)
               {
@@ -1898,6 +1902,9 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 diquizas.repaint();
                 repaint();
                 System.out.println("tripped of everyone");
+                digestcanvas.inMouth=false;
+                digestcanvas.doneMouth=false;
+                digestcanvas.inEsophogous=true;
                 cards.show(pHolder, "DigestivePanel");
 
                 //System.out.println("correct");
