@@ -1893,6 +1893,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               {
                 randomQuestion = (int)((Math.random()*10)+1);	//randomizes integer for the next question
                 System.out.println("YOU GOT IS CORRECT!");
+                diquizas.removeAll();
+                diquizas.revalidate();
+                diquizas.repaint();
+                repaint();
+                System.out.println("tripped of everyone");
                 cards.show(pHolder, "DigestivePanel");
 
                 //System.out.println("correct");
@@ -1919,6 +1924,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
 
 
+            }
+
+            public void paintComponent(Graphics g)
+            {
+              g.clearRect (0, 0, diquizas.getWidth(), diquizas.getHeight());
             }
 
 
