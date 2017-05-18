@@ -930,23 +930,23 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             avocadoY=0;
             inMouth=false;
             doneMouth=false;
-             inEsophogous=false;
-             doneEsophogous=false;
-             inStomach=false;
-             doneStomach=false;
-             inSmallIntestine=false;
-             doneSmallIntestine=false;
-             inLargeIntestine=false;
-             doneLargeIntestine=false;
-             facts=false;
-          oatmealwidth=0;
+            inEsophogous=false;
+            doneEsophogous=false;
+            inStomach=false;
+            doneStomach=false;
+            inSmallIntestine=false;
+            doneSmallIntestine=false;
+            inLargeIntestine=false;
+            doneLargeIntestine=false;
+            facts=false;
+            oatmealwidth=0;
             oatmealheight=0;
 
             sodawidth=0;
-          sodaheight=0;
+            sodaheight=0;
 
-          donutheight=0;
-             donutwidth=0;
+            donutheight=0;
+            donutwidth=0;
 
             avocadowidth=0;
             avocadoheight=0;
@@ -955,7 +955,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             esoInit=true;
             addy=0;
             subby=0;
-             allClear=false;
+            allClear=false;
             setBackground(Color.RED);//set background to yello
             mouthBackgroundName= ("mouth.png");
             esophogousBackgroundName= ("esophogous.png");
@@ -1075,86 +1075,86 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public void mouseExited(MouseEvent e){} //mouse exits
           public void draw() {
 
-           if (keys[D]) {
-             System.out.println("iam D");
-             if(food.equals("oatmeal"))
-             {
-               oatmealX = oatmealX+15;
-             }
-             if(food.equals("soda"))
-             {
-               sodaX = sodaX+15;
-             }
-             if(food.equals("avocado"))
-             {
-               avocadoX = avocadoX+15;
-             }
-             if(food.equals("donut"))
-             {
-            donutX = donutX+15;
-             }
-             repaint();
-           }
-          if (keys[A]) {
-            System.out.println("iam A");
-            if(food.equals("oatmeal"))
-            {
-              oatmealX = oatmealX-15;
+            if (keys[D]) {
+              System.out.println("iam D");
+              if(food.equals("oatmeal"))
+              {
+                oatmealX = oatmealX+15;
+              }
+              if(food.equals("soda"))
+              {
+                sodaX = sodaX+15;
+              }
+              if(food.equals("avocado"))
+              {
+                avocadoX = avocadoX+15;
+              }
+              if(food.equals("donut"))
+              {
+                donutX = donutX+15;
+              }
+              repaint();
             }
-            if(food.equals("soda"))
-            {
-              sodaX = sodaX-15;
+            if (keys[A]) {
+              System.out.println("iam A");
+              if(food.equals("oatmeal"))
+              {
+                oatmealX = oatmealX-15;
+              }
+              if(food.equals("soda"))
+              {
+                sodaX = sodaX-15;
+              }
+              if(food.equals("avocado"))
+              {
+                avocadoX = avocadoX-15;
+              }
+              if(food.equals("donut"))
+              {
+                donutX = donutX-15;
+              }
+              repaint();
             }
-            if(food.equals("avocado"))
-            {
-              avocadoX = avocadoX-15;
+            if (keys[W]) {
+              System.out.println("iam W");
+              if(food.equals("oatmeal"))
+              {
+                oatmealY = oatmealY-15;
+              }
+              if(food.equals("soda"))
+              {
+                sodaY = sodaY-15;
+              }
+              if(food.equals("avocado"))
+              {
+                avocadoY = avocadoY-15;
+              }
+              if(food.equals("donut"))
+              {
+                donutY = donutY-15;
+              }
+              repaint();
             }
-            if(food.equals("donut"))
-            {
-           donutX = donutX-15;
+            if (keys[S]) {
+              System.out.println("iam S");
+              if(food.equals("oatmeal"))
+              {
+                oatmealY = oatmealY+15;
+              }
+              if(food.equals("soda"))
+              {
+                sodaY = sodaY+15;
+              }
+              if(food.equals("avocado"))
+              {
+                avocadoY = avocadoY+15;
+              }
+              if(food.equals("donut"))
+              {
+                donutY = donutY+15;
+              }
+              repaint();
             }
-            repaint();
-           }
-          if (keys[W]) {
-            System.out.println("iam W");
-            if(food.equals("oatmeal"))
-            {
-              oatmealY = oatmealY-15;
-            }
-            if(food.equals("soda"))
-            {
-              sodaY = sodaY-15;
-            }
-            if(food.equals("avocado"))
-            {
-              avocadoY = avocadoY-15;
-            }
-            if(food.equals("donut"))
-            {
-           donutY = donutY-15;
-            }
-            repaint();
-           }
-          if (keys[S]) {
-            System.out.println("iam S");
-            if(food.equals("oatmeal"))
-            {
-              oatmealY = oatmealY+15;
-            }
-            if(food.equals("soda"))
-            {
-              sodaY = sodaY+15;
-            }
-            if(food.equals("avocado"))
-            {
-              avocadoY = avocadoY+15;
-            }
-            if(food.equals("donut"))
-            {
-           donutY = donutY+15;
-            }
-            repaint();
-           }
 
           } // end of draw()
           public void keyPressed(KeyEvent e)
@@ -1193,77 +1193,77 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
             int mybutton = e.getKeyCode(); // the ascii value of the key that was pushed
             System.out.println("p "+mybutton);
-              switch (mybutton) {
-               case 68:
-                 keys[D] = true;
-                 draw();
+            switch (mybutton) {
+              case 68:
+              keys[D] = true;
+              draw();
 
-                 break;
-               case 65:
-                 keys[A] = true;
-                 draw();
+              break;
+              case 65:
+              keys[A] = true;
+              draw();
 
-                 break;
-               case 87:
-                 keys[W] = true;
-                 draw();
+              break;
+              case 87:
+              keys[W] = true;
+              draw();
 
-                 break;
-               case 83:
-                 keys[S] = true;
-                 draw();
-                 break;
-             } // end switch
+              break;
+              case 83:
+              keys[S] = true;
+              draw();
+              break;
+            } // end switch
 
           }//end of pressed
           public void keyTyped(KeyEvent e){}
-          public void keyReleased(KeyEvent e)
-          {
-            // System.out.println(e);
-            // allClear=false;
-            // return(allClear);
-            int mybutton = e.getKeyCode(); // the ascii value of the key that was pushed
-            System.out.println("r "+mybutton);
-            switch (mybutton) {
-                  case 68:
-                    keys[D] = false;
-                    draw();
-                    break;
-                  case 65:
-                    keys[A] = false;
-                    draw();
-                    break;
-                  case 87:
-                    keys[W] = false;
-                    draw();
-                    break;
-                  case 83:
-                    keys[S] = false;
-                    draw();
-                    break;
-                } // end switch
+            public void keyReleased(KeyEvent e)
+            {
+              // System.out.println(e);
+              // allClear=false;
+              // return(allClear);
+              int mybutton = e.getKeyCode(); // the ascii value of the key that was pushed
+              System.out.println("r "+mybutton);
+              switch (mybutton) {
+                case 68:
+                keys[D] = false;
+                draw();
+                break;
+                case 65:
+                keys[A] = false;
+                draw();
+                break;
+                case 87:
+                keys[W] = false;
+                draw();
+                break;
+                case 83:
+                keys[S] = false;
+                draw();
+                break;
+              } // end switch
 
-          } //mouse is released
+            } //mouse is released
 
 
 
             public void paintComponent(Graphics g)
             {
               super.paintComponent(g);
-               int enzymeX1 = (int )(Math.random() * 190 + 230);
-               int enzymeY1 = (int )(Math.random() * 53 + 390);
-               int enzymeX2 = (int )(Math.random() * 190 + 230);
-               int enzymeY2 = (int )(Math.random() * 53 + 390);
-               int enzymeX3 = (int )(Math.random() * 190 + 230);
-               int enzymeY3 = (int )(Math.random() * 53 + 390);
-               int enzymeX4 = (int )(Math.random() * 190 + 230);
-               int enzymeY4 = (int )(Math.random() * 53 + 390);
-               int enzymeX5 = (int )(Math.random() * 190 + 230);
-               int enzymeY5 = (int )(Math.random() * 53 + 390);
-               int enzymeX6 = (int )(Math.random() * 190 + 230);
-               int enzymeY6 = (int )(Math.random() * 53 + 390);
-               int enzymeX7 = (int )(Math.random() * 190 + 230);
-               int enzymeY7 = (int )(Math.random() * 53 + 390);
+              int enzymeX1 = (int )(Math.random() * 190 + 230);
+              int enzymeY1 = (int )(Math.random() * 53 + 390);
+              int enzymeX2 = (int )(Math.random() * 190 + 230);
+              int enzymeY2 = (int )(Math.random() * 53 + 390);
+              int enzymeX3 = (int )(Math.random() * 190 + 230);
+              int enzymeY3 = (int )(Math.random() * 53 + 390);
+              int enzymeX4 = (int )(Math.random() * 190 + 230);
+              int enzymeY4 = (int )(Math.random() * 53 + 390);
+              int enzymeX5 = (int )(Math.random() * 190 + 230);
+              int enzymeY5 = (int )(Math.random() * 53 + 390);
+              int enzymeX6 = (int )(Math.random() * 190 + 230);
+              int enzymeY6 = (int )(Math.random() * 53 + 390);
+              int enzymeX7 = (int )(Math.random() * 190 + 230);
+              int enzymeY7 = (int )(Math.random() * 53 + 390);
 
               if(inMouth)
               {
@@ -1398,10 +1398,15 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 }
 
               }//end of ifmouth
-
-              if(inEsophogous)
+              if(doneMouth)
               {
                 cards.show(pHolder, "DigestionQuestions");
+                inEsophogous=true;
+                doneMouth=false;
+                repaint();
+              }
+              if(inEsophogous)
+              {
                 g.drawImage(esophogousBackground,0,0,800,800,this);
                 if(esoInit)
                 {
@@ -1435,17 +1440,17 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           class DigestionQuestions extends JPanel implements ActionListener
           {
             private String inFileName, line, fullQuestion, fullTextFile,qNumber, choiceA, choiceB, choiceC, choiceD, fullQuestion2;
-  			private Scanner input;
-  			private String[]QuizQs;
-  			private int randomQuestion,x1,x2, x3;
-  			private boolean ca1, ca2, ca3, ca4, sp, a1select, a2select, a3select, a4select, correct, wrong;
-  			private JButton submit, next2;
-  			private ButtonGroup answers;
-  			private JRadioButton a1, a2, a3, a4;
-  			private JTextArea question, treatCountDisplay;
+            private Scanner input;
+            private String[]QuizQs;
+            private int randomQuestion,x1,x2, x3;
+            private boolean ca1, ca2, ca3, ca4, sp, a1select, a2select, a3select, a4select, correct, wrong;
+            private JButton submit, next2;
+            private ButtonGroup answers;
+            private JRadioButton a1, a2, a3, a4;
+            private JTextArea question, treatCountDisplay;
 
-      public Font neue = new Font ("Helvetica Neue", Font.BOLD, 15);//initializes font
-			// private UnlockTraitsPanel utp;
+            public Font neue = new Font ("Helvetica Neue", Font.BOLD, 15);//initializes font
+            // private UnlockTraitsPanel utp;
 
             public DigestionQuestions()
             {
@@ -1453,24 +1458,24 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               setLayout(flow);
               setBackground(Color.ORANGE);
               question = new JTextArea();
-              				question.setLineWrap(true);
-              				question.setSize(530, 70);
-              				question.setLocation(30, 50);
-              				question.setFont(neue);
-              				question.setBackground(Color.GREEN);
+              question.setLineWrap(true);
+              question.setSize(530, 70);
+              question.setLocation(30, 50);
+              question.setFont(neue);
+              question.setBackground(Color.GREEN);
 
-              				add(question);
+              add(question);
 
-              				treatCountDisplay = new JTextArea();
-              				treatCountDisplay.setLineWrap(true);
-              				treatCountDisplay.setSize(100, 100);
-              				treatCountDisplay.setLocation(500, 0);
-              				treatCountDisplay.setFont(neue);
-              				treatCountDisplay.setOpaque(false);
+              treatCountDisplay = new JTextArea();
+              treatCountDisplay.setLineWrap(true);
+              treatCountDisplay.setSize(100, 100);
+              treatCountDisplay.setLocation(500, 0);
+              treatCountDisplay.setFont(neue);
+              treatCountDisplay.setOpaque(false);
 
-              				//treatCountDisplay.setBackground(mainBlue);
+              //treatCountDisplay.setBackground(mainBlue);
 
-              				add(treatCountDisplay);
+              add(treatCountDisplay);
 
 
               submit = new JButton("Submit");
@@ -1513,6 +1518,10 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               a4.setSize(600,40);
               //set font
 
+              a1.setLocation(30, 130);
+              a2.setLocation(30, 230);
+              a3.setLocation(30, 330);
+              a4.setLocation(30, 430);
               a1.setFont(neue);
               a2.setFont(neue);
               a3.setFont(neue);
@@ -1595,7 +1604,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
             public void setVariables()								//this method is only fully excecuted if the random number generated is the loop integer value
             {														/*when the random integer value has arrived then it separates the text file into choices ABCD to
-                                          to set the text to the radiobuttons*/
+              to set the text to the radiobuttons*/
 
 
               for (x3 = 0; x3<29 ; x3++)
@@ -1628,30 +1637,30 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   QuizQs[x3] = "";
                   if (choiceA.indexOf("!") == 0) 	//this if else block is to determine which one of the answers is correct, in the text file the correct answer has an ! in the front
                   {								// boolean for each answer choice is set as true w respective correct answers
-                  //System.out.print(choiceA);
-                  ca1 = true;
-                  choiceA = choiceA.substring(1);
+                    //System.out.print(choiceA);
+                    ca1 = true;
+                    choiceA = choiceA.substring(1);
                   }
 
                   else if (choiceB.indexOf("!") == 0)
                   {
-                  //System.out.print(choiceB);
-                  ca2 = true;
-                  choiceB = choiceB.substring(1);
+                    //System.out.print(choiceB);
+                    ca2 = true;
+                    choiceB = choiceB.substring(1);
                   }
 
                   else if (choiceC.indexOf("!") == 0)
                   {
-                  //System.out.print(choiceC);
-                  ca3 = true;
-                  choiceC = choiceC.substring(1);
+                    //System.out.print(choiceC);
+                    ca3 = true;
+                    choiceC = choiceC.substring(1);
                   }
 
                   else if (choiceD.indexOf("!") == 0)
                   {
-                  //System.out.print(choiceD);
-                  ca4 = true;
-                  choiceD = choiceD.substring(1);
+                    //System.out.print(choiceD);
+                    ca4 = true;
+                    choiceD = choiceD.substring(1);
 
                   }
 
@@ -1682,118 +1691,118 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
             public void actionPerformed(ActionEvent e){
 
-            				if(a1.isSelected())					//if else block for if a radiobutton is selected, respecitve booleans are set as true and others are set as false
-            				{
-            					a1select = true;
-            					a2select = false;
-            					a3select = false;
-            					a4select = false;
-            				}
+              if(a1.isSelected())					//if else block for if a radiobutton is selected, respecitve booleans are set as true and others are set as false
+              {
+                a1select = true;
+                a2select = false;
+                a3select = false;
+                a4select = false;
+              }
 
 
-            				else if(a2.isSelected())
-            				{
-            					a2select = true;
-            					a1select = false;
-            					a3select = false;
-            					a4select = false;
-            				}
+              else if(a2.isSelected())
+              {
+                a2select = true;
+                a1select = false;
+                a3select = false;
+                a4select = false;
+              }
 
-            				else if(a3.isSelected())
-            				{
-            					a3select = true;
-            					a1select = false;
-            					a2select = false;
-            					a4select = false;
+              else if(a3.isSelected())
+              {
+                a3select = true;
+                a1select = false;
+                a2select = false;
+                a4select = false;
 
-            				}
-            				else if(a4.isSelected())
-            				{
-            					a4select = true;
-            					a1select = false;
-            					a2select = false;
-            					a3select = false;
+              }
+              else if(a4.isSelected())
+              {
+                a4select = true;
+                a1select = false;
+                a2select = false;
+                a3select = false;
 
-            				}
-            				String command = e.getActionCommand();
-            				if(command.equals("Submit"))			//tells the computer to go to changeQuestions when submit is pressed
-            				{
-            					sp = true;
-            					changeQuestions();
+              }
+              String command = e.getActionCommand();
+              if(command.equals("Submit"))			//tells the computer to go to changeQuestions when submit is pressed
+              {
+                sp = true;
+                changeQuestions();
 
-            				}
-            				else if(command.equals("Next"))//&& correctCount >=6 )
-            				{
-                      if(correct==true)
-                      {
-                        cards.show(pHolder, "DigestivePanel");
-                      }
+              }
+              else if(command.equals("Next"))//&& correctCount >=6 )
+              {
+                if(correct==true)
+                {
+                  cards.show(pHolder, "DigestivePanel");
+                }
 
-            				}
-
-
-
-
-            			}
-            			public void changeQuestions()					//method that changes the text of the radiobuttons if the user answers correctly
-            			{
-
-            				//System.out.println();
-            				if(sp == true &&  a1select == true && ca1 == true)
-            				{
-
-            					sp = false;
-            					a1select = false;
-            					ca1 = false;
-            					correct = true;
-            				}
-            				else if(sp == true &&  a2select == true && ca2 == true)
-            				{
-
-            					correct = true;
-            					sp = false;
-            					a2select = false;
-            					ca2 = false;
-            				}
-            				else if(sp == true &&  a3select == true && ca3 == true)
-            				{
-
-            					correct = true;
-            					sp = false;
-            					a3select = false;
-            					ca3 = false;
-            				}
-            				else if(sp == true &&  a4select == true && ca4 == true)
-            				{
-
-            					correct = true;
-            					sp = false;
-            					a4select = false;
-            					ca4 = false;
-            				}
-            				else
-            				{
-            					correct = false;
-            					wrong = true;
-            				}
-
-            				if (correct == true)
-            				{
-            					randomQuestion = (int)((Math.random()*29)+1);	//randomizes integer for the next question
-
-            					cards.show(pHolder,"DigestivePanel");
-            					//System.out.println("correct");
-            				}
-            				else if (wrong == true)
-            				{
-            					cards.show(pHolder,"DigestionQuestions");
-            					//System.out.println("wrong");
-
-            				}
+              }
 
 
 
-            			}
+
+            }
+            public void changeQuestions()					//method that changes the text of the radiobuttons if the user answers correctly
+            {
+
+              //System.out.println();
+              if(sp == true &&  a1select == true && ca1 == true)
+              {
+
+                sp = false;
+                a1select = false;
+                ca1 = false;
+                correct = true;
+              }
+              else if(sp == true &&  a2select == true && ca2 == true)
+              {
+
+                correct = true;
+                sp = false;
+                a2select = false;
+                ca2 = false;
+              }
+              else if(sp == true &&  a3select == true && ca3 == true)
+              {
+
+                correct = true;
+                sp = false;
+                a3select = false;
+                ca3 = false;
+              }
+              else if(sp == true &&  a4select == true && ca4 == true)
+              {
+
+                correct = true;
+                sp = false;
+                a4select = false;
+                ca4 = false;
+              }
+              else
+              {
+                correct = false;
+                wrong = true;
+              }
+
+              if (correct == true)
+              {
+                randomQuestion = (int)((Math.random()*29)+1);	//randomizes integer for the next question
+
+                cards.show(pHolder,"DigestivePanel");
+                //System.out.println("correct");
+              }
+              else if (wrong == true)
+              {
+                cards.show(pHolder,"DigestionQuestions");
+                //System.out.println("wrong");
+
+              }
+
+
+
+            }
 
 
           }//end of DigestivePanel
