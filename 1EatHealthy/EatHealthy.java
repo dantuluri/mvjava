@@ -1414,13 +1414,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
               }
 
-
               // JOptionPane.showMessageDialog (null, "Instructions", "Click anywhere on the screen to being after clicking OK to this message!", JOptionPane.INFORMATION_MESSAGE);
               //Click anywhere on the screen to being after clicking OK to this message!
-
-
-
-
 
               Font aldo = new Font ("Apple Casual", Font.BOLD, 8);
               g.setFont(aldo);
@@ -1433,17 +1428,78 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
 
 
-
-
-
-
-
           class DigestionQuestions extends JPanel
           {
             public DigestionQuestions()
             {
               System.out.println("Digestion Questions");
+              setLayout(flow);
+              setBackground(Color.ORANGE);
+
+              submit = new JButton("Submit");
+              submit.setFont(mediumf);
+              submit.setText("Submit");
+              submit.setSize(100, 50);
+              submit.setLocation(300,500);
+              submit.addActionListener(this);
+
+              add(submit);
+
+              next2 = new JButton("Next");
+              next2.setFont(mediumf);
+              next2.setText("Next");
+              next2.setSize(100, 50);
+              next2.setLocation(400,500);
+              next2.addActionListener(this);
+
+              add(next2);
+
+              answers = new ButtonGroup();			//adding a buttongroup
+              a1 = new JRadioButton();
+              a2 = new JRadioButton();
+              a3 = new JRadioButton();
+              a4 = new JRadioButton();
+
+              answers.add(a1);						//adding buttons to a buttongroup
+              answers.add(a2);
+              answers.add(a3);
+              answers.add(a4);
+
+              a1.addActionListener(this);				//setting all attributes to the buttons
+              a2.addActionListener(this);
+              a3.addActionListener(this);
+              a4.addActionListener(this);
+
+              a1.setSize(600,40);
+              a2.setSize(600,40);
+              a3.setSize(600,40);
+              a4.setSize(600,40);
+              //set font
+
+              Font helvec = new Font ("Helvetica Neue", Font.BOLD, 40);//initializes font
+              g.setFont(helvec);//sets font int graphics
+              g.drawString("Welcome to the Eat Healthy Game!",60,100);//sets the string that is displayed on the panel
+              Color purplo = new Color (194,24,91);
+              g.setColor(purplo);
+
+              
+              a1.setBackground(mainBlue);
+              a2.setBackground(mainBlue);
+              a3.setBackground(mainBlue);
+              a4.setBackground(mainBlue);
+
+
+              add(a1);
+              add(a2);
+              add(a3);
+              add(a4);
             }
+
+
+
+
+
+
           }
 
           class EndingPanel extends JPanel
@@ -1454,4 +1510,3 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             }
           }
         }
-        
