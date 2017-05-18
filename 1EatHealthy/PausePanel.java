@@ -1,6 +1,5 @@
 public class PausePanel extends JPanel implements ActionListener
-
-		{}
+		
 			private JButton quitButton,resumeButton;
 			public PausePanel()
 			{
