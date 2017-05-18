@@ -1398,8 +1398,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
               if(inEsophogous)
               {
-                g.drawImage(mouthBackground,0,0,800,800,this);
-                if(alreadyInit)
+                g.drawImage(esophogousBackground,0,0,800,800,this);
+                if(esoInit)
                 {
                   donutX = 20;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
                   donutY = 400;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
@@ -1409,7 +1409,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   sodaY = 400;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
                   avocadoX = 20;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
                   avocadoY = 400;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
-                  alreadyInit=false;
+                  esoInit=false;
                 }
 
               }
