@@ -857,6 +857,14 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
         class DigestivePanel extends JPanel implements MouseListener, KeyListener//mouth panel that user moves food around to get digested. Uses key listner and bufferedimage
         //   //also tied in with MouthQuiz to ask questions regarding the class
         {
+          final int A = 0;
+          final int D = 1;
+          final int W = 2;
+          final int S = 3;
+
+
+
+
           public boolean inMouth;
           public boolean doneMouth;
           public boolean inEsophogous;
@@ -910,6 +918,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public String sodaName;//file name
           public String oatmealName;//file name
           public int donutX, donutY, oatmealX, oatmealY, sodaX, sodaY, avocadoX, avocadoY;
+          public boolean[] keys = new boolean[4];
 
           public String[] digestiveSystem;
 
@@ -963,6 +972,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             oatmealName= ("oatmeal.png");//file name
             digestiveSystem = new String[5];
             whatKey="";
+
             setLayout(flow);//sets the layout to flow
             //Card Layout made( needs more pseudocode)
             setLocation(0,0);//sets panel origin
@@ -1002,6 +1012,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               }
             }//end of for
             getMyImage();
+            draw();
           }
           public void getMyImage()//gets image for use
           {
@@ -1058,43 +1069,112 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public void mouseReleased(MouseEvent e){} //mouse is released
           public void mouseEntered(MouseEvent e){} //mouse is entered
           public void mouseExited(MouseEvent e){} //mouse exits
+          public void draw() {
 
+           if (keys[D]) {
+             System.out.println("iam D");
+             repaint();
+           }
+          if (keys[A]) {
+            System.out.println("iam A");
+            repaint();
+           }
+          if (keys[W]) {
+            System.out.println("iam W");
+            repaint();
+           }
+          if (keys[S]) {
+            System.out.println("iam S");
+            repaint();
+           }
+
+          } // end of draw()
           public void keyPressed(KeyEvent e)
           {
-            System.out.println(e);
-            keychange=""+e;
-            System.out.println("keyP");
-            requestFocus();
-            int codey = e.getKeyCode();//looks for shiftkey
-            if(codey==KeyEvent.VK_W)//runs if shiftkey is pressed
-            {
-              whatKey="W";
-              System.out.println("whatKey W in keyPressed");
-              for(int i=0;i<100;i++)
-              {
-                System.out.print(i);
-              }
-            }
-            if(codey==KeyEvent.VK_S)
-            {
-              whatKey="S";
-              System.out.println("whatKey S in keyPressed");
-            }
-            if(codey==KeyEvent.VK_A)
-            {
-              whatKey="A";
-              System.out.println("whatKey A in keyPressed");
-            }
-            if(codey==KeyEvent.VK_D)
-            {
-              whatKey="D";
-              System.out.println("whatKey D in keyPressed");
-            }
+            // System.out.println(e);
+            // keychange=""+e;
+            // System.out.println("keyP");
+            // requestFocus();
+            // int codey = e.getKeyCode();//looks for shiftkey
+            // if(codey==KeyEvent.VK_W)//runs if shiftkey is pressed
+            // {
+            //   whatKey="W";
+            //   System.out.println("whatKey W in keyPressed");
+            //   for(int i=0;i<100;i++)
+            //   {
+            //     System.out.print(i);
+            //     keyReleased(
+            //     );
+            //   }
+            // }
+            // if(codey==KeyEvent.VK_S)
+            // {
+            //   whatKey="S";
+            //   System.out.println("whatKey S in keyPressed");
+            // }
+            // if(codey==KeyEvent.VK_A)
+            // {
+            //   whatKey="A";
+            //   System.out.println("whatKey A in keyPressed");
+            // }
+            // if(codey==KeyEvent.VK_D)
+            // {
+            //   whatKey="D";
+            //   System.out.println("whatKey D in keyPressed");
+            // }
+
+            int mybutton = e.getKeyCode(); // the ascii value of the key that was pushed
+            System.out.println("p "+mybutton);
+              switch (mybutton) {
+               case 68:
+                 keys[D] = true;
+                 draw();
+
+                 break;
+               case 65:
+                 keys[A] = true;
+                 draw();
+
+                 break;
+               case 87:
+                 keys[W] = true;
+                 draw();
+
+                 break;
+               case 83:
+                 keys[S] = true;
+                 draw();
+                 break;
+             } // end switch
+
           }//end of pressed
           public void keyTyped(KeyEvent e){}
           public void keyReleased(KeyEvent e)
           {
-            System.out.println(e);
+            // System.out.println(e);
+            // allClear=false;
+            // return(allClear);
+            int mybutton = e.getKeyCode(); // the ascii value of the key that was pushed
+            System.out.println("r "+mybutton);
+            switch (mybutton) {
+                  case 68:
+                    keys[D] = false;
+                    draw();
+                    break;
+                  case 65:
+                    keys[A] = false;
+                    draw();
+                    break;
+                  case 87:
+                    keys[W] = false;
+                    draw();
+                    break;
+                  case 83:
+                    keys[S] = false;
+                    draw();
+                    break;
+                } // end switch
+
           } //mouse is released
 
 

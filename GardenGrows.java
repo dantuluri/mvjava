@@ -116,8 +116,8 @@ public class GardenGrows//instantiates gardengrows class
         
         public void keyPressed(KeyEvent e)//runs when a key is pressed
         {
-            System.out.println(e);
-
+int codey = e.getKeyCode();
+            System.out.println("lamaoijij"+codey);
             int shiftkeycode = e.getKeyCode();//looks for shiftkey
             if(shiftkeycode==KeyEvent.VK_SHIFT)//runs if shiftkey is pressed
             {
@@ -150,7 +150,6 @@ public class GardenGrows//instantiates gardengrows class
         
         public void keyTyped(KeyEvent e){}//keytyped method
         public void keyReleased(KeyEvent e){
-            System.out.println(e);
             int downcode = e.getKeyCode();
             if(downcode==KeyEvent.VK_S)
             {
