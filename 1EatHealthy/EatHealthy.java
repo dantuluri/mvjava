@@ -922,6 +922,9 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
           public DigestivePanel()
           {
+            checkMouth1=false;
+            checkMouth2=false;
+            checkMouth3=false;
             donutX=0;
             donutY=0;
             oatmealX=0;
@@ -986,11 +989,13 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             {
               if(i==0)
               {
+                System.out.println("run inMouth");
                 inMouth=true;
                 repaint();
               }
               if(i==1&&doneMouth)
               {
+                System.out.println("run doneMouth");
                 inEsophogous=true;
                 repaint();
               }
@@ -1269,7 +1274,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
               if(inMouth)
               {
-                System.out.println("It IS IN THE MOTUHaisdjoaijd[asodjsoapidjasoidjasoidjsadadas]");
+                System.out.println("It IS IN THE MOTUH");
                 g.drawImage(mouthBackground,0,0,800,800,this);
                 g.drawImage(amylase,enzymeX1,enzymeY1,15,22,this);
                 g.drawImage(amylase,enzymeX2,enzymeY2,15,22,this);
@@ -1392,36 +1397,141 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   {
                     doneMouth=true;
                   }
+                  else
+                  {
+                    doneMouth=false;
+                  }
                   g.drawImage(donut,donutX,donutY,40,40,this);
                 }
-
               }//end of ifmouth
               if(doneMouth)
               {
                 System.out.println("doneMouth is true then Questions");
                 cards.show(pHolder, "DigestionQuestions");
                 doneMouth=false;
+                System.out.println("this is done mouth in donemouthif" + doneMouth);
                 inEsophogous=true;
               }
               if(inEsophogous)
               {
-                super.paintComponent(g);
+                doneMouth=false;
                 System.out.println("esophogous");
                 g.drawImage(esophogousBackground,0,0,800,800,null);
                 if(esoInit)
                 {
-                  donutX = 20;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
-                  donutY = 400;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
-                  oatmealX = 20;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
-                  oatmealY = 400;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
-                  sodaX = 20;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
-                  sodaY = 400;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
-                  avocadoX = 20;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
-                  avocadoY = 400;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+                  donutX = 400;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
+                  donutY = 20;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+                  oatmealX = 400;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+                  oatmealY = 20;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+                  sodaX = 400;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
+                  sodaY = 20;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+                  avocadoX = 400;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+                  avocadoY = 20;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
                   esoInit=false;
                 }
 
-              }
+                if(food.equals("oatmeal"))
+                {
+                  System.out.println("oatmeal eso");
+                  System.out.println("imageX: "+ oatmealX + ", imageY: "+oatmealY);
+                  if(oatmealX>94&&oatmealX<139&&oatmealY>354&&oatmealY<431)
+                  {
+                    checkMouth1=true;
+                    System.out.println("checkMouth1");
+                  }
+                  if(oatmealX>233&&oatmealX<420&&oatmealY>390&&oatmealY<443)
+                  {
+                    checkMouth2=true;
+                    System.out.println("checkMouth2");
+                  }
+                  if(oatmealX>519&&oatmealX<591&&oatmealY>729&&oatmealY<774)
+                  {
+                    checkMouth3=true;
+                    System.out.println("checkMouth3");
+                  }
+                  if(checkMouth1&&checkMouth2&&checkMouth3)
+                  {
+                    doneMouth=true;
+                  }
+                  g.drawImage(oatmeal,oatmealX,oatmealY,40,40,this);
+                }
+                if(food.equals("soda"))
+                {
+                  System.out.println("soda mOUTH");
+                  System.out.println("imageX: "+ sodaX + ", imageY: "+sodaY);
+                  if(sodaX>94&&sodaX<139&&sodaY>354&&sodaY<431)
+                  {
+                    checkMouth1=true;
+                    System.out.println("checkMouth1");
+                  }
+                  if(sodaX>233&&sodaX<420&&sodaY>390&&sodaY<443)
+                  {
+                    checkMouth2=true;
+                    System.out.println("checkMouth2");
+                  }
+                  if(sodaX>519&&sodaX<591&&sodaY>729&&sodaY<774)
+                  {
+                    checkMouth3=true;
+                    System.out.println("checkMouth3");
+                  }
+                  if(checkMouth1&&checkMouth2&&checkMouth3)
+                  {
+                    doneMouth=true;
+                  }
+                  g.drawImage(soda,sodaX,sodaY,40,40,this);
+                }
+                if(food.equals("avocado"))
+                {
+                  System.out.println("avocado mOUTH");
+                  System.out.println("imageX: "+ avocadoX + ", imageY: "+avocadoY);
+                  if(avocadoX>94&&avocadoX<139&&avocadoY>354&&avocadoY<431)
+                  {
+                    checkMouth1=true;
+                    System.out.println("checkMouth1");
+                  }
+                  if(avocadoX>233&&avocadoX<420&&avocadoY>390&&avocadoY<443)
+                  {
+                    checkMouth2=true;
+                    System.out.println("checkMouth2");
+                  }
+                  if(avocadoX>519&&avocadoX<591&&avocadoY>729&&avocadoY<774)
+                  {
+                    checkMouth3=true;
+                    System.out.println("checkMouth3");
+                  }
+                  if(checkMouth1&&checkMouth2&&checkMouth3)
+                  {
+                    doneMouth=true;
+                  }
+                  g.drawImage(avocado,avocadoX,avocadoY,40,40,this);
+                }
+                if(food.equals("donut"))
+                {
+                  System.out.println("donut mOUTH");
+                  System.out.println("imageX: "+ donutX + ", imageY: "+donutY);
+                  if(donutX>94&&donutX<139&&donutY>354&&donutY<431)
+                  {
+                    checkMouth1=true;
+                    System.out.println("checkMouth1");
+                  }
+                  if(donutX>233&&donutX<420&&donutY>390&&donutY<443)
+                  {
+                    checkMouth2=true;
+                    System.out.println("checkMouth2");
+                  }
+                  if(donutX>519&&donutX<591&&donutY>729&&donutY<774)
+                  {
+                    checkMouth3=true;
+                    System.out.println("checkMouth3");
+                  }
+                  if(checkMouth1&&checkMouth2&&checkMouth3)
+                  {
+                    doneMouth=true;
+                  }
+                  g.drawImage(donut,donutX,donutY,40,40,this);
+                }
+              }//end of ifmouth
+
 
               // JOptionPane.showMessageDialog (null, "Instructions", "Click anywhere on the screen to being after clicking OK to this message!", JOptionPane.INFORMATION_MESSAGE);
               //Click anywhere on the screen to being after clicking OK to this message!
@@ -1782,8 +1892,9 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               if (correct == true)
               {
                 randomQuestion = (int)((Math.random()*10)+1);	//randomizes integer for the next question
-                cards.show(pHolder,"DigestivePanel");
                 System.out.println("YOU GOT IS CORRECT!");
+                cards.show(pHolder, "DigestivePanel");
+
                 //System.out.println("correct");
               }
               else if (wrong == true)
@@ -1801,11 +1912,9 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 {
                   System.out.println("CANCEL INPUT VALUE");
                   cards.show(pHolder, "LandingPage");
-                  repaint();
                 }
-                correct=true;
-                wrong=true;
-                changeQuestions();
+
+
               }
 
 
