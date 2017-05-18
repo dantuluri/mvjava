@@ -1,0 +1,28 @@
+if(oatmealX>300&&oatmealX<396&&oatmealY>170&&oatmealY<262)
+{
+  checkMouth1=true;
+  System.out.println("checkMouth1");
+}
+if(oatmealX>328&&oatmealX<420&&oatmealY>429&&oatmealY<508)
+{
+  checkMouth2=true;
+  System.out.println("checkMouth2");
+}
+if(oatmealX>337&&oatmealX<420&&oatmealY>720&&oatmealY<769)
+{
+  checkMouth3=true;
+  System.out.println("checkMouth3");
+}
+if(checkMouth1&&checkMouth2&&checkMouth3)
+{
+  doneEsophogous=true;
+}
+if(oatmealX<140)
+{
+  oatmealX=140;
+}
+if(oatmealX>543)
+{
+  oatmealX=543;
+}
+g.drawImage(oatmeal,oatmealX,oatmealY,40,40,this);
