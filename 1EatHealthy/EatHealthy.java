@@ -1571,7 +1571,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   }
                   g.drawImage(donut,donutX,donutY,40,40,this);
                 }
-              }//end of ifmouth
+              }//end of esopho
 
               Font aldo = new Font ("Apple Casual", Font.BOLD, 8);
               g.setFont(aldo);
