@@ -2112,12 +2112,36 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 diquizas.repaint();
                 repaint();
                 System.out.println("tripped of everyone");
-                // if(whatSystem.equals("mouth"))
-                // {
+                if(digestcanvas.mouthGoing)//after the mouth
+                {
                   digestcanvas.inMouth=false;
                   digestcanvas.doneMouth=false;
                   digestcanvas.inEsophogous=true;
-              //  }
+                }
+                if(digestcanvas.esophogousGoing)//after the esophogousGoing
+                {
+                  digestcanvas.inEsophogous=false;
+                  digestcanvas.doneEsophogous=false;
+                  digestcanvas.inEsophogous=true;
+                }
+                if(digestcanvas.stomachGoing)//after the stomachGoing
+                {
+                  digestcanvas.inStomach=false;
+                  digestcanvas.doneStomach=false;
+                  digestcanvas.inStomach=true;
+                }
+                if(digestcanvas.smallintestineGoing)//after the smallintestineGoing
+                {
+                  digestcanvas.inSmallIntestine=false;
+                  digestcanvas.doneSmallIntestine=false;
+                  digestcanvas.inSmallIntestine=true;
+                }
+                if(digestcanvas.largeintestineGoing)//after the largeintestineGoing
+                {
+                  digestcanvas.inLargeIntestine=false;
+                  digestcanvas.doneLargeIntestine=false;
+                  digestcanvas.inLargeIntestine=true;
+                }
 
                 cards.show(pHolder, "DigestivePanel");
 
