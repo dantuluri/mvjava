@@ -110,6 +110,7 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
   public int fiber;
   public int protein;
   public int sugar;
+  public String whatSystem;
   public int health;
   public String healthName;
   private WelcomePanelHolder welcomeHold;
@@ -1410,6 +1411,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 for(int i=0; i<2; i++)
                 {
                   System.out.println("doneMouth is true then Questions");
+                  diquizas.changeQuestions("mouth");
                   cards.show(pHolder, "DigestionQuestions");
                   doneMouth=false;
                   System.out.println("this is done mouth in donemouthif" + doneMouth);
@@ -2052,7 +2054,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               if(command.equals("Submit"))			//tells the computer to go to changeQuestions when submit is pressed
               {
                 sp = true;
-                changeQuestions();
+                changeQuestions(String whatSystem);
                 System.out.println("Subtmitted");
 
               }
@@ -2060,13 +2062,12 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
 
             }
-            public void changeQuestions()					//method that changes the text of the radiobuttons if the user answers correctly
+            public void changeQuestions(String whatSystem)					//method that changes the text of the radiobuttons if the user answers correctly
             {
 
               //System.out.println();
               if(sp == true &&  a1select == true && ca1 == true)
               {
-
                 sp = false;
                 a1select = false;
                 ca1 = false;
@@ -2111,9 +2112,13 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 diquizas.repaint();
                 repaint();
                 System.out.println("tripped of everyone");
-                digestcanvas.inMouth=false;
-                digestcanvas.doneMouth=false;
-                digestcanvas.inEsophogous=true;
+                // if(whatSystem.equals("mouth"))
+                // {
+                  digestcanvas.inMouth=false;
+                  digestcanvas.doneMouth=false;
+                  digestcanvas.inEsophogous=true;
+              //  }
+
                 cards.show(pHolder, "DigestivePanel");
 
                 //System.out.println("correct");

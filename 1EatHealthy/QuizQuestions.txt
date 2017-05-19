@@ -1,14 +1,11 @@
 a1>Based on what stage you’re in, in the game, what do you think the flickering images were in the mouth?<
-
 a)a bug in the code
 b)!an enzyme that breaks down starch in the mouth 
 c)food
 d)some bacteria floating around
 ---
 
-
 2>What enzyme breaks down proteins?(small hint: occurs in stomach)<
-
 a)Pepsinogen(not activated)
 b)DNA
 c)!Pepsin(activated version of pepsinogen)  
@@ -16,7 +13,6 @@ d)Hydrochloric acid
 ---
 
 3>What is the overall function of the small and large intestine?<
-
 a)Make food
 b)Food
 c)!Absorption   
@@ -24,7 +20,6 @@ d)No function
 ---
 
 4>What does HCI stand for?<
-
 a)Highly competitive ice
 b)!Hydrochloric acid   
 c)Hello come inside
@@ -32,7 +27,6 @@ d)Helado de chocolate
 ---
 
 5>The large intestine most does what?<
-
 a)!Absorbs water and breaks down feces with nutrients   
 b)Break down protein
 c)Absorb only nutrients
@@ -40,7 +34,6 @@ d)Nothing, really
 ---
 
 6>Food is mainly absorbed in the ____<
-
 a)Nose
 b)Skin
 c)Stomach
@@ -48,7 +41,6 @@ d)!Small Intestine
 ---
 
 7>Food goes from the small intestine to the _____<		
-
 a)Stomach
 b)Esophagus
 c)Mouth
@@ -56,7 +48,6 @@ d)!Large intestine
 ---
 
 8>What does the mouth break down?<
-
 a)Glucose
 b)Proteins
 c)!Starch
@@ -64,7 +55,6 @@ d)Nothing
 ---
 
 9>What connects the mouth and the stomach?<
-
 a)!Esophogous
 b)LES
 c)Nothing
@@ -72,7 +62,6 @@ d)Acid
 ---
 
 10>What connects the stomach and the large intestine?<
-
 a)Middle intestine
 b)esophagus
 c)!small intestine   
@@ -80,7 +69,6 @@ d)feces
 ---
 
 11>What do you think are the benefits of fiber?<
-
 a)!Reduces time from mouth to anus  
 b)Increases muscles
 c)To have more fibrinogen
@@ -88,7 +76,6 @@ d)To make plants
 ---
 
 12>Where does food go from the mouth?<
-
 a)Stomach
 b)Bronchi
 c)!Esophagus  
