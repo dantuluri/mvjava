@@ -4,10 +4,10 @@
 *Most code was developed by Surya Dantuluri*
 
 Folders in the mvjava project
-```
-src
+
+'src'
 >All programs made + examples from mvhs.fuhsd.org website
-EatHealthy
+'EatHealthy'
 >Game in 5 Weeks Project
 git commit
-```
+
