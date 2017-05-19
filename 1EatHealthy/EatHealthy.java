@@ -907,6 +907,10 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public Image soda;
           public Image avocado;
           public Image amylase;
+          public Image hcl;
+          public Image pepsinogen;
+          public Image pepsin;
+
           public String whatKey;
           public String keychange;
 
@@ -920,6 +924,10 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public String sodaName;//file name
           public String oatmealName;//file name
           public String amylaseName;
+          public String hclName;
+          public String pepsinogenName;
+          public String pepsinName;
+
           public int donutX, donutY, oatmealX, oatmealY, sodaX, sodaY, avocadoX, avocadoY;
           public boolean[] keys = new boolean[4];
 
@@ -979,6 +987,9 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             sodaName= ("soda.png");//file name
             oatmealName= ("oatmeal.png");//file name
             amylaseName= ("amylase.png");
+            hclName= ("hcl.png");
+            pepsinogenName= ("pepsinogen.png");
+            pepsin= ("pepsin.png");
             digestiveSystem = new String[5];
             whatKey="";
 
@@ -1060,6 +1071,14 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               amylase = ImageIO.read(new File(amylaseName));
               System.out.println("buffered amylase");
 
+              hcl = ImageIO.read(new File(hclName));
+              System.out.println("read hcl");
+
+              pepsinogen = ImageIO.read(new File(pepsinogenName));
+              System.out.println("read pepsinogen");
+
+              pepsin = ImageIO.read(new File(pepsinName));
+              System.out.println("read pepsin");
             }
             catch(IOException e)
             {
@@ -1566,8 +1585,10 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 }
                 if(inStomach)
                 {
+                  inMouth=false;
                   doneMouth=false;
                   doneEsophogous=false;
+                  inEsophogous=false;
                   checkMouth1=false;
                   checkMouth2=false;
                   checkMouth3=false;
@@ -1658,14 +1679,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                     {
                       sodaX=800;
                     }
-                    if(sodaY<0)
-                    {
-                      sodaX=0;
-                    }
-                    if(sodaY>800)
-                    {
-                      sodaX=800;
-                    }
+
+
                     g.drawImage(soda,sodaX,sodaY,40,40,this);
 
 
@@ -1697,18 +1712,12 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                     {
                       avocadoX=0;
                     }
-                    if(avocadoX>800)
-                    {
-                      avocadoX=800;
-                    }
+
                     if(avocadoY<0)
                     {
                       avocadoX=0;
                     }
-                    if(avocadoY>800)
-                    {
-                      avocadoX=800;
-                    }
+
                     g.drawImage(avocado,avocadoX,avocadoY,40,40,this);
 
 
@@ -1740,18 +1749,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                     {
                       donutX=0;
                     }
-                    if(donutX>800)
-                    {
-                      donutX=800;
-                    }
                     if(donutY<0)
                     {
                       donutX=0;
                     }
-                    if(donutY>800)
-                    {
-                      donutX=800;
-                    }
+
                     g.drawImage(donut,donutX,donutY,40,40,this);
 
                   }
