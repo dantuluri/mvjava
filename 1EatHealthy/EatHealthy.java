@@ -2084,6 +2084,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               if (correct == true)
               {
                 randomQuestion = (int)((Math.random()*10)+1);	//randomizes integer for the next question
+                getTextFile();
+                getText();
+                setVariables();
+                setQuestion();
+                displayRadioButtons();
                 System.out.println("YOU GOT IS CORRECT!");
                 // diquizas.removeAll();
                 // diquizas.revalidate();
@@ -2093,6 +2098,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 if(digestcanvas.mouthGoing)//after the mouth
                 {
                   randomQuestion = (int)((Math.random()*10)+1);	//randomizes integer for the next question
+                  getTextFile();
+                  getText();
+                  setVariables();
+                  setQuestion();
+                  displayRadioButtons();
                   System.out.println("mouth is Going");
                   digestcanvas.inMouth=false;
                   digestcanvas.doneMouth=false;
@@ -2101,6 +2111,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 if(digestcanvas.esophogousGoing)//after the esophogousGoing
                 {
                   randomQuestion = (int)((Math.random()*10)+1);	//randomizes integer for the next question
+                  getTextFile();
+                  getText();
+                  setVariables();
+                  setQuestion();
+                  displayRadioButtons();
                   System.out.println("esophogousGoing is going");
                   digestcanvas.inMouth=false;
                   digestcanvas.doneMouth=false;
@@ -2112,6 +2127,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 if(digestcanvas.stomachGoing)//after the stomachGoing
                 {
                   randomQuestion = (int)((Math.random()*10)+1);	//randomizes integer for the next question
+                  getTextFile();
+                  getText();
+                  setVariables();
+                  setQuestion();
+                  displayRadioButtons();
                   System.out.println("stomachGoing is going");
                   digestcanvas.inMouth=false;
                   digestcanvas.doneMouth=false;
