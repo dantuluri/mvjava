@@ -1609,22 +1609,22 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                     {
                       doneEsophogous=true;
                     }
-                    if(oatmealX<0)
-                    {
-                      oatmealX=0;
-                    }
-                    if(oatmealX>800)
-                    {
-                      oatmealX=800;
-                    }
-                    if(oatmealY<0)
-                    {
-                      oatmealX=0;
-                    }
-                    if(oatmealY>800)
-                    {
-                      oatmealX=800;
-                    }
+                    // if(oatmealX<0)
+                    // {
+                    //   oatmealX=0;
+                    // }
+                    // if(oatmealX>1000)
+                    // {
+                    //   oatmealX=1000;
+                    // }
+                    // if(oatmealY<0)
+                    // {
+                    //   oatmealX=0;
+                    // }
+                    // if(oatmealY>1000)
+                    // {
+                    //   oatmealX=1000;
+                    // }
                     g.drawImage(oatmeal,oatmealX,oatmealY,40,40,this);
                   }
                   if(food.equals("soda"))
@@ -2226,10 +2226,18 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 String inputValue = JOptionPane.showInputDialog("You have gotten the question wrong. Think more logically about the question. Answer the question on paper and get it reviewed by your science teacher. Type in ok to continue" );
                 if(inputValue.equals("ok"))
                 {
+                  randomQuestion = (int)((Math.random()*10)+1);	//randomizes integer for the next question
+                  getTextFile();
+                  getText();
+                  setVariables();
+                  setQuestion();
+                  displayRadioButtons();
                   cards.show(pHolder, "DigestionQuestions");
                 }
                 else if(inputValue.equals("CANCEL") || inputValue.equals("NO") || inputValue.equals("cancel"))
                 {
+                  randomQuestion = (int)((Math.random()*10)+1);	//randomizes integer for the next question
+
                   System.out.println("CANCEL INPUT VALUE");
                   cards.show(pHolder, "LandingPage");
                 }
