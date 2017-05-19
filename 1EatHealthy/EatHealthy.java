@@ -989,7 +989,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             amylaseName= ("amylase.png");
             hclName= ("hcl.png");
             pepsinogenName= ("pepsinogen.png");
-            pepsin= ("pepsin.png");
+            pepsinName= ("pepsin.png");
             digestiveSystem = new String[5];
             whatKey="";
 
@@ -1675,6 +1675,28 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   g.drawImage(hcl,hclX8,hclY8,20,19,this);
                   g.drawImage(hcl,hclX9,hclY9,20,19,this);
                   g.drawImage(hcl,hclX10,hclY10,20,19,this);
+                  //
+                  g.drawImage(pepsinogen,pepsinogenX1,pepsinogenY1,17,17,this);
+                  g.drawImage(pepsinogen,pepsinogenX2,pepsinogenY2,17,17,this);
+                  g.drawImage(pepsinogen,pepsinogenX3,pepsinogenY3,17,17,this);
+                  g.drawImage(pepsinogen,pepsinogenX4,pepsinogenY4,17,17,this);
+                  g.drawImage(pepsinogen,pepsinogenX5,pepsinogenY5,17,17,this);
+                  g.drawImage(pepsinogen,pepsinogenX6,pepsinogenY6,17,17,this);
+                  g.drawImage(pepsinogen,pepsinogenX7,pepsinogenY7,17,17,this);
+                  g.drawImage(pepsinogen,pepsinogenX8,pepsinogenY8,17,17,this);
+                  g.drawImage(pepsinogen,pepsinogenX9,pepsinogenY9,17,17,this);
+                  g.drawImage(pepsinogen,pepsinogenX10,pepsinogenY10,17,17,this);
+                  //
+                  g.drawImage(pepsin,pepsinX1,pepsinY1,15,12,this);
+                  g.drawImage(pepsin,pepsinX2,pepsinY2,15,12,this);
+                  g.drawImage(pepsin,pepsinX3,pepsinY3,15,12,this);
+                  g.drawImage(pepsin,pepsinX4,pepsinY4,15,12,this);
+                  g.drawImage(pepsin,pepsinX5,pepsinY5,15,12,this);
+                  g.drawImage(pepsin,pepsinX6,pepsinY6,15,12,this);
+                  g.drawImage(pepsin,pepsinX7,pepsinY7,15,12,this);
+                  g.drawImage(pepsin,pepsinX8,pepsinY8,15,12,this);
+                  g.drawImage(pepsin,pepsinX9,pepsinY9,15,12,this);
+                  g.drawImage(pepsin,pepsinX10,pepsinY10,15,12,this);
                   //
 
                   if(stoInit)
