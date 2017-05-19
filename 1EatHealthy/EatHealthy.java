@@ -855,7 +855,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           final int S = 3;
 
 
-
+          public boolean mouthGoing;
+          public boolean esophogousGoing;
+          public boolean stomachGoing;
+          public boolean smallintestineGoing;
+          public boolean largeintestineGoing;
 
           public boolean inMouth;
           public boolean doneMouth;
@@ -1168,38 +1172,6 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           } // end of draw()
           public void keyPressed(KeyEvent e)
           {
-            // System.out.println(e);
-            // keychange=""+e;
-            // System.out.println("keyP");
-            // requestFocus();
-            // int codey = e.getKeyCode();//looks for shiftkey
-            // if(codey==KeyEvent.VK_W)//runs if shiftkey is pressed
-            // {
-            //   whatKey="W";
-            //   System.out.println("whatKey W in keyPressed");
-            //   for(int i=0;i<100;i++)
-            //   {
-            //     System.out.print(i);
-            //     keyReleased(
-            //     );
-            //   }
-            // }
-            // if(codey==KeyEvent.VK_S)
-            // {
-            //   whatKey="S";
-            //   System.out.println("whatKey S in keyPressed");
-            // }
-            // if(codey==KeyEvent.VK_A)
-            // {
-            //   whatKey="A";
-            //   System.out.println("whatKey A in keyPressed");
-            // }
-            // if(codey==KeyEvent.VK_D)
-            // {
-            //   whatKey="D";
-            //   System.out.println("whatKey D in keyPressed");
-            // }
-
             int mybutton = e.getKeyCode(); // the ascii value of the key that was pushed
             System.out.println("p "+mybutton);
             switch (mybutton) {
@@ -1228,9 +1200,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public void keyTyped(KeyEvent e){}
             public void keyReleased(KeyEvent e)
             {
-              // System.out.println(e);
-              // allClear=false;
-              // return(allClear);
+
               int mybutton = e.getKeyCode(); // the ascii value of the key that was pushed
               System.out.println("r "+mybutton);
               switch (mybutton) {
@@ -1318,7 +1288,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   if(oatmealX>519&&oatmealX<591&&oatmealY>729&&oatmealY<774)
                   {
                     checkMouth3=true;
-                    System.out.println("checkMouth3");
+                    System.out.println("mouth oatmeal checkMouth3");
                   }
                   if(checkMouth1&&checkMouth2&&checkMouth3)
                   {
@@ -1343,7 +1313,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   if(sodaX>519&&sodaX<591&&sodaY>729&&sodaY<774)
                   {
                     checkMouth3=true;
-                    System.out.println("checkMouth3");
+                    System.out.println("mouth soda checkMouth3");
                   }
                   if(checkMouth1&&checkMouth2&&checkMouth3)
                   {
@@ -1368,7 +1338,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   if(avocadoX>519&&avocadoX<591&&avocadoY>729&&avocadoY<774)
                   {
                     checkMouth3=true;
-                    System.out.println("checkMouth3");
+                    System.out.println("mouth avocado checkMouth3");
                   }
                   if(checkMouth1&&checkMouth2&&checkMouth3)
                   {
@@ -1393,7 +1363,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   if(donutX>519&&donutX<591&&donutY>729&&donutY<774)
                   {
                     checkMouth3=true;
-                    System.out.println("checkMouth3");
+                    System.out.println("mouth donut checkMouth3");
                   }
                   if(checkMouth1&&checkMouth2&&checkMouth3)
                   {
@@ -1411,7 +1381,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 for(int i=0; i<2; i++)
                 {
                   System.out.println("doneMouth is true then Questions");
-                  diquizas.changeQuestions("mouth");
+                  mouthGoing = true;
                   cards.show(pHolder, "DigestionQuestions");
                   doneMouth=false;
                   System.out.println("this is done mouth in donemouthif" + doneMouth);
@@ -1494,7 +1464,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   if(sodaX>337&&sodaX<420&&sodaY>720&&sodaY<769)
                   {
                     checkMouth3=true;
-                    System.out.println("checkMouth3");
+                    System.out.println("eso soda checkMouth3");
                   }
                   if(checkMouth1&&checkMouth2&&checkMouth3)
                   {
@@ -1528,7 +1498,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   if(avocadoX>337&&avocadoX<420&&avocadoY>720&&avocadoY<769)
                   {
                     checkMouth3=true;
-                    System.out.println("checkMouth3");
+                    System.out.println("eso avocado checkMouth3");
                   }
                   if(checkMouth1&&checkMouth2&&checkMouth3)
                   {
@@ -1562,7 +1532,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   if(donutX>337&&donutX<420&&donutY>720&&donutY<769)
                   {
                     checkMouth3=true;
-                    System.out.println("checkMouth3");
+                    System.out.println("donut eso checkMouth3");
                   }
                   if(checkMouth1&&checkMouth2&&checkMouth3)
                   {
@@ -1585,14 +1555,14 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               {
                 for(int i=0; i<2; i++)
                 {
-                  System.out.println("doneEsophogous is true then Questions");
+                  System.out.println("doneMouth is true then Questions");
+                  esophogousGoing = true;
                   cards.show(pHolder, "DigestionQuestions");
-                  // System.out.println("getquerstions");
-                  // doneEsophogous=false;
-                  // System.out.println("this is done eso in done soto :" + doneMouth);
-                  // inStomach=true;
+                  doneEsophogous=false;
+                  System.out.println("this is done eso " + doneEsophogous);
+                  inStomach=true;
                 }
-
+}
                 if(inStomach)
                 {
                   doneMouth=false;
@@ -1600,7 +1570,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   checkMouth1=false;
                   checkMouth2=false;
                   checkMouth3=false;
-                  System.out.println("esophogous");
+                  System.out.println("stomach");
                   g.drawImage(stomachBackground,0,0,800,800,null);
                   if(stoInit)
                   {
@@ -1629,10 +1599,10 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                       checkMouth2=true;
                       System.out.println("checkMouth2");
                     }
-                    if(oatmealX>337&&oatmealX<420&&oatmealY>720&&oatmealY<769)
+                    if(oatmealX>300&&oatmealX<500&&oatmealY>100&&oatmealY<700)
                     {
                       checkMouth3=true;
-                      System.out.println("checkMouth3");
+                      System.out.println("stomach oats checkMouth3");
                     }
                     if(checkMouth1&&checkMouth2&&checkMouth3)
                     {
@@ -1665,7 +1635,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                     if(sodaX>337&&sodaX<420&&sodaY>720&&sodaY<769)
                     {
                       checkMouth3=true;
-                      System.out.println("checkMouth3");
+                      System.out.println("stomach soda checkMouth3");
                     }
                     if(checkMouth1&&checkMouth2&&checkMouth3)
                     {
@@ -1699,7 +1669,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                     if(avocadoX>337&&avocadoX<420&&avocadoY>720&&avocadoY<769)
                     {
                       checkMouth3=true;
-                      System.out.println("checkMouth3");
+                      System.out.println("avocado stomach checkMouth3");
                     }
                     if(checkMouth1&&checkMouth2&&checkMouth3)
                     {
@@ -1733,7 +1703,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                     if(donutX>337&&donutX<420&&donutY>720&&donutY<769)
                     {
                       checkMouth3=true;
-                      System.out.println("checkMouth3");
+                      System.out.println("donut stomach checkMouth3");
                     }
                     if(checkMouth1&&checkMouth2&&checkMouth3)
                     {
@@ -1749,17 +1719,26 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                     }
                     g.drawImage(donut,donutX,donutY,40,40,this);
                   }
-                }//end of esopho
+                }//end of stomach
+                Font aldo = new Font ("Apple Casual", Font.BOLD, 8);
+                g.setFont(aldo);
+                g.setColor(Color.ORANGE);
+                g.drawString("Press the screen once in order to move the food/drinks with the WASD controls",5,690);
 
               }
               /////dont touch
-              Font aldo = new Font ("Apple Casual", Font.BOLD, 8);
-              g.setFont(aldo);
-              g.setColor(Color.ORANGE);
-              g.drawString("Press the screen once in order to move the food/drinks with the WASD controls",5,690);
-            }//end of paintcomponent
 
           }//end of mouth panel
+
+
+
+
+
+
+
+
+
+
 
 
           public class DigestionQuestions extends JPanel implements ActionListener
@@ -2054,7 +2033,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               if(command.equals("Submit"))			//tells the computer to go to changeQuestions when submit is pressed
               {
                 sp = true;
-                changeQuestions(String whatSystem);
+                changeQuestions();
                 System.out.println("Subtmitted");
 
               }
@@ -2062,9 +2041,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
 
             }
-            public void changeQuestions(String whatSystem)					//method that changes the text of the radiobuttons if the user answers correctly
+            public void changeQuestions()					//method that changes the text of the radiobuttons if the user answers correctly
             {
-
               //System.out.println();
               if(sp == true &&  a1select == true && ca1 == true)
               {
@@ -2107,41 +2085,77 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               {
                 randomQuestion = (int)((Math.random()*10)+1);	//randomizes integer for the next question
                 System.out.println("YOU GOT IS CORRECT!");
-                diquizas.removeAll();
-                diquizas.revalidate();
-                diquizas.repaint();
-                repaint();
+                // diquizas.removeAll();
+                // diquizas.revalidate();
+                // diquizas.repaint();
+                // repaint();
                 System.out.println("tripped of everyone");
                 if(digestcanvas.mouthGoing)//after the mouth
                 {
+                  randomQuestion = (int)((Math.random()*10)+1);	//randomizes integer for the next question
+                  System.out.println("mouth is Going");
                   digestcanvas.inMouth=false;
                   digestcanvas.doneMouth=false;
                   digestcanvas.inEsophogous=true;
                 }
                 if(digestcanvas.esophogousGoing)//after the esophogousGoing
                 {
+                  randomQuestion = (int)((Math.random()*10)+1);	//randomizes integer for the next question
+                  System.out.println("esophogousGoing is going");
+                  digestcanvas.inMouth=false;
+                  digestcanvas.doneMouth=false;
+                  digestcanvas.inEsophogous=true;
                   digestcanvas.inEsophogous=false;
                   digestcanvas.doneEsophogous=false;
                   digestcanvas.inEsophogous=true;
                 }
                 if(digestcanvas.stomachGoing)//after the stomachGoing
                 {
+                  randomQuestion = (int)((Math.random()*10)+1);	//randomizes integer for the next question
+                  System.out.println("stomachGoing is going");
+                  digestcanvas.inMouth=false;
+                  digestcanvas.doneMouth=false;
+                  digestcanvas.inEsophogous=true;
+                  digestcanvas.inEsophogous=false;
+                  digestcanvas.doneEsophogous=false;
+                  digestcanvas.inEsophogous=true;
                   digestcanvas.inStomach=false;
                   digestcanvas.doneStomach=false;
                   digestcanvas.inStomach=true;
                 }
-                if(digestcanvas.smallintestineGoing)//after the smallintestineGoing
-                {
-                  digestcanvas.inSmallIntestine=false;
-                  digestcanvas.doneSmallIntestine=false;
-                  digestcanvas.inSmallIntestine=true;
-                }
-                if(digestcanvas.largeintestineGoing)//after the largeintestineGoing
-                {
-                  digestcanvas.inLargeIntestine=false;
-                  digestcanvas.doneLargeIntestine=false;
-                  digestcanvas.inLargeIntestine=true;
-                }
+                // if(digestcanvas.smallintestineGoing)//after the smallintestineGoing
+                // {
+                //   digestcanvas.inMouth=false;
+                //   digestcanvas.doneMouth=false;
+                //   digestcanvas.inEsophogous=true;
+                //   digestcanvas.inEsophogous=false;
+                //   digestcanvas.doneEsophogous=false;
+                //   digestcanvas.inEsophogous=true;
+                //   digestcanvas.inStomach=false;
+                //   digestcanvas.doneStomach=false;
+                //   digestcanvas.inStomach=true;
+                //   digestcanvas.inSmallIntestine=false;
+                //   digestcanvas.doneSmallIntestine=false;
+                //   digestcanvas.inSmallIntestine=true;
+                // }
+                // if(digestcanvas.largeintestineGoing)//after the largeintestineGoing
+                // {
+                //   digestcanvas.inMouth=false;
+                //   digestcanvas.doneMouth=false;
+                //   digestcanvas.inEsophogous=true;
+                //   digestcanvas.inEsophogous=false;
+                //   digestcanvas.doneEsophogous=false;
+                //   digestcanvas.inEsophogous=true;
+                //   digestcanvas.inStomach=false;
+                //   digestcanvas.doneStomach=false;
+                //   digestcanvas.inStomach=true;
+                //   digestcanvas.inSmallIntestine=false;
+                //   digestcanvas.doneSmallIntestine=false;
+                //   digestcanvas.inSmallIntestine=true;
+                //   digestcanvas.inLargeIntestine=false;
+                //   digestcanvas.doneLargeIntestine=false;
+                //   digestcanvas.inLargeIntestine=true;
+                // }
 
                 cards.show(pHolder, "DigestivePanel");
 
