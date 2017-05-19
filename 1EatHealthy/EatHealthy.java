@@ -877,6 +877,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public boolean esoInit;
           public boolean stoInit;
           public boolean smallInit;
+          public boolean largeInit;
           public boolean checkMouth1;
           public boolean checkMouth2;
           public boolean checkMouth3;
@@ -977,6 +978,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             esoInit=true;
             stoInit=true;
             smallInit=true;
+            largeInit=true;
             addy=0;
             subby=0;
             allClear=false;
@@ -2121,6 +2123,195 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   inLargeIntestine=true;
                 }
               }
+
+              if(inLargeIntestine)
+              {
+                inMouth=false;
+                doneMouth=false;
+                doneEsophogous=false;
+                inEsophogous=false;
+                inStomach=false;
+                doneStomach=false;
+
+                System.out.println("largeInit");
+                g.drawImage(largeIntestineBackground,0,0,800,800,null);
+
+                if(largeInit)
+                {
+                  checkMouth1=false;
+                  checkMouth2=false;
+                  checkMouth3=false;
+                  donutX = 200;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
+                  donutY = 595;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+                  oatmealX = 200;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+                  oatmealY = 595;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+                  sodaX = 200;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
+                  sodaY = 595;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+                  avocadoX = 200;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+                  avocadoY = 595;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+                  largeInit=false;
+                }
+                //stomach
+                if(food.equals("oatmeal"))
+                {
+                  System.out.println("oatmeal sto");
+                  System.out.println("imageX: "+ oatmealX + ", imageY: "+oatmealY);
+                  if(oatmealX>20&&oatmealX<230&&oatmealY>10&&oatmealY<25)
+                  {
+                    checkMouth1=true;
+                    System.out.println("checkMouth1");
+                  }
+                  if(oatmealX>435&&oatmealX<735&&oatmealY>10&&oatmealY<265)
+                  {
+                    checkMouth2=true;
+                    System.out.println("checkMouth2");
+                  }
+                  if(oatmealX>290&&oatmealX<425&&oatmealY>640&&oatmealY<795)
+                  {
+                    checkMouth3=true;
+                    System.out.println("3checkMouth1: "+checkMouth1);
+                    System.out.println("3checkMouth2: "+checkMouth2);
+                    System.out.println("3checkMouth3: "+checkMouth3);
+                    System.out.println("stomach oats checkMouth3");
+                  }
+                  if(checkMouth1&&checkMouth2&&checkMouth3)
+                  {
+                    doneLargeIntestine=true;
+                  }
+                  if(oatmealX<0)
+                  {
+                    oatmealX=0;
+                  }
+
+                  if(oatmealY<0)
+                  {
+                    oatmealY=0;
+                  }
+
+                  g.drawImage(oatmeal,oatmealX,oatmealY,40,40,this);
+                }
+                if(food.equals("soda"))
+                {
+                  System.out.println("soda sto");
+                  System.out.println("imageX: "+ sodaX + ", imageY: "+sodaY);
+                  if(sodaX>60&&sodaX<225&&sodaY>415&&sodaY<535)
+                  {
+                    checkMouth1=true;
+                    System.out.println("checkMouth1");
+                  }
+                  if(sodaX>345&&sodaX<510&&sodaY>430&&sodaY<535)
+                  {
+                    checkMouth2=true;
+                    System.out.println("checkMouth2");
+                  }
+                  if(sodaX>660&&sodaX<770&&sodaY>220&&sodaY<535)
+                  {
+                    checkMouth3=true;
+                    System.out.println("3checkMouth1: "+checkMouth1);
+                    System.out.println("3checkMouth2: "+checkMouth2);
+                    System.out.println("3checkMouth3: "+checkMouth3);
+                    System.out.println("stomach oats checkMouth3");
+                  }
+                  if(checkMouth1&&checkMouth2&&checkMouth3)
+                  {
+                    doneLargeIntestine=true;
+                  }
+                  if(sodaX<0)
+                  {
+                    sodaX=0;
+                  }
+                  if(sodaX>800)
+                  {
+                    sodaX=800;
+                  }
+
+
+                  g.drawImage(soda,sodaX,sodaY,40,40,this);
+
+
+                }
+                if(food.equals("avocado"))
+                {
+                  System.out.println("avocado sto");
+                  System.out.println("imageX: "+ avocadoX + ", imageY: "+avocadoY);
+                  if(avocadoX>60&&avocadoX<225&&avocadoY>415&&avocadoY<535)
+                  {
+                    checkMouth1=true;
+                    System.out.println("checkMouth1");
+                  }
+                  if(avocadoX>345&&avocadoX<510&&avocadoY>430&&avocadoY<535)
+                  {
+                    checkMouth2=true;
+                    System.out.println("checkMouth2");
+                  }
+                  if(avocadoX>660&&avocadoX<770&&avocadoY>220&&avocadoY<535)
+                  {
+                    checkMouth3=true;
+                    System.out.println("3checkMouth1: "+checkMouth1);
+                    System.out.println("3checkMouth2: "+checkMouth2);
+                    System.out.println("3checkMouth3: "+checkMouth3);
+                    System.out.println("stomach oats checkMouth3");
+                    System.out.println("stomach oats checkMouth3");
+                  }
+                  if(checkMouth1&&checkMouth2&&checkMouth3)
+                  {
+                    doneLargeIntestine=true;
+                  }
+                  if(avocadoX<0)
+                  {
+                    avocadoX=0;
+                  }
+
+                  if(avocadoY<0)
+                  {
+                    avocadoY=0;
+                  }
+
+                  g.drawImage(avocado,avocadoX,avocadoY,40,40,this);
+
+
+                }
+                if(food.equals("donut"))
+                {
+                  System.out.println("donut sto");
+                  System.out.println("imageX: "+ donutX + ", imageY: "+donutY);
+                  if(donutX>60&&donutX<225&&donutY>415&&donutY<535)
+                  {
+                    checkMouth1=true;
+                    System.out.println("checkMouth1");
+                  }
+                  if(donutX>345&&donutX<510&&donutY>430&&donutY<535)
+                  {
+                    checkMouth2=true;
+                    System.out.println("checkMouth2");
+                  }
+                  if(donutX>660&&donutX<770&&donutY>220&&donutY<535)
+                  {
+                    checkMouth3=true;
+                    System.out.println("stomach oats checkMouth3");
+                  }
+                  if(checkMouth1&&checkMouth2&&checkMouth3)
+                  {
+                    doneLargeIntestine=true;
+                  }
+                  if(donutX<0)
+                  {
+                    donutX=0;
+                  }
+                  if(donutY<0)
+                  {
+                    donutX=0;
+                  }
+
+                  g.drawImage(donut,donutX,donutY,40,40,this);
+
+                }
+              }
+
+
+
+
+
 
 
 
