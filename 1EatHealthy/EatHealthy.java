@@ -911,6 +911,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public Image hcl;
           public Image pepsinogen;
           public Image pepsin;
+          public Image villi;
 
           public String whatKey;
           public String keychange;
@@ -928,6 +929,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           public String hclName;
           public String pepsinogenName;
           public String pepsinName;
+          public String villiName;
 
           public int donutX, donutY, oatmealX, oatmealY, sodaX, sodaY, avocadoX, avocadoY;
           public boolean[] keys = new boolean[4];
@@ -992,6 +994,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             hclName= ("hcl.png");
             pepsinogenName= ("pepsinogen.png");
             pepsinName= ("pepsin.png");
+            villiName= ("villi.png");
             digestiveSystem = new String[5];
             whatKey="";
 
@@ -1081,6 +1084,9 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
               pepsin = ImageIO.read(new File(pepsinName));
               System.out.println("read pepsin");
+
+              villi = ImageIO.read(new File(villiName));
+              System.out.println("read villi");
             }
             catch(IOException e)
             {
@@ -1337,6 +1343,13 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               int villiX6 = (int )(Math.random() * 800 + 0);
               int villiX7 = (int )(Math.random() * 800 + 0);
               int villiX8 = (int )(Math.random() * 800 + 0);
+              int villiX9 = (int )(Math.random() * 800 + 0);
+              int villiX10 = (int )(Math.random() * 800 + 0);
+              int villiX11 = (int )(Math.random() * 800 + 0);
+              int villiX12 = (int )(Math.random() * 800 + 0);
+              int villiX13 = (int )(Math.random() * 800 + 0);
+              int villiX14 = (int )(Math.random() * 800 + 0);
+
 
               if(inMouth)
               {
@@ -1658,18 +1671,13 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 }
               }
 
-
-
-
               if(inStomach)
               {
                 inMouth=false;
                 doneMouth=false;
                 doneEsophogous=false;
                 inEsophogous=false;
-                checkMouth1=false;
-                checkMouth2=false;
-                checkMouth3=false;
+
                 System.out.println("stomach");
                 g.drawImage(stomachBackground,0,0,800,800,null);
                 g.drawImage(hcl,hclX1,hclY1,20,19,this);
@@ -1708,6 +1716,232 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
                 if(stoInit)
                 {
+                  checkMouth1=false;
+                  checkMouth2=false;
+                  checkMouth3=false;
+                  donutX = 423;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
+                  donutY = 5;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
+                  oatmealX = 423;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+                  oatmealY = 5;//oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
+                  sodaX = 423;//soda-(640 to 790 ,440 to 590) ORIGINAL POS
+                  sodaY = 5;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
+                  avocadoX = 423;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+                  avocadoY = 5;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+                  stoInit=false;
+                }
+                //stomach
+                if(food.equals("oatmeal"))
+                {
+                  System.out.println("oatmeal sto");
+                  System.out.println("imageX: "+ oatmealX + ", imageY: "+oatmealY);
+                  if(oatmealX>378&&oatmealX<513&&oatmealY>155&&oatmealY<185)
+                  {
+                    checkMouth1=true;
+                    System.out.println("checkMouth1");
+                  }
+                  if(oatmealX>453&&oatmealX<573&&oatmealY>320&&oatmealY<580)
+                  {
+                    checkMouth2=true;
+                    System.out.println("checkMouth2");
+                  }
+                  if(oatmealX>18&&oatmealX<78&&oatmealY>575&&oatmealY<740)
+                  {
+                    checkMouth3=true;
+                    System.out.println("stomach oats checkMouth3");
+                  }
+                  if(checkMouth1&&checkMouth2&&checkMouth3)
+                  {
+                    doneStomach=true;
+                  }
+                  if(oatmealX<0)
+                  {
+                    oatmealX=0;
+                  }
+                  if(oatmealX>800)
+                  {
+                    oatmealX=800;
+                  }
+
+                  g.drawImage(oatmeal,oatmealX,oatmealY,40,40,this);
+                }
+                if(food.equals("soda"))
+                {
+                  System.out.println("soda sto");
+                  System.out.println("imageX: "+ sodaX + ", imageY: "+sodaY);
+                  if(sodaX>378&&sodaX<513&&sodaY>155&&sodaY<185)
+                  {
+                    checkMouth1=true;
+                    System.out.println("checkMouth1");
+                  }
+                  if(sodaX>453&&sodaX<573&&sodaY>320&&sodaY<580)
+                  {
+                    checkMouth2=true;
+                    System.out.println("checkMouth2");
+                  }
+                  if(sodaX>18&&sodaX<78&&sodaY>575&&sodaY<740)
+                  {
+                    checkMouth3=true;
+                    System.out.println("stomach oats checkMouth3");
+                  }
+                  if(checkMouth1&&checkMouth2&&checkMouth3)
+                  {
+                    doneStomach=true;
+                  }
+                  if(sodaX<0)
+                  {
+                    sodaX=0;
+                  }
+                  if(sodaX>800)
+                  {
+                    sodaX=800;
+                  }
+
+
+                  g.drawImage(soda,sodaX,sodaY,40,40,this);
+
+
+                }
+                if(food.equals("avocado"))
+                {
+                  System.out.println("avocado sto");
+                  System.out.println("imageX: "+ avocadoX + ", imageY: "+avocadoY);
+                  if(avocadoX>378&&avocadoX<513&&avocadoY>155&&avocadoY<185)
+                  {
+                    checkMouth1=true;
+                    System.out.println("checkMouth1");
+                  }
+                  if(avocadoX>453&&avocadoX<573&&avocadoY>320&&avocadoY<580)
+                  {
+                    checkMouth2=true;
+                    System.out.println("checkMouth2");
+                  }
+                  if(avocadoX>18&&avocadoX<78&&avocadoY>575&&avocadoY<740)
+                  {
+                    checkMouth3=true;
+                    System.out.println("stomach oats checkMouth3");
+                  }
+                  if(checkMouth1&&checkMouth2&&checkMouth3)
+                  {
+                    doneStomach=true;
+                  }
+                  if(avocadoX<0)
+                  {
+                    avocadoX=0;
+                  }
+
+                  if(avocadoY<0)
+                  {
+                    avocadoX=0;
+                  }
+
+                  g.drawImage(avocado,avocadoX,avocadoY,40,40,this);
+
+
+                }
+                if(food.equals("donut"))
+                {
+                  System.out.println("donut sto");
+                  System.out.println("imageX: "+ donutX + ", imageY: "+donutY);
+                  if(donutX>378&&donutX<513&&donutY>155&&donutY<185)
+                  {
+                    checkMouth1=true;
+                    System.out.println("checkMouth1");
+                  }
+                  if(donutX>453&&donutX<573&&donutY>320&&donutY<580)
+                  {
+                    checkMouth2=true;
+                    System.out.println("checkMouth2");
+                  }
+                  if(donutX>18&&donutX<78&&donutY>575&&donutY<740)
+                  {
+                    checkMouth3=true;
+                    System.out.println("3checkMouth1: "+checkMouth1);
+                    System.out.println("3checkMouth2: "+checkMouth2);
+                    System.out.println("3checkMouth3: "+checkMouth3);
+                    System.out.println("stomach oats checkMouth3");
+                  }
+                  if(checkMouth1&&checkMouth2&&checkMouth3)
+                  {
+                    doneStomach=true;
+                               }
+                  if(donutX<0)
+                  {
+                    donutX=0;
+                  }
+                  if(donutY<0)
+                  {
+                    donutX=0;
+                  }
+
+                  g.drawImage(donut,donutX,donutY,40,40,this);
+
+                }
+              }//end of stomach
+
+              if(doneStomach)
+              {
+                for(int i=0; i<2; i++)
+                {
+                  System.out.println("doneMouth is true then Questions");
+                  stomachGoing = true;
+                  cards.show(pHolder, "DigestionQuestions");
+                  doneStomach=false;
+                  System.out.println("this is done sto " + doneStomach);
+                  inSmallIntestine=true;
+                }
+              }
+
+
+
+
+
+
+
+
+
+
+
+
+
+//small int
+              if(inSmallIntestine)
+              {
+                inMouth=false;
+                doneMouth=false;
+                doneEsophogous=false;
+                inEsophogous=false;
+                inStomach=false;
+                doneStomach=false;
+
+                System.out.println("smallInit");
+                g.drawImage(smallIntestineBackground,0,0,800,800,null);
+
+                g.drawImage(villi,villiX1,514,40,75,this);
+                g.drawImage(villi,villiX2,514,40,75,this);
+                g.drawImage(villi,villiX3,514,40,75,this);
+                g.drawImage(villi,villiX4,514,40,75,this);
+                g.drawImage(villi,villiX5,514,40,75,this);
+                g.drawImage(villi,villiX6,514,40,75,this);
+                g.drawImage(villi,villiX7,514,40,75,this);
+                g.drawImage(villi,villiX8,514,40,75,this);
+                g.drawImage(villi,villiX9,514,40,75,this);
+                g.drawImage(villi,villiX10,514,40,75,this);
+                g.drawImage(villi,villiX11,514,40,75,this);
+                g.drawImage(villi,villiX12,514,40,75,this);
+                g.drawImage(villi,villiX13,514,40,75,this);
+                g.drawImage(villi,villiX13,514,40,75,this);
+
+
+
+                //
+
+                //
+
+                if(smallInit)
+                {
+                  checkMouth1=false;
+                  checkMouth2=false;
+                  checkMouth3=false;
                   donutX = 423;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
                   donutY = 5;////donut-(600 to 750 ,75 to 225) ORIGINAL POS
                   oatmealX = 423;////oatmeal-(640 to 790 ,255 to 405) ORIGINAL POS
@@ -1871,23 +2105,6 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 }
               }//end of stomach
 
-              if(doneStomach)
-              {
-                for(int i=0; i<2; i++)
-                {
-                  System.out.println("doneMouth is true then Questions");
-                  stomachGoing = true;
-                  cards.show(pHolder, "DigestionQuestions");
-                  doneStomach=false;
-                  System.out.println("this is done sto " + doneStomach);
-                  inSmallIntestine=true;
-                }
-              }
-
-              if(inSmallIntestine)
-              {
-
-              }
 
 
 
@@ -2323,39 +2540,39 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   digestcanvas.doneStomach=false;
                   digestcanvas.inStomach=true;
                 }
-                // if(digestcanvas.smallintestineGoing)//after the smallintestineGoing
-                // {
-                //   digestcanvas.inMouth=false;
-                //   digestcanvas.doneMouth=false;
-                //   digestcanvas.inEsophogous=true;
-                //   digestcanvas.inEsophogous=false;
-                //   digestcanvas.doneEsophogous=false;
-                //   digestcanvas.inEsophogous=true;
-                //   digestcanvas.inStomach=false;
-                //   digestcanvas.doneStomach=false;
-                //   digestcanvas.inStomach=true;
-                //   digestcanvas.inSmallIntestine=false;
-                //   digestcanvas.doneSmallIntestine=false;
-                //   digestcanvas.inSmallIntestine=true;
-                // }
-                // if(digestcanvas.largeintestineGoing)//after the largeintestineGoing
-                // {
-                //   digestcanvas.inMouth=false;
-                //   digestcanvas.doneMouth=false;
-                //   digestcanvas.inEsophogous=true;
-                //   digestcanvas.inEsophogous=false;
-                //   digestcanvas.doneEsophogous=false;
-                //   digestcanvas.inEsophogous=true;
-                //   digestcanvas.inStomach=false;
-                //   digestcanvas.doneStomach=false;
-                //   digestcanvas.inStomach=true;
-                //   digestcanvas.inSmallIntestine=false;
-                //   digestcanvas.doneSmallIntestine=false;
-                //   digestcanvas.inSmallIntestine=true;
-                //   digestcanvas.inLargeIntestine=false;
-                //   digestcanvas.doneLargeIntestine=false;
-                //   digestcanvas.inLargeIntestine=true;
-                // }
+                if(digestcanvas.smallintestineGoing)//after the smallintestineGoing
+                {
+                  digestcanvas.inMouth=false;
+                  digestcanvas.doneMouth=false;
+                  digestcanvas.inEsophogous=true;
+                  digestcanvas.inEsophogous=false;
+                  digestcanvas.doneEsophogous=false;
+                  digestcanvas.inEsophogous=true;
+                  digestcanvas.inStomach=false;
+                  digestcanvas.doneStomach=false;
+                  digestcanvas.inStomach=true;
+                  digestcanvas.inSmallIntestine=false;
+                  digestcanvas.doneSmallIntestine=false;
+                  digestcanvas.inSmallIntestine=true;
+                }
+                if(digestcanvas.largeintestineGoing)//after the largeintestineGoing
+                {
+                  digestcanvas.inMouth=false;
+                  digestcanvas.doneMouth=false;
+                  digestcanvas.inEsophogous=true;
+                  digestcanvas.inEsophogous=false;
+                  digestcanvas.doneEsophogous=false;
+                  digestcanvas.inEsophogous=true;
+                  digestcanvas.inStomach=false;
+                  digestcanvas.doneStomach=false;
+                  digestcanvas.inStomach=true;
+                  digestcanvas.inSmallIntestine=false;
+                  digestcanvas.doneSmallIntestine=false;
+                  digestcanvas.inSmallIntestine=true;
+                  digestcanvas.inLargeIntestine=false;
+                  digestcanvas.doneLargeIntestine=false;
+                  digestcanvas.inLargeIntestine=true;
+                }
 
                 cards.show(pHolder, "DigestivePanel");
 

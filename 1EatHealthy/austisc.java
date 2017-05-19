@@ -12,6 +12,15 @@ if(inSmallIntestine)
   System.out.println("stomach");
   g.drawImage(smallIntestineBackground,0,0,800,800,null);
 
+  g.drawImage(villi,villiX1,514,15,12,this);
+  g.drawImage(villi,villiX2,514,15,12,this);
+  g.drawImage(villi,villiX3,514,15,12,this);
+  g.drawImage(villi,villiX4,514,15,12,this);
+  g.drawImage(villi,villiX5,514,15,12,this);
+  g.drawImage(villi,villiX6,514,15,12,this);
+  g.drawImage(villi,villiX7,514,15,12,this);
+
+
   //
 
   //
