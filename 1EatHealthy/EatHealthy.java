@@ -1420,9 +1420,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               if(inEsophogous)
               {
                 doneMouth=false;
-                checkMouth1=false;
-                checkMouth2=false;
-                checkMouth3=false;
+
                 System.out.println("esophogous");
                 g.drawImage(esophogousBackground,0,0,800,800,null);
                 if(esoInit)
@@ -1435,6 +1433,9 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   sodaY = 20;//donut-(soda-(640 to 790 ,440 to 590) ORIGINAL POS
                   avocadoX = 390;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
                   avocadoY = 20;//avocado-(640 to 790 ,620 to 770) ORIGINAL POS
+                  checkMouth1=false;
+                  checkMouth2=false;
+                  checkMouth3=false;
                   esoInit=false;
                 }
                 //esopho
@@ -1455,11 +1456,14 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   if(oatmealX>337&&oatmealX<420&&oatmealY>720&&oatmealY<769)
                   {
                     checkMouth3=true;
-                    System.out.println("checkMouth3");
+                    System.out.println("3checkMouth1: "+checkMouth1);
+                    System.out.println("3checkMouth3: "+checkMouth2);
+                    System.out.println("3checkMouth3: "+checkMouth3);
                   }
                   if(checkMouth1&&checkMouth2&&checkMouth3)
                   {
                     doneEsophogous=true;
+                    System.out.println("done with ESO!!");
                   }
                   if(oatmealX<140)
                   {
@@ -1561,6 +1565,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   if(checkMouth1&&checkMouth2&&checkMouth3)
                   {
                     doneEsophogous=true;
+                    System.out.println("doneEsophogous!!!");
                   }
                   if(donutX<140)
                   {
@@ -1580,14 +1585,16 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 {
                   System.out.println("doneEsophogous is true then Questions");
                   cards.show(pHolder, "DigestionQuestions");
-                  doneEsophogous=false;
-                  System.out.println("this is done mouth in donemouthif" + doneMouth);
-                  inStomach=true;
+                  // System.out.println("getquerstions");
+                  // doneEsophogous=false;
+                  // System.out.println("this is done eso in done soto :" + doneMouth);
+                  // inStomach=true;
                 }
 
                 if(inStomach)
                 {
                   doneMouth=false;
+                  doneEsophogous=false;
                   checkMouth1=false;
                   checkMouth2=false;
                   checkMouth3=false;
