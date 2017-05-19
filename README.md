@@ -11,3 +11,9 @@ Folders in the mvjava project
 >Game in 5 Weeks Project
 git commit
 
+- [x] Finish all programs from semester 1
+- [x] Finish all programs from semester 2
+- [x] Whirligig Group Project
+- [x] Game-In-5-Weeks Project
+
+
