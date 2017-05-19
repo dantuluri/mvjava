@@ -1263,6 +1263,70 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               int enzymeY6 = (int )(Math.random() * 53 + 390);
               int enzymeX7 = (int )(Math.random() * 190 + 230);
               int enzymeY7 = (int )(Math.random() * 53 + 390);
+              //should be done with dynamic programming
+              int hclX1 = (int )(Math.random() * 196 + 480);
+              int hclY1 = (int )(Math.random() * 139 + 260);
+              int hclX2 = (int )(Math.random() * 196 + 480);
+              int hclY2 = (int )(Math.random() * 139 + 260);
+              int hclX3 = (int )(Math.random() * 196 + 480);
+              int hclY3 = (int )(Math.random() * 139 + 260);
+              int hclX4 = (int )(Math.random() * 196 + 480);
+              int hclY4 = (int )(Math.random() * 139 + 260);
+              int hclX5 = (int )(Math.random() * 196 + 480);
+              int hclY5 = (int )(Math.random() * 139 + 260);
+              int hclX6 = (int )(Math.random() * 196 + 480);
+              int hclY6 = (int )(Math.random() * 139 + 260);
+              int hclX7 = (int )(Math.random() * 196 + 480);
+              int hclY7 = (int )(Math.random() * 139 + 260);
+              int hclX8 = (int )(Math.random() * 196 + 480);
+              int hclY8 = (int )(Math.random() * 139 + 260);
+              int hclX9 = (int )(Math.random() * 196 + 480);
+              int hclY9 = (int )(Math.random() * 139 + 260);
+              int hclX10 = (int )(Math.random() * 196 + 480);
+              int hclY10 = (int )(Math.random() * 139 + 260);
+              //
+              int pepsinogenX1 = (int )(Math.random() * 141 + 475);
+              int pepsinogenY1 = (int )(Math.random() * 184 + 400);
+              int pepsinogenX2 = (int )(Math.random() * 141 + 475);
+              int pepsinogenY2 = (int )(Math.random() * 184 + 400);
+              int pepsinogenX3 = (int )(Math.random() * 141 + 475);
+              int pepsinogenY3 = (int )(Math.random() * 184 + 400);
+              int pepsinogenX4 = (int )(Math.random() * 141 + 475);
+              int pepsinogenY4 = (int )(Math.random() * 184 + 400);
+              int pepsinogenX5 = (int )(Math.random() * 141 + 475);
+              int pepsinogenY5 = (int )(Math.random() * 184 + 400);
+              int pepsinogenX6 = (int )(Math.random() * 141 + 475);
+              int pepsinogenY6 = (int )(Math.random() * 184 + 400);
+              int pepsinogenX7 = (int )(Math.random() * 141 + 475);
+              int pepsinogenY7 = (int )(Math.random() * 184 + 400);
+              int pepsinogenX8 = (int )(Math.random() * 141 + 475);
+              int pepsinogenY8 = (int )(Math.random() * 184 + 400);
+              int pepsinogenX9 = (int )(Math.random() * 141 + 475);
+              int pepsinogenY9 = (int )(Math.random() * 184 + 400);
+              int pepsinogenX10 = (int )(Math.random() * 141 + 475);
+              int pepsinogenY10 = (int )(Math.random() * 184 + 400);
+              //
+              int pepsinX1 = (int )(Math.random() * 272 + 252);
+              int pepsinY1 = (int )(Math.random() * 124 + 527);
+              int pepsinX2 = (int )(Math.random() * 272 + 252);
+              int pepsinY2 = (int )(Math.random() * 124 + 527);
+              int pepsinX3 = (int )(Math.random() * 272 + 252);
+              int pepsinY3 = (int )(Math.random() * 124 + 527);
+              int pepsinX4 = (int )(Math.random() * 272 + 252);
+              int pepsinY4 = (int )(Math.random() * 124 + 527);
+              int pepsinX5 = (int )(Math.random() * 272 + 252);
+              int pepsinY5 = (int )(Math.random() * 124 + 527);
+              int pepsinX6 = (int )(Math.random() * 272 + 252);
+              int pepsinY6 = (int )(Math.random() * 124 + 527);
+              int pepsinX7 = (int )(Math.random() * 272 + 252);
+              int pepsinY7 = (int )(Math.random() * 124 + 527);
+              int pepsinX8 = (int )(Math.random() * 272 + 252);
+              int pepsinY8 = (int )(Math.random() * 124 + 527);
+              int pepsinX9 = (int )(Math.random() * 272 + 252);
+              int pepsinY9 = (int )(Math.random() * 124 + 527);
+              int pepsinX10 = (int )(Math.random() * 272 + 252);
+              int pepsinY10 = (int )(Math.random() * 124 + 527);
+              //
 
               if(inMouth)
               {
@@ -1583,6 +1647,13 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   inStomach=true;
                 }
 }
+
+
+
+
+
+
+
                 if(inStomach)
                 {
                   inMouth=false;
@@ -1594,6 +1665,18 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   checkMouth3=false;
                   System.out.println("stomach");
                   g.drawImage(stomachBackground,0,0,800,800,null);
+                  g.drawImage(hcl,hclX1,hclY1,20,19,this);
+                  g.drawImage(hcl,hclX2,hclY2,20,19,this);
+                  g.drawImage(hcl,hclX3,hclY3,20,19,this);
+                  g.drawImage(hcl,hclX4,hclY4,20,19,this);
+                  g.drawImage(hcl,hclX5,hclY5,20,19,this);
+                  g.drawImage(hcl,hclX6,hclY6,20,19,this);
+                  g.drawImage(hcl,hclX7,hclY7,20,19,this);
+                  g.drawImage(hcl,hclX8,hclY8,20,19,this);
+                  g.drawImage(hcl,hclX9,hclY9,20,19,this);
+                  g.drawImage(hcl,hclX10,hclY10,20,19,this);
+                  //
+
                   if(stoInit)
                   {
                     donutX = 423;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
