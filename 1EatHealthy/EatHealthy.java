@@ -1708,12 +1708,15 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 g.setFont(aaldo);
                 g.drawString("Get your food through the esophogous like perstilasis",5,105);
 
-                g.drawImage(hcl,100,105,this);
+                g.drawImage(hcl,100,110,this);
                 Font baldo = new Font ("Helvetica Neue", Font.BOLD, 10);
                 g.setFont(baldo);
-                g.drawString("Get your food through the esophogous like perstilasis",20,125);
-                g.drawImage(pepsinogen,170,100,this);
-                g.drawImage(pepsin,344,115,this);
+                g.setColor(Color.MAGENTA);
+                g.drawString("Hydrochloric acid. Used to activate Pepsinogen.",20,130);
+                g.drawImage(pepsinogen,280,120,this);
+                g.drawString("Pepsinogen, an inactive precursor to pepsin",225,140);
+                g.drawImage(pepsin,250,160,this);
+                g.drawString("Pepsin, an enzyme that breaks down proteins into amino acids",70,180);
 
                 g.drawImage(hcl,hclX1,hclY1,20,19,this);
                 g.drawImage(hcl,hclX2,hclY2,20,19,this);
@@ -1926,18 +1929,6 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 }
               }
 
-
-
-
-
-
-
-
-
-
-
-
-
 //small int
               if(inSmallIntestine)
               {
@@ -1950,6 +1941,12 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
                 System.out.println("smallInit");
                 g.drawImage(smallIntestineBackground,0,0,800,800,null);
+
+
+                g.setColor(Color.BLUE);
+                Font aaldo = new Font ("Helvetica Neue", Font.BOLD, 12);
+                g.setFont(aaldo);
+                g.drawString("Move food through the small intestine, with broken down nutrients being absorbed by villi (images at the bottom) through diffusion ",5,105);
 
                 g.drawImage(villi,villiX1,514,40,75,this);
                 g.drawImage(villi,villiX2,514,40,75,this);
@@ -2023,6 +2020,10 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   {
                     oatmealY=0;
                   }
+                  if(oatmealY>574)
+                  {
+                    oatmealY=575;
+                  }
 
                   g.drawImage(oatmeal,oatmealX,oatmealY,40,40,this);
                 }
@@ -2059,6 +2060,10 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   if(sodaX>800)
                   {
                     sodaX=800;
+                  }
+                  if(sodaY>574)
+                  {
+                    sodaY=575;
                   }
 
 
@@ -2102,6 +2107,10 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   {
                     avocadoY=0;
                   }
+                  if(avocadoY>574)
+                  {
+                    avocadoY=575;
+                  }
 
                   g.drawImage(avocado,avocadoX,avocadoY,40,40,this);
 
@@ -2138,6 +2147,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   {
                     donutX=0;
                   }
+                  if(donutY>574)
+                  {
+                    donutX=575;
+                  }
+
 
                   g.drawImage(donut,donutX,donutY,40,40,this);
 
@@ -2168,6 +2182,10 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
                 System.out.println("largeInit");
                 g.drawImage(largeIntestineBackground,0,0,800,800,null);
+                g.setColor(Color.WHITE);
+                Font aaaldo = new Font ("Helvetica Neue", Font.BOLD, 18);
+                g.setFont(aaaldo);
+                g.drawString("Some water is absorbed in the large intestine",180,400);
 
                 if(largeInit)
                 {
@@ -2349,18 +2367,6 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
               Font aldo = new Font ("Helvetica Neue", Font.BOLD, 15);
               g.setFont(aldo);
               g.setColor(Color.ORANGE);
@@ -2398,6 +2404,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             private int randomQuestion,x1,x2, x3;
             private boolean ca1, ca2, ca3, ca4, sp, a1select, a2select, a3select, a4select, correct, wrong;
             private JButton submit, next2;
+            public int preguntaN;
             private ButtonGroup answers;
             private JRadioButton a1, a2, a3, a4;
             private JTextArea question, treatCountDisplay;
@@ -2513,7 +2520,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               QuizQs = new String[30];
 
 
-              randomQuestion = (int)((Math.random()*10)+1);		//randomizing an integer when the user clicks submit in the question
+              randomQuestion = (int)((Math.random()*9)+1);		//randomizing an integer when the user clicks submit in the question
               getTextFile();
               getText();
               setVariables();
@@ -2547,7 +2554,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 fullTextFile = fullTextFile + "\n" + line;		//creating a string to add to the textArea
               }
 
-              for(x1=0;x1<10;x1++)
+              for(x1=0;x1<9;x1++)
               {
 
                 fullQuestion = fullTextFile.substring(0, fullTextFile.indexOf("---")+3)	;		//this separates the big string that is the textFile of quiz questions into individual questions
@@ -2562,7 +2569,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               to set the text to the radiobuttons*/
 
 
-              for (x3 = 0; x3<10 ; x3++)
+              for (x3 = 0; x3<9 ; x3++)
               {
                 fullQuestion2 = QuizQs[x3];
                 if(fullQuestion2.equals(""))
@@ -2733,7 +2740,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
               if (correct == true)
               {
-                randomQuestion = (int)((Math.random()*10)+1);	//randomizes integer for the next question
+                randomQuestion = (int)((Math.random()*9)+1);	//randomizes integer for the next question
+                preguntaN=randomQuestion;
                 getTextFile();
                 getText();
                 setVariables();
@@ -2747,7 +2755,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 System.out.println("tripped of everyone");
                 if(digestcanvas.mouthGoing)//after the mouth
                 {
-                  randomQuestion = (int)((Math.random()*10)+1);	//randomizes integer for the next question
+                  randomQuestion = (int)((Math.random()*9)+1);	//randomizes integer for the next question
+                  preguntaN=randomQuestion;
                   getTextFile();
                   getText();
                   setVariables();
@@ -2760,7 +2769,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 }
                 if(digestcanvas.esophogousGoing)//after the esophogousGoing
                 {
-                  randomQuestion = (int)((Math.random()*10)+1);	//randomizes integer for the next question
+                  randomQuestion = (int)((Math.random()*9)+1);	//randomizes integer for the next question
+                  preguntaN=randomQuestion;
                   getTextFile();
                   getText();
                   setVariables();
@@ -2776,7 +2786,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 }
                 if(digestcanvas.stomachGoing)//after the stomachGoing
                 {
-                  randomQuestion = (int)((Math.random()*10)+1);	//randomizes integer for the next question
+                  randomQuestion = (int)((Math.random()*9)+1);	//randomizes integer for the next question
+                  preguntaN=randomQuestion;
                   getTextFile();
                   getText();
                   setVariables();
@@ -2795,7 +2806,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 }
                 if(digestcanvas.smallintestineGoing)//after the smallintestineGoing
                 {
-                  randomQuestion = (int)((Math.random()*10)+1);	//randomizes integer for the next question
+                  randomQuestion = (int)((Math.random()*9)+1);	//randomizes integer for the next question
+                  preguntaN=randomQuestion;
                   getTextFile();
                   getText();
                   setVariables();
@@ -2816,7 +2828,8 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 }
                 if(digestcanvas.largeintestineGoing)//after the largeintestineGoing
                 {
-                  randomQuestion = (int)((Math.random()*10)+1);	//randomizes integer for the next question
+                  randomQuestion = (int)((Math.random()*9)+1);	//randomizes integer for the next question
+                  preguntaN=randomQuestion;
                   getTextFile();
                   getText();
                   setVariables();
@@ -2849,47 +2862,47 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 System.out.println("wrong");
                 //add a pop up
                 System.out.println(randomQuestion);
-                if(randomQuestion==1)
+                if(randomQuestion+1==1)
                 {
                   pregunta="Hint: Startch is broken down into glucose in the mouth";
                 }
-                if(randomQuestion==2)
+                if(randomQuestion+1==2)
                 {
                   pregunta="Hint: Pepsin is the activated form of the enzyme Pepsinongen ";
                 }
-                if(randomQuestion==3)
+                if(randomQuestion+1==3)
                 {
                   pregunta="Hint: There are two main functions of the digestive system: Break down and Absorb";
                 }
-                if(randomQuestion==4)
+                if(randomQuestion+1==4)
                 {
                   pregunta="Hint: Take a reasonbale guess";
                 }
-                if(randomQuestion==5)
+                if(randomQuestion+1==5)
                 {
                   pregunta="Hint: The large intestine absorbs particles too";
                 }
-                if(randomQuestion==6)
+                if(randomQuestion+1==6)
                 {
                   pregunta="Hint: Food is broken down in the stomach, not absorbed";
                 }
-                if(randomQuestion==7)
+                if(randomQuestion+1==7)
                 {
                   pregunta="Hint: Food doesn't go anywhere it already did.";
                 }
-                if(randomQuestion==8)
+                if(randomQuestion+1==8)
                 {
                   pregunta="Hint: Is it the polymer form of a glucose molecule";
                 }
-                if(randomQuestion==9)
+                if(randomQuestion+1==9)
                 {
                   pregunta="Hint: Take a reasonbale guess";
                 }
-                if(randomQuestion==10)
+                if(randomQuestion+1==10)
                 {
                   pregunta="Hint: Where is protein absorbed?";
                 }
-                if(randomQuestion==11)
+                if(randomQuestion+1==11)
                 {
                   pregunta="Hint: As you could see, it's much faster to move healthier food than non-healthy food.";
                 }
