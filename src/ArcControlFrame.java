@@ -7,12 +7,7 @@ import javax.swing.*;
 
 public class ArcControlFrame extends JFrame implements AdjustmentListener
 {
-	private DisplayPanel canvas;
-	private JScrollBar width;
-	private JScrollBar height;
-	private JScrollBar startDeg;
-	private JScrollBar endDeg;
-	int widthof, heightof, startDegof, endDegof;
+		int widthof, heightof, startDegof, endDegof;
 
 	public static void main ( String[] args )
     	{
@@ -21,8 +16,7 @@ public class ArcControlFrame extends JFrame implements AdjustmentListener
 
 	public ArcControlFrame ( )
     	{
-		super( "Arc Control" );
-
+		
 		widthof = heightof = startDegof = endDegof = 60;
 
 		canvas = new DisplayPanel();

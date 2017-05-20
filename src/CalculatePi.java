@@ -9,8 +9,7 @@ Simple program that calculates Pi
 
 public class CalculatePi {      //class declaration
 	
-	public static void main (String args[]) {   //method header
-		
+
 double approx1 = 22.0/7;										//calculating approximation 1
 double approx2 = ((4.0+100.0)*8.0+62000.0)/20000;				//calculating approximation 2
 double diff1 = approx1-3.141592;										

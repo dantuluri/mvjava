@@ -4,7 +4,6 @@ import java.applet.Applet;
 
 public class Box extends Applet
 {
-     public void paint (Graphics g)
      {
            g.setColor(Color.green);
            g.fillRect (10,130, 80, 140);

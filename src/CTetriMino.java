@@ -6,25 +6,6 @@ import java.awt.Point;
 public class CTetriMino {
 
 public CTetriMino(int type, int x, int y, int w, int h, Color c)
-{
-    CMino m = new CMino();
-    d = m.getDiameter();
-    Type=type;
-    X=x;
-    Y=y;
-    Width=w;
-    Height=h;
-    FillColor=c;
-}
-
-public CTetriMino(CTetriMino src) { // copy constructor
-    Type=src.Type;
-    X=src.X;
-    Y=src.Y;
-    Width=src.Width;
-    Height=src.Height;
-    FillColor=src.FillColor;
-}
 
 public int getX() { return X; }
 public void setX(int x) { X=x; }

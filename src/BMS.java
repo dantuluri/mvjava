@@ -19,10 +19,9 @@
  */
 
 
-public class bucklemyshoe {
+public class //bucklemyshoe {
 	
-	public static void main (String args[]) 
-	{
+	
 	//instatiate BMS
 	Food food1 = new BMS
 		

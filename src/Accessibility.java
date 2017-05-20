@@ -29,22 +29,9 @@ import javax.imageio.ImageIO;
 
 public class AccessibilityRunner
 {
-		public static void main(String[] args)
-		{
-			AccessibilityRunner ar = new AccessibilityRunner();
-		}
 		
-		public AccessibilityRunner()
-		{
-			JFrame frame = new JFrame("Accessibility");
-			frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
-			frame.setLayout(null);    //getContentRaw().setLayout(null);
-			frame.getContentPane();
-			frame.setSize(1000, 800);
-			frame.setLocation(0, 0);
-			frame.setResizable(false);
-			frame.setVisible(true);        
-		}
+		
+		
 }
 
 class Accessibility extends JPanel implements MouseListener,KeyListener

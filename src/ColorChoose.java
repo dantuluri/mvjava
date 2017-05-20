@@ -22,21 +22,7 @@ public class ColorChoose extends JApplet implements KeyListener, FocusListener, 
 		firsttime = true;
 	}
 
-	public static void main(String[]args)
-	{
-		ColorChoose colorz = new ColorChoose();//instantiates class
-		colorz.init();//calls run
-	}
-	public void init()
-	{
-		canvas = new DisplayPanel();
-		setContentPane(canvas);
-		canvas.setBackground(Color.white);
-		canvas.addFocusListener(this);
-		canvas.addKeyListener(this);
-		canvas.addMouseListener(this);
-	}
-
+	
 	class DisplayPanel extends JPanel
 	{
 

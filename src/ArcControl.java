@@ -12,15 +12,11 @@ public class ArcControl extends JApplet implements AdjustmentListener
 	int widthof, heightof, startDegof, endDegof;
 
 
-	public ArcControl ( )
-	{
-		widthof = heightof = startDegof = endDegof = 60;
-	}
-
+	
 	public void init()
 	{
-		canvas = new DisplayPanel();
-		getContentPane().add ( canvas, BorderLayout.CENTER );
+		
+        getContentPane().add ( canvas, BorderLayout.CENTER );
 
 		width = new JScrollBar(JScrollBar.HORIZONTAL, 60, 5, 0, 400);
 		width.addAdjustmentListener(this);

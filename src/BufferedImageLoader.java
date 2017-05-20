@@ -77,8 +77,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.Canvas;
 import java.awt.Dimension;
-import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Graphics2D;
@@ -89,8 +88,7 @@ public class BufferedImageLoader
 
     private BufferedImage image;
 
-    public BufferedImage loadImage(String path) throws IOException
-    {
+       {
         System.out.println("PATH = " + path);
         File file = new File(path);
         if (file.exists())

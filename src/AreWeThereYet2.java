@@ -7,12 +7,7 @@
 public class AreWeThereYet2
  {
 	private int miles = 50;
-	public static void main (String args[])
-	{
-		AreWeThereYet2 sendthis = new AreWeThereYet2();
-		sendthis.run();
-		sendthis.printLines();
-	}
+	
 	public void run()
 	{
 		

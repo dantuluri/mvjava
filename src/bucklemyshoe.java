@@ -21,16 +21,7 @@ import java.util.Scanner;												//imports Scanner class
 
 public class bucklemyshoe {
 	
-	public static void main (String args[]) 	
-	{
-			bucklemyshoe bms = new bucklemyshoe();						//instatiation of BMS
-		int number;														//declares number
-		number = bms.getInput();										//return value of user input is equal to number
-		String line;													//declares line
-		line = bms.decideWhich(number);									//return value of decideWhich is line number
-		bms.poemLine(line);												//declares poemLine method with parameter of line
-}
-	
+		
 	public int getInput()
 	{
 		Scanner input = new Scanner(System.in);		

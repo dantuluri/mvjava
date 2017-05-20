@@ -12,34 +12,7 @@ public class ColorChooseFrame extends JFrame implements KeyListener, FocusListen
 	boolean firsttime;
 	DisplayPanel canvas;
 
-	public static void main ( String[] args )
-    	{
-		new ColorChooseFrame ( );
-	}
-
-	public ColorChooseFrame ( )
-    	{
-		super( "Color Choose" );
-		bar1 = new SlideBar ( 40, 20, 255, 125, true );
-		bar2 = new SlideBar ( 80, 20, 255, 125, false );
-		bar3 = new SlideBar ( 120, 20, 255, 125, false );
-		barchoice = 1;
-		firsttime = true;
-		canvas = new DisplayPanel();
-		setContentPane(canvas);
-		canvas.setBackground(Color.white);
-		canvas.addFocusListener(this);
-		canvas.addKeyListener(this);
-		canvas.addMouseListener(this);
-
-		setSize ( 410, 360 );
-		setResizable(false);
-		setDefaultCloseOperation ( DISPOSE_ON_CLOSE );
-		setLocation ( 20, 50 );
-		show ( );
-	}
-
-	class DisplayPanel extends JPanel
+		class DisplayPanel extends JPanel
     	{
 
 		public void paintComponent(Graphics g)

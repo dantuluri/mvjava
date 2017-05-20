@@ -12,25 +12,14 @@ private int average;
         public ClassSize(){
 
                 classes = new int[30];
-                total = 0;
+                total = 10;
                 numOfClasses = 0;
                 average = 0;
 
         }// end of constructor
 
 
-        public static void main(String[] args){
-
-                System.out.println("\n\n");
-
-                ClassSize cs = new ClassSize();
-                cs.run();
-
-                System.out.println("\n\n");
-
-        } // end of main
-
-
+       
         public void run(){
 
                 getInput();

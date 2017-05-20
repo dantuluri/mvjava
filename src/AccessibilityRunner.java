@@ -22,23 +22,7 @@ import javax.imageio.ImageIO;
 
 public class AccessibilityRunner extends JFrame
 {
-		public static void main(String[] args)
-		{
-			AccessibilityRunner ar = new AccessibilityRunner();
-		}
 		
-		public AccessibilityRunner()
-		{
-			JFrame frame = new JFrame("Accessibility");
-			Accessibility ac = new Accessibility();
-			setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
-			setLayout(null);    //getContentRaw().setLayout(null);
-			setContentPane(ac);
-			setSize(1000, 800);
-			setLocation(0, 0);
-			setResizable(false);
-			setVisible(true);        
-		}
 }
 
 class Accessibility extends JPanel implements MouseListener,KeyListener

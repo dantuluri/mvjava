@@ -9,9 +9,7 @@ public class AreWeThereYet
 	private int miles = 50;
 	public static void main (String args[])
 	{
-		AreWeThereYet sendthis = new AreWeThereYet();
-		sendthis.run();
-		sendthis.printLines();
+		
 	}
 	public void run()
 	{

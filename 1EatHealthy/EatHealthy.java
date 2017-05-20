@@ -98,7 +98,6 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
   private FlowLayout flow;
   private BorderLayout border;
   private GridLayout grid;
-  public String name;
   public boolean tfinput;
   public boolean noName;//asks for name
   public boolean isPressed;
@@ -179,7 +178,6 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
     public WelcomePanelHolder()//constructor that sets up the panel and makes border layout
     {
       System.out.println("WelcomePanelHolder reached");//Debugging checkpoint
-      name="";//sets the username to null
       tfinput = false;//sets all variables to false
       noName = false;//sets all variables to false
       isPressed = false;//sets all variables to false
@@ -214,11 +212,14 @@ public class EatHealthy extends JFrame//JFrame that holds all panels
       Font helvec = new Font ("Helvetica Neue", Font.BOLD, 40);//initializes font
       g.setFont(helvec);//sets font int graphics
       g.drawString("Welcome to the Eat Healthy Game!",60,100);//sets the string that is displayed on the panel
+      Font helvecsmall = new Font ("Helvetica Neue", Font.BOLD, 20);//initializes font
+      g.setFont(helvecsmall);//sets font int graphics
+      g.drawString("By: Surya Dantuluri",300,120);//sets the string that is displayed on the panel
       Color purplo = new Color (194,24,91);
       g.setColor(purplo);
-      Font chalkboard = new Font ("Chalkboard", Font.BOLD, 20);//initializes font
+      Font chalkboard = new Font ("Chalkboard", Font.BOLD, 18);//initializes font
       g.setFont(chalkboard);//sets font int graphics
-      g.drawString("Help Calvin restore his health after spending a fun filled afternoon of playing with Hobbes!",20,200);//sets the string that is displayed on the panel
+      g.drawString("Help Calvin restore his health after spending a fun filled afternoon of playing with Hobbes!",10,200);//sets the string that is displayed on the panel
       Color orango = new Color (255,23,68);
       g.setColor(orango);
       Font comic = new Font ("Comic Sans MS", Font.BOLD, 20);//initializes font
@@ -276,6 +277,7 @@ class InitializeGame extends JPanel//bottom panel of the welcome page
 }//end of InitializeGame
 class StartAction implements ActionListener//action listener class that holds action listener for both the JTextField and JButton in InitializeGame class
 {
+  public String namey;
   public void actionPerformed(ActionEvent e)//action performed method for both the button and the JTextField
   {
     input = e.getActionCommand();
@@ -407,7 +409,6 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
     areaInName="areain.png";
     //xpos=ypos=200;//sets the inital location of the image
     keyClear=true;
-    System.out.println(name);
     setLayout(flow);//sets the layout to flow
     //Card Layout made( needs more pseudocode)
     setBackground(Color.WHITE);//set background to yello
@@ -760,6 +761,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
           {
             super.paintComponent(g);
             g.drawImage(landingBackground,0,0,800,800,null);
+            Font helveca = new Font ("Helvetica Neue", Font.BOLD, 40);//initializes font
+            g.setFont(helveca);//sets font int graphics
+            Color normala = new Color (39,174,96);
+            g.setColor(normala);
+            g.drawString("Hello, Surya Dantuluri",10,40);//sets the string that is displayed on the panel
             if(health>40 && health<120)
             {
               healthName = "feeling okay";
@@ -812,7 +818,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             Font apple = new Font ("Apple Casual", Font.BOLD, 10);
             g.setFont(apple);
             g.setColor(Color.BLACK);
-            g.drawString("Drag the food/drinks to his mouth!",15,250);
+            g.drawString("Drag the food/drinks to his mouth using your mouse!",15,250);
             Font dido = new Font ("Apple Casual", Font.BOLD, 14);
             g.setFont(dido);
             g.setColor(Color.BLUE);
@@ -1132,15 +1138,15 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               }
               if(food.equals("soda"))
               {
-                sodaX = sodaX+15;
+                sodaX = sodaX+5;
               }
               if(food.equals("avocado"))
               {
-                avocadoX = avocadoX+15;
+                avocadoX = avocadoX+20;
               }
               if(food.equals("donut"))
               {
-                donutX = donutX+15;
+                donutX = donutX+10;
               }
               repaint();
             }
@@ -1152,15 +1158,15 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               }
               if(food.equals("soda"))
               {
-                sodaX = sodaX-15;
+                sodaX = sodaX-5;
               }
               if(food.equals("avocado"))
               {
-                avocadoX = avocadoX-15;
+                avocadoX = avocadoX-20;
               }
               if(food.equals("donut"))
               {
-                donutX = donutX-15;
+                donutX = donutX-10;
               }
               repaint();
             }
@@ -1172,15 +1178,15 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               }
               if(food.equals("soda"))
               {
-                sodaY = sodaY-15;
+                sodaY = sodaY-5;
               }
               if(food.equals("avocado"))
               {
-                avocadoY = avocadoY-15;
+                avocadoY = avocadoY-20;
               }
               if(food.equals("donut"))
               {
-                donutY = donutY-15;
+                donutY = donutY-10;
               }
               repaint();
             }
@@ -1192,15 +1198,15 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
               }
               if(food.equals("soda"))
               {
-                sodaY = sodaY+15;
+                sodaY = sodaY+5;
               }
               if(food.equals("avocado"))
               {
-                avocadoY = avocadoY+15;
+                avocadoY = avocadoY+20;
               }
               if(food.equals("donut"))
               {
-                donutY = donutY+15;
+                donutY = donutY+10;
               }
               repaint();
             }
@@ -1370,7 +1376,11 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 g.drawImage(amylase,enzymeX5,enzymeY5,15,22,this);
                 g.drawImage(amylase,enzymeX6,enzymeY6,15,22,this);
                 g.drawImage(amylase,enzymeX7,enzymeY7,15,22,this);
-
+                g.setColor(Color.BLACK);
+                Font aaldo = new Font ("Helvetica Neue", Font.BOLD, 15);
+                g.setFont(aaldo);
+                g.drawString("Make sure you move your food through the mouth(getting digested by the amylase(",75,250);
+                g.drawString("the blue images)), down the pharynx, down the esophogous.",75,275);
 
                 if(alreadyInit)
                 {
@@ -1510,6 +1520,10 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
                 System.out.println("esophogous");
                 g.drawImage(esophogousBackground,0,0,800,800,null);
+                g.setColor(Color.ORANGE);
+                Font aaldo = new Font ("Helvetica Neue", Font.BOLD, 15);
+                g.setFont(aaldo);
+                g.drawString("Get your food through the esophogous like perstilasis",5,300);
                 if(esoInit)
                 {
                   donutX = 390;//donut-(600 to 750 ,75 to 225) ORIGINAL POS
@@ -1688,6 +1702,19 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
                 System.out.println("stomach");
                 g.drawImage(stomachBackground,0,0,800,800,null);
+
+                g.setColor(Color.ORANGE);
+                Font aaldo = new Font ("Helvetica Neue", Font.BOLD, 10);
+                g.setFont(aaldo);
+                g.drawString("Get your food through the esophogous like perstilasis",5,105);
+
+                g.drawImage(hcl,100,105,this);
+                Font baldo = new Font ("Helvetica Neue", Font.BOLD, 10);
+                g.setFont(baldo);
+                g.drawString("Get your food through the esophogous like perstilasis",20,125);
+                g.drawImage(pepsinogen,170,100,this);
+                g.drawImage(pepsin,344,115,this);
+
                 g.drawImage(hcl,hclX1,hclY1,20,19,this);
                 g.drawImage(hcl,hclX2,hclY2,20,19,this);
                 g.drawImage(hcl,hclX3,hclY3,20,19,this);
@@ -2334,10 +2361,12 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
 
 
 
-              Font aldo = new Font ("Apple Casual", Font.BOLD, 8);
+              Font aldo = new Font ("Helvetica Neue", Font.BOLD, 15);
               g.setFont(aldo);
               g.setColor(Color.ORANGE);
-              g.drawString("Press the screen once in order to move the food/drinks with the WASD controls",5,690);
+              g.drawString("Press the screen once in order to move the food/drinks with the WASD controls",2,50);
+
+
 
 
 
@@ -2373,6 +2402,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             private JRadioButton a1, a2, a3, a4;
             private JTextArea question, treatCountDisplay;
             public boolean inEsophogous;
+            public String pregunta;
 
             public Font neue = new Font ("Helvetica Neue", Font.BOLD, 15);//initializes font
             // private UnlockTraitsPanel utp;
@@ -2765,6 +2795,12 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 }
                 if(digestcanvas.smallintestineGoing)//after the smallintestineGoing
                 {
+                  randomQuestion = (int)((Math.random()*10)+1);	//randomizes integer for the next question
+                  getTextFile();
+                  getText();
+                  setVariables();
+                  setQuestion();
+                  displayRadioButtons();
                   digestcanvas.inMouth=false;
                   digestcanvas.doneMouth=false;
                   digestcanvas.inEsophogous=true;
@@ -2780,6 +2816,12 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 }
                 if(digestcanvas.largeintestineGoing)//after the largeintestineGoing
                 {
+                  randomQuestion = (int)((Math.random()*10)+1);	//randomizes integer for the next question
+                  getTextFile();
+                  getText();
+                  setVariables();
+                  setQuestion();
+                  displayRadioButtons();
                   digestcanvas.inMouth=false;
                   digestcanvas.doneMouth=false;
                   digestcanvas.inEsophogous=true;
@@ -2807,10 +2849,55 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 System.out.println("wrong");
                 //add a pop up
                 System.out.println(randomQuestion);
-                String inputValue = JOptionPane.showInputDialog("You have gotten the question wrong. Think more logically about the question. Answer the question on paper and get it reviewed by your science teacher. Type in ok to continue" );
+                if(randomQuestion==1)
+                {
+                  pregunta="Hint: Startch is broken down into glucose in the mouth";
+                }
+                if(randomQuestion==2)
+                {
+                  pregunta="Hint: Pepsin is the activated form of the enzyme Pepsinongen ";
+                }
+                if(randomQuestion==3)
+                {
+                  pregunta="Hint: There are two main functions of the digestive system: Break down and Absorb";
+                }
+                if(randomQuestion==4)
+                {
+                  pregunta="Hint: Take a reasonbale guess";
+                }
+                if(randomQuestion==5)
+                {
+                  pregunta="Hint: The large intestine absorbs particles too";
+                }
+                if(randomQuestion==6)
+                {
+                  pregunta="Hint: Food is broken down in the stomach, not absorbed";
+                }
+                if(randomQuestion==7)
+                {
+                  pregunta="Hint: Food doesn't go anywhere it already did.";
+                }
+                if(randomQuestion==8)
+                {
+                  pregunta="Hint: Is it the polymer form of a glucose molecule";
+                }
+                if(randomQuestion==9)
+                {
+                  pregunta="Hint: Take a reasonbale guess";
+                }
+                if(randomQuestion==10)
+                {
+                  pregunta="Hint: Where is protein absorbed?";
+                }
+                if(randomQuestion==11)
+                {
+                  pregunta="Hint: As you could see, it's much faster to move healthier food than non-healthy food.";
+                }
+
+
+                String inputValue = JOptionPane.showInputDialog("You have gotten the question wrong. "+ pregunta+ " Type in ok to continue" );
                 if(inputValue.equals("ok"))
                 {
-                  randomQuestion = (int)((Math.random()*10)+1);	//randomizes integer for the next question
                   getTextFile();
                   getText();
                   setVariables();

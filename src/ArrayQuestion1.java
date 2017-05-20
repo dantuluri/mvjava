@@ -54,8 +54,7 @@ import javax.imageio.ImageIO;
 import java.awt.Graphics2D;
 
 
-public class ArrayQuestion1 {
-    public static void main(String[] args) {
+public class AArrayQuestion1 {
 
 
 

@@ -15,7 +15,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
-public class BufferedImageMouseDrag extends JFrame {
   DisplayCanvas canvas;
 
   public BufferedImageMouseDrag() {
@@ -34,18 +33,10 @@ public class BufferedImageMouseDrag extends JFrame {
     setVisible(true);
   }
 
-  public static void main(String arg[]) {
-    new BufferedImageMouseDrag();
   }
-}
 
 class DisplayCanvas extends JPanel {
-  int x, y;
-
-  BufferedImage bi;
-
-  DisplayCanvas() {
-    setBackground(Color.white);
+     setBackground(Color.white);
     setSize(450, 400);
     addMouseMotionListener(new MouseMotionHandler());
 

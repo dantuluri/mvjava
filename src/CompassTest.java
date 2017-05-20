@@ -12,22 +12,8 @@ public class CompassTest extends JApplet implements KeyListener, FocusListener, 
 	Compass myothercompass = new Compass ( 60, 300, 30, 90, Color.yellow, Color.magenta );
 	private DrawStuff paintarea;
 
-	public CompassTest ( )
-	{
-		mycompass = new Compass ( 200, 120, 80, 0, Color.gray, Color.blue );
-		myothercompass = new Compass ( 60, 300, 30, 90, Color.yellow, Color.magenta );
-	}
-
-	public CompassTest(Compass mycompass) {
-		this.mycompass = mycompass;
-	}
-
-	public static void main(String[]args)
-	{
-		CompassTest compasstesto = new CompassTest();//instantiates class
-		compasstesto.init();//calls run
-	}
-
+	
+	
 	public void init ( )
 	{
 		paintarea = new DrawStuff();

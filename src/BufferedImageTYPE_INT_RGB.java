@@ -18,9 +18,7 @@ public class BufferedImageTYPE_INT_RGB extends JFrame {
     setVisible(true);
   }
 
-  public static void main(String arg[]) {
-    new BufferedImageTYPE_INT_RGB();
-  }
+ 
 }
 
 class DrawingCanvas extends JPanel {

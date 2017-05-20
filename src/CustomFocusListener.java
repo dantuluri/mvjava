@@ -8,12 +8,7 @@ public class CustomFocusListener implements FocusListener {
     String textWhenFocusGained;
     String textWhenFocusLost;
 
-    public CustomFocusListener(JTextField txt, String textWhenFocusGained,
-            String textWhenFocusLost) {
-        this.txt = txt;
-        this.textWhenFocusGained = textWhenFocusGained;
-        this.textWhenFocusLost = textWhenFocusLost;
-    }
+      }
 
     @Override
     public void focusGained(FocusEvent arg0) {
