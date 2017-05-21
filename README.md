@@ -1,5 +1,5 @@
-#mvjava
-## Computer Science JAVA At MVHS 2017 Programs and Final Game [![build passing](https://img.shields.io/badge/start%20with-why%3F-brightgreen.svg?style=flat)](http://www.ted.com/talks/simon_sinek_how_great_leaders_inspire_action)
+# mvjava
+## Computer Science JAVA At MVHS 2017 Programs and Final Game [![Build Status](https://travis-ci.org/dantuluri/eathealthy.svg?branch=master)](https://travis-ci.org/dantuluri/eathealthy)
 **Developed by Surya Dantuluri 2017**
 *Most code was developed by Surya Dantuluri*
 
@@ -14,6 +14,6 @@ git commit
 - [x] Finish all programs from semester 1
 - [x] Finish all programs from semester 2
 - [x] Whirligig Group Project
-- [x] Game-In-5-Weeks Project
+- [] Game-In-5-Weeks Project
 
 
