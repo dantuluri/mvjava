@@ -1,5 +1,5 @@
-# mvjava
-## Computer Science JAVA At MVHS 2017 Programs and Final Game [![Build Status](https://travis-ci.org/dantuluri/eathealthy.svg?branch=master)](https://travis-ci.org/dantuluri/eathealthy)
+# mvjava [![Build Status](https://travis-ci.org/dantuluri/eathealthy.svg?branch=master)](https://travis-ci.org/dantuluri/eathealthy)
+## Computer Science JAVA At MVHS 2017 Programs and Final Game 
 **Developed by Surya Dantuluri 2017**
 *Most code was developed by Surya Dantuluri*
 
