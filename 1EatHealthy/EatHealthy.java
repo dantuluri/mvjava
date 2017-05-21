@@ -765,7 +765,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
             g.setFont(helveca);//sets font int graphics
             Color normala = new Color (39,174,96);
             g.setColor(normala);
-            g.drawString("Hello, Surya Dantuluri",10,40);//sets the string that is displayed on the panel
+            g.drawString("Hello, "+name,10,40);//sets the string that is displayed on the panel
             if(health>40 && health<120)
             {
               healthName = "feeling okay";
@@ -1901,7 +1901,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                   if(checkMouth1&&checkMouth2&&checkMouth3)
                   {
                     doneStomach=true;
-                               }
+                  }
                   if(donutX<0)
                   {
                     donutX=0;
@@ -1929,7 +1929,7 @@ class LandingPage extends JPanel implements MouseMotionListener, MouseListener//
                 }
               }
 
-//small int
+              //small int
               if(inSmallIntestine)
               {
                 inMouth=false;
