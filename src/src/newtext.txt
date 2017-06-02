@@ -1,4 +1,0 @@
-pubilc void mouseDragged(MouseEvent e) {
-    x = e.getX();
-    y = e.getY();
-}

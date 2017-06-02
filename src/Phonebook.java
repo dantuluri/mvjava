@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class PhoneBook
+public class Phonebook
 
 { 	private String name, city, phone;
 	private int length;
@@ -12,7 +12,7 @@ public class PhoneBook
 	
 	
 	
-	public PhoneBook ( )
+	public Phonebook ( )
 	{	name = new String ( "Thomas Jefferson" ); // Default values,
 		city = new String ( "New York" ); // to be changed
 		phone = new String ( "123-4567" ); // within the methods
@@ -20,53 +20,34 @@ public class PhoneBook
 	
 	public static void main ( String [] args )
 	{
-		 PhoneBook book = new PhoneBook ( );
+		 Phonebook book = new Phonebook ( );
 		book.getInput ( );
-		book.processInputAndPrint ( );
 	}
 		
 	public void getInput ( )
 	{
-		Scanner input = new Scanner(System.in);	
-		System.out.print("Enter name as first last:");
-		name = input.nextLine();
-		
-		System.out.print("Enter city of residence:");
-		city = input.nextLine(); 
-		
-		System.out.print("Enter phone number (without area code):");
-		phone = input.nextLine();
+		String t = new String ("It is    ");
+        String w = new String(" unforgettable too");
+        String v = new String(w+t);
+        System.out.println(w.substring(8,12).toUpperCase());// TTAB
+        System.out.println(t.compareTo(w));//41
+        System.out.println(t.substring(2).trim());//is
+        System.out.println(v.indexOf('t',16));//19
+        System.out.println(v.trim().length());//22
+        System.out.println(v.lastIndexOf('t',18));//15
+        System.out.println(v.endsWith("able"));//false
+        System.out.println(w.charAt(t.indexOf('s')));//o
+        System.out.println(v.indexOf("for",7));//-1
+        System.out.println(100/3 + 51%10);//34
+        String monta = new String("MVHS");
+        String vista = new String("MV");
+        System.out.println((monta).compareTo(vista));//2
+        System.out.println(("catabomb").lastIndexOf('c',5));//0
+        System.out.println(5.6*23/5-8+2.1/4 > 15);//true
+        System.out.println(1+1.0/2);
+        
+        
+
 	}
-	public void processInputAndPrint()
-	{
-		name = name.trim();
-		spaceat = name.indexOf(' ');
-		spaceat = spaceat+1;
-		initials = name.charAt(spaceat);
-		length = name.length();
-		lastname = name.substring(spaceat,length);
-		endoffirstname = spaceat-2;
-		firstname = substring(0,endoffirstname);
-		
-		city = city.trim();
-		if (city=="Mountain View")
-		{
-			extension = "(650)";
-		}
-		else if(city=="Palo Alto")
-		{
-			extension = "(650)";
-		}
-		else if(city=="Cupertino")
-		{
-			extension = "(408)";
-		}
-		else
-		{
-			extension = "(408)";
-		}
-		
-		System.out.print("The phone number will be alphabetized under " + initials + ", under " + lastname + ", " + firstname + "at " + extension + " " + phone);
-	}
-	
+
 }
